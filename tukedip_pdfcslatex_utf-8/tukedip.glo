@@ -1,0 +1,36 @@
+\glossaryentry{IETF@[{IETF}]\begingroup Internet Engineering Task Force\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{IP@[{IP}]\begingroup Internet Protocol\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{IPv4@[{IPv4}]\begingroup Internet Protocol verzie 4\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{IPv6@[{IPv6}]\begingroup Internet Protocol verzie 6\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{ISP@[{ISP}]\begingroup Internet Service Provider\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{IANA@[{IANA}]\begingroup Internet Assigned Numbers Authority\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{PEN@[{PEN}]\begingroup Private Enterprise Number\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{LAN@[{LAN}]\begingroup Local Area Network\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{UTC@[{UTC}]\begingroup Coordinated Universal Time\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{IPFIX@[{IPFIX}]\begingroup IP Flow Information eXport\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{MONICA@[{MONICA}]\begingroup Monitoring and Optimization of Network Infrastructures Communications and Applications\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{napr.@[{napr.}]\begingroup napríklad\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{a pod.@[{a pod.}]\begingroup a podobne\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{atd.@[{atd.}]\begingroup a tak dalej\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{resp.@[{resp.}]\begingroup respektívne\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{Gb/s@[{Gb/s}]\begingroup Gigabit za sekundu\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{BGP@[{BGP}]\begingroup Border Gateway Protocol\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{ID@[{ID}]\begingroup Identification (number)\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{CNL@[{CNL}]\begingroup Computer Networks Laboratory\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{BEEM@[{BEEM}]\begingroup BasicMeter Exporting and Measuring process\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{JXColl@[{JXColl}]\begingroup Java XML Collector\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{ACP@[{ACP}]\begingroup Analyzer-Colector Protocol\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{SQL@[{SQL}]\begingroup Structured Query Language\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{ECAM@[{ECAM}]\begingroup Exporter-Collector-Analyzer Manager\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{BMAnalyzer@[{BMAnalyzer}]\begingroup BasicMeter Analyzer\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{XML@[{XML}]\begingroup eXtensible Markup Language\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{UDP@[{UDP}]\begingroup User Datagram Protocol\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{TCP@[{TCP}]\begingroup Transmission Control Protocol\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{SCTP@[{SCTP}]\begingroup Stream Control Transmission Protocol\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{SLAmeter@[{SLAmeter}]\begingroup Service-level agreement metering\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{bmIDS@[{bmIDS}]\begingroup BasicMeter Intrusion Detection System\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{FIFO@[{FIFO}]\begingroup First-In-First-Out\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{JVM@[{JVM}]\begingroup Java Virtual Machine\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{JRE@[{JRE}]\begingroup Java Runtime Environment\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{JDK@[{JDK}]\begingroup Java Development Kit\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{MAC@[{MAC}]\begingroup Media Access Control\nomeqref {0.0}|nompageref}{1}

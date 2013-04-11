@@ -1,0 +1,122 @@
+\begin{theglossary} 
+
+ \nomgroup{A}
+
+  \item [{a pod.}]\begingroup a podobne\nomeqref {0.0}\nompageref{1}
+  \item [{ACP}]\begingroup Analyzer-Colector Protocol\nomeqref {0.0}
+		\nompageref{1}
+  \item [{atd.}]\begingroup a tak dalej\nomeqref {0.0}\nompageref{1}
+
+ \nomgroup{B}
+
+  \item [{BEEM}]\begingroup BasicMeter Exporting and Measuring process\nomeqref {0.0}
+		\nompageref{1}
+  \item [{BGP}]\begingroup Border Gateway Protocol\nomeqref {0.0}
+		\nompageref{1}
+  \item [{BMAnalyzer}]\begingroup BasicMeter Analyzer\nomeqref {0.0}
+		\nompageref{1}
+  \item [{bmIDS}]\begingroup BasicMeter Intrusion Detection System\nomeqref {0.0}
+		\nompageref{1}
+
+ \nomgroup{C}
+
+  \item [{CNL}]\begingroup Computer Networks Laboratory\nomeqref {0.0}
+		\nompageref{1}
+
+ \nomgroup{E}
+
+  \item [{ECAM}]\begingroup Exporter-Collector-Analyzer Manager\nomeqref {0.0}
+		\nompageref{1}
+
+ \nomgroup{F}
+
+  \item [{FIFO}]\begingroup First-In-First-Out\nomeqref {0.0}
+		\nompageref{1}
+
+ \nomgroup{G}
+
+  \item [{Gb/s}]\begingroup Gigabit za sekundu\nomeqref {0.0}
+		\nompageref{1}
+
+ \nomgroup{I}
+
+  \item [{IANA}]\begingroup Internet Assigned Numbers Authority\nomeqref {0.0}
+		\nompageref{1}
+  \item [{ID}]\begingroup Identification (number)\nomeqref {0.0}
+		\nompageref{1}
+  \item [{IETF}]\begingroup Internet Engineering Task Force\nomeqref {0.0}
+		\nompageref{1}
+  \item [{IP}]\begingroup Internet Protocol\nomeqref {0.0}
+		\nompageref{1}
+  \item [{IPFIX}]\begingroup IP Flow Information eXport\nomeqref {0.0}
+		\nompageref{1}
+  \item [{IPv4}]\begingroup Internet Protocol verzie 4\nomeqref {0.0}
+		\nompageref{1}
+  \item [{IPv6}]\begingroup Internet Protocol verzie 6\nomeqref {0.0}
+		\nompageref{1}
+  \item [{ISP}]\begingroup Internet Service Provider\nomeqref {0.0}
+		\nompageref{1}
+
+ \nomgroup{J}
+
+  \item [{JDK}]\begingroup Java Development Kit\nomeqref {0.0}
+		\nompageref{1}
+  \item [{JRE}]\begingroup Java Runtime Environment\nomeqref {0.0}
+		\nompageref{1}
+  \item [{JVM}]\begingroup Java Virtual Machine\nomeqref {0.0}
+		\nompageref{1}
+  \item [{JXColl}]\begingroup Java XML Collector\nomeqref {0.0}
+		\nompageref{1}
+
+ \nomgroup{L}
+
+  \item [{LAN}]\begingroup Local Area Network\nomeqref {0.0}
+		\nompageref{1}
+
+ \nomgroup{M}
+
+  \item [{MAC}]\begingroup Media Access Control\nomeqref {0.0}
+		\nompageref{1}
+  \item [{MONICA}]\begingroup Monitoring and Optimization of Network Infrastructures Communications and Applications\nomeqref {0.0}
+		\nompageref{1}
+
+ \nomgroup{N}
+
+  \item [{napr.}]\begingroup napríklad\nomeqref {0.0}\nompageref{1}
+
+ \nomgroup{P}
+
+  \item [{PEN}]\begingroup Private Enterprise Number\nomeqref {0.0}
+		\nompageref{1}
+
+ \nomgroup{R}
+
+  \item [{resp.}]\begingroup respektívne\nomeqref {0.0}\nompageref{1}
+
+ \nomgroup{S}
+
+  \item [{SCTP}]\begingroup Stream Control Transmission Protocol\nomeqref {0.0}
+		\nompageref{1}
+  \item [{SLAmeter}]\begingroup Service-level agreement metering\nomeqref {0.0}
+		\nompageref{1}
+  \item [{SQL}]\begingroup Structured Query Language\nomeqref {0.0}
+		\nompageref{1}
+
+ \nomgroup{T}
+
+  \item [{TCP}]\begingroup Transmission Control Protocol\nomeqref {0.0}
+		\nompageref{1}
+
+ \nomgroup{U}
+
+  \item [{UDP}]\begingroup User Datagram Protoco\nomeqref {0.0}
+		\nompageref{1}
+  \item [{UTC}]\begingroup Coordinated Universal Time\nomeqref {0.0}
+		\nompageref{1}
+
+ \nomgroup{X}
+
+  \item [{XML}]\begingroup eXtensible Markup Language\nomeqref {0.0}
+		\nompageref{1}
+
+\end{theglossary}

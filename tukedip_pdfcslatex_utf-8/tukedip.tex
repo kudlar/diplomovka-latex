@@ -1,0 +1,282 @@
+\documentclass[]{tukediphc}
+%% -----------------------------------------------------------------
+%% tento subor ma kodovanie utf-8
+%%
+%% na kompilaciu pouzivajte format pdfcslatex 
+%%
+%% vytvorene distribuciou texlive 2009-7, OS GNU/Linux
+%% vytvorene distribuciou TeXLive 2010, OS Win XP
+%% februar 2013
+%% -----------------------------------------------------------------
+\usepackage[utf8]{inputenc}
+%\usepackage[T1]{fontenc}
+\usepackage{lmodern,textcase}
+\usepackage{slovak}\renewcommand{\figurename}{Obr\'azok}
+\def\refname{Zoznam pou\v{z}itej literat\'ury}
+\usepackage{latexsym}
+\usepackage{dcolumn} % zarovnanie cisiel v tabulke podla des. ciarky
+\usepackage{hhline}
+\usepackage{amsmath}
+\usepackage{nicefrac} % pekne zlomky
+\usepackage{upgreek} % napr. $\upmu\mathrm{m}$ pre mikrometer ...
+\usepackage[final]{showkeys}%color%notref%notcite%final
+\usepackage[slovak,noprefix]{nomencl}
+\makeglossary % prikaz na vytvorenie suboru .glo
+\usepackage{parskip}% 'zhusti' polozky obsahu
+%%
+%\usepackage[dvips]{graphicx}
+%\DeclareGraphicsExtensions{.eps}
+\usepackage[pdftex]{graphicx}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg,.mps}
+\graphicspath{{figures/}} % priecinok na obrazky
+%%
+%% Cislovane citovanie
+%\usepackage[numbers]{natbib}
+%\usepackage{pdfpages}%spoji vystupne pdfko s dalsim pdfkom <-pre zadavaci list
+%%
+%% Citovanie podľa mena autora a roku
+\usepackage{natbib} \citestyle{chicago}
+% -----------------------------------------------------------------
+%% tlač !!!
+\usepackage[pdftex,unicode=true,bookmarksnumbered=true,
+bookmarksopen=true,pdfmenubar=true,pdfview=Fit,linktocpage=true,
+pageanchor=true,bookmarkstype=toc,pdfpagemode=UseOutlines,
+pdfstartpage=1]{hyperref}
+\hypersetup{%
+baseurl={http://www.tuke.sk/sevcovic},
+pdfcreator={pdfcsLaTeX},
+pdfkeywords={Sprostredkovanie, Mediator, IPFIX, SLAMeter, BasicMeter},
+pdftitle={Aplikačný rámec pre sprostredkovanie IPFIX správ v nástroji SLAmeter},
+pdfauthor={Bc. Rastislav Kudla},
+pdfsubject={Diplomová práca}
+} 
+%% nehodiace zakomentujte !
+\dippraca{Diplomová práca}
+%\bakpraca{Bakalárska práca}
+%%
+\nazov{Aplikačný rámec pre sprostredkovanie IPFIX správ v nástroji SLAmeter}
+%% ked praca nema 'podnazov' zakomentujte nasledujuci riadok
+%% alebo polozku nechajte prazdnu
+\podnazov{}
+\autor{Bc. Rastislav Kudla}
+\veduciprace{Ing.~Peter~Feciľak, PhD.}
+\konzultanta{Ing.~Adrián~Pekár}
+%\konzultantb{RNDr.~Marián~Čierny, DrSc.}
+\univerzita{Technická univerzita v~Košiciach}
+\fakulta{Fakulta elektrotechniky a informatiky}
+\skratkafakulty{FEI}
+\katedra{Katedra počítačov a informatiky}
+\skratkakatedry{KPI}
+\odbor{Informatika}
+\specializacia{Informatika}
+
+\abstrakt{Abstrakt je povinnou súčasťou každej práce. Je výstižnou
+charakteristikou obsahu dokumentu. Nevyjadruje hodnotiace stanovisko
+autora. Má byť\/ taký informatívny, ako to povoľuje podstata práce.
+Text abstraktu sa píše ako jeden odstavec. Abstrakt neobsahuje odkazy
+na samotný text práce. Mal by mať\/ rozsah 250 až 500 slov. Pri
+štylizácii sa používajú celé vety, slovesá v činnom rode a tretej
+osobe. Používa sa odborná terminológia, menej zvyčajné termíny,
+skratky a~symboly sa pri prvom výskyte v texte definujú.}
+
+\klucoveslova{Sprostredkovanie, Mediator, IPFIX, SLAMeter, BasicMeter}
+
+\abstrakte{Text abstraktu v~svetovom jazyku je potrebný pre integráciu
+do medzinárodných informačných systémov. Ak nie je možné cudzojazyčnú
+verziu abstraktu umiestniť na jednej strane so slovenským abstraktom,
+je potrebné umiestniť ju na samostatnú stranu (cudzojazyčný abstrakt
+nemožno deliť a~uvádzať na dvoch strabách).}
+
+\keywords{Mediation, Mediator, IPFIX, SLAMeter, BasicMeter}
+
+\datumodovzdania{26. 4. 2013}
+\mesto{Košice}
+
+
+%----------ZOZNAM SKRATIEK-------------------
+\nomenclature{IETF}{Internet Engineering Task Force}
+\nomenclature{IP}{Internet Protocol}
+\nomenclature{IPv4}{Internet Protocol verzie 4}
+\nomenclature{IPv6}{Internet Protocol verzie 6}
+\nomenclature{ISP}{Internet Service Provider}
+\nomenclature{IANA}{Internet Assigned Numbers Authority}
+\nomenclature{PEN}{Private Enterprise Number}
+\nomenclature{LAN}{Local Area Network}
+\nomenclature{UTC}{Coordinated Universal Time}
+\nomenclature{IPFIX}{IP Flow Information eXport}
+\nomenclature{MONICA}{Monitoring and Optimization of Network Infrastructures Communications and Applications}
+\nomenclature{napr.}{napríklad}
+\nomenclature{a pod.}{a podobne}
+\nomenclature{atd.}{a tak dalej}
+\nomenclature{resp.}{respektívne}
+\nomenclature{Gb/s}{Gigabit za sekundu}
+\nomenclature{BGP}{Border Gateway Protocol}
+\nomenclature{ID}{Identification (number)}
+\nomenclature{CNL}{Computer Networks Laboratory}
+\nomenclature{BEEM}{BasicMeter Exporting and Measuring process}
+\nomenclature{JXColl}{Java XML Collector}
+\nomenclature{ACP}{Analyzer-Colector Protocol}
+\nomenclature{SQL}{Structured Query Language}
+\nomenclature{ECAM}{Exporter-Collector-Analyzer Manager}
+\nomenclature{BMAnalyzer}{BasicMeter Analyzer}
+\nomenclature{XML}{eXtensible Markup Language}
+\nomenclature{UDP}{User Datagram Protocol}
+\nomenclature{TCP}{Transmission Control Protocol}
+\nomenclature{SCTP}{Stream Control Transmission Protocol}
+\nomenclature{SLAmeter}{Service-level agreement metering}
+\nomenclature{bmIDS}{BasicMeter Intrusion Detection System}
+\nomenclature{FIFO}{First-In-First-Out}
+\nomenclature{JVM}{Java Virtual Machine}
+\nomenclature{JRE}{Java Runtime Environment}
+\nomenclature{JDK}{Java Development Kit}
+\nomenclature{MAC}{Media Access Control}
+%----------------DELENIE SLOV-------------
+%\hyphenation{IPFIXFlowRecord FlowRecordDispatcher}
+
+%-----------------------------------------
+
+\begin{document}
+\renewcommand\theHfigure{\theHsection.\arabic{figure}}
+\renewcommand\theHtable{\theHsection.\arabic{table}}
+\bibliographystyle{dcu}
+
+\prvastrana
+
+\titulnastrana
+
+\abstraktsk % abstrakt v SK 
+
+\abstrakteng % abstrakt v ENG
+
+\kabstrakt % koniec abstraktov, nova strana
+
+% Na tomto mieste bude vložené zadanie diplomovej práce
+%\includepdf[pages=-]{zadavaci_list_gray.pdf} 
+\zadanieprace
+
+\cestnevyhlasenie
+% Niektorí autori metodických príručiek o~záverečných prácach sa
+% nazdávajú, že takéto vyhlásenie je zbytočné, nakoľko povinnosť
+% vypracovať záverečnú prácu samostatne, vyplýva študentovi zo zákona a
+% na autora práce sa vzťahuje autorský zákon.
+
+\podakovanie
+Na tomto mieste sa chcem poďakovať vedúcemu diplomovej práce Ing. Petrovi 
+Feciľakovi, PhD., konzultantovi Ing. Adriánovi Pekárovi ako aj členom 
+výskumnej skupiny MONICA za ich ochotu, cenné
+rady, pripomienky a odbornú pomoc pri riešení diplomovej práce.
+
+Obzvlášť veľká vďaka patrí mojej rodine a najbližším za podporu a pomoc 
+počas celého štúdia na vysokej škole.
+\kpodakovania
+
+\predhovor
+Predhovor je povinnou náležitosťou záverečnej práce, pozri
+\citep{gonda}. V~predhovore autor uvedie základné charakteristiky
+svojej záverečnej práce a~okolnosti jej vzniku. Vysvetlí dôvody, ktoré
+ho viedli k~voľbe témy, cieľ a~účel práce a~stručne informuje
+o~hlavných metódach, ktoré pri spracovaní záverečnej práce použil.
+\kpredhovoru
+
+\thispagestyle{empty}
+\tableofcontents
+\newpage
+
+\thispagestyle{empty}
+%\addcontentsline{toc}{section}{\numberline{}Zoznam obrázkov}
+\listoffigures
+\newpage
+
+\thispagestyle{empty}
+%\addcontentsline{toc}{section}{\numberline{}Zoznam tabuliek}
+\listoftables
+\newpage
+
+\thispagestyle{empty}
+%\addcontentsline{toc}{section}{\numberline{}Zoznam symbolov a
+%skratiek}
+\printglossary % vlozenie zoznamu skratiek a symbolov
+\newpage
+
+%\addcontentsline{toc}{section}{\numberline{}Slovník termínov}
+\slovnikterminov
+
+\begin{description}
+	
+	\item[Unix Timestamp] nazývaný tiež Unix time, alebo POSIX time je systém na vyjadrovanie 
+	hodnoty času. Je definovaný ako počet uplynutých sekúnd od polnoci 1. januára 1970 UTC.
+	
+	\item[Singleton] je návrhový vzor, ktorý povoľuje vytvorenie iba jednej inštancie triedy. 
+	
+	\item[Parser] je program, ktorý analyzuje vstupne dáta tak, že ich rozdelí na jednotlivé 
+	významové časti, ktoré môžu byť následne spracované. \citep{veri}
+	
+	\item[Paket] je forma, resp. blok binárnych dat prenášaných v počítačových sieťach.
+	
+	\item[Hash mapa] alebo hash tabuľka je dátová štruktúra používaná na implementáciu asociatívnych 
+	poli. K hashovacim kľúčom priraďuje zodpovedajúce hodnoty. V jazyku Java môže byť hodnotou 
+	akýkoľvek objekt a kľúčom každý objekt, ktorý správne implementuje funkcie \emph{equals()} a 
+	\emph{hashCode()}.
+	
+	\item[IPv4 adresa] je 32 bitové označenie zariadenia v počítačovej sieti, ktoré na komunikáciu 
+	používa Internet Protocol verzie 4 \citep{rfc791}.
+	
+	\item[IPv6 adresa] je 128 bitové označenie zariadenia v počítačovej sieti, ktoré na komunikáciu 
+	používa Internet Protocol verzie 6 \citep{rfc2460}.
+	
+	\item[MAC adresa] je 48 bitový, unikátny identifikátor sieťového adaptéra komunikujúceho na 
+	fyzickej vrstve. 
+	
+	\item[Big-Endian] je spôsob usporiadania bytov dátových typov v pamäti počítača. Najvýznamnejší 
+	byte je uložený na najnižšej (prvej) pozícii. Používa sa pri komunikácii v počítačových sieťach,
+	preto sa tiež nazýva \uv{sieťové poradie bytov}. Jeho presným opakom je Little-Endian.
+	
+	\item[Buffer] je oblasť pamäte používaná na dočasné uchovanie dát pred ich presunom na iné 
+	miesto - vyrovnávacia pamäť.
+	
+	\item[paket]
+	\item[soket]
+	
+\end{description}
+
+\kslovnikterminov
+%
+\include{uvod}
+%
+\include{formulacia}
+%
+\include{analyza}
+%
+\include{mediator}
+%
+\include{analyza_framework}
+%
+\include{basic_sla_meter}
+%
+\include{navrh}
+%
+\include{zaver}
+%
+\include{literatura}
+%
+\include{prilohy}
+%
+\include{prilohaa}
+%
+\include{prilohab}
+%
+\include{prilohac}
+%
+\include{prirucka}
+
+%
+% zivotopis autora
+%\curriculumvitae\protect\label{page:posledna}
+%Táto časť\/ je nepovinná. Autor tu môže uviesť\/ svoje biografické
+%údaje, údaje o~záujmoch, účasti na~projektoch, účasti na~súťažiach,
+%získané ocenenia, zahraničné pobyty na~praxi, domácu prax, publikácie
+%a~pod.
+%\kcurriculumvitae
+
+\end{document}
+%%

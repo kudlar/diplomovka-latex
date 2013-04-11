@@ -1,0 +1,29 @@
+\begin{theglossary} 
+
+ \nomgroup{I}
+
+  \item [{IANA}]\begingroup Internet Assigned Numbers Authority\nomeqref {0.0}
+		\nompageref{1}
+  \item [{IETF}]\begingroup Internet Engineering Task Force\nomeqref {0.0}
+		\nompageref{1}
+  \item [{IP}]\begingroup Internet Protocol\nomeqref {0.0}
+		\nompageref{1}
+  \item [{ISP}]\begingroup Internet Service Provider\nomeqref {0.0}
+		\nompageref{1}
+
+ \nomgroup{L}
+
+  \item [{LAN}]\begingroup Local Area Network\nomeqref {0.0}
+		\nompageref{1}
+
+ \nomgroup{P}
+
+  \item [{PEN}]\begingroup Private Enterprise Number\nomeqref {0.0}
+		\nompageref{1}
+
+ \nomgroup{U}
+
+  \item [{UTC}]\begingroup Coordinated Universal Time\nomeqref {0.0}
+		\nompageref{1}
+
+\end{theglossary}
