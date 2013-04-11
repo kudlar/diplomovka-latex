@@ -52,10 +52,10 @@
 \contentsline {subsection}{\numberline {6.5}Exportovac\IeC {\'\i } proces}{48}{subsection.6.5}
 \contentsline {subsection}{\numberline {6.6}Hlavn\IeC {\'a} trieda Medi\IeC {\'a}tora}{51}{subsection.6.6}
 \contentsline {subsubsection}{\numberline {6.6.1}tretia}{51}{subsubsection.6.6.1}
-\contentsline {paragraph}{test}{51}{section*.9}
+\contentsline {paragraph}{\numberline {6.6.1.1}test}{51}{paragraph.6.6.1.1}
 \contentsline {section}{\numberline {7}Z\'aver (zhodnotenie rie\v {s}enia)}{53}{section.7}
-\contentsline {section}{\hbox to\@tempdima {\hfil }Zoznam pou\v {z}itej literat\'ury}{54}{section*.10}
-\contentsline {section}{\hbox to\@tempdima {\hfil }Zoznam pr\'iloh}{58}{section*.11}
-\contentsline {section}{\hbox to\@tempdima {\hfil }Pr\'iloha A}{59}{section*.12}
-\contentsline {section}{\hbox to\@tempdima {\hfil }Pr\'iloha B}{60}{section*.14}
-\contentsline {section}{\hbox to\@tempdima {\hfil }Pr\'iloha C}{63}{section*.16}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Zoznam pou\v {z}itej literat\'ury}{54}{section*.9}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Zoznam pr\'iloh}{58}{section*.10}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Pr\'iloha A}{59}{section*.11}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Pr\'iloha B}{60}{section*.13}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Pr\'iloha C}{63}{section*.15}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  11 APR 2013 17:47
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  11 APR 2013 17:54
 entering extended mode
  %&-line parsing enabled.
 **tukedip.tex
@@ -694,7 +694,7 @@ File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 LaTeX Warning: No \konzultantb given.
 
 [2] [3] [4] [5] [6] [7] (./tukedip.toc [8]
-LaTeX Font Info:    Try loading font information for IL2+lmss on input line 57.
+LaTeX Font Info:    Try loading font information for IL2+lmss on input line 56.
 
 
 (/usr/share/texmf/tex/latex/lm/il2lmss.fd
@@ -737,7 +737,7 @@ l.246 \include{formulacia}
 \openout2 = `analyza.aux'.
 
  (./analyza.tex
-<figures/ipfix_architekture_basic.png, id=466, 602.25pt x 322.20375pt>
+<figures/ipfix_architekture_basic.png, id=471, 602.25pt x 322.20375pt>
 File: figures/ipfix_architekture_basic.png Graphic file (type png)
 
 <use figures/ipfix_architekture_basic.png>pdfTeX warning (ext4): destination wi
@@ -766,7 +766,7 @@ been already used, duplicate ignored
                    \relax 
 l.103 \end{description}
                         [5]
-<figures/ipfix_message_format.png, id=502, 575.14874pt x 165.61874pt>
+<figures/ipfix_message_format.png, id=507, 575.14874pt x 165.61874pt>
 File: figures/ipfix_message_format.png Graphic file (type png)
 
 <use figures/ipfix_message_format.png>
@@ -788,11 +788,11 @@ File: il2lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 l.130  \item \textbf
                     {Identifikaƒçn√© ƒç√≠slo pozorovacej dom√©ny}, ktor√Ω je...
 [6 <./figures/ipfix_message_format.png>]
-<figures/ipfix_message_header.pdf, id=513, 405.515pt x 127.47626pt>
+<figures/ipfix_message_header.pdf, id=518, 405.515pt x 127.47626pt>
 File: figures/ipfix_message_header.pdf Graphic file (type pdf)
 
 <use figures/ipfix_message_header.pdf>
-<figures/set_format.pdf, id=515, 404.51125pt x 182.6825pt>
+<figures/set_format.pdf, id=520, 404.51125pt x 182.6825pt>
 File: figures/set_format.pdf Graphic file (type pdf)
 
 <use figures/set_format.pdf>pdfTeX warning (ext4): destination with the same id
@@ -801,7 +801,7 @@ entifier (name{page.7}) has been already used, duplicate ignored
                    \relax 
 l.165 
        [7 <./figures/ipfix_message_header.pdf>]
-<figures/set_header.pdf, id=527, 404.51125pt x 46.1725pt>
+<figures/set_header.pdf, id=532, 404.51125pt x 46.1725pt>
 File: figures/set_header.pdf Graphic file (type pdf)
 
 <use figures/set_header.pdf>pdfTeX warning (ext4): destination with the same id
@@ -811,7 +811,7 @@ entifier (name{page.8}) has been already used, duplicate ignored
 l.197 P
        rv√Ω bit sa naz√Ωva \emph{Enterprise bit}. [8 <./figures/set_format.pdf>
  <./figures/set_header.pdf>]
-<figures/field_specifier_format.pdf, id=540, 403.5075pt x 74.2775pt>
+<figures/field_specifier_format.pdf, id=545, 403.5075pt x 74.2775pt>
 File: figures/field_specifier_format.pdf Graphic file (type pdf)
 
 <use figures/field_specifier_format.pdf>pdfTeX warning (ext4): destination with
@@ -820,11 +820,11 @@ File: figures/field_specifier_format.pdf Graphic file (type pdf)
                    \relax 
 l.230 
        [9 <./figures/field_specifier_format.pdf>]
-<figures/template_record_header.pdf, id=552, 404.51125pt x 46.1725pt>
+<figures/template_record_header.pdf, id=557, 404.51125pt x 46.1725pt>
 File: figures/template_record_header.pdf Graphic file (type pdf)
 
 <use figures/template_record_header.pdf>
-<figures/options_record_header.pdf, id=554, 403.5075pt x 75.28125pt>
+<figures/options_record_header.pdf, id=559, 403.5075pt x 75.28125pt>
 File: figures/options_record_header.pdf Graphic file (type pdf)
 
 <use figures/options_record_header.pdf>)pdfTeX warning (ext4): destination with
@@ -850,7 +850,7 @@ l.31  \item[IPFIX Medi√°tor]
 [12
 
 
-] <figures/exp_med_coll.pdf, id=580, 380.42125pt x 171.64125pt>
+] <figures/exp_med_coll.pdf, id=585, 380.42125pt x 171.64125pt>
 File: figures/exp_med_coll.pdf Graphic file (type pdf)
 
 <use figures/exp_med_coll.pdf>pdfTeX warning (ext4): destination with the same 
@@ -879,7 +879,7 @@ Overfull \hbox (2.12337pt too wide) in paragraph at lines 229--229
 []\IL2/lmr/bx/n/14.4 Vybrane implementaËno-πpecifickÈ prob-lÈmy IP-FIX Me-
  []
 
-<figures/loss_of_exporter.pdf, id=633, 400.49625pt x 208.78pt>
+<figures/loss_of_exporter.pdf, id=638, 400.49625pt x 208.78pt>
 File: figures/loss_of_exporter.pdf Graphic file (type pdf)
 
 <use figures/loss_of_exporter.pdf> [20]) [21 <./figures/loss_of_exporter.pdf>]
@@ -887,14 +887,14 @@ File: figures/loss_of_exporter.pdf Graphic file (type pdf)
 
 
 (./analyza_framework.tex
-<figures/mediation_reference_model.pdf, id=651, 458.71375pt x 428.60126pt>
+<figures/mediation_reference_model.pdf, id=656, 458.71375pt x 428.60126pt>
 File: figures/mediation_reference_model.pdf Graphic file (type pdf)
 
 <use figures/mediation_reference_model.pdf> [22
 
 
  <./figures/mediation_reference_model.pdf>]
-<figures/mediator_component_model.pdf, id=664, 474.77374pt x 366.36874pt>
+<figures/mediator_component_model.pdf, id=669, 474.77374pt x 366.36874pt>
 File: figures/mediator_component_model.pdf Graphic file (type pdf)
 
 <use figures/mediator_component_model.pdf> [23 <./figures/mediator_component_mo
@@ -902,7 +902,7 @@ del.pdf>] [24]) [25]
 \openout2 = `basic_sla_meter.aux'.
 
  (./basic_sla_meter.tex
-<figures/bm_architecture.png, id=695, 761.84625pt x 470.75874pt>
+<figures/bm_architecture.png, id=700, 761.84625pt x 470.75874pt>
 File: figures/bm_architecture.png Graphic file (type png)
 
 <use figures/bm_architecture.png> [26
@@ -921,11 +921,11 @@ o-cu-j˙ci do-dræia-va-nie zmluvy
 
 
 ] [30]
-<figures/collecting1_schema.pdf, id=743, 462.72874pt x 133.49875pt>
+<figures/collecting1_schema.pdf, id=748, 462.72874pt x 133.49875pt>
 File: figures/collecting1_schema.pdf Graphic file (type pdf)
 
 <use figures/collecting1_schema.pdf> [31]
-<figures/collecting2_schema.pdf, id=749, 551.05875pt x 268.00125pt>
+<figures/collecting2_schema.pdf, id=754, 551.05875pt x 268.00125pt>
 File: figures/collecting2_schema.pdf Graphic file (type pdf)
 
 <use figures/collecting2_schema.pdf> [32 <./figures/collecting1_schema.pdf>]
@@ -936,16 +936,16 @@ t typu []\IL2/lmtt/m/n/12 IpfixFieldAttributes\IL2/lmr/m/n/12 .
  []
 
 [39] [40] [41] [42] [43] [44]
-<figures/flowRecordDispatcher_schema.pdf, id=856, 645.41125pt x 286.06876pt>
+<figures/flowRecordDispatcher_schema.pdf, id=861, 645.41125pt x 286.06876pt>
 File: figures/flowRecordDispatcher_schema.pdf Graphic file (type pdf)
 
 <use figures/flowRecordDispatcher_schema.pdf> [45 <./figures/flowRecordDispatch
 er_schema.pdf>] [46] [47]
-<figures/exporting_schema.pdf, id=880, 600.2425pt x 153.57375pt>
+<figures/exporting_schema.pdf, id=885, 600.2425pt x 153.57375pt>
 File: figures/exporting_schema.pdf Graphic file (type pdf)
 
 <use figures/exporting_schema.pdf> [48 <./figures/exporting_schema.pdf>]
-[49] [50] <figures/sla_architecture.pdf, id=907, 391.4625pt x 583.17876pt>
+[49] [50] <figures/sla_architecture.pdf, id=912, 391.4625pt x 583.17876pt>
 File: figures/sla_architecture.pdf Graphic file (type pdf)
 
 <use figures/sla_architecture.pdf>) [51] [52 <./figures/sla_architecture.pdf>]
@@ -1008,11 +1008,11 @@ L2/lmtt/m/n/12 http : / / c2 . com / cgi / wiki ?
 \openout2 = `prirucka.aux'.
 
  (./prirucka.tex
-<figures/collecting1_class.png, id=1013, 516.42938pt x 200.24812pt>
+<figures/collecting1_class.png, id=1017, 516.42938pt x 200.24812pt>
 File: figures/collecting1_class.png Graphic file (type png)
 
 <use figures/collecting1_class.png>
-<figures/collecting2_class.png, id=1015, 467.49657pt x 388.45125pt>
+<figures/collecting2_class.png, id=1019, 467.49657pt x 388.45125pt>
 File: figures/collecting2_class.png Graphic file (type png)
 
 <use figures/collecting2_class.png>
@@ -1021,11 +1021,11 @@ Overfull \hbox (22.37305pt too wide) in paragraph at lines 21--23
 esy, vr·-tane triedy []\IL2/lmtt/m/n/12 ExampleProcess
  []
 
-<figures/intermediate_class.png, id=1017, 459.96844pt x 373.395pt>
+<figures/intermediate_class.png, id=1021, 459.96844pt x 373.395pt>
 File: figures/intermediate_class.png Graphic file (type png)
 
 <use figures/intermediate_class.png>
-<figures/exporting_class.png, id=1018, 403.5075pt x 285.31593pt>
+<figures/exporting_class.png, id=1022, 403.5075pt x 285.31593pt>
 File: figures/exporting_class.png Graphic file (type png)
 
 <use figures/exporting_class.png>) [64
@@ -1043,10 +1043,10 @@ File: figures/exporting_class.png Graphic file (type png)
 ### simple group (level 1) entered at line 155 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 8091 strings out of 495027
- 109013 string characters out of 1181419
+ 8092 strings out of 495027
+ 109037 string characters out of 1181419
  186502 words of memory out of 3000000
- 10745 multiletter control sequences out of 15000+50000
+ 10746 multiletter control sequences out of 15000+50000
  68720 words of font info for 64 fonts, out of 3000000 for 9000
  38 hyphenation exceptions out of 8191
  38i,8n,41p,460b,571s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1061,9 +1061,9 @@ e/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm
 nts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.p
 fb></usr/share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf/fonts/t
 ype1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb>
-Output written on tukedip.pdf (83 pages, 1345564 bytes).
+Output written on tukedip.pdf (83 pages, 1346145 bytes).
 PDF statistics:
- 1137 PDF objects out of 1200 (max. 8388607)
+ 1141 PDF objects out of 1200 (max. 8388607)
  223 named destinations out of 1000 (max. 500000)
- 583 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 591 words of extra memory for PDF output out of 10000 (max. 10000000)
 
