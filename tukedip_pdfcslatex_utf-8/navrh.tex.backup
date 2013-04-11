@@ -560,9 +560,8 @@ prijímateľom a boli splnené príslušné požiadavky na rámec pre IPFIX Medi
 %% -------------------- EXPORTING -----------------
 \subsection{Exportovací proces}
 
-Poslednou fázou Mediátora je exportovací proces. Jeho diagram je zobrazený na obrázku \ref{o:exporting_schema}
-a diagram tried na obrazku \ref{o:exporting_class}.
-Ako bolo povedané v predchádzajúcej kapitole, záznamy 
+Poslednou fázou Mediátora je exportovací proces. Jeho schéma je zobrazená na obrázku 
+\ref{o:exporting_schema}. Ako bolo povedané v predchádzajúcej kapitole, záznamy 
 o tokoch, ktoré sú výstupom \uv{koncových} sprostredkovateľských procesov sú prostredníctvom dispečera 
 tokov pripravené na export zapísaním do exportovacej pamäte.
 
@@ -648,11 +647,7 @@ UDP paket. Na to slúži trieda \verb|DatagramPacket|, pričom jej parametrami s
 IP adresa a UDP port. Posledné dve menované sú zadané administrátorom v konfiguračnom súbore. Metódou 
 \verb|send()| zavolanou nad soketom je správa odoslaná.
 
-\begin{figure}[ht!]
-\centering
-\includegraphics[width=1.0\textwidth]{exporting_class}
-\caption{Diagram tried exportovacieho procesu}\label{o:exporting_class}
-\end{figure}
+
 
 
 %% -------------------- MEDIATOR -----------------
@@ -664,6 +659,10 @@ IP adresa a UDP port. Posledné dve menované sú zadané administrátorom v kon
 \includegraphics[width=0.6\textwidth]{sla_architecture}
 \caption{Príklad architektúry nástroja SLAmeter s využitím Mediátora}\label{o:sla_architecture}
 \end{figure}
+
+\subsubsection{tretia}
+
+\paragraph{test}
 
 
 TODO...

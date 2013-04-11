@@ -1,61 +1,67 @@
 \select@language {slovak}
 \contentsline {section}{\hbox to\@tempdima {\hfil }\'Uvod}{1}{section*.8}
 \contentsline {section}{\numberline {1}Formul\'acia \'ulohy}{2}{section.1}
-\contentsline {section}{\numberline {2}Anal\'yza protokolu IPFIX}{3}{section.2}
-\contentsline {subsection}{\numberline {2.1}Terminol\IeC {\'o}gia}{3}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Form\IeC {\'a}t IPFIX spr\IeC {\'a}v}{6}{subsection.2.2}
-\contentsline {subsubsection}{\numberline {2.2.1}Form\IeC {\'a}t hlavi\IeC {\v c}ky spr\IeC {\'a}vy}{6}{subsubsection.2.2.1}
-\contentsline {subsubsection}{\numberline {2.2.2}Form\IeC {\'a}t sady}{7}{subsubsection.2.2.2}
-\contentsline {subsubsection}{\numberline {2.2.3}\IeC {\v S}pecifik\IeC {\'a}tory po\IeC {\v l}a}{9}{subsubsection.2.2.3}
-\contentsline {subsubsection}{\numberline {2.2.4}Form\IeC {\'a}t z\IeC {\'a}znamov \IeC {\v s}abl\IeC {\'o}ny}{9}{subsubsection.2.2.4}
-\contentsline {subsubsection}{\numberline {2.2.5}Form\IeC {\'a}t z\IeC {\'a}znamov \IeC {\v s}abl\IeC {\'o}ny mo\IeC {\v z}nost\IeC {\'\i }}{10}{subsubsection.2.2.5}
-\contentsline {subsubsection}{\numberline {2.2.6}Form\IeC {\'a}t d\IeC {\'a}tov\IeC {\'y}ch z\IeC {\'a}znamov}{11}{subsubsection.2.2.6}
-\contentsline {section}{\numberline {3}Anal\'yza sprostredkovania spr\'av v IPFIX}{12}{section.3}
-\contentsline {subsection}{\numberline {3.1}Terminol\IeC {\'o}gia}{12}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Anal\'yza nev\'yhod architekt\'ury bez Medi\'atora}{13}{subsection.3.2}
-\contentsline {subsubsection}{\numberline {3.2.1}Vyrovnanie sa s rastom sie\IeC {\v t}ovej prev\'adzky}{14}{subsubsection.3.2.1}
-\contentsline {subsubsection}{\numberline {3.2.2}Vyrovnanie sa s viac\IeC {\'u}\IeC {\v c}elov\IeC {\'y}m meran\IeC {\'\i }m}{15}{subsubsection.3.2.2}
-\contentsline {subsubsection}{\numberline {3.2.3}Vyrovnanie sa s heterog\IeC {\'e}nnym prostred\IeC {\'\i }m}{15}{subsubsection.3.2.3}
-\contentsline {subsubsection}{\numberline {3.2.4}Zhrnutie probl\IeC {\'e}mov}{15}{subsubsection.3.2.4}
-\contentsline {subsection}{\numberline {3.3}Vybran\IeC {\'e} pr\IeC {\'\i }klady pou\IeC {\v z}itia sprostredkovania spr\IeC {\'a}v}{16}{subsection.3.3}
-\contentsline {subsubsection}{\numberline {3.3.1}Prisp\IeC {\^o}sobovanie granularity tokov}{16}{subsubsection.3.3.1}
-\contentsline {subsubsection}{\numberline {3.3.2}Zhroma\IeC {\v z}\IeC {\v d}ovacia infra\IeC {\v s}trukt\IeC {\'u}ra}{16}{subsubsection.3.3.2}
-\contentsline {subsubsection}{\numberline {3.3.3}Sp\IeC {\'a}janie \IeC {\v c}asu}{17}{subsubsection.3.3.3}
-\contentsline {subsubsection}{\numberline {3.3.4}Sp\IeC {\'a}janie priestoru}{17}{subsubsection.3.3.4}
-\contentsline {subsubsection}{\numberline {3.3.5}Anonymiz\IeC {\'a}cia d\IeC {\'a}tov\IeC {\'y}ch z\IeC {\'a}znamov}{18}{subsubsection.3.3.5}
-\contentsline {subsubsection}{\numberline {3.3.6}Distrib\IeC {\'u}cia d\IeC {\'a}tov\IeC {\'y}ch z\IeC {\'a}znamov}{19}{subsubsection.3.3.6}
-\contentsline {subsubsection}{\numberline {3.3.7}Interoperabilita medzi protokolmi star\IeC {\v s}\IeC {\'\i }ch verzi\IeC {\'\i } a IPFIX}{20}{subsubsection.3.3.7}
-\contentsline {subsection}{\numberline {3.4}Vybrane implementa\IeC {\v c}no-\IeC {\v s}pecifick\IeC {\'e} probl\IeC {\'e}my IPFIX Medi\IeC {\'a}tora}{20}{subsection.3.4}
-\contentsline {subsubsection}{\numberline {3.4.1}Strata inform\IeC {\'a}cie o p\IeC {\^o}vodnom export\IeC {\'e}ri}{20}{subsubsection.3.4.1}
-\contentsline {subsubsection}{\numberline {3.4.2}Strata inform\IeC {\'a}cie o \IeC {\v c}ase exportu}{21}{subsubsection.3.4.2}
-\contentsline {subsubsection}{\numberline {3.4.3}Interpret\IeC {\'a}cia sprostredkovan\IeC {\'y}ch spr\IeC {\'a}v}{21}{subsubsection.3.4.3}
-\contentsline {section}{\numberline {4}Anal\IeC {\'y}za aplika\IeC {\v c}n\IeC {\'e}ho r\IeC {\'a}mca pre IPFIX Medi\IeC {\'a}tor}{22}{section.4}
-\contentsline {subsection}{\numberline {4.1}Referen\IeC {\v c}n\IeC {\'y} model sprostredkovania spr\IeC {\'a}v v IPFIX}{22}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Komponenty sprostredkovania spr\IeC {\'a}v v IPFIX}{24}{subsection.4.2}
-\contentsline {subsubsection}{\numberline {4.2.1}Zhromazdovaci proces}{24}{subsubsection.4.2.1}
-\contentsline {subsubsection}{\numberline {4.2.2}Exportovaci proces}{24}{subsubsection.4.2.2}
-\contentsline {subsubsection}{\numberline {4.2.3}Sprostredkovatelske procesy}{25}{subsubsection.4.2.3}
-\contentsline {section}{\numberline {5}Projekty v\'yskumnej skupiny MONICA}{26}{section.5}
-\contentsline {subsection}{\numberline {5.1}Meracia plaforma BasicMeter}{26}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Merac\IeC {\'\i } n\IeC {\'a}stroj SLAmeter}{27}{subsection.5.2}
-\contentsline {section}{\numberline {6}N\IeC {\'a}vrh a implement\IeC {\'a}cia aplika\IeC {\v c}n\IeC {\'e}ho r\IeC {\'a}mca pre IPFIX Medi\IeC {\'a}tor}{29}{section.6}
-\contentsline {subsection}{\numberline {6.1}Po\IeC {\v z}iadavky na r\IeC {\'a}mec pre IPFIX Medi\IeC {\'a}tor}{29}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}Zhroma\IeC {\v z}\IeC {\v d}ovac\IeC {\'\i } proces}{31}{subsection.6.2}
-\contentsline {subsubsection}{\numberline {6.2.1}1. f\IeC {\'a}za zhroma\IeC {\v z}\IeC {\v d}ovacieho procesu}{32}{subsubsection.6.2.1}
-\contentsline {subsubsection}{\numberline {6.2.2}2. f\IeC {\'a}za zhroma\IeC {\v z}\IeC {\v d}ovacieho procesu}{33}{subsubsection.6.2.2}
-\contentsline {subsection}{\numberline {6.3}Rozhranie a podpora pre sprostredkovate\IeC {\v l}sk\IeC {\'e} procesy - moduly}{34}{subsection.6.3}
-\contentsline {subsubsection}{\numberline {6.3.1}Java ClassLoader a dynamick\IeC {\'e} na\IeC {\v c}\IeC {\'\i }tavanie tried}{34}{subsubsection.6.3.1}
-\contentsline {subsubsection}{\numberline {6.3.2}Abstraktn\IeC {\'a} trieda AIntermediateProcess}{35}{subsubsection.6.3.2}
-\contentsline {subsubsection}{\numberline {6.3.3}Pr\IeC {\'\i }klad implement\IeC {\'a}cie modulu - ExampleProcess}{43}{subsubsection.6.3.3}
-\contentsline {subsubsection}{\numberline {6.3.4}Dynamick\IeC {\'e} na\IeC {\v c}\IeC {\'\i }tavanie sprostredkovate\IeC {\v l}sk\IeC {\'y}ch procesov}{44}{subsubsection.6.3.4}
-\contentsline {subsection}{\numberline {6.4}Trieda FlowRecordDispatcher}{45}{subsection.6.4}
-\contentsline {subsection}{\numberline {6.5}Exportovac\IeC {\'\i } proces}{48}{subsection.6.5}
-\contentsline {subsection}{\numberline {6.6}Hlavn\IeC {\'a} trieda Medi\IeC {\'a}tora}{51}{subsection.6.6}
-\contentsline {subsubsection}{\numberline {6.6.1}tretia}{51}{subsubsection.6.6.1}
-\contentsline {paragraph}{\numberline {6.6.1.1}test}{51}{paragraph.6.6.1.1}
-\contentsline {section}{\numberline {7}Z\'aver (zhodnotenie rie\v {s}enia)}{53}{section.7}
-\contentsline {section}{\hbox to\@tempdima {\hfil }Zoznam pou\v {z}itej literat\'ury}{54}{section*.9}
-\contentsline {section}{\hbox to\@tempdima {\hfil }Zoznam pr\'iloh}{58}{section*.10}
-\contentsline {section}{\hbox to\@tempdima {\hfil }Pr\'iloha A}{59}{section*.11}
-\contentsline {section}{\hbox to\@tempdima {\hfil }Pr\'iloha B}{60}{section*.13}
-\contentsline {section}{\hbox to\@tempdima {\hfil }Pr\'iloha C}{63}{section*.15}
+\contentsline {section}{\numberline {2}Anal\'yza}{3}{section.2}
+\contentsline {subsection}{\numberline {2.1}Anal\'yza protokolu IPFIX}{3}{subsection.2.1}
+\contentsline {subsubsection}{\numberline {2.1.1}Terminol\IeC {\'o}gia}{3}{subsubsection.2.1.1}
+\contentsline {subsubsection}{\numberline {2.1.2}Form\IeC {\'a}t IPFIX spr\IeC {\'a}v}{6}{subsubsection.2.1.2}
+\contentsline {paragraph}{\numberline {2.1.2.1}Form\IeC {\'a}t hlavi\IeC {\v c}ky spr\IeC {\'a}vy}{6}{paragraph.2.1.2.1}
+\contentsline {paragraph}{\numberline {2.1.2.2}Form\IeC {\'a}t sady}{7}{paragraph.2.1.2.2}
+\contentsline {paragraph}{\numberline {2.1.2.3}\IeC {\v S}pecifik\IeC {\'a}tory po\IeC {\v l}a}{8}{paragraph.2.1.2.3}
+\contentsline {paragraph}{\numberline {2.1.2.4}Form\IeC {\'a}t z\IeC {\'a}znamov \IeC {\v s}abl\IeC {\'o}ny}{9}{paragraph.2.1.2.4}
+\contentsline {paragraph}{\numberline {2.1.2.5}Form\IeC {\'a}t z\IeC {\'a}znamov \IeC {\v s}abl\IeC {\'o}ny mo\IeC {\v z}nost\IeC {\'\i }}{10}{paragraph.2.1.2.5}
+\contentsline {paragraph}{\numberline {2.1.2.6}Form\IeC {\'a}t d\IeC {\'a}tov\IeC {\'y}ch z\IeC {\'a}znamov}{10}{paragraph.2.1.2.6}
+\contentsline {subsection}{\numberline {2.2}Anal\'yza sprostredkovania spr\'av v IPFIX}{11}{subsection.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}Terminol\IeC {\'o}gia}{11}{subsubsection.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.2}Anal\'yza nev\'yhod architekt\'ury bez Medi\'atora}{12}{subsubsection.2.2.2}
+\contentsline {paragraph}{\numberline {2.2.2.1}Vyrovnanie sa s rastom sie\IeC {\v t}ovej prev\'adzky}{13}{paragraph.2.2.2.1}
+\contentsline {paragraph}{\numberline {2.2.2.2}Vyrovnanie sa s viac\IeC {\'u}\IeC {\v c}elov\IeC {\'y}m meran\IeC {\'\i }m}{13}{paragraph.2.2.2.2}
+\contentsline {paragraph}{\numberline {2.2.2.3}Vyrovnanie sa s heterog\IeC {\'e}nnym prostred\IeC {\'\i }m}{14}{paragraph.2.2.2.3}
+\contentsline {paragraph}{\numberline {2.2.2.4}Zhrnutie probl\IeC {\'e}mov}{14}{paragraph.2.2.2.4}
+\contentsline {subsubsection}{\numberline {2.2.3}Vybran\IeC {\'e} pr\IeC {\'\i }klady pou\IeC {\v z}itia sprostredkovania spr\IeC {\'a}v}{14}{subsubsection.2.2.3}
+\contentsline {paragraph}{\numberline {2.2.3.1}Prisp\IeC {\^o}sobovanie granularity tokov}{15}{paragraph.2.2.3.1}
+\contentsline {paragraph}{\numberline {2.2.3.2}Zhroma\IeC {\v z}\IeC {\v d}ovacia infra\IeC {\v s}trukt\IeC {\'u}ra}{15}{paragraph.2.2.3.2}
+\contentsline {paragraph}{\numberline {2.2.3.3}Sp\IeC {\'a}janie \IeC {\v c}asu}{15}{paragraph.2.2.3.3}
+\contentsline {paragraph}{\numberline {2.2.3.4}Sp\IeC {\'a}janie priestoru}{16}{paragraph.2.2.3.4}
+\contentsline {paragraph}{\numberline {2.2.3.5}Anonymiz\IeC {\'a}cia d\IeC {\'a}tov\IeC {\'y}ch z\IeC {\'a}znamov}{17}{paragraph.2.2.3.5}
+\contentsline {paragraph}{\numberline {2.2.3.6}Distrib\IeC {\'u}cia d\IeC {\'a}tov\IeC {\'y}ch z\IeC {\'a}znamov}{17}{paragraph.2.2.3.6}
+\contentsline {paragraph}{\numberline {2.2.3.7}Interoperabilita medzi protokolmi star\IeC {\v s}\IeC {\'\i }ch verzi\IeC {\'\i } a IPFIX}{18}{paragraph.2.2.3.7}
+\contentsline {subsubsection}{\numberline {2.2.4}Vybrane implementa\IeC {\v c}no-\IeC {\v s}pecifick\IeC {\'e} probl\IeC {\'e}my IPFIX Medi\IeC {\'a}tora}{18}{subsubsection.2.2.4}
+\contentsline {paragraph}{\numberline {2.2.4.1}Strata inform\IeC {\'a}cie o p\IeC {\^o}vodnom export\IeC {\'e}ri}{18}{paragraph.2.2.4.1}
+\contentsline {paragraph}{\numberline {2.2.4.2}Strata inform\IeC {\'a}cie o \IeC {\v c}ase exportu}{19}{paragraph.2.2.4.2}
+\contentsline {paragraph}{\numberline {2.2.4.3}Interpret\IeC {\'a}cia sprostredkovan\IeC {\'y}ch spr\IeC {\'a}v}{19}{paragraph.2.2.4.3}
+\contentsline {subsection}{\numberline {2.3}Anal\IeC {\'y}za aplika\IeC {\v c}n\IeC {\'e}ho r\IeC {\'a}mca pre IPFIX Medi\IeC {\'a}tor}{21}{subsection.2.3}
+\contentsline {subsubsection}{\numberline {2.3.1}Referen\IeC {\v c}n\IeC {\'y} model sprostredkovania spr\IeC {\'a}v v IPFIX}{21}{subsubsection.2.3.1}
+\contentsline {subsubsection}{\numberline {2.3.2}Komponenty sprostredkovania spr\IeC {\'a}v v IPFIX}{22}{subsubsection.2.3.2}
+\contentsline {paragraph}{\numberline {2.3.2.1}Zhromazdovaci proces}{23}{paragraph.2.3.2.1}
+\contentsline {paragraph}{\numberline {2.3.2.2}Exportovaci proces}{23}{paragraph.2.3.2.2}
+\contentsline {paragraph}{\numberline {2.3.2.3}Sprostredkovatelske procesy}{23}{paragraph.2.3.2.3}
+\contentsline {section}{\numberline {3}Projekty v\'yskumnej skupiny MONICA}{25}{section.3}
+\contentsline {subsection}{\numberline {3.1}Meracia plaforma BasicMeter}{25}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Merac\IeC {\'\i } n\IeC {\'a}stroj SLAmeter}{26}{subsection.3.2}
+\contentsline {section}{\numberline {4}N\IeC {\'a}vrh a implement\IeC {\'a}cia aplika\IeC {\v c}n\IeC {\'e}ho r\IeC {\'a}mca pre IPFIX Medi\IeC {\'a}tor}{28}{section.4}
+\contentsline {subsection}{\numberline {4.1}Po\IeC {\v z}iadavky na r\IeC {\'a}mec pre IPFIX Medi\IeC {\'a}tor}{28}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Zhroma\IeC {\v z}\IeC {\v d}ovac\IeC {\'\i } proces}{30}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}1. f\IeC {\'a}za zhroma\IeC {\v z}\IeC {\v d}ovacieho procesu}{31}{subsubsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2}2. f\IeC {\'a}za zhroma\IeC {\v z}\IeC {\v d}ovacieho procesu}{32}{subsubsection.4.2.2}
+\contentsline {subsection}{\numberline {4.3}Rozhranie a podpora pre sprostredkovate\IeC {\v l}sk\IeC {\'e} procesy - moduly}{33}{subsection.4.3}
+\contentsline {subsubsection}{\numberline {4.3.1}Java ClassLoader a dynamick\IeC {\'e} na\IeC {\v c}\IeC {\'\i }tavanie tried}{33}{subsubsection.4.3.1}
+\contentsline {subsubsection}{\numberline {4.3.2}Abstraktn\IeC {\'a} trieda AIntermediateProcess}{34}{subsubsection.4.3.2}
+\contentsline {paragraph}{\numberline {4.3.2.1}Viacvl\IeC {\'a}knovos\IeC {\v t}}{35}{paragraph.4.3.2.1}
+\contentsline {paragraph}{\numberline {4.3.2.2}Jedin\IeC {\'a} in\IeC {\v s}tancia modulov}{35}{paragraph.4.3.2.2}
+\contentsline {paragraph}{\numberline {4.3.2.3}Dek\IeC {\'o}dovanie d\IeC {\'a}tov\IeC {\'y}ch z\IeC {\'a}znamov}{38}{paragraph.4.3.2.3}
+\contentsline {paragraph}{\numberline {4.3.2.4}Zak\IeC {\'o}dovanie d\IeC {\'a}tov\IeC {\'y}ch z\IeC {\'a}znamov}{39}{paragraph.4.3.2.4}
+\contentsline {paragraph}{\numberline {4.3.2.5}Distrib\IeC {\'u}cia d\IeC {\'a}t medzi modulmi}{42}{paragraph.4.3.2.5}
+\contentsline {subsubsection}{\numberline {4.3.3}Pr\IeC {\'\i }klad implement\IeC {\'a}cie modulu - ExampleProcess}{42}{subsubsection.4.3.3}
+\contentsline {subsubsection}{\numberline {4.3.4}Dynamick\IeC {\'e} na\IeC {\v c}\IeC {\'\i }tavanie sprostredkovate\IeC {\v l}sk\IeC {\'y}ch procesov}{43}{subsubsection.4.3.4}
+\contentsline {subsection}{\numberline {4.4}Trieda FlowRecordDispatcher}{44}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}Exportovac\IeC {\'\i } proces}{47}{subsection.4.5}
+\contentsline {subsection}{\numberline {4.6}Hlavn\IeC {\'a} trieda Medi\IeC {\'a}tora}{50}{subsection.4.6}
+\contentsline {subsubsection}{\numberline {4.6.1}tretia}{50}{subsubsection.4.6.1}
+\contentsline {paragraph}{\numberline {4.6.1.1}test}{50}{paragraph.4.6.1.1}
+\contentsline {section}{\numberline {5}Z\'aver (zhodnotenie rie\v {s}enia)}{52}{section.5}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Zoznam pou\v {z}itej literat\'ury}{53}{section*.9}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Zoznam pr\'iloh}{57}{section*.10}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Pr\'iloha A}{58}{section*.11}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Pr\'iloha B}{59}{section*.13}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Pr\'iloha C}{62}{section*.15}

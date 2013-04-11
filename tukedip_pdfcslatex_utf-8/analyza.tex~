@@ -121,7 +121,7 @@ v akomkoľvek poradí.
 
 Formát hlavičky správy je znázornený na obrázku \ref{o:ipfix_message_header}. Pozostáva z piatich poli:
 \begin{itemize}
- \item \textbf{Číslo verzie} záznamu toku v správe. Pre IPFIX je to hodnota 0x000a.
+ \item \textbf{Číslo verzie} záznamu toku v správe. Pre IPFIX je to hodnota \verb|0x000a|.
  \item \textbf{Dĺžka} predstavuje celkovú dĺžku IPFIX správy v oktetoch, vrátane hlavičky a sád. 
  \item \textbf{Čas exportu} vo formáte UNIX timestamp. 
  \item \textbf{Sekvenčné číslo} vyjadruje počet odoslaných záznamov dátových záznamov modulo $2^{32}$  

@@ -1,10 +1,10 @@
-\section{Analýza aplikačného rámca pre IPFIX Mediátor} \label{sec:framework}
+\subsection{Analýza aplikačného rámca pre IPFIX Mediátor} \label{sec:framework}
 
 Analýze aplikačného rámca pre sprostredkovanie správ v IPFIX sa venuje RFC 6183 \citep{rfc6183}. 
 V jednotlivých kapitolách si podrobnejšie priblížime referenčný model, vybrané funkčné bloky 
 aplikačného rámca a TODO ...
 
-\subsection{Referenčný model sprostredkovania správ v IPFIX}
+\subsubsection{Referenčný model sprostredkovania správ v IPFIX}
 
 \begin{figure}[ht!]
 \centering
@@ -36,12 +36,12 @@ najbeznejsieho pripadu, kedy mediator prijima datove zaznamy od exportera, alebo
 %% KED BUDE MALO SEM PRIDAM AJ INE MODELY ... (su este das 3)
 
 
-\subsection{Komponenty sprostredkovania správ v IPFIX}
+\subsubsection{Komponenty sprostredkovania správ v IPFIX}
 
 V nasleducich castiach si blizsie priblizime jednotlive komponenty IPFIX mediatora, ktore su
 znazornene na obrazku \ref{o:mediator_component_model}.
 
-\subsubsection{Zhromazdovaci proces}
+\paragraph{Zhromazdovaci proces}
 
 Zhromazdovaci proces v IPFIX Mediatore sa nelíši od zhromazdovacieho procesu popisaneho v 
 specifikacii IPFIX protokolu \citep{rfc5101}.
@@ -51,7 +51,7 @@ To znamena, ze zhromazdovaci proces môže vytvarat kopie sady a prenasat ich bu
 Medzi riadiace informacie patri hlavicka IPFIX správy, informacie o transportnej relacii, 
 spolu s informaciami o meracom a exportovacom procese v exporteri, napr. vzorkovacie parametre.
 
-\subsubsection{Exportovaci proces} \label{sec:exporting_process}
+\paragraph{Exportovaci proces} \label{sec:exporting_process}
 
 Exportovaci proces IPFIX Mediatora sa vo svojej podstate tiez nelisi od toho, ktory je popisany v specifikacii
 protokolu \citep{rfc5101}.
@@ -87,7 +87,7 @@ Pridavne funkcie mozu byt nasledujuce:
 \end{table}
 % -----------
 
-\subsubsection{Sprostredkovatelske procesy} \label{sec:framework_intermediate}
+\paragraph{Sprostredkovatelske procesy} \label{sec:framework_intermediate}
 
 Sprostredkovatelske procesy su klucovymi funkcnymi blokmi sprostredkovania správ v IPFIX. Musia pokryt 
 kazdy priklad pouzita spostredkovania správ z kapitoly \ref{sec:mediator_examples} na strane 

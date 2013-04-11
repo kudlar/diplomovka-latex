@@ -226,7 +226,7 @@ IPFIX kolektora je nutné monitorovať sieť, hoci exportér je verzie NetFlow.
 Jedna z možností je použiť IPFIX Mediátor, ktorý bude konvertovať starší protokol na IPFIX.
 
 
-\subsection{Vybrane implementačno-špecifické problémy IPFIX Mediátora}
+\subsection{Vybrane implementačno-špecifické problémy IPFIX Mediátora} \label{sec:problems}
 
 \subsubsection{Strata informácie o pôvodnom exportéri} \label{sec:loss_info}
 

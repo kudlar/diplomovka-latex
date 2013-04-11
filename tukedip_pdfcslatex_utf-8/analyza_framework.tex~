@@ -2,9 +2,9 @@
 
 Analýze aplikačného rámca pre sprostredkovanie správ v IPFIX sa venuje RFC 6183 \citep{rfc6183}. 
 V jednotlivých kapitolách si podrobnejšie priblížime referenčný model, vybrané funkčné bloky 
-aplikačného rámca a TODO...
+aplikačného rámca a TODO ...
 
-\subsection{Referencny model sprostredkovania správ v IPFIX}
+\subsection{Referenčný model sprostredkovania správ v IPFIX}
 
 \begin{figure}[ht!]
 \centering
@@ -12,11 +12,11 @@ aplikačného rámca a TODO...
 \caption{Referenčný model sprostredkovania správ v IPFIX}\label{o:mediation_reference_model}
 \end{figure}
 
-Obrazok \ref{o:mediation_reference_model} predstavuje referencny model sprostredkovania správ v IPFIX 
-ako rozsirenie referenceho modelu IPFIX, popisaneho v \emph{Architecture for IP Flow Information Export} 
-\citep{rfc5470}. Tato schema zobrazuje možné scenáre, ktoré môžu existovať v meracej architekture.
+Obrázok \ref{o:mediation_reference_model} predstavuje referenčný model sprostredkovania správ v IPFIX 
+ako rozšírenie referenčného modelu IPFIX, popísaného v \emph{Architecture for IP Flow Information Export} 
+\citep{rfc5470}. Táto schéma zobrazuje možné scenáre, ktoré môžu existovať v meracej architektúre.
 
-Funkčné komponenty v rámci každej entity su ohranicene zátvorkami []. Mediator moze prijimat 
+Funkčné komponenty v rámci každej entity sú ohraničené zátvorkami []. Mediátor moze prijimat 
 zaznamy o toku od inych mediatorov a exporterov a prud zaznamov z inych zdrojov.
 Za ine zdroje sa povazuju nastroje inych protokolov, ako napriklad NetFlow exportery \citep{rfc3954}. 
 Spracovane data vo forme zaznamov o toku potom exportuje jednemu alebo viacerym kolektorom a mediatorom.
