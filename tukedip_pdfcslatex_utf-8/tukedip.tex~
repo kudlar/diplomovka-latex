@@ -45,7 +45,7 @@ pdfstartpage=1]{hyperref}
 \hypersetup{%
 baseurl={http://www.tuke.sk/sevcovic},
 pdfcreator={pdfcsLaTeX},
-pdfkeywords={Sprostredkovanie, Mediator, IPFIX, SLAMeter, BasicMeter},
+pdfkeywords={Sprostredkovanie, Medi\'ator, IPFIX, SLAMeter, BasicMeter},
 pdftitle={Aplikačný rámec pre sprostredkovanie IPFIX správ v nástroji SLAmeter},
 pdfauthor={Bc. Rastislav Kudla},
 pdfsubject={Diplomová práca}
@@ -79,7 +79,7 @@ na samotný text práce. Mal by mať\/ rozsah 250 až 500 slov. Pri
 osobe. Používa sa odborná terminológia, menej zvyčajné termíny,
 skratky a~symboly sa pri prvom výskyte v texte definujú.}
 
-\klucoveslova{Sprostredkovanie, Mediator, IPFIX, SLAMeter, BasicMeter}
+\klucoveslova{Sprostredkovanie, Mediátor, Kolektor, Exportér, IPFIX, SLAMeter, BasicMeter}
 
 \abstrakte{Text abstraktu v~svetovom jazyku je potrebný pre integráciu
 do medzinárodných informačných systémov. Ak nie je možné cudzojazyčnú
@@ -255,6 +255,8 @@ o~hlavných metódach, ktoré pri spracovaní záverečnej práce použil.
 %
 \include{navrh}
 %
+\include{experimenty}
+%
 \include{zaver}
 %
 \include{literatura}
@@ -266,6 +268,9 @@ o~hlavných metódach, ktoré pri spracovaní záverečnej práce použil.
 \include{prilohab}
 %
 \include{prilohac}
+%
+\include{prirucka}
+
 %
 % zivotopis autora
 %\curriculumvitae\protect\label{page:posledna}

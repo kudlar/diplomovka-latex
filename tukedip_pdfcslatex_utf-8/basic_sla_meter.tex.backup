@@ -1,12 +1,12 @@
-\section{Anal\'yza merac\'ich n\'astrojov}
+\section{Projekty v\'yskumnej skupiny MONICA}
 
-\subsection{Meracia plaforma BasicMeter}
+\subsection{Meracia platforma BasicMeter}
 
 BasicMeter \citep{monica} je jedným z projektov výskumnej 
-skupiny MONICA, sídliacej v Laboratóriu počítačových sieti (CNL) na Technickej Univerzite v Kosiciach. 
-Je to meraci nástroj zalozeny na protokole IPFIX. Sluzi na pasivne meranie parametrov prevadzky 
-pocitacovych sieti a ich nasledne vyhodnocovanie. Zaciatky vyvoja siahaju az do roku 2003. Jeho 
-architektura je znazornena na obrazku \ref{o:bm_architecture}.
+skupiny MONICA, sídliacej v Laboratóriu počítačových sietí (CNL) na Technickej Univerzite v Košiciach. 
+Je to merací nástroj založený na protokole IPFIX. Slúži na pasívne meranie parametrov prevádzky 
+počítačových sietí a ich následné vyhodnocovanie. Začiatky vývoja siahajú až do roku 2003. Jeho 
+architektúra je znázornená na obrázku \ref{o:bm_architecture}.
 
 \begin{figure}[ht!]
 \centering
@@ -14,29 +14,29 @@ architektura je znazornena na obrazku \ref{o:bm_architecture}.
 \caption{Architektúra nástroja BasicMeter \citep{ja}}\label{o:bm_architecture}
 \end{figure}
 
-Platforma pozostava z nasledujucich komponentov:
+Platforma pozostáva z nasledujúcich komponentov:
 \begin{itemize}
- \item \textbf{BEEM} - merací a exportovací proces - exporter
+ \item \textbf{BEEM} - merací a exportovací proces - exportér
  \item \textbf{JXColl} - zhromažďovací proces - kolektor
  \item \textbf{BMAnalyzer} - aplikácia na vyhodnocovanie údajov
  \item \textbf{ECAM} - riadiaci komponent nástroja
- \item \textbf{bmIDS} - system pred detekciu narusenia
+ \item \textbf{bmIDS} - systém pre detekciu narušenia
 \end{itemize}
 
-Najnizsou vrstvou architekury je \emph{BEEM}. Zabezpecuje vsetky funkcie 
-meracieho a exportovacieho procesu definovaneho v specifikacii IPFIX. Namerané záznamy o tokoch
-posiela komponentu \emph{JXColl} vo formate IPFIX sprav. Kolektor dekoduje prijate spravy od jedneho
-alebo viacerych exporterov a uklada ich do databazy kvoli neskorsej analyze. Za ucelom analyzovania dat
-a ich grafickeho zobrazenia vo forme grafov v realnom case ich posiela \emph{BMAnalyzeru} prostrednictvom 
-protokolu ACP \citep{ado}. \emph{bmIDS} tak isto prijima data v realnom case, no jeho ulohou je analyzovat
-prebiehajucu komunikaciu v uzli siete a odhalovat pripadne utoky, resp. anomalie. \emph{ECAM} umoznuje 
-centralne riadit beh jednotlivych casti architektury. Umoznuje vytvorit a zmazat instancie exporterov 
+Najnižšou vrstvou architektúry je \emph{BEEM}. Zabezpečuje všetky funkcie 
+meracieho a exportovacieho procesu definovaného v špecifikácii IPFIX. Namerané záznamy o tokoch
+posiela komponentu \emph{JXColl} vo formáte IPFIX správ. Kolektor dekóduje prijaté spravy od jedného
+alebo viacerých exportérov a ukladá ich do databázy kvôli neskoršej analýze. Za účelom analyzovania dát
+a ich grafickeho zobrazenia vo forme grafov v reálnom čase ich posiela \emph{BMAnalyzeru} prostredníctvom 
+protokolu ACP \citep{ado}. \emph{bmIDS} tak isto prijíma dáta v reálnom čase, no jeho úlohou je analyzovať
+prebiehajúcu komunikáciu v uzli siete a odhaľovať pripadné útoky, resp. anomálie. \emph{ECAM} umožňuje 
+centrálne riadiť beh jednotlivých častí architektúry. Umoznuje vytvorit a zmazat instancie exporterov 
 a kolektorov, pripadne menit ich konfiguraciu. \citep{ja, veri}
 
 \subsection{Merací nástroj SLAmeter}
 
 SLAmeter je merač parametrov sieťovej prevádzky vyhodnocujúci dodržiavanie zmluvy o úrovni poskytovanej 
-služby - \emph{SLA}. V tomto prípade sa pod poskytovanou službou rozumie prístup do siete 
+služby \emph{(SLA)}. V tomto prípade sa pod poskytovanou službou rozumie prístup do siete 
 Internet. Zaklad nastroja zaklad je postaveny na komponentoch nastroja BasicMeter, a rovnako je projektom 
 vyskumnej skupiny MONICA. 
 
@@ -47,4 +47,7 @@ co by malo mat dopad na konkurenčný boj a zvýšenie snahy o zlepšovanie kval
 
 Ako bolo spomenute, SLAmeter je akousi nadstavbou na BasicMeter. Jeho architektura pozostava z exporterov,
 ktore posielaju namerane zaznamy o tokoch zhromazdovacu. Ten spracovava zaznamy a uklada ich do 
-centralnej databazy, odkial ich cerpa \emph{Vyhodnocovac} 
+centralnej databazy. Ulohou \emph{vyhodnocovaca} je na zaklade poziadaviek od weboveho rozhrania 
+spracovavat IPFIX zaznamy a vytvarat tak statisticke a analyticke udaje o charaktere 
+meranej sietovej prevadzky \citep{evaluator}. \emph{Webove rozhranie} je modularna webova aplikacia 
+s pohladmi pre zakaznika a poskytovatela Internetovych sluzieb.
