@@ -1,0 +1,1180 @@
+%%
+\section{Funkcia programu}
+
+Program JXColl (Java XML Collector) slú¾i na zachytávanie a~predspracovávanie informácii
+o~tokoch v~sie»ach získané exportérom. Je súèas»ou meracej architektúry BasicMeter, ktorý
+na základe nastavených parametrov konfiguraèného súboru vie dané údaje uklada» do~databázy
+alebo ich sprístupni» pomocou vlastného protokolu pre priame spracovanie (protokol ACP) pou¾ívateµovi.
+Údaje ulo¾ené v~databáze slú¾ia pre neskor¹ie vyhodnotenie prídavnými modulmi spomínanej 
+meracej architektúry a~sú v~súlade s~po¾iadavkami protokolu IPFIX. 
+JXColl tie¾ generuje úètovacie záznamy, ktoré slú¾ia na analýzu pou¾ívania siete konkrétnym
+pou¾ívateµom z~hµadiska IP adries, protokolov, portov a~èasových charakteristík. Program bol
+vytvorený ¥ubo¹om Ko¹èom, neskôr zoptimalizovaný a~doplnený novými funkciami Michalom Ka¹èákom, Adriánom Pekárom a~Tomá¹om Vere¹èákom.
+
+
+
+\section{Analýza rie¹enia}
+
+
+V~roku 2011 sa na udalosti DEMONS IPFIX Interoperability Testing Event v~Prahe zistilo viacero nedostatkov programu JXColl.
+
+Jedným z~nich je absencia podpory viacerých záznamov v~akomkoµvek druhu sady. Merací a exportovací proces nástroja BasicMeter exportoval
+v¾dy najviac jeden záznam v~sade a preto tento problém nebol nájdený skôr. Súèasný stav je neprípustný a je potrebné ho napravi».
+
+Ïal¹ím problémom je preskakovanie informaèných elementov s~redukovaným kódovaním. Takéto kódovanie je prípustné pre celoèíselné a desatinné dátové typy a na typy dateTimeSeconds a dateTimeMilliseconds. V~súèasnom stave ich v¹ak JXColl nevie spracova».
+
+Niektoré dátové typy nie sú v~programe JXColl implementované. Príkladom sú dátové typy boolean, macAddress a octetArray. Dátové typy dateTimeMicroseconds
+a dateTimeNanoseconds nie sú dekódované správnym spôsobom. Tieto typy sú ulo¾ené vo formáte èasovej známky NTP Timestamp. V~JXColl sú v~súèasnosti interpretované ako 64-bitové bezznamienkové èíslo.
+
+Niektoré informaèné elementy mô¾u ma» variabilnú veµkos». Ide napríklad o~elementy s~dátovým typom string alebo octetArray. Pri príjme informaèných elementov s~variabilnou då¾kou by v~JXColl do¹lo k~chybe, preto¾e taký element má v~zázname ¹ablóny uvedenú veµkos» 65535. Veµkos» je vtedy zakódovaná v~prvom alebo v~prvých troch bajtoch dátového záznamu od jeho aktuálnej pozície.
+
+Problém sa prejavil aj pri dekódovaní organizáciou vytvorených informaèných elementov, ktoré majú identifikátor toto¾ný s~niektorým ¹tandardným IETF informaèným elementom. JXColl mal informácie len o~prvom výskyte informaèného elementu s~daným identifikátorom a nebral do úvahy èíslo organizácie. Je potrebné zabezpeèi» správne zaobchádzanie s~organizáciou definovanými informaènými elementmi.
+
+JXColl umo¾òuje príjem dát o~tokoch len prostredníctvom transportného protokolu UDP. Je potrebné implementova» aj prenos pomocou protokolov TCP a SCTP. V~súvislosti s~touto úlohou je nutné ráta» s~odli¹nými po¾iadavkami na správu ¹ablón. Pre protokol UDP je potrebné zavies» mechanizmus expirácie ¹abåón a umo¾ni» správnu funkènos» viacerých exportérov na jednom poèítaèi, evidenciu aj na základe portu exportéra. V~súvislosti s~protokolmi TCP a SCTP je potrebné implementova» podporu pre Template Withdawal správy a detekciu po¹kodených dát. V~prípade príjmu po¹kodených dát, alebo nepovolenej operácie so ¹ablónami je potrebné zru¹i» spojenie, resp. asociáciu.
+
+\clearpage
+
+\section{Popis programu}
+
+Jednotlivé èasti programu sú umiestnené v~nasledujúcich balíkoch:
+
+\begin{itemize}
+\item sk.tuke.cnl.bm.JXColl.export - triedy urèené na export údajov do databázy alebo protokolom ACP
+\item sk.tuke.cnl.bm.JXColl.input - triedy slú¾iace na príjem dát z~exportérov
+\item sk.tuke.cnl.bm.JXColl.IPFIX - triedy s~manuálnou implementáciou IPFIX
+\item sk.tuke.cnl.bm.JXColl.accounting - triedy úètovacieho modulu
+\item sk.tuke.cnl.bm.JXColl - hlavné triedy samotného programu
+\item sk.tuke.cnl.bm.OWD - balík pre modul merania jednosmerného oneskorenia
+\item sk.tuke.cnl.bm - pomocné triedy a výnimky
+\end{itemize}
+
+
+\subsection{Popis rie¹enia}
+
+
+V~prvom rade bolo potrebné umo¾ni» podporu viacerých záznamov v~sade. Trieda NetXMLParser bola rozdelená na dve samostatné jednotky. Jednou je vlákno UDPProcessor, ktorého úlohou je vybera» údaje z~PacketCache a èas» spracovania bole prepísaná do novej triedy IpfixParser. Parsovanie IPFIX správ bolo  zoptimalizované a upravené do prehµadnej podoby. Celkový problém bol rozdelený na men¹ie úlohy, ktoré sú realizované metódami na parsovanie správy, sady, a v¹etkých druhov záznamov. V~metóde slú¾iacej na spracovanie sady bol pre ka¾dý druh sady pridaný cyklus, ktorý vyberá záznamy zo sady, a¾ kým sa pozícia v~buffri nedostane na koniec sady.
+
+Dekódovanie dát jednotlivých informaèných elementov bolo presunuté do samostatnej  triedy. Podobne ako v~triede IpfixParser je volaná jedna metóda, ktorá na základe dátového typu presunie spracovanie na metódy zaoberajúce sa danou skupinou dátových typov. Údaje z~buffra pre dátový typ octetArray sú prevedené do podoby re»azce v~kódovaní Base64 aby ich bolo mo¾né ulo¾i» v~databáze. Bajt v~buffri pre dátový typ boolean je interpretovaný ako true pri hodnote 1 a ako false pri hodnote 0. V¹etky ostatné hodnoty znamenajú chybu a je to oznámené volajúcej metóde výnimkou DataException. Okrem implementácie dekódovania dátového typu macAddres bola e¹te opravená interpretácia dátových typov dateTimeMicroseconds a dateTimeNanoseconds. Keï¾e sa tieto hodnoty musia zmesti» do ôsmich bajtov vo formáte NTP Timestamp a analyzujúce aplikácie sú postavené na technológii Java, ktorá nepozná bezznamienkové typy, je vhodné ulo¾i» tieto hodnoty v~nezmenenej podobe ako znamienkové 64-bitové èíslo (long). Po získaní èísla 
+z~databázy je mo¾né jednoducho pou¾i» triedu Timestamp z~kni¾nice Apache Commons Net na jednoduch¹iu prácu s~touto èasovou známkou.
+
+Na podporu redukovaného kódovania bola vytvorená metóda handleReducedSizeEncoding(), ktorá zo skráteného informaèného elementu vytvorí buffer plnej veµkosti, ktorý je mo¾né be¾ným spôsobom interpretova». Pre bezznamienkové èísla sa do plnej veµkosti zµava doplnia nulové bajty. Pre záporné znamienkové èísla sa doplnia bajty o~hodnote 255, aby sa zachovala hodnota èísla. Redukovaný mô¾e by» aj dátový typ float64, a to pou¾itím polovièného poètu bajtov. Vtedy sa dáta interpretujú ako float32.
+
+Organizáciou definované informaèné elementy sú definované v~súbore ipfixFields.xml. Aby sa uva¾ovalo èíslo organizácie pre informaèné elementy, musela by» doplnená trieda IpfixElements o~mo¾nos» evidencie informaèných elementov nielen na základe ich identifikátora, ale súèasne s~èíslom organizácie (¹tandardné informaèné elementy sú uva¾ované s~èíslom organizácie 0). Spoloène s~tým v¹etky metódy slú¾iace na prístup k~informáciám o~informaèných elementoch museli by» roz¹írené o~parameter èísla organizácie.
+
+Variabilné informaèné elementy boli implementované v~triede IpfixParser. Pri výbere informaèného elementu, ktorého veµkos» je v~zázname ¹ablóny definovaná ako 65535 je vybratý prvý bajt z~dátovej èasti na aktuálnej pozícii. Ak je tento bajt men¹í ako 255, je vybraných toµko bajtov z~buffra, koµko tento bajt uvádza. Ak má bajt hodnotu 255, då¾ka je získaná z~ïal¹ích dvoch bajtov.
+
+Súèas»ou zmien v~parseri je detekcia po¹kodených správ. Ak je skutoèná veµkos» správy iná ako sa uvádza v~hlavièke, ide o~chybu. Pri ka¾dej chybe je vyhodená výnimka DataFormatException. Chyba je indikovaná aj keï je poèet zostávajúcich bajtov v~buffri men¹í ako veµkos» sady. Pri výbere údajov z~dátového záznamu alebo záznamu ¹ablóny sa testuje náraz na pravú hranicu sady. V~prípade jej dosiahnutia sa tie¾ ohlási chyba.
+
+Na pridanie podpory expirácie ¹ablón musela sa do záznamu ¹ablóny prida» polo¾ka èasu príchod ¹ablóny. Cache bola sprehµadnená a pred parsovaním
+dátového záznamu je overovaná platos» ¹ablóny. V~prípade ak je neplatná, dátová sada sa preskoèí. Ka¾dých 10 minút sa spú¹»a èistiace vlákno, aby vymazalo expirované ¹ablóny a zabránilo tak zaplòovaniu pamäte JXColl.
+Transportné protokoly TCP a SCTP pou¾ívajú vlastnú cache na uschovanie ¹ablón s~platnos»ou len pre konkrétne pripojenie, resp. asociáciu.
+Umo¾òená bola podpora pre zru¹enie ¹ablón pomocou Template Withdrawal správ. V~prípade, ak exportér po¹le u¾ kolektorom evidovanú ¹ablónu, alebo ak ru¹í neexistujúcu ¹ablónu, spojenie, resp. asociácia sa preru¹í. 
+
+Protokoly TCP a SCTP vyu¾ívajú na ka¾dé pripojenie samostatné vlákno. Obidva protokoly poèúvajú na nakonfigurovanom porte a poèet pripojení, resp. asociácií je ohranièený nastavením v~konfiguraènom súbore. Na podporu protokolu SCTP bolo potrebné prejs» na nov¹iu verziu Javy 1.7.
+
+\clearpage
+
+
+
+\subsection{Popis tried, èlenských premenných a~metód}
+
+Ked¾e sa poèas vývoja a~odstraòovania chýb pôvodné triedy a~ich metódy nezmenili, v~nasledujúcich èastiach
+budú uvedené len tie, ktoré boli doplnené poèas rie¹enia jednotlivých problémov uvedených v~analýze rie¹enia. 
+Popis ostatných tried a~metód je uvedený v~príruèkach predo¹lých verzií programu. 
+%hlavne v balíkoch JXColl, input a IPFIX
+
+
+\subsubsection{Trieda SCTPProcessor}
+Trieda predstavuje vlákno spracúvajúce jednu SCTP ascociáciu.\\
+
+{\bfseries Kon¹truktor}
+\bigskip
+
+\textit{public \textbf{SCTPProcessor}(SctpChannel channel, InetSocketAddress exporterAddress, ThreadGroup group)}
+
+Kon¹truktor ulo¾í predané parametre do èlenských premenných, vytvorí vlastnú cache typu SingleSessionTemplateCache 
+a vytvorí nový objekt typu IpfixParser, ktorému predá vytvorenú template cache. Nastaví meno vlákna, bude obsahova» IP adresu a port.
+
+{\bfseries Parametre:}
+
+channel - Objekt slú¾iaci na prácu s~asociáciou - príjem a posielanie správ\\
+exporterAddress - primárna adresa SCTP ascociácie obsahujúca aj jeho zdrojový port\\
+group - skupina vlákien, ku ktorej toto vlákno patrí.\\
+
+\clearpage
+\bigskip
+{\bfseries Metódy}
+\bigskip
+
+\textit{public void \textbf{run}()}
+
+Hlavná metóda vlákna. Pokiaµ sa vláno nepreru¹í, dochádza k~prijímaniu správ z~SCTP asociácie a spracovanie pomocou vlastného parsera. Po preru¹ení vlákna sa asociácia vypne a vlákno konèí svoju èinnos».
+
+
+% ------------------------------------------------
+
+
+\subsubsection{Trieda SCTPServer}
+Slú¾i ako TCP server. Prijíma po¾iadavky na vytvorenie SCTP asociácií. Nové asociácie predáva vláknam typu
+SCTPProcessor. \\
+
+
+{\bfseries Kon¹truktor}
+\bigskip
+
+\textit{public \textbf{SCTPServer}()}
+
+Kon¹truktor inicializuje SctpServerChannel, nastaví mu blokovací re¾im a privia¾e ho k~portu definovanom
+v~konfiguraènom súbore. Nastaví meno vlákna.
+
+\bigskip
+{\bfseries Metódy}
+\bigskip
+
+\textit{public void \textbf{run}()}
+
+Hlavná metóda vlákna. Pokiaµ nedôjde k~preru¹eniu, èaká na vytvorenie
+pripojenia exportérom. Vytvorený SctpChannel predá novovytvorenému vláknu
+SCTPProcessor a spustí ho. Dovoµuje pripoji» sa len toµkým exportérom,
+ako je uvedené v~konfiguraènom súbore.
+
+
+\textit{public void \textbf{interruptAllThreads}()}
+
+Táto metóda preru¹í v¹etky be¾iace vlákna typu SCTPProcessor. Je volaná pri preru¹ení tohto 
+vlákna.
+
+
+% ------------------------------------------------
+
+
+
+\subsubsection{Trieda TCPProcessor}
+Trieda predstavuje vlákno spracúvajúce jedno TCP pripojenie.\\
+
+{\bfseries Kon¹truktor}
+\bigskip
+
+\textit{public \textbf{TCPProcessor}(Socket socket, InetSocketAddress exporterAddress, ThreadGroup group)}\\
+
+Kon¹truktor ulo¾í predané parametre do èlenských premenných, vytvorí vlastnú cache typu SingleSessionTemplateCache 
+a vytvorí nový objekt typu IpfixParser, ktorému predá vytvorenú template cache. Nastaví meno vlákna, bude obsahova» IP adresu a port.
+
+{\bfseries Parametre:}
+
+channel - Objekt slú¾iaci na prácu s~asociáciou - príjem a posielanie správ
+
+exporterAddress - primárna adresa SCTP ascociácie obsahujúca aj jeho zdrojový port
+
+group - skupina vlákien, ku ktorej toto vlákno patrí.
+
+
+\bigskip
+\bigskip
+
+{\bfseries Metódy}
+\bigskip
+
+\textit{public static void \textbf{run}()}
+
+Hlavná metóda vlákna. Pokiaµ sa vláno nepreru¹í, dochádza k~prijímaniu správ zo socketu a spracovaniu pomocou vlastného parsera. Po preru¹ení vlákna sa asociácia vypne a vlákno konèí. Dôjde k~násilnému ukonèeniu spojenia pomocou RST segmentu.
+
+\clearpage
+\textit{public void \textbf{closeConnection}()}
+
+Zatvorí socket. 
+
+\textit{public void \textbf{resetConnection}()}
+
+Zapne na sockete SO\_LINGER a nastaví ho na 0 sekúnd. Potom socket zatvorí. Dôjde k~poslaniu RST segmentu.
+
+
+% -----------------------------------------
+
+
+\subsubsection{Trieda TCPServer}
+Slú¾i ako TCP server. Prijíma po¾iadavky na vytvorenie TCP spojenia. Nové asociácie predáva vláknam typu
+TCPProcessor. \\
+
+{\bfseries Kon¹truktor}
+\bigskip
+
+\textit{public \textbf{TCPServer}()}
+
+Kon¹truktor inicializuje ServerSocket, nastaví mu timeout a privia¾e ho k~portu definovanom
+v~konfiguraènom súbore. Nastaví meno vlákna.
+
+\bigskip
+{\bfseries Metódy}
+\bigskip
+
+\textit{public void \textbf{run}()}
+
+Hlavná metóda vlákna. Pokiaµ nedôjde k~preru¹eniu, èaká na vytvorenie
+pripojenia exportérom. Vytvorený socket predá novovytvorenému vláknu
+TCPProcessor a spustí ho. Dovoµuje pripoji» sa len toµkým exportérom,
+ako je uvedené v~konfiguraènom súbore.
+
+
+\textit{public void \textbf{interruptAllThreads}()}
+
+Táto metóda preru¹í v¹etky be¾iace vlákna typu TCPProcessor. Je volaná pri preru¹ení tohto 
+vlákna.
+
+
+% ------------------------------------------------
+
+
+
+\subsubsection{Trieda UDPProcessor}
+Trieda predstavuje vlákno spracúvajúce UDP pakety, ktoré boli ulo¾ené v~PacketCache.\\
+
+{\bfseries Kon¹truktor}
+\bigskip
+
+\textit{public \textbf{UDPProcessor}()}
+
+Kon¹truktor nastaví meno vlákna.
+
+\bigskip
+{\bfseries Metódy}
+\bigskip
+
+\textit{public void \textbf{run}()}
+
+Hlavná metóda vlákna. Vyberá dáta z~PacketCache a predáva ich parseru. V~prípade zachytenia výnimky DataFormatException sa aktuálne spracovávaná správa preskoèí.
+
+
+% ------------------------------------------------
+
+
+\subsubsection{Trieda UDPServer}
+Slú¾i ako UDP server. Prijíma UDP datagramy zo siete na nakonfigurovanom porte a ukladá ich do PacketCache.\\
+
+{\bfseries Kon¹truktor}
+\bigskip
+
+\textit{public \textbf{UDPServer}()}
+
+Kon¹truktor inicializuje DatagramChannel, nastaví mu blokovací re¾im a privia¾e ho k~portu definovanom
+v~konfiguraènom súbore. Nastaví meno vlákna.
+
+\bigskip
+{\bfseries Metódy}
+\bigskip
+
+\textit{public void \textbf{run}()}
+
+Hlavná metóda vlákna. Prijíma pakety zo siete a ukladá ich do PacketCache spoloène 
+s~èasom prijatia a zdrojového UDP portu. Ak je vlákno preru¹ené, tak konèí.
+
+
+% ------------------------------------------------
+
+
+
+\subsubsection{Trieda TemplateHolder}
+Trieda sa pou¾íva ako úlo¾isko ¹ablón pre jeden UDP exportér identifikovaný pomocou IP adresy, èísla
+zdrojového portu a identifikátora pozorovacej domény. V~prípade pou¾itia spojovo-orientovaného transportného
+protokolu je identifikátorom len èíslo pozorovacej domény.\\
+
+{\bfseries Kon¹truktor}
+\bigskip
+
+\textit{public \textbf{TemplateHolder}()}
+
+Vytvorí kolekciu HashMap kde kµúèom je èíslo ¹ablóny a hodnotou je záznam ¹ablóny, IPFIXTemplateRecord.
+
+\bigskip
+{\bfseries Metódy}
+\bigskip
+
+\textit{public void \textbf{addTemplate}(IPFIXTemplateRecord template)}
+
+Pridá záznam ¹ablóny do evidencie.
+
+{\bfseries Parametre:}
+
+template - záznam ¹ablóny\\
+
+
+
+\textit{public boolean \textbf{contains}(int templateId)}
+
+Overí dostupnos» záznamu ¹ablóny s~daným identifikátorom.
+
+{\bfseries Parametre:}
+
+templateId - identifikátor ¹ablóny\\
+
+
+\textit{public HashMap<Integer, IPFIXTemplateRecord> \textbf{getTemplates}()}
+
+Vráti kolekciu HashMap obsahujúcu v¹etky ¹ablóny pre tento exportér.
+
+{\bfseries Návratová hodnota:}
+
+Kolekcia HashMap obsahujúca v¹etky evidované ¹ablóny.\\
+
+
+
+\textit{public IPFIXTemplateRecord \textbf{get}(int templateId)}
+
+Získa záznam ¹ablóny s~daným identifikátorom. 
+
+{\bfseries Návratová hodnota:}
+
+Objekt záznamu ¹ablóny.\\
+
+
+\textit{public IPFIXTemplateRecord \textbf{remove}(int templateId)}
+
+Vyma¾e záznam ¹ablóny s~daným identifikátorom.
+
+{\bfseries Návratová hodnota:}
+
+Vymazaný záznam ¹ablóny.\\
+
+
+\textit{public void \textbf{removeAll}()}
+
+Vyma¾e v¹etky ¹ablóny z~evidencie.\\
+
+
+\textit{public boolean \textbf{isEmpty}()}
+
+Zistí, èi je evidencia ¹ablón pre daný exportér prázdna.
+
+{\bfseries Návratová hodnota:}
+
+Pravda, ak exportér neobsahuje ¾iadnu ¹ablónu, inak nepravda.\\
+
+
+
+% ------------------------------------------------
+
+
+\subsubsection{Trieda IpfixUdpTemplateCache}
+Úlo¾isko záznamov ¹ablón pre jednotlivé exportéry. Vyu¾íva sa len na správu ¹ablón pri prenose cez
+protokol UDP. Pou¾íva návrhový vzor Singleton.\\
+
+{\bfseries Kon¹truktor}
+\bigskip
+
+\textit{public \textbf{IpfixUdpTemplateCache}()}
+
+Vytvorí in¹tanciu triedy. Inicializuje kolekciu HashMap$<$ExoporterKey, TemplateHolder$>$ obsahujúcu
+evidenciu ¹ablón jednotlivých exportérov.
+
+\bigskip
+{\bfseries Metódy}
+\bigskip
+
+\textit{public IpfixUdpTemplateCache \textbf{getInstance}()}
+
+Získa jedinú in¹tanciu tejto triedy. Návrhový vzor Singleton.
+
+{\bfseries Návratová hodnota:}
+
+In¹tancia tejto triedy\\
+
+
+\textit{public void \textbf{addTemplate}(IPFIXTemplateRecord template,
+							 InetAddress ipfixDevice, int exporterUdpSrcPort, long odid)}
+
+Pridá alebo nahradí záznam ¹ablóny v~úlo¾isku daného exportéra, 
+ktorý je identifikovaný IP adresou, zdrojovým UDP portom a èíslom pozorovacej domény.
+
+{\bfseries Parametre:}
+
+template - záznam ¹ablóny\\
+ipfixDevice - IP adresa exportéra\\
+exporterUdpSrcPort - zdrojový UDP port exportéra\\
+odid - identifikátor pozorovacej domény\\
+
+
+
+\textit{public boolean \textbf{addTemplate}(IPFIXTemplateRecord template,
+							 InetSocketAddress ipfixDevice, long odid)}
+
+Pridá alebo nahradí záznam ¹ablóny v~úlo¾isku daného exportéra, 
+ktorý je identifikovaný IP adresou, zdrojovým UDP portom a èíslom pozorovacej domény.
+
+{\bfseries Parametre:}
+
+template - záznam ¹ablóny\\
+ipfixDevice - IP adresa a zdrojový UDP port exportéra\\
+odid - identifikátor pozorovacej domény\\
+
+
+
+\textit{public TemplateHolder \textbf{getTemplates}(InetAddress exporterAddress, int udpSourcePort, long odid)}
+
+Vráti objekt TemplateHolder obsahujúci v¹etky ¹ablóny evidované pre daný exportér.
+
+{\bfseries Parametre:}
+
+exporterAddress -  IP adresa exportéra\\
+udpSourcePort - zdrojový UDP port exportéra\\
+odid - identifikátor pozorovacej domény\\
+
+{\bfseries Návratová hodnota:}
+
+Objekt TemplateHolder obsahujúci v¹etky evidované ¹ablóny pre daný exportér.\\
+
+
+
+
+\textit{public boolean \textbf{contains}(int templateId, InetSocketAddress ipfixDevice, long odid)}
+
+Zistí, èi sa ¹ablóna exportéra nachádza v~úlo¾isku pre daný exportér.
+
+{\bfseries Parametre:}
+
+templateId -  identifikátor ¹ablóny\\
+ipfixDevice - IP adresa a zdrojový port exportéra\\
+odid - identifikátor pozorovacej domény\\
+
+{\bfseries Návratová hodnota:}
+
+True, ak ¹ablóna je evidovaná, inak false.\\
+
+
+
+
+\textit{public boolean \textbf{checkForPresence}(int templateId, InetSocketAddress ipfixDevice, long odid)}
+
+Zistí, èi sa ¹ablóna exportéra nachádza v~úlo¾isku pre daný exportér a èi je platná.
+
+{\bfseries Parametre:}
+
+templateId -  identifikátor ¹ablóny\\
+ipfixDevice - IP adresa a zdrojový port exportéra\\
+odid - identifikátor pozorovacej domény\\
+
+{\bfseries Návratová hodnota:}
+
+True, ak ¹ablóna je evidovaná a je platná, inak false.\\
+
+
+
+
+\textit{public IPFIXTemplateRecord \textbf{getByID}(int templateId, InetSocketAddress ipfixDevice, long odid)}
+
+Získa ¹ablónu z~úlo¾iska daného exportéra danú jej èíslom.
+
+{\bfseries Parametre:}
+
+templateId -  identifikátor ¹ablóny\\
+ipfixDevice - IP adresa a zdrojový port exportéra\\
+odid - identifikátor pozorovacej domény\\
+
+{\bfseries Návratová hodnota:}
+
+Záznam ¹ablóny vyhovujúci zadaniu.\\
+
+
+
+\textit{public void \textbf{setUpCleaningTask}()}
+
+Nastaví plánovaè, aby spú¹»al ¹peciálne vlákno ka¾dých 10 minút. Toto vlákno bude prehµadáva»
+celé úlo¾isko ¹ablón, a ak nájde expirovanú ¹ablónu, tak ju vyma¾e. Ak to bude posledná ¹ablóna 
+pre daný exportér, vyma¾e z~evidencie aj tento exportér. Toto vlákno zabraòuje prepåòaniu pamäte JXColl.
+
+
+
+\textit{public void \textbf{cancelCleaningTask}()}
+
+Zru¹í vykonávanie èistiaceho vlákna. Volá sa pri ukonèovaní programu JXColl.
+
+
+% ----------------------------------------------------------
+
+
+
+
+\subsubsection{Trieda IpfixSingleSessionTemplateCache}
+Úlo¾isko záznamov ¹ablón pre konkrétny exportér. Pou¾íva sa pri pou¾ití spojovo-orientovaného
+transportného protokolu.\\
+
+{\bfseries Kon¹truktor}
+\bigskip
+
+\textit{public \textbf{IpfixSingleSessionTemplateCache}()}
+
+Prázdny kon¹truktor.
+
+\bigskip
+{\bfseries Metódy}
+\bigskip
+
+
+
+\textit{public void \textbf{addTemplate}(IPFIXTemplateRecord template, long odid)}
+
+Pridá alebo nahradí záznam ¹ablóny pre danú pozorovaciu doménu.
+
+{\bfseries Parametre:}
+
+template - záznam ¹ablóny\\
+odid - identifikátor pozorovacej domény\\
+
+
+
+
+\textit{public TemplateHolder \textbf{getTemplates}(long odid)}
+
+Vráti objekt TemplateHolder obsahujúci v¹etky ¹ablóny pre danú pozorovaciu doménu.
+
+{\bfseries Parametre:}
+
+odid - identifikátor pozorovacej domény\\
+
+{\bfseries Návratová hodnota:}
+
+Objekt TemplateHolder obsahujúci v¹etky evidované ¹ablóny tohto exportéra pre danú pozorovaciu doménu.\\
+
+
+
+\clearpage
+\textit{public boolean \textbf{contains}(int templateId, long odid)}
+
+Zistí, èi je evidovaná ¹ablóna s~daným identifikátorom a pozorovacou doménou.
+
+{\bfseries Parametre:}
+
+templateId -  identifikátor ¹ablóny\\
+odid - identifikátor pozorovacej domény\\
+
+{\bfseries Návratová hodnota:}
+
+True, ak ¹ablóna je evidovaná, inak false.\\
+
+
+
+\textit{public IPFIXTemplateRecord \textbf{get}(int templateId, long odid)}
+
+Získa ¹ablónu s~daným identifikátorom a pozorovacou doménou.
+
+{\bfseries Parametre:}
+
+templateId -  identifikátor ¹ablóny\\
+odid - identifikátor pozorovacej domény\\
+
+{\bfseries Návratová hodnota:}
+
+Záznam ¹ablóny vyhovujúci zadaniu.\\
+
+
+
+
+\textit{public void \textbf{remove}(int templateId, long odid)}
+
+Zma¾e ¹ablónu s~daným identifikátorom a pozorovacou doménou.
+Pou¾íva sa pri príjme Template Withdrawal Message
+
+{\bfseries Parametre:}
+
+templateId -  identifikátor ¹ablóny\\
+odid - identifikátor pozorovacej domény\\
+
+{\bfseries Návratová hodnota:}
+
+Záznam ¹ablóny vyhovujúci zadaniu.\\
+
+
+
+
+\textit{public void \textbf{removeAll}(long odid)}
+
+Zma¾e v¹etky ¹ablóny s~danou pozorovacou doménou. 
+Pou¾íva sa pri príjme All Data Template Withdrawal Message, alebo All Options Template Withdrawal Message
+
+{\bfseries Parametre:}
+
+templateId -  identifikátor ¹ablóny\\
+odid - identifikátor pozorovacej domény\\
+
+{\bfseries Návratová hodnota:}
+
+Záznam ¹ablóny vyhovujúci zadaniu.\\
+
+
+
+
+% ----------------------------------------------------------
+
+
+
+
+\subsubsection{Trieda ExporterKey}
+Predstavuje kµúè exportéra. Identifikuje ho na základe IP adresy, èísla zdrojového UDP portu a èísla pozorovacej domény.\\
+
+{\bfseries Kon¹truktor}
+\bigskip
+
+\textit{public \textbf{ExporterKey}(InetAddress ipfixDevice, int exporterSrcUdpPort, long observationDomainId)}
+
+Priradí predané premenné atribútom objektu.
+
+{\bfseries Parametre:}
+
+ipfixDevice - IP adresa exportéra\\
+exporterSrcUdpPort - èíslo zdrojového portu exportéra\\
+observationDomainId - identifikátor pozorovacej domény\\
+
+
+\bigskip
+{\bfseries Metódy}
+\bigskip
+
+
+
+\textit{public InetAddress \textbf{getIpfixDevice}()}
+
+Získa IP adresu exportéra
+
+{\bfseries Návratová hodnota:}
+
+IP adresa exportéra.
+
+
+
+\textit{public InetAddress \textbf{getExporterSrcUdpPort}()}
+
+Získa zdrojový UDP port exporéra.
+
+{\bfseries Návratová hodnota:}
+
+Èíslo zdrojového portu exportéra.
+
+
+
+\textit{public InetAddress \textbf{getObservationDomainId}()}
+
+Získa pozorovaciu doménu exportéra.
+
+{\bfseries Návratová hodnota:}
+
+Identifikátor pozorovacej domény exportéra.
+
+
+
+% ----------------------------------------------------------
+
+
+
+
+\subsubsection{Trieda IpfixDecoder}
+Trieda so statickými metódami slú¾iacimi na dekódovanie dát z~dátového záznamu. \\
+
+\clearpage
+\bigskip
+{\bfseries Metódy}
+\bigskip
+
+
+
+\textit{public String \textbf{decode}(String type, ByteBuffer buffer)}
+
+Dekóduje dátový typ obsiahnutý v~buffri do podoby re»azca podµa ¹pecifikácie IPFIX.
+Priamo nevykonáva dekódovanie, volá konkrétne metódy podµa kategórie dátového typu.
+
+{\bfseries Parametre:}
+
+type - re»azec definujúci dátový typ obsiahnutý v~buffri.\\
+buffer - samotné dáta, ktoré sú predmetom dekódovania\\
+
+{\bfseries Návratová hodnota:}
+
+Re»azec reprezentujúci interpretovanú hodnotu buffra na základ predaného typu.
+
+{\bfseries Hád¾e:}
+
+DataException - Ak je buffer nesprávnej veµkosti vzhµadom na dátový typ\\
+UnsupportedDataException - Ak dátový typ nie je podporovaný\\
+
+
+
+
+\textit{public String \textbf{decodeUnsignedIntegralType}(String type, ByteBuffer buffer)}
+
+Dekóduje celoèíselné bezznamiekové dátové typy unsigned8, unsigned16, unsigned32 a unsigned64. Berie ohµad na skrátené dátové typy.
+
+{\bfseries Parametre:}
+
+type - re»azec definujúci dátový typ obsiahnutý v~buffri.\\
+buffer - samotné dáta, ktoré sú predmetom dekódovania\\
+
+{\bfseries Návratová hodnota:}
+
+Re»azec reprezentujúci interpretovanú hodnotu buffra na základ predaného typu.
+
+{\bfseries Hád¾e:}
+
+DataException - Ak je buffer nesprávnej veµkosti vzhµadom na dátový typ\\
+UnsupportedDataException - Ak dátový typ nie je podporovaný\\
+
+
+
+\textit{public String \textbf{decodeSignedIntegralType}(String type, ByteBuffer buffer)}
+
+Dekóduje celoèíselné znamienkové dátové typy signed8, signed16, signed32 a signed64. Berie ohµad na skrátené dátové typy.
+
+{\bfseries Parametre:}
+
+type - re»azec definujúci dátový typ obsiahnutý v~buffri.\\
+buffer - samotné dáta, ktoré sú predmetom dekódovania\\
+
+{\bfseries Návratová hodnota:}
+
+Re»azec reprezentujúci interpretovanú hodnotu buffra na základ predaného typu.
+
+{\bfseries Hád¾e:}
+
+DataException - Ak je buffer nesprávnej veµkosti vzhµadom na dátový typ\\
+UnsupportedDataException - Ak dátový typ nie je podporovaný\\
+
+
+
+
+\textit{public String \textbf{decodeFloatType}(String type, ByteBuffer buffer)}
+
+Dekóduje desatinné dátové typy float32 a float64. Berie ohµad na skrátené dátové typy.
+
+{\bfseries Parametre:}
+
+type - re»azec definujúci dátový typ obsiahnutý v~buffri.\\
+buffer - samotné dáta, ktoré sú predmetom dekódovania\\
+
+{\bfseries Návratová hodnota:}
+
+Re»azec reprezentujúci interpretovanú hodnotu buffra na základ predaného typu.
+
+{\bfseries Hád¾e:}
+
+DataException - Ak je buffer nesprávnej veµkosti vzhµadom na dátový typ\\
+UnsupportedDataException - Ak dátový typ nie je podporovaný\\
+
+
+
+
+\textit{public String \textbf{decodeAddressType}(String type, ByteBuffer buffer)}
+
+Dekóduje dátové typy obsahujúce adresy: ipv4Address, ipv6Address a macAddress.
+
+{\bfseries Parametre:}
+
+type - re»azec definujúci dátový typ obsiahnutý v~buffri.\\
+buffer - samotné dáta, ktoré sú predmetom dekódovania\\
+
+{\bfseries Návratová hodnota:}
+
+Re»azec reprezentujúci interpretovanú hodnotu buffra na základ predaného typu.
+
+{\bfseries Hád¾e:}
+
+DataException - Ak je buffer nesprávnej veµkosti vzhµadom na dátový typ\\
+UnsupportedDataException - Ak dátový typ nie je podporovaný\\
+
+
+\clearpage
+\textit{public String \textbf{decodeBooleanType}(ByteBuffer buffer)}
+
+Dekóduje boolean reprezentujúci pravdivostnú hodnotu.
+
+{\bfseries Návratová hodnota:}
+
+Re»azec reprezentujúci pravdivostnú hodnotu, "true" alebo "false".
+
+{\bfseries Hád¾e:}
+
+DataException - Ak je buffer nesprávnej veµkosti vzhµadom na dátový typ, alebo ak obsahuje inú hodnotu ako 0 alebo 1\\
+UnsupportedDataException - Ak dátový typ nie je podporovaný\\
+
+
+\textit{public String \textbf{decodeStringType}(ByteBuffer buffer)}
+
+Dekóduje dáta v~buffri ako re»azec v~kódovaní UTF-8.
+
+{\bfseries Návratová hodnota:}
+
+Re»azec v~kódovaní UTF-8.
+
+
+\textit{public String \textbf{decodeOctetArrayType}(ByteBuffer buffer)}
+
+Dáta v~buffri prevedie na re»azec do kódu Base64.
+
+{\bfseries Návratová hodnota:}
+
+Re»azec predstavujúci binárne dáta zakódované v~Base64.
+
+
+\textit{public String \textbf{decodeDateTimeType}(String type, ByteBuffer buffer)}
+
+Dekóduje dátové typy èasových známok: dateTimeSeconds, dateTimeMilliseconds, dateTimeMicroseconds a dateTimeNanoseconds.
+
+{\bfseries Parametre:}
+
+type - re»azec definujúci dátový typ obsiahnutý v~buffri.\\
+buffer - samotné dáta, ktoré sú predmetom dekódovania\\
+
+{\bfseries Návratová hodnota:}
+
+Re»azec reprezentujúci interpretovanú hodnotu buffra na základ predaného typu.
+Dátové typy dateTimeSeconds a dateTimeMilliseconds predstavujú poèet sekúnd, resp. milisekúnd od Unix epochy (00:00 1.1.1970 UTC).
+Dátové typy dateTimeMicroseconds a dateTimeNanoseconds sú zakódované vo formáte èasovej známky NTP Timestamp.
+Berie sa do úvahy redukované kódovanie prvých dvoch menovaných typov.
+
+{\bfseries Hád¾e:}
+
+DataException - Ak je buffer nesprávnej veµkosti vzhµadom na dátový typ\\
+UnsupportedDataException - Ak dátový typ nie je podporovaný\\
+
+
+
+\textit{public ByteBuffer \textbf{handleReducedSizeEncoding}(byte[] input, int arraySize, boolean isSigned)}
+
+Vytvorí zo vstupného poµa bajtov buffer stanovenej då¾ky.  
+
+{\bfseries Parametre:}
+
+input - vstupné pole bajtov obsahujúce dáta skráteného informaèného elementu.\\
+arraySize - veµkos» informaèného elementu podµa definície v~informaènom modeli IPFIX.\\
+isSigned - ak je dátový typ dát vo vstupnom poli bajtov znamienkové èíslo, táto hodnota by mala by» true.\\
+
+{\bfseries Návratová hodnota:}
+
+ByteBuffer obsahujúci informaèný dáta informaèného elementu o~¹tandardnej veµkosti.
+
+
+
+\textit{public ByteBuffer \textbf{parseMacAddress}(byte[] input)}
+
+Konvertuje bajty vo vstupnom poli bajtov na re»azec v~tvare XX:XX:XX:XX:XX:XX.
+
+{\bfseries Parametre:}
+
+input - vstupné pole bajtov obsahujúce dáta skráteného informaèného elementu.\\
+arraySize - veµkos» informaèného elementu podµa definície v~informaènom modeli IPFIX.\\
+isSigned - ak je dátový typ dát vo vstupnom poli bajtov znamienkové èíslo, táto hodnota by mala by» true.\\
+
+{\bfseries Návratová hodnota:}
+
+ByteBuffer obsahujúci informaèný dáta informaèného elementu o~¹tandardnej veµkosti.
+
+
+% -------------------------------------------
+
+
+\subsubsection{Trieda IpfixParser}
+Táto trieda sa pou¾íva na parsovanie IPFIX správ a ich spracovanie.\\
+
+{\bfseries Kon¹truktor}
+\bigskip
+
+\textit{public \textbf{IpfixParser}(IpfixUdpTemplateCache templateCache)}
+
+Tento kon¹truktor indikuje pou¾itie protokolu UDP. Poèas spracovania správ sa budú metódy vykonáva» touto vetvou.
+
+{\bfseries Parametre:}
+
+templateCache - Úlo¾isko ¹ablón pre transportný protokol UDP.\\
+
+
+
+\textit{public \textbf{IpfixParser}(IpfixSingleSessionTemplateCache templateCache, TransportProtocol protocol)}
+
+Tento kon¹truktor indikuje pou¾itie protokolu TCP alebo SCTP. Poèas spracovania správ sa budú metódy vykonáva» touto vetvou.
+
+{\bfseries Parametre:}
+
+templateCache - Úlo¾isko ¹ablón pre transportný protokol TCP alebo SCTP.\\
+protocol - urèuje, o~aký transportný protokol ide.\\
+
+\bigskip
+{\bfseries Metódy}
+\bigskip
+
+
+
+\textit{public IPFIXMessage \textbf{parseIpfixMessage}(ByteBuffer buffer, InetSocketAddress ipfixDevice, long time)}
+
+Spracuje IPFIX správu obsiahnutú v~buffri. Pokiaµ sa nedôjde na koniec správy, volá metódu parseIpfixSet().
+
+{\bfseries Parametre:}
+
+buffer - buffer obsahujúci samotnú správu\\
+ipfixDevice - IP adresa a port exportéra\\
+time - èas príchodu správy\\
+
+{\bfseries Návratová hodnota:}
+
+Objekt IPFIX správy obsahujúci v¹etky svoje ¹truktúry.
+
+{\bfseries Hád¾e:}
+
+DataFormatException - Ak je správa zlej veµkosti alebo ak sú dáta inak po¹kodené.\\
+TemplateException - Ak nastala nepovolená operácia v~mechanizme správy ¹ablón.\\
+
+
+
+
+\textit{public IPFIXSet \textbf{parseIpfixSet}(IPFIXMessage message, ByteBuffer buffer, InetSocketAddress ipfixDevice)}
+
+Spracuje IPFIX sadu obsiahnutú v~buffri. Pokiaµ sa nedôjde na koniec sady, volá metódy parseIpfixDataRecord(), parseIpfixTemplateRecord() alebo 
+parseIpfixOptionsTemplateRecord() v~závislosti od druhu sady.
+
+{\bfseries Parametre:}
+
+message - objekt IPFIX správy\\
+buffer - buffer obsahujúci samotnú správu\\
+ipfixDevice - IP adresa a port exportéra\\
+
+
+{\bfseries Návratová hodnota:}
+
+Objekt IPFIX sady obsahujúci v¹etky svoje záznamy.
+
+{\bfseries Hád¾e:}
+
+DataFormatException - Ak je pre sadu nie je dostatok miesta v~buffri alebo ak sú dáta inak po¹kodené.\\
+TemplateException - Ak nastala nepovolená operácia v~mechanizme správy ¹ablón.\\
+
+
+
+
+\textit{public IPFIXDataRecord \textbf{parseIpfixDataRecord}(IPFIXMessage message, IPFIXSet ipfixSet, ByteBuffer buffer, InetSocketAddress ipfixDevice)}
+
+Spracuje IPFIX dátový záznam obsiahnutý v~buffri. Získa ¹ablónu podµa èísla sady a získava informaèné elementy na základe informácií zo ¹ablóny.
+Ak je ¹ablóna pri prenose cez UDP expirovaná, preskoèí danú sadu.
+
+{\bfseries Parametre:}
+
+message - objekt IPFIX správy\\
+ipfixSet - objekt IPFIX sady\\
+buffer - buffer obsahujúci samotnú správu\\
+ipfixDevice - IP adresa a port exportéra\\
+
+
+{\bfseries Návratová hodnota:}
+
+Objekt IPFIX dátového záznamu.
+
+{\bfseries Hád¾e:}
+
+DataFormatException - Ak je pre dátový záznam nie je dostatok miesta v~buffri alebo ak sú dáta inak po¹kodené.\\
+TemplateException - Ak nastala nepovolená operácia v~mechanizme správy ¹ablón.\\
+
+
+
+\textit{public IPFIXTemplateRecord \textbf{parseIpfixTemplateRecord}(IPFIXMessage message, IPFIXSet ipfixSet, ByteBuffer buffer, InetSocketAddress ipfixDevice)}
+
+Spracuje IPFIX záznam ¹ablóny obsiahnutý v~buffri. Získa v¹etky ¹pecifikátory polí.
+
+{\bfseries Parametre:}
+
+message - objekt IPFIX správy\\
+ipfixSet - objekt IPFIX sady\\
+buffer - buffer obsahujúci samotnú správu\\
+ipfixDevice - IP adresa a port exportéra\\
+
+
+{\bfseries Návratová hodnota:}
+
+Objekt IPFIX záznamu ¹ablóny.
+
+{\bfseries Hád¾e:}
+
+DataFormatException - Ak je pre záznam ¹ablóny nie je dostatok miesta v~buffri alebo ak sú dáta inak po¹kodené.\\
+TemplateException - Ak nastala nepovolená operácia v~mechanizme správy ¹ablón.\\
+
+
+
+
+\textit{public IPFIXOptionsTemplateRecord \textbf{parseIpfixTemplateRecord}(IPFIXMessage message, IPFIXSet ipfixSet, ByteBuffer buffer, InetSocketAddress ipfixDevice)}
+
+Spracuje IPFIX záznam ¹ablóny mo¾nosí obsiahnutý v~buffri. Získa v¹etky ¹pecifikátory polí.
+
+{\bfseries Parametre:}
+
+message - objekt IPFIX správy\\
+ipfixSet - objekt IPFIX sady\\
+buffer - buffer obsahujúci samotnú správu\\
+ipfixDevice - IP adresa a port exportéra\\
+
+
+{\bfseries Návratová hodnota:}
+
+Objekt IPFIX záznamu ¹ablóny.
+
+{\bfseries Hád¾e:}
+
+DataFormatException - Ak je pre záznam ¹ablóny nie je dostatok miesta v~buffri alebo ak sú dáta inak po¹kodené.\\
+TemplateException - Ak nastala nepovolená operácia v~mechanizme správy ¹ablón.\\
+
+
+
+\clearpage
+\section{Preklad programu}
+
+\subsection{Zoznam zdrojových textov}
+Zdrojové texty sú k~dispozícii v~prílohe bakalárskej práce.
+
+\noindent Sú k~dispozícii tieto zdrojové texty:
+
+\begin{verbatim}
+- balík sk.tuke.cnl.bm:
+   ACPIPFIXTemplate.java
+   DataException.java
+   DataFormatException.java
+   Filter.java
+   InetAddr.java
+   InvalidFilterRuleException.java
+   JXCollException.java
+   Sampling.java
+   SimpleFilter.java
+   TemplateException.java
+   Templates.java
+- balík sk.tuke.cnl.bm.JXColl:
+   Config.java
+   IJXConstants.java
+   IpfixDecoder.java
+   IpfixElements.java
+   JXColl.java
+   NetConnect.java
+   PacketCache.java
+   PacketObject.java
+   RecordDispatcher.java
+   Support.java
+- balík sk.tuke.cnl.bm.JXColl.export:
+   ACPServer.java
+   ACPIPFIXWorker.java   
+   DBExport.java
+   PGClient.java
+- balík sk.tuke.cnl.bm.JXColl.accounting:
+   AccountingManager.java
+   AccountingRecord.java
+   AccountingRecordsCache.java
+   AccountingRecordsExporter.java 
+   
+- balík sk.tuke.cnl.bm.JXColl.accounting:
+   OWDCache.java
+   OWDFieldSpecifier.java
+   OWDFlushCacheABThread.java
+   OWDListener.java
+   OWDObject.java
+   OWDTemplateCache.java
+   OWDTemplateRecord.java
+   Synchronization.java
+- balík sk.tuke.cnl.bm.JXColl.IPFIX:
+   ExporterKey.java
+   FieldSpecifier.java
+   IPFIXDataRecord.java
+   IPFIXMessage.java
+   IPFIXOptionsTemplateRecord.java
+   IPFIXSet.java
+   IpfixSingleSessionTemplateCache.java
+   IpfixUdpTemplateCache.java
+   TemplateHolder.java
+\end{verbatim}
+
+\subsection{Po¾iadavky na technické prostriedky pri preklade}
+
+Preklad programu si vy¾aduje nasledovnú hardvérovú konfiguráciu:
+\begin{itemize}
+  \item CPU Intel Pentium III 1Ghz alebo ekvivalent
+  \item operaèná pamä» 512MB
+  \item pevný disk s~1GB voµného miesta
+  \item grafická karta novej generácie s~minimálne 64MB pamä»ou
+  \item sie»ová karta 100Mb/s
+
+\end{itemize}
+\noindent
+
+\subsection{Po¾iadavky na programové prostriedky pri preklade}
+\begin{itemize}
+\item  operaèný systém GNU/Linux s~verziou jadra 2.6 a vy¹¹ou (odporúèa sa kvôli podpore SCTP)
+\item Java Runtime Environment (JRE) verzie 1.7.0\_03 a~vy¹¹ej
+\item balík lksctp-tools
+\item kni¾nice dodávané na in¹talaènom médiu
+\end{itemize}
+
+\subsection{Náväznos» na iné programové produkty}
+
+Program umo¾òuje ukladanie dát do databázy alebo ich sprístupnenie priamym pripojením, ktoré budú následne vyhodnotené
+príslu¹nými prídavnými modulmi. Je implementáciou zhroma¾ïovacieho procesu architektúry BasicMeter.
+Z~toho vyplýva jeho náväznos» na merací a exportovací proces - BEEM, alebo iné implementácie.
+
+
+\subsection{Vlastný preklad}
+
+Preklad programu spoèíva v~nakopírovaní zdrojových súborov a~spustení kompilátora jazyka
+Java s~potrebnými parametrami a~parametrom classpath nastaveným na prídavné kni¾nice.
+Odporúèa sa pou¾i» vá¹ obµubený java IDE, kde staèí jednoducho nastavi» verziu JDK na 7.0
+alebo vy¹¹ie a~do cesty classpath prida» cesty ku v¹etkým potrebným kni¾niciam. V~prostredí
+Netbeans IDE potom staèí kliknú» na tlaèidlo \textit{Clean and Build}.
+
+\subsection{Vytvorenie in¹talaèného DEB súboru}
+Staèí spusti» skript \texttt{buildDeb.sh}, ktorý sa nachádza v~prieèinku jxcoll/deb.
+
+\begin{center}
+\texttt{sh buildDeb.sh }
+\end{center}
+
+Výstupom tohto skriptu je súbor s~názvom \texttt{debian.deb}, ktorý mô¾me následne premenova» podµa verzie JXColl 
+(napríklad na jxcoll\_3.9\_i386.deb). 
+Tento skript vykonáva nasledovné:
+
+\begin{enumerate}
+\item v~prípade, ak neexistuje prieèinok debian, extrahuje ho z~archívu debian.tar.gz, inak tento krok preskoèí
+\item v~prípade, ak neexistuje prieèinok debian, extrahuje ho z~archívu debian.tar.gz, inak tento krok preskoèí
+\item skopíruje binárny súbor z~projektu do DEB balíèka (predpokladá sa, ¾e bol program kompilovaný v~Netbeans IDE pomocou Clean and Build tlaèidla)
+\item skopíruje konfiguraèný súbor z~projektu do DEB balíèka
+\item skopíruje IPFIX definièný súbor z~projektu do DEB balíèka
+\item vyma¾e prípadné doèasné súbory z~DEB balíèka
+\item vygeneruje MD5 kontrolné súèty pre v¹etky súbory DEB balíèka
+\item zabezpeèí maximálnu kompresiu manuálových stránok a changelog súborov
+\item skopíruje binárny súbor z~projektu do DEB balíèka a nastaví mu práva na vykonávanie
+\item vytvorí samotný DEB balíèek
+\item overí ho pomocou programu lintian - ten vypí¹e prípadne varovania a/alebo chyby
+\item archivuje vytvorený DEB balíèek do archívu debian.tar.gz
+\end{enumerate}
+
+Pred spustením skriptu je nutné skompilova» JXColl pomocou Netbeans IDE tlaèidlom \textit{Clean and Build}. Prípadné zmeny control alebo changelog súboru, manuálových stránok je nutné vykona» ruène. Manuálové stránky je vhodné upravi» pomocou programu \textit{GmanEdit} . Po spustení skriptu sa vytvorí DEB balíèek s~názvom \texttt{debian.deb}. Ten je vhodné premenova» podµa aktuálnej verzie. Vytvorí sa aj archív \texttt{debian.tar.gz}, ktorý obsahuje najaktuálnej¹iu adresárovú ¹truktúru DEB balíèka pre budúce vyu¾itie (ak neexistuje prieèinok debian, vytvorí sa extrakciou z~tohto archívu). Ak je potrebné len aktualizova» kód, staèí spusti» skript a ten sa o~v¹etko postará, prièom vytvorí aj adresár debian. Súbory mo¾no v~òom upravova» a¾ kým nie je v¹etko podµa predstáv. Ak je v¹etko hotové, v~Netbeans IDE je potrebné vymaza» prieèinok debian (vykoná sa SVN DELETE, namiesto obyèajného odstránenia zo súborového systému) a projekt ''commitnú»''.
+
+\subsection{Opis známych chýb}
+V~súèasnosti nie sú známe ¾iadne vá¾ne chyby.
+
+
+\newpage
+\section{Zhodnotenie rie¹enia}
+Hlavným cieµom práce bolo zvý¹i» interoperabilitu s~inými IPFIX rie¹eniami pomocou zvý¹enia konformity so ¹tandardom IPFIX. 
+V~práci boli vyrie¹ené problémy, ktoré doteraz znemo¾òovali dekódovanie viacerých záznamov sade, informaèncých elementov s~variabilnou då¾kou, informaèných elementov s~redukovaným kódovaním alebo niektorých predtým neimplementovaných dátových typov. 
+
+Súèas»ou práce bolo roz¹írenie podpory prenosu údajov o~tokoch prostredníctvom transportných protokolov TCP a SCTP, èo zvy¹uje mo¾nosti
+nasadenia nástroja BasicMeter aj v~podmienkach s~vy¹¹ou náchylnos»ou na pre»a¾enie v~sieti. 
+
+Mo¾nosti budúceho vývoja zhroma¾ïovacieho procesu nástroja BasicMeter predstavuje implementácia podpory pre dátové typy umo¾òujúce
+prenos ¹truktúrovaných dát a podpora pre zabezpeèené pripojenia od exportérov.
+
+
+
+
+\section{Zoznam pou¾itej literatúry}
+
+\noindent [1]  Ko¹èo, M.: Opis sie»ových protokolov prostredníctvom jazyka XML, 2005,
+Diplomová práca, KPI FEI TU, Ko¹ice
+
+\noindent [2]  Ka¹èák, M.: Príspevok k~problematike aplikaèného vyu¾itia meraní prevádzkových parametrov poèítaèových sietí, 2007,
+Diplomová práce, KPI FEI TU, Ko¹ice
+
+\noindent [2]  Pekár, A.: Meranie prevádzkových parametrov siete v~reálnom èase, 2009,
+Bakalárska práca, KPI FEI TU, Ko¹ice
+
+\noindent [3]  Vere¹èák, T.: Zhroma¾ïovací proces nástroja BasicMeter, 2010,
+Bakalárska práca, KPI FEI TU, Ko¹ice
+
+\noindent [4]  Pekár, A.: Optimalizácia zhroma¾ïovacieho procesu nástroja BasicMeter, 2011,
+Diplomová práca, KPI FEI TU, Ko¹ice
