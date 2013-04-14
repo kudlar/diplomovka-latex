@@ -1,29 +1,30 @@
 \section{Experimentálne overenie funkčnosti riešenia}
 
-Tato kapitola je venovana overeniu spravnosti implementacie. Boli vykonane nasledujuce styri experimenty, 
-ktore mali potvrdit, alebo vyvratit spravnu funkcnost riesenia. 
+Tato kapitola je venovaná overeniu správnosti implementácie. Boli vykonané nasledujúce štyri experimenty, 
+ktoré mali potvrdiť, alebo vyvrátiť správnu funkčnosť riešenia. 
 \begin{enumerate}
- \item \textbf{Prvy test} overil konektivitu a prenos udajov medzi exporterom a mediatorom a nasledne medzi 
- mediatorom a kolektorom.
- \item \textbf{Druhy test} porovnal hodnoty udajov exportovanych mybeem-om s hodnotami ulozenymi v databaze po prechode
- cez Mediator bez sprostredkovatelskeho procesu.
- \item \textbf{Treti test} demonstroval spravnost anonymizacie udajov v podani sprostredkovatelskeho procesu 
- \verb|ExampleProcess|, spominaneho vyssie v navrhu a implementacii
- \item \textbf{Stvrty test} bol tzv. zatazovym testom, overoval stabilitu Mediatora pri dlhodobom behu a pri 
- spracovavani prevadzky s vysokym poctom tokov.
+ \item \textbf{Prvý test} overil konektivitu a prenos údajov medzi exportérom a mediátorom a následne medzi 
+ mediátorom a kolektorom.
+ \item \textbf{Druhy test} porovnal hodnoty údajov exportovaných mybeem-om s hodnotami uloženými v databáze po prechode
+ cez Mediátor bez sprostredkovateľského procesu.
+ \item \textbf{Tretí test} demonštroval správnosť anonymizácie údajov v podaní sprostredkovateľského procesu 
+ \verb|ExampleProcess|, spomínaného vyššie v návrhu a implementácii.
+ \item \textbf{Štvrtý test} bol tzv. záťažovým testom, overoval stabilitu Mediátora pri dlhodobom behu a 
+ pri spracovávaní prevádzky s vysokým počtom tokov.
 \end{enumerate}
 
 %%%%%
 
 \subsection{Testovacia topológia}
 
-Pri vsetkych testoch bola pouzita ta ista topologia, ktoru mozno vidiet na Obrazku \ref{o:test_topologia}.
-Na vsetkych troch pocitacoch sa pouzival operacny system Ubuntu 12.04 LTS v desktopovej verzii. Na prvom 
-pocitaci bol nainstalovany exporter mybeem (verzia 1.1-6 s podporou pre IPFIX Mediator), ktory exportoval 
-spravy druhemu pocitacu na UDP port vyhradeny pre IPFIX komunikaciu - \emph{4739}, kde bezal Mediator
-verzie 1.0. Ten zase preposielal spravy na treti pocitac (taktiez port \emph{4739}), kde bol spusteny 
-kolektor JXColl (verzia 3.9) s funkcnou PostgreSQL databazou. Pocitace boli zapojene v jednej lokalnej 
-sieti a vsetky mali pristup na Internet.
+Pri všetkých testoch bol použitý virtualizačný nástroj VirtualBox, v ktorom boli vytvorené tri virtuálne 
+počítače, zapojené do topológie, ktorú možno vidieť na Obrázku \ref{o:test_topologia}.
+Na všetkých troch počítačoch sa používal operačný systém Ubuntu 12.04 LTS v desktopovej verzii. Na prvom 
+počítači bol nainštalovaný exportér mybeem (verzia 1.1-6 s podporou pre IPFIX Mediátor), ktorý exportoval 
+správy druhému počítaču na UDP port vyhradený pre IPFIX komunikáciu - \emph{4739}. Tam bežal Mediátor
+verzie 1.0. Ten zase preposielal správy na tretí počítač (taktiež port \emph{4739}), kde bol spustený 
+kolektor JXColl (verzia 3.9) s funkčnou PostgreSQL databázou. Počítače boli zapojené v jednej lokálnej 
+sieti a všetky mali prístup na Internet.
 
 \begin{figure}[ht!]
 \centering
@@ -31,43 +32,118 @@ sieti a vsetky mali pristup na Internet.
 \caption{Testovacia topológia}\label{o:test_topologia}
 \end{figure}
 
-%%%%%%
+%%-------------------------
 
 \subsection{Test konektivity}
 
-Prvy experiment overoval zakladnu konktivitu medzi exporterom a kolektorom v pripade, ze je medzi ne 
-zaradeny mediator. 
+Prvy experiment overoval zakladnu konektivitu medzi exporterom a kolektorom v pripade, ze je medzi ne 
+zaradeny mediator. Vo svojej vychodiskovej konfiguracii vypisuje mybeem logovacie spravy na standardny 
+vystup. Tie obsahuju zakladne informacie o kazdom exportovanom zazname o toku ako to mozeme vidiet na 
+Obrazku \ref{o:konektivita_beem}. Mediator mal nastevenu uroven logovacich vystupov na \emph{DEBUG}, 
+co zahrna nielen chybove hlasky, ale aj vsetky informacne a ladiace oznamy. 
+
+Konektivita medzi exporterom
+a mediatorom bola potvrdena, na Obrazku \ref{o:konektivita_mediator} je zachyteny vystup Mediatora po 
+prijati spravy od exportera. Vypis obsahuje IP adresu a port z ktoreho prisla sprava, jej velkost a 
+oznam, ze sa jedna o IPFIX spravu. Za tym nasleduju hodnoty z hlavicky spravy a vypis vsetkych sad, ktore
+sprava obsahuje. Potom bol spracovany zaznam o toku posunuty dispecerovi - \verb|FlowRecordDispatcher|, 
+ktory ho poslal na export. Tam sa zaznam o toku naspat zabalil do noveho IPFIX paketu a ten bol odoslany 
+smerom na kolektor.
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=0.9\textwidth]{konektivita_beem}
-\caption{Dôkaz konektivity medzi exportérom a Mediátorom - strana exportéra}\label{o:konektivita_beem}
+\caption{Test 1: Konektivita medzi exportérom a Mediátorom - strana exportéra}\label{o:konektivita_beem}
 \end{figure}
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=0.9\textwidth]{konektivita_mediator}
-\caption{Dôkaz konektivity medzi exportérom a Mediátorom - strana Mediátora}\label{o:konektivita_mediator}
+\caption{Test 1: Konektivita medzi exportérom a Mediátorom - strana Mediátora}\label{o:konektivita_mediator}
 \end{figure}
+
+Konektivita medzi Mediatorom a kolektorom bola tiez potvrdena. Dokazom boli logovacie vystupy kolektora, 
+ktore su velmi podobne ako tie z Mediatora. V databaze, na ktoru je JXColl pripojeny, pribudali spravne 
+zaznamy. Tento experiment mozeme povazovat za uspesny.
+
+%%-------------------------
 
 \subsection{Test spravnej reprezentacie udajov}
 
+Druhy experiment nadvazoval na predchadzajuci test konektivity. Testovacia topologia aj konfiguracie 
+jednotlivych nastrojov boli rovnake ako v predchadzajucom pripade. V Mediatore stale neboli spustene 
+ziadne sprostredkovatelske moduly. 
+
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=0.9\textwidth]{porovnanie_wireshark}
-\caption{Správy odosielané exportérom zachytené programom Wireshark}\label{o:porovnanie_wireshark}
+\includegraphics[width=1.0\textwidth]{porovnanie_wireshark}
+\caption{Test 2: Správy odosielané exportérom zachytené programom Wireshark}\label{o:porovnanie_wireshark}
 \end{figure}
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=1.0\textwidth]{porovnanie_db}
-\caption{Výpis obsahu databázy}\label{o:porovnanie_db}
+\caption{Test 2: Výpis obsahu databázy}\label{o:porovnanie_db}
+\end{figure}
+
+Myslienkou tohto overenia bolo porovnat data, ktore posiela exporter s datami, ktore prejdu celou topologiou
+cez Mediator a JXColl a su ulozene v databaze. Na zachytenie sprav z mybeem-u bol pouzity program 
+Wireshark, ktory odchytaval sietovu prevadzku na prvom pocitaci, na rozhrani \emph{eth0} s IP adresou 
+\emph{192.168.1.35}. Detail jednej zo sprav, ktore zachytil Wireshark je na Obrazku 
+\ref{o:porovnanie_wireshark}. Na Obrazku \ref{o:porovnanie_db} su zase vyfiltrovane posledne zaznamy, 
+ktore boli ulozene do databazy. Mozeme porovnat aspon na niekolkych znazornenych informacnych elementoch,
+ze zaznamy o toku sa po prechode cez topologiu s Mediatorom bez zapnutych sprostredkovatelskych procesov 
+nezmenili. Tento experiment povazujeme za uspesny.
+
+%%-------------------------
+
+\subsection{Test Mediatora s anonymizacnym modulom}
+
+Tento experiment je miernou upravou predchadzajuceho. Testovacia topologia aj konfiguracie nastrojov boli 
+rovnake s tym rozdielom, ze v Mediatore bol zapnuty jednoduchy anonymizacny proces - \verb|ExampleProcess|.
+Tento modul bol naprogramovany kvoli demonstracii implementacie sprostredkovatelskeho procesu. Cielom 
+experimentu bolo dokazat dve tvrdenia:
+\begin{itemize}
+ \item Aplikacny ramec poskytuje sprostredkovatelskym procesom spravne metody na dekodovanie a zakodovanie
+ datovych zaznamov. To plati vtedy, ked hodnoty informacnych elementov sa rovnaju hodnotam zaznamov
+ v databaze po prechode celou topologiou aj ked su spustene sprostredkovatelske moduly.
+ \item Anonymizacny modul spravne modifikuje zdrojovu a cielovu IP adresu toku. Vysledkom je to, ze 
+ posledny oktet je v obidvoch pripadoch nahradeny nulou.
+\end{itemize}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=1.0\textwidth]{anonym_wireshark}
+\caption{Test 3: Správy odosielané exportérom zachytené programom Wireshark}\label{o:anonym_wireshark}
+\end{figure}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=1.0\textwidth]{anonym_db}
+\caption{Test 3: Výpis obsahu databázy}\label{o:anonym_db}
 \end{figure}
 
 
+Na Obrazku \ref{o:anonym_wireshark} je zobrazeny detail jednej zo sprav, ktoru exportoval mybeem. 
+Na nasledujucom Obrazku \ref{o:anonym_db} vidiet posledne zaznamy z databazy. Mozeme porovnat, ze hodnoty 
+zdrojoveho a cieloveho transportneho portu a hodnota \emph{flowId} sa nezmenili. Avsak zaroven, vsetky 
+zdrojove a cielove IP adresy boli anonymizovane. Tento experiment povazujeme za uspesny, dokazal spravnost 
+obidvoch tvrdeni.
 
-\subsection{Test Mediatora s anonymizacnym modulom}
+
 \subsection{Zatazovy test}
 
+
+Na Obrazku \ref{o:anonym_wireshark} je zobrazeny detail jednej zo sprav, ktoru exportoval mybeem. 
+Na nasledujucom Obrazku \ref{o:anonym_db} vidiet posledne zaznamy z databazy. Mozeme porovnat, ze hodnoty 
+zdrojoveho a cieloveho transportneho portu a hodnota \emph{flowId} sa nezmenili. Avsak zaroven, vsetky 
+zdrojove a cielove IP adresy boli anonymizovane. Tento experiment povazujeme za uspesny, dokazal spravnost 
+obidvoch tvrdeni.
+
+Na Obrazku \ref{o:anonym_wireshark} je zobrazeny detail jednej zo sprav, ktoru exportoval mybeem. 
+Na nasledujucom Obrazku \ref{o:anonym_db} vidiet posledne zaznamy z databazy. Mozeme porovnat, ze hodnoty 
+zdrojoveho a cieloveho transportneho portu a hodnota \emph{flowId} sa nezmenili. Avsak zaroven, vsetky 
+zdrojove a cielove IP adresy boli anonymizovane. Tento experiment povazujeme za uspesny, dokazal spravnost 
+obidvoch tvrdeni.
 
 
