@@ -17,8 +17,7 @@ ktore mali potvrdit, alebo vyvratit spravnu funkcnost riesenia.
 
 \subsection{Testovacia topológia}
 
-Pri vsetkych testoch bol pouzity virtualizacny nastroj VirtualBox, v ktorom boli vytvorene tri virtualne 
-pocitace, zapojene do topologie, ktoru mozno vidiet na Obrazku \ref{o:test_topologia}.
+Pri vsetkych testoch bola pouzita ta ista topologia, ktoru mozno vidiet na Obrazku \ref{o:test_topologia}.
 Na vsetkych troch pocitacoch sa pouzival operacny system Ubuntu 12.04 LTS v desktopovej verzii. Na prvom 
 pocitaci bol nainstalovany exporter mybeem (verzia 1.1-6 s podporou pre IPFIX Mediator), ktory exportoval 
 spravy druhemu pocitacu na UDP port vyhradeny pre IPFIX komunikaciu - \emph{4739}, kde bezal Mediator
@@ -36,7 +35,7 @@ sieti a vsetky mali pristup na Internet.
 
 \subsection{Test konektivity}
 
-Prvy experiment overoval zakladnu konektivitu medzi exporterom a kolektorom v pripade, ze je medzi ne 
+Prvy experiment overoval zakladnu konktivitu medzi exporterom a kolektorom v pripade, ze je medzi ne 
 zaradeny mediator. 
 
 \begin{figure}[ht!]

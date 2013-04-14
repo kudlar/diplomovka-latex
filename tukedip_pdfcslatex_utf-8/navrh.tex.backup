@@ -74,6 +74,28 @@ sú venované nasledujúce kapitoly. Upozorňujem, že termíny \uv{sprostredkov
  knižníc jazyka, ale aj fakt, že Java aplikácie sú spustiteľné na väčšine operačných systémov.
 \end{itemize}
 
+%% -------------------- MEDIATOR -----------------
+
+\subsection{Hlavná trieda Mediátora}
+
+
+Ulohou hlavnej triedy Mediatora je postupne spustit vsetky vlakna a procesy potrebne pre beh programu.
+Najprv sa precitaju a spracuju argumenty prikazoveho riadku. Program vie rozpoznavat dva druhy 
+argumentov. Prvym je cesta ku konfiguracnemu suboru. Ak nie je zadana, pouziva sa vychodiskovy 
+konfiguracny subor. Druhym argumentom moze byt zadana moznost \verb|--logtofile|. Vtedy su vsetky 
+logovacie vystupy presmerovane zo standardneho vystupu do suboru.
+
+Potom ako program nacita vsetky nastavenia z konfiguracneho suboru, spusti vsetky svoje moduly - 
+sprostredkovateľské procesy pomocou triedy \verb|IPLoader|. Nasleduje spustenie vlakna, ktore prijima 
+IPFIX pakety prostrednictvom protokolu UDP a vlakna, ktore ich spracovava. Hovorime o \verb|UDPServer| 
+a \verb|UDPProcessor|. Nakoniec je spustene exportovacie vlakno - \verb|UDPExporter|. Kedykolvek ked 
+nastane chyba je Mediator korektne ukonceny a to tak, ze uvolni vsetku pamat a zastavi beziace vlakna. 
+Rovnako je Mediator zastavny po stalceni kombinacie klaves \verb|Ctrl+c|.
+Podrobne o kazdom spomenutom vlakne a procese bude povedane v nasledujucich kapitolach.
+
+
+
+
 
 
 %% -------------------- COLLECTING -----------------
@@ -202,13 +224,13 @@ majú byť procesom dostupné. Jednoznačnou odpoveďou na tieto otázky je abst
 od ktorej budú všetky moduly dediť. 
 
 
-\textbf{Viacvláknovosť} \\
+\paragraph{Viacvláknovosť}
 Každý modul musí byť vykonávaný v samostatnom vlákne. Preto trieda \emph{AIntermediateProcess} dedi
 od triedy \emph{Thread} a obsahuje abstraktnú metódu \emph{run()}, čo je vlastne deklaráciou 
 hlavnej metódy vlákien. Toto zabezpečí, že v každom module bude musieť byť jej konkrétna implementácia.
 
 
-\textbf{Jediná inštancia modulov} \\ \label{sec:singleton}
+\paragraph{Jediná inštancia modulov} \label{sec:singleton}
 Ďalšou požiadavkou bolo, že moduly musia byť implementované podľa návrhového vzoru Singleton. V prípade, že
 by existovalo viacero inštancií každého modulu, trieda \emph{FlowRecordDispatcher} by nemohla správne 
 distribuovať záznamy o tokoch medzi procesmi. Vzorová implementácia návrhového
@@ -302,7 +324,7 @@ vráti inštanciu procesu.
 
 
 
-\textbf{Dekódovanie dátových záznamov} \\
+\paragraph{Dekódovanie dátových záznamov} 
 Bola vyslovená požiadavka, že aplikačný rámec musí obsahovať metódy pre dekódovanie a zakódovanie 
 dátových záznamov na základe šablón. Nie je žiadúce, aby v budúcnosti každý vývojár sprostredkovateľských 
 procesov riešil tieto úlohy po svojom. 
@@ -338,7 +360,7 @@ Takáto dátová mapa so všetkými dekódovanými hodnotami z dátového zázna
 procesu, ktorý si ju vyžiadal.
 
 
-\textbf{Zakódovanie dátových záznamov} \\
+\paragraph{Zakódovanie dátových záznamov} 
 Presným opakom predchádzajúcej metódy je metóda \verb|encodeDataRecord(...)|. Jej parametrami sú dátová 
 mapa (výsledok dekódovania), príslušná šablóna a počet polí v dátovom zázname, ktoré je potrebné 
 zakódovať - \emph{recordsCount}.
@@ -410,7 +432,7 @@ pomocné pole je vykladané v správnom poradí a teda ho môžeme uložiť do o
 Hotový dátový záznam je vrátený sprostredkovateľského procesu, ktorý si ho vyžiadal.
 
 
-\textbf{Distribúcia dát medzi modulmi} \\
+\paragraph{Distribúcia dát medzi modulmi} 
 Trieda \verb|AIntermediateProcess| poskytuje rozhranie pre distribúciu záznamov o tokoch medzi 
 jednotlivými sprostredkovateľskými procesmi vďaka synchronizovanej metóde \verb|dispatchFlowRecord(...)|. 
 Jej jedinou úlohou je zavolanie rovnomennej metódy distribútora záznamov - triedy \verb|FlowRecordDispatcher|.
@@ -442,7 +464,7 @@ prebehlo bez problémov, tak dátový záznam priradí výstupnému záznamu. Na
 posunie distribútorovi záznamov, ktorý ho bude prepošle 
 nasledujúcemu sprostredkovateľskému procesu, alebo pripraví na export.
 
-\subsubsection{Dynamické načítavanie sprostredkovateľských procesov}
+\subsubsection{Dynamické načítavanie sprostredkovateľských procesov} \label{sec:intermediate_load}
 
 Bola definovaná požiadavka, že sprostredkovateľské procesy musia byť načítavané dynamicky, bez nutnosti
 zásahu do zdrojového kódu aplikačného rámca. 
@@ -650,20 +672,5 @@ IP adresa a UDP port. Posledné dve menované sú zadané administrátorom v kon
 
 
 
-%% -------------------- MEDIATOR -----------------
 
-\subsection{Hlavná trieda Mediátora}
-
-\begin{figure}[ht!]
-\centering
-\includegraphics[width=0.6\textwidth]{sla_architecture}
-\caption{Príklad architektúry nástroja SLAmeter s využitím Mediátora}\label{o:sla_architecture}
-\end{figure}
-
-\subsubsection{tretia}
-
-\paragraph{test}
-
-
-TODO...
 

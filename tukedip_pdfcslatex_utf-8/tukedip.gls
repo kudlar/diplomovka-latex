@@ -72,6 +72,8 @@
 
   \item [{LAN}]\begingroup Local Area Network\nomeqref {0.0}
 		\nompageref{1}
+  \item [{LTS}]\begingroup Long Term Support\nomeqref {0.0}
+		\nompageref{1}
 
  \nomgroup{M}
 
@@ -109,7 +111,7 @@
 
  \nomgroup{U}
 
-  \item [{UDP}]\begingroup User Datagram Protoco\nomeqref {0.0}
+  \item [{UDP}]\begingroup User Datagram Protocol\nomeqref {0.0}
 		\nompageref{1}
   \item [{UTC}]\begingroup Coordinated Universal Time\nomeqref {0.0}
 		\nompageref{1}

@@ -7,8 +7,8 @@ Scanning style file ./nomencl.ist.......
 ** Input style error (file = ./nomencl.ist, line = 67):
    -- Unknown specifier lethead_flag.
 ...done (10 attributes redefined, 3 ignored).
-Scanning input file tukedip.glo....done (36 entries accepted, 0 rejected).
-Sorting entries....done (190 comparisons).
-Generating output file tukedip.gls....done (122 lines written, 0 warnings).
+Scanning input file tukedip.glo....done (37 entries accepted, 0 rejected).
+Sorting entries....done (198 comparisons).
+Generating output file tukedip.gls....done (124 lines written, 0 warnings).
 Output written in tukedip.gls.
 Transcript written in tukedip.ilg.

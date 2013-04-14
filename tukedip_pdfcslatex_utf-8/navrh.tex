@@ -3,8 +3,8 @@
 Na základe analýzy aplikačného rámca pre sprostredkovanie sprav v IPFIX (pozri kapitolu \ref{sec:framework}, 
 strana \pageref{sec:framework}) a analýzy exportovacieho a zhromažďovacieho procesu v RFC 5101
 \citep{rfc5101} som zhrnul požiadavky a navrhol samotnú architektúru IPFIX Mediátora. 
-Jeho jednotlivým, ktoré sú znázornené na obrázku \ref{o:mediator_component_model} a požiadavkám
-sú venované nasledujúce kapitoly. Upozorňujem, že termíny \uv{sprostredkovateľský proces} a 
+Jeho jednotlivým komponentom, ktoré sú vyssie znázornené na obrázku \ref{o:mediator_component_model} 
+a požiadavkám sú venované nasledujúce kapitoly. Upozorňujem, že termíny \uv{sprostredkovateľský proces} a 
 \uv{modul} sú úplne totožné a zameniteľné.
 
 
@@ -73,6 +73,28 @@ sú venované nasledujúce kapitoly. Upozorňujem, že termíny \uv{sprostredkov
  podpora jazyka Java, či už sa jedná o kvalitu dokumentácie, Veľké množstvo odborných fór, dostupnosť 
  knižníc jazyka, ale aj fakt, že Java aplikácie sú spustiteľné na väčšine operačných systémov.
 \end{itemize}
+
+%% -------------------- MEDIATOR -----------------
+
+\subsection{Hlavná trieda Mediátora}
+
+
+Ulohou hlavnej triedy Mediatora je postupne spustit vsetky vlakna a procesy potrebne pre beh programu.
+Najprv sa precitaju a spracuju argumenty prikazoveho riadku. Program vie rozpoznavat dva druhy 
+argumentov. Prvym je cesta ku konfiguracnemu suboru. Ak nie je zadana, pouziva sa vychodiskovy 
+konfiguracny subor. Druhym argumentom moze byt zadana moznost \verb|--logtofile|. Vtedy su vsetky 
+logovacie vystupy presmerovane zo standardneho vystupu do suboru.
+
+Potom ako program nacita vsetky nastavenia z konfiguracneho suboru, spusti vsetky svoje moduly - 
+sprostredkovateľské procesy pomocou triedy \verb|IPLoader|. Nasleduje spustenie vlakna, ktore prijima 
+IPFIX pakety prostrednictvom protokolu UDP a vlakna, ktore ich spracovava. Hovorime o \verb|UDPServer| 
+a \verb|UDPProcessor|. Nakoniec je spustene exportovacie vlakno - \verb|UDPExporter|. Kedykolvek ked 
+nastane chyba je Mediator korektne ukonceny a to tak, ze uvolni vsetku pamat a zastavi beziace vlakna. 
+Rovnako je Mediator zastavny po stalceni kombinacie klaves \verb|Ctrl+c|.
+Podrobne o kazdom spomenutom vlakne a procese bude povedane v nasledujucich kapitolach.
+
+
+
 
 
 
@@ -442,7 +464,7 @@ prebehlo bez problémov, tak dátový záznam priradí výstupnému záznamu. Na
 posunie distribútorovi záznamov, ktorý ho bude prepošle 
 nasledujúcemu sprostredkovateľskému procesu, alebo pripraví na export.
 
-\subsubsection{Dynamické načítavanie sprostredkovateľských procesov}
+\subsubsection{Dynamické načítavanie sprostredkovateľských procesov} \label{sec:intermediate_load}
 
 Bola definovaná požiadavka, že sprostredkovateľské procesy musia byť načítavané dynamicky, bez nutnosti
 zásahu do zdrojového kódu aplikačného rámca. 
@@ -650,17 +672,5 @@ IP adresa a UDP port. Posledné dve menované sú zadané administrátorom v kon
 
 
 
-%% -------------------- MEDIATOR -----------------
 
-\subsection{Hlavná trieda Mediátora}
-
-\begin{figure}[ht!]
-\centering
-\includegraphics[width=0.6\textwidth]{sla_architecture}
-\caption{Príklad architektúry nástroja SLAmeter s využitím Mediátora}\label{o:sla_architecture}
-\end{figure}
-
-
-
-TODO...
 

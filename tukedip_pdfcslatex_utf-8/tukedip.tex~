@@ -87,7 +87,7 @@ verziu abstraktu umiestniť na jednej strane so slovenským abstraktom,
 je potrebné umiestniť ju na samostatnú stranu (cudzojazyčný abstrakt
 nemožno deliť a~uvádzať na dvoch strabách).}
 
-\keywords{Mediation, Mediator, IPFIX, SLAMeter, BasicMeter}
+\keywords{Mediation, Mediator, Collector, Exporter, IPFIX, SLAMeter, BasicMeter}
 
 \datumodovzdania{26. 4. 2013}
 \mesto{Košice}

@@ -51,3 +51,13 @@ centrálnej databázy. Úlohou \emph{vyhodnocovača} je na základe požiadaviek
 spracovávať IPFIX záznamy a vytvárať tak štatistické a analytické údaje o charaktere 
 meranej sieťovej prevádzky \citep{evaluator}. \emph{Webové rozhranie} je modulárna webová aplikácia 
 s pohľadmi pre zákazníka a poskytovateľa Internetových služieb.
+
+Príklad architektúry nástroja SLAmeter so zapojením Mediátora je na obrázku \ref{o:sla_architecture}.
+BEEM môže exportovať IPFIX správy priamo kolektoru JXColl. No v prípade, že chce využiť sprostredkovateľské 
+procesy na modifikáciu údajov, posiela správy Mediátoru a ten ich ďalej preposiela kolektoru.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.7\textwidth]{sla_architecture}
+\caption{Príklad architektúry nástroja SLAmeter s využitím Mediátora}\label{o:sla_architecture}
+\end{figure}
