@@ -36,18 +36,18 @@ sieti a všetky mali prístup na Internet.
 
 \subsection{Test konektivity}
 
-Prvy experiment overoval zakladnu konektivitu medzi exporterom a kolektorom v pripade, ze je medzi ne 
-zaradeny mediator. Vo svojej vychodiskovej konfiguracii vypisuje mybeem logovacie spravy na standardny 
-vystup. Tie obsahuju zakladne informacie o kazdom exportovanom zazname o toku ako to mozeme vidiet na 
-Obrazku \ref{o:konektivita_beem}. Mediator mal nastevenu uroven logovacich vystupov na \emph{DEBUG}, 
-co zahrna nielen chybove hlasky, ale aj vsetky informacne a ladiace oznamy. 
+Prvý experiment overoval základnú konektivitu medzi exportérom a kolektorom v prípade, že je medzi ne 
+zaradený mediátor. Vo svojej východiskovej konfigurácii vypisuje mybeem logovacie správy na štandardný 
+výstup. Tie obsahujú základné informácie o každom exportovanom zázname o toku ako to môžeme vidieť na 
+Obrázku \ref{o:konektivita_beem}. Mediátor mal nastavenú úroveň logovacích výstupov na \emph{DEBUG}, 
+čo zahŕňa nielen chybové hlášky, ale aj všetky informačné a ladiace oznamy. 
 
-Konektivita medzi exporterom
-a mediatorom bola potvrdena, na Obrazku \ref{o:konektivita_mediator} je zachyteny vystup Mediatora po 
-prijati spravy od exportera. Vypis obsahuje IP adresu a port z ktoreho prisla sprava, jej velkost a 
-oznam, ze sa jedna o IPFIX spravu. Za tym nasleduju hodnoty z hlavicky spravy a vypis vsetkych sad, ktore
-sprava obsahuje. Potom bol spracovany zaznam o toku posunuty dispecerovi - \verb|FlowRecordDispatcher|, 
-ktory ho poslal na export. Tam sa zaznam o toku naspat zabalil do noveho IPFIX paketu a ten bol odoslany 
+Konektivita medzi exportérom
+a mediátorom bola potvrdená, na Obrázku \ref{o:konektivita_mediator} je zachytený výstup Mediátora po 
+prijatí správy od exportéra. Výpis obsahuje IP adresu a port z ktorého prišla správa, jej veľkosť a 
+oznam, že ide o IPFIX správu. Za tým nasledujú hodnoty z hlavičky správy a výpis všetkých sád, ktoré
+správa obsahuje. Potom bol spracovaný záznam o toku posunutý dispečerovi - \verb|FlowRecordDispatcher|, 
+ktorý ho poslal na export. Tam sa záznam o toku naspať zabalil do nového IPFIX paketu a ten bol odoslaný 
 smerom na kolektor.
 
 \begin{figure}[ht!]
@@ -62,17 +62,17 @@ smerom na kolektor.
 \caption{Test 1: Konektivita medzi exportérom a Mediátorom - strana Mediátora}\label{o:konektivita_mediator}
 \end{figure}
 
-Konektivita medzi Mediatorom a kolektorom bola tiez potvrdena. Dokazom boli logovacie vystupy kolektora, 
-ktore su velmi podobne ako tie z Mediatora. V databaze, na ktoru je JXColl pripojeny, pribudali spravne 
-zaznamy. Tento experiment mozeme povazovat za uspesny.
+Konektivita medzi Mediátorom a kolektorom bola tiež potvrdená. Dôkazom boli logovacie výstupy kolektora, 
+ktoré sú veľmi podobné ako tie z Mediátora. V databáze, na ktorú je JXColl pripojený, pribúdali správne 
+záznamy. Tento experiment môžeme považovať za úspešný.
 
 %%-------------------------
 
-\subsection{Test spravnej reprezentacie udajov}
+\subsection{Test správnej reprezentácie údajov}
 
-Druhy experiment nadvazoval na predchadzajuci test konektivity. Testovacia topologia aj konfiguracie 
-jednotlivych nastrojov boli rovnake ako v predchadzajucom pripade. V Mediatore stale neboli spustene 
-ziadne sprostredkovatelske moduly. 
+Druhý experiment nadväzoval na predchádzajúci test konektivity. Testovacia topológia aj konfigurácie 
+jednotlivých nástrojov boli rovnaké ako v predchádzajúcom prípade. V Mediátore stále neboli spustené 
+žiadne sprostredkovateľské moduly. 
 
 \begin{figure}[ht!]
 \centering
@@ -86,29 +86,29 @@ ziadne sprostredkovatelske moduly.
 \caption{Test 2: Výpis obsahu databázy}\label{o:porovnanie_db}
 \end{figure}
 
-Myslienkou tohto overenia bolo porovnat data, ktore posiela exporter s datami, ktore prejdu celou topologiou
-cez Mediator a JXColl a su ulozene v databaze. Na zachytenie sprav z mybeem-u bol pouzity program 
-Wireshark, ktory odchytaval sietovu prevadzku na prvom pocitaci, na rozhrani \emph{eth0} s IP adresou 
-\emph{192.168.1.35}. Detail jednej zo sprav, ktore zachytil Wireshark je na Obrazku 
-\ref{o:porovnanie_wireshark}. Na Obrazku \ref{o:porovnanie_db} su zase vyfiltrovane posledne zaznamy, 
-ktore boli ulozene do databazy. Mozeme porovnat aspon na niekolkych znazornenych informacnych elementoch,
-ze zaznamy o toku sa po prechode cez topologiu s Mediatorom bez zapnutych sprostredkovatelskych procesov 
-nezmenili. Tento experiment povazujeme za uspesny.
+Myšlienkou tohto overenia bolo porovnať dáta, ktoré posiela exportér s dátami, ktoré prejdú celou topológiou
+cez Mediátor a JXColl a sú uložené v databáze. Na zachytenie správ z mybeem-u bol použitý program 
+Wireshark, ktorý odchytával sieťovú prevádzku na prvom počítači, na rozhraní \emph{eth0} s IP adresou 
+\emph{192.168.1.35}. Detail jednej zo správ, ktoré zachytil Wireshark je na Obrázku 
+\ref{o:porovnanie_wireshark}. Na Obrázku \ref{o:porovnanie_db} sú zase vyfiltrované posledné záznamy, 
+ktoré boli uložené do databázy. Môžeme porovnať aspoň na niekoľkých znázornených informačných elementoch,
+že záznamy o toku sa po prechode cez topológiu s Mediátorom bez zapnutých sprostredkovateľských procesov 
+nezmenili. Tento experiment považujeme za úspešný.
 
 %%-------------------------
 
-\subsection{Test Mediatora s anonymizacnym modulom}
+\subsection{Test Mediátora s anonymizačným modulom}
 
-Tento experiment je miernou upravou predchadzajuceho. Testovacia topologia aj konfiguracie nastrojov boli 
-rovnake s tym rozdielom, ze v Mediatore bol zapnuty jednoduchy anonymizacny proces - \verb|ExampleProcess|.
-Tento modul bol naprogramovany kvoli demonstracii implementacie sprostredkovatelskeho procesu. Cielom 
-experimentu bolo dokazat dve tvrdenia:
+Tento experiment je miernou úpravou predchádzajúceho. Testovacia topológia aj konfigurácie nástrojov boli 
+rovnaké s tým rozdielom, že v Mediátore bol zapnutý jednoduchý anonymizačný proces - \verb|ExampleProcess|.
+Tento modul bol naprogramovaný kvôli demonštrácii implementácie sprostredkovateľského procesu. Cieľom 
+experimentu bolo dokázať dve tvrdenia:
 \begin{itemize}
- \item Aplikacny ramec poskytuje sprostredkovatelskym procesom spravne metody na dekodovanie a zakodovanie
- datovych zaznamov. To plati vtedy, ked hodnoty informacnych elementov sa rovnaju hodnotam zaznamov
- v databaze po prechode celou topologiou aj ked su spustene sprostredkovatelske moduly.
- \item Anonymizacny modul spravne modifikuje zdrojovu a cielovu IP adresu toku. Vysledkom je to, ze 
- posledny oktet je v obidvoch pripadoch nahradeny nulou.
+ \item Aplikačný rámec poskytuje sprostredkovateľským procesom správne metódy na dekódovanie a zakódovanie
+ dátových záznamov. To platí vtedy, keď hodnoty informačných elementov sa rovnajú hodnotám záznamov
+ v databáze po prechode celou topológiou aj keď sú spustené sprostredkovateľské moduly.
+ \item Anonymizačný modul správne modifikuje zdrojovú a cieľovú IP adresu toku. Výsledkom je to, že 
+ posledný oktet je v obidvoch prípadoch nahradený nulou.
 \end{itemize}
 
 \begin{figure}[ht!]
@@ -124,26 +124,75 @@ experimentu bolo dokazat dve tvrdenia:
 \end{figure}
 
 
-Na Obrazku \ref{o:anonym_wireshark} je zobrazeny detail jednej zo sprav, ktoru exportoval mybeem. 
-Na nasledujucom Obrazku \ref{o:anonym_db} vidiet posledne zaznamy z databazy. Mozeme porovnat, ze hodnoty 
-zdrojoveho a cieloveho transportneho portu a hodnota \emph{flowId} sa nezmenili. Avsak zaroven, vsetky 
-zdrojove a cielove IP adresy boli anonymizovane. Tento experiment povazujeme za uspesny, dokazal spravnost 
-obidvoch tvrdeni.
+Na Obrázku \ref{o:anonym_wireshark} je zobrazený detail jednej zo správ, ktorú exportoval mybeem. 
+Na nasledujúcom Obrázku \ref{o:anonym_db} vidieť posledne záznamy z databázy. Môžeme porovnať, že hodnoty 
+zdrojového a cieľového transportného portu a hodnota \emph{flowId} sa nezmenili. Avšak zároveň, všetky 
+zdrojové a cieľové IP adresy boli anonymizované. Tento experiment považujeme za úspešný, dokázal správnosť 
+obidvoch tvrdení.
 
 
-\subsection{Zatazovy test}
+\subsection{Záťažový test}
+
+Posledny experiment sa nazyva aj \uv{\emph{stress test}}. Jeho ulohou je intenzivne a narocne testovanie 
+za ucelom overenia stability systemu. Pre tento experiment som nepouzil topologiu ako v ostatnych testoch.
+Zatazovy test prebiehal na virtualnom serveri \emph{monica-med.monica.cnl.sk} v infrastrukture Laboratoria
+pocitacovych sieti na Technickej Univerzite v Kosiciach.
+
+Na serveri bol nainstalovany Mediator 1.0 z instalacneho .deb balicka a mybeem poslednej verzie, ktora 
+ma podporu pre Mediator. Myslienkou experimentu bolo zistit, ako sa bude spravat Mediator pri dlhodobom 
+behu a pri vysokom zatazeni v podobe velkeho mnozstva subeznych tokov. Protokol \emph{BitTorrent}
+\citep{bittorrent} je znamy prave tym, ze nadvadzuje vela spojeni. Preto sa o generovanie sietovej 
+prevadzky postarala konzolova verzia BitTorrent klienta \emph{Transmission}, ktora stahovala rozne 
+distribucie OS Ubuntu.
+
+%% TODO dopisat cas a pamat.
+Experiment odhalil uzke hrdlo nielen Mediatora, ale aj exportera mybeem. Ked sa spojili dva faktory: 
+enormny pocet datovych tokov a rychlost prenosu medzi 20 MB/s a 40 MB/s, tak sa niekedy stavalo, ze vstupny 
+buffer sprostredkovateľského procesu \verb|ExampleProcess| sa preplnil a zacal zahadzovat pakety. Podla
+mojho nazoru bola pricinou 
+synchronizovana metoda \verb|dispatchFlowRecord(...)| triedy \verb|FlowRecordDispatcher|.
+Tato trieda je asi najvytazenejsou castou architektury, pretoze deleguje distribuciu zaznamov o tokoch 
+medzi zhromazdovacim procesom, sprostredkovateľskými modulmi a exportovacim procesom. O spominanu metodu
+sa teda biju viacere vlakna. V pripade, ze zhromazdovaci proces prijima extremne mnozstvo sprav, moze sa stat,
+ze delegovaciu metodu zadrziava pre seba na dlhu dobu. Vtedy ju \verb|ExampleProcess| nemoze zavolat, a teda 
+sa nemoze \uv{zbavit} svojich zaznamov, ktore spracoval. Zaroven vsak delegovacia metoda naplna jeho
+vstupny buffer. Toto sposobuje hromadenie zaznamov, ktore mu preplnia vstupny buffer, az ich musi zahadzovat.
+
+Zvysenie velkosti vstupneho buffra z 25 zaznamov na 100 odstranilo tento nedostatok, no povazujem to za 
+povrchne a docasne riesenie, ktore pri vacsom pocte modulov ani nemusi stacit. Uplnym riesenim by mohla 
+byt vyrovnavacia pamat typu \verb|ArrayBlockingQueue|, pouzita aj na inych miestach architektury, ktora 
+by mohla zmiernit narazovy napor na \verb|FlowRecordDispatcher|.
+
+Druhy nedostatok bol odhaleny v exporteri. Nastroj mybeem rovnako hlasil preplnenie paketovej cache a 
+preto zahadzoval spravy. Tento fakt bol oznameny riesitelskemu timu zodpovednemu za exporter.
+
+Pozitivnym vysledkom experimentu bolo to, ze dlhodobe spustenie Mediatora neprinieslo ziadnu nestabilitu 
+systemu. Spotreba pamate nemala stupajucu tendenciu a vyuzitie procesora nepresiahlo 3\%.
 
 
-Na Obrazku \ref{o:anonym_wireshark} je zobrazeny detail jednej zo sprav, ktoru exportoval mybeem. 
-Na nasledujucom Obrazku \ref{o:anonym_db} vidiet posledne zaznamy z databazy. Mozeme porovnat, ze hodnoty 
-zdrojoveho a cieloveho transportneho portu a hodnota \emph{flowId} sa nezmenili. Avsak zaroven, vsetky 
-zdrojove a cielove IP adresy boli anonymizovane. Tento experiment povazujeme za uspesny, dokazal spravnost 
-obidvoch tvrdeni.
 
-Na Obrazku \ref{o:anonym_wireshark} je zobrazeny detail jednej zo sprav, ktoru exportoval mybeem. 
-Na nasledujucom Obrazku \ref{o:anonym_db} vidiet posledne zaznamy z databazy. Mozeme porovnat, ze hodnoty 
-zdrojoveho a cieloveho transportneho portu a hodnota \emph{flowId} sa nezmenili. Avsak zaroven, vsetky 
-zdrojove a cielove IP adresy boli anonymizovane. Tento experiment povazujeme za uspesny, dokazal spravnost 
-obidvoch tvrdeni.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

@@ -138,11 +138,13 @@ Oracle: \emph{Java Language and Virtual Machine Specifications} [online], 2013.
 Dostupné z: $<$\url{http://docs.oracle.com/javase/specs/}$>$.
 
 \harvarditem{Oracle}{2011}{arrayblockingqueue}
-Oracle: \emph{Class ArrayBlockingQueue<E>} [online], Java 6 - oficiálna špecifikácia API, 2011. 
+Oracle: \emph{Class ArrayBlockingQueue$<$E$>$} [online], Java 6 - oficiálna špecifikácia API, 2011. 
 Dostupné z: 
 $<$\url{http://docs.oracle.com/javase/6/docs/api/java/util/concurrent/ArrayBlockingQueue.html#offer(E)}$>$.
 
-
+\harvarditem{BitTorrent.org}{2009}{bittorrent}
+BitTorrent.org: \emph{The BitTorrent Protocol Specification} [online], 2009. 
+Dostupné z: $<$\url{http://www.bittorrent.org/beps/bep_0003.html}$>$.
 
 
 

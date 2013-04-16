@@ -133,17 +133,66 @@ obidvoch tvrdení.
 
 \subsection{Záťažový test}
 
+Posledný experiment sa nazýva aj \uv{\emph{stress test}}. Jeho úlohou je intenzívne a náročné testovanie 
+za účelom overenia stability systému. Pre tento experiment som nepoužil topológiu ako v ostatných testoch.
+Záťažový test prebiehal na virtuálnom serveri \emph{monica-med.monica.cnl.sk} v infraštruktúre Laboratória
+počítačových sietí na Technickej Univerzite v Košiciach.
 
-Na Obrázku \ref{o:anonym_wireshark} je zobrazený detail jednej zo správ, ktorú exportoval mybeem. 
-Na nasledujúcom Obrázku \ref{o:anonym_db} vidieť posledne záznamy z databázy. Môžeme porovnať, že hodnoty 
-zdrojového a cieľového transportného portu a hodnota \emph{flowId} sa nezmenili. Avšak zároveň, všetky 
-zdrojové a cieľové IP adresy boli anonymizované. Tento experiment považujeme za úspešný, dokázal správnosť 
-obidvoch tvrdení.
+Na serveri bol nainštalovaný Mediátor 1.0 z inštalačného .deb balíčka a mybeem poslednej verzie, ktorá 
+má podporu pre Mediátor. Myšlienkou experimentu bolo zistiť, ako sa bude správať Mediátor pri dlhodobom 
+behu a pri vysokom zaťažení v podobe veľkého množstva súbežných tokov. Protokol \emph{BitTorrent}
+\citep{bittorrent} je známy práve tým, že nadväzuje veľa spojení. Preto sa o generovanie sieťovej 
+prevádzky postarala konzolová verzia BitTorrent klienta \emph{Transmission}, ktorá sťahovala rôzne 
+distribúcie OS Ubuntu.
 
-Na Obrázku \ref{o:anonym_wireshark} je zobrazený detail jednej zo správ, ktorú exportoval mybeem. 
-Na nasledujúcom Obrázku \ref{o:anonym_db} vidieť posledne záznamy z databázy. Môžeme porovnať, že hodnoty 
-zdrojového a cieľového transportného portu a hodnota \emph{flowId} sa nezmenili. Avšak zároveň, všetky 
-zdrojové a cieľové IP adresy boli anonymizované. Tento experiment považujeme za úspešný, dokázal správnosť 
-obidvoch tvrdení.
+%% TODO dopisat cas a pamat.
+Experiment odhalil úzke hrdlo nielen Mediátora, ale aj exportéra mybeem. Keď sa spojili dva faktory: 
+enormný počet dátových tokov a rýchlosť prenosu medzi 20 MB/s a 40 MB/s, tak sa niekedy stávalo, že vstupný 
+buffer sprostredkovateľského procesu \verb|ExampleProcess| sa preplnil a začal zahadzovať pakety. Podľa
+môjho názoru bola príčinou 
+synchronizovaná metóda \verb|dispatchFlowRecord(...)| triedy \verb|FlowRecordDispatcher|.
+Tato trieda je asi najvyťaženejšou častou architektúry, pretože deleguje distribúciu záznamov o tokoch 
+medzi zhromažďovacím procesom, sprostredkovateľskými modulmi a exportovacím procesom. O spomínanú metódu
+sa teda bijú viaceré vlákna. V prípade, že zhromažďovací proces prijíma extrémne množstvo správ, môže sa stat,
+že delegovaciu metódu zadržiava pre seba na dlhú dobu. Vtedy ju \verb|ExampleProcess| nemôže zavolať, a teda 
+sa nemôže \uv{zbaviť} svojich záznamov, ktoré spracoval. Zároveň však delegovacia metóda napĺňa jeho
+vstupný buffer. Toto spôsobuje hromadenie záznamov, ktoré mu preplnia vstupný buffer, až ich musí zahadzovať.
+
+Zvýšenie veľkosti vstupného buffera z 25 záznamov na 100 odstránilo tento nedostatok, no považujem to za 
+povrchné a dočasné riešenie, ktoré pri väčšom počte modulov ani nemusí postačovať. Úplným riešením by mohla 
+byt vyrovnávacia pamäť typu \verb|ArrayBlockingQueue|, použitá aj na iných miestach architektúry, ktorá 
+by mohla zmierniť nárazový nápor na \verb|FlowRecordDispatcher|.
+
+Druhý nedostatok bol odhalený v exportéri. Nástroj mybeem rovnako hlásil preplnenie paketovej cache a 
+preto zahadzoval správy. Tento fakt bol oznámený riešiteľskému tímu zodpovednému za exportér.
+
+Pozitívnym výsledkom experimentu bolo to, že dlhodobé spustenie Mediátora neprinieslo žiadnu nestabilitu 
+systému. Spotreba pamäte nemala stúpajúcu tendenciu a využitie procesora nepresiahlo 3\%.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

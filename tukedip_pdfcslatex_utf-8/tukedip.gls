@@ -35,7 +35,7 @@
 
  \nomgroup{G}
 
-  \item [{Gb/s}]\begingroup Gigabit za sekundu\nomeqref {0.0}
+  \item [{Gb/s}]\begingroup Gigabit za sekundu, jednotka rýchlosti dátového presnosu\nomeqref {0.0}
 		\nompageref{1}
 
  \nomgroup{I}
@@ -79,12 +79,19 @@
 
   \item [{MAC}]\begingroup Media Access Control\nomeqref {0.0}
 		\nompageref{1}
+  \item [{MB/s}]\begingroup Megabyte za sekundu, jednotka rýchlosti dátového presnosu\nomeqref {0.0}
+		\nompageref{1}
   \item [{MONICA}]\begingroup Monitoring and Optimization of Network Infrastructures Communications and Applications\nomeqref {0.0}
 		\nompageref{1}
 
  \nomgroup{N}
 
   \item [{napr.}]\begingroup napríklad\nomeqref {0.0}\nompageref{1}
+
+ \nomgroup{O}
+
+  \item [{OS}]\begingroup operačný systém\nomeqref {0.0}
+		\nompageref{1}
 
  \nomgroup{P}
 

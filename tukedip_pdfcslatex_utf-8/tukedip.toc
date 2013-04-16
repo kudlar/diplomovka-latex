@@ -63,9 +63,9 @@
 \contentsline {subsection}{\numberline {5.3}Test spr\IeC {\'a}vnej reprezent\IeC {\'a}cie \IeC {\'u}dajov}{54}{subsection.5.3}
 \contentsline {subsection}{\numberline {5.4}Test Medi\IeC {\'a}tora s anonymiza\IeC {\v c}n\IeC {\'y}m modulom}{55}{subsection.5.4}
 \contentsline {subsection}{\numberline {5.5}Z\IeC {\'a}\IeC {\v t}a\IeC {\v z}ov\IeC {\'y} test}{57}{subsection.5.5}
-\contentsline {section}{\numberline {6}Z\'aver (zhodnotenie rie\v {s}enia)}{58}{section.6}
-\contentsline {section}{\hbox to\@tempdima {\hfil }Zoznam pou\v {z}itej literat\'ury}{59}{section*.9}
-\contentsline {section}{\hbox to\@tempdima {\hfil }Zoznam pr\'iloh}{63}{section*.10}
-\contentsline {section}{\hbox to\@tempdima {\hfil }Pr\'iloha A}{64}{section*.11}
-\contentsline {section}{\hbox to\@tempdima {\hfil }Pr\'iloha B}{65}{section*.13}
-\contentsline {section}{\hbox to\@tempdima {\hfil }Pr\'iloha C}{68}{section*.15}
+\contentsline {section}{\numberline {6}Z\'aver (zhodnotenie rie\v {s}enia)}{59}{section.6}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Zoznam pou\v {z}itej literat\'ury}{60}{section*.9}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Zoznam pr\'iloh}{64}{section*.10}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Pr\'iloha A}{65}{section*.11}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Pr\'iloha B}{66}{section*.13}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Pr\'iloha C}{69}{section*.15}

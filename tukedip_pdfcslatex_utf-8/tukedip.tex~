@@ -109,7 +109,6 @@ nemožno deliť a~uvádzať na dvoch strabách).}
 \nomenclature{a pod.}{a podobne}
 \nomenclature{atd.}{a tak dalej}
 \nomenclature{resp.}{respektívne}
-\nomenclature{Gb/s}{Gigabit za sekundu}
 \nomenclature{BGP}{Border Gateway Protocol}
 \nomenclature{ID}{Identification (number)}
 \nomenclature{CNL}{Computer Networks Laboratory}
@@ -130,6 +129,10 @@ nemožno deliť a~uvádzať na dvoch strabách).}
 \nomenclature{JRE}{Java Runtime Environment}
 \nomenclature{JDK}{Java Development Kit}
 \nomenclature{MAC}{Media Access Control}
+\nomenclature{LTS}{Long Term Support}
+\nomenclature{OS}{operačný systém}
+\nomenclature{MB/s}{Megabyte za sekundu, jednotka rýchlosti dátového presnosu}
+\nomenclature{Gb/s}{Gigabit za sekundu, jednotka rýchlosti dátového presnosu}
 %----------------DELENIE SLOV-------------
 %\hyphenation{IPFIXFlowRecord FlowRecordDispatcher}
 
