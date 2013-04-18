@@ -45,7 +45,7 @@ pdfstartpage=1]{hyperref}
 \hypersetup{%
 baseurl={http://www.tuke.sk/sevcovic},
 pdfcreator={pdfcsLaTeX},
-pdfkeywords={Sprostredkovanie, Medi\'ator, IPFIX, SLAMeter, BasicMeter},
+pdfkeywords={Sprostredkovanie, Medi\'ator, IPFIX, SLAmeter, BasicMeter},
 pdftitle={Aplikačný rámec pre sprostredkovanie IPFIX správ v nástroji SLAmeter},
 pdfauthor={Bc. Rastislav Kudla},
 pdfsubject={Diplomová práca}
@@ -79,7 +79,7 @@ na samotný text práce. Mal by mať\/ rozsah 250 až 500 slov. Pri
 osobe. Používa sa odborná terminológia, menej zvyčajné termíny,
 skratky a~symboly sa pri prvom výskyte v texte definujú.}
 
-\klucoveslova{Sprostredkovanie, Mediátor, Kolektor, Exportér, IPFIX, SLAMeter, BasicMeter}
+\klucoveslova{IPFIX, Sprostredkovanie, Mediátor, Kolektor, Exportér, SLAmeter, BasicMeter, MONICA}
 
 \abstrakte{Text abstraktu v~svetovom jazyku je potrebný pre integráciu
 do medzinárodných informačných systémov. Ak nie je možné cudzojazyčnú
@@ -87,9 +87,9 @@ verziu abstraktu umiestniť na jednej strane so slovenským abstraktom,
 je potrebné umiestniť ju na samostatnú stranu (cudzojazyčný abstrakt
 nemožno deliť a~uvádzať na dvoch strabách).}
 
-\keywords{Mediation, Mediator, Collector, Exporter, IPFIX, SLAMeter, BasicMeter}
+\keywords{IPFIX, Mediation, Mediator, Collector, Exporter, SLAmeter, BasicMeter, MONICA}
 
-\datumodovzdania{26. 4. 2013}
+\datumodovzdania{29. 4. 2013}
 \mesto{Košice}
 
 
@@ -107,14 +107,14 @@ nemožno deliť a~uvádzať na dvoch strabách).}
 \nomenclature{MONICA}{Monitoring and Optimization of Network Infrastructures Communications and Applications}
 \nomenclature{napr.}{napríklad}
 \nomenclature{a pod.}{a podobne}
-\nomenclature{atd.}{a tak dalej}
-\nomenclature{resp.}{respektívne}
-\nomenclature{Gb/s}{Gigabit za sekundu}
+\nomenclature{atd.}{a tak ďalej}
+\nomenclature{resp.}{respektíve}
+\nomenclature{tzv.}{takzvaný}
 \nomenclature{BGP}{Border Gateway Protocol}
 \nomenclature{ID}{Identification (number)}
 \nomenclature{CNL}{Computer Networks Laboratory}
 \nomenclature{BEEM}{BasicMeter Exporting and Measuring process}
-\nomenclature{JXColl}{Java XML Collector}
+\nomenclature{JXColl}{Java SXML Collector}
 \nomenclature{ACP}{Analyzer-Colector Protocol}
 \nomenclature{SQL}{Structured Query Language}
 \nomenclature{ECAM}{Exporter-Collector-Analyzer Manager}
@@ -131,7 +131,11 @@ nemožno deliť a~uvádzať na dvoch strabách).}
 \nomenclature{JDK}{Java Development Kit}
 \nomenclature{MAC}{Media Access Control}
 \nomenclature{LTS}{Long Term Support}
+\nomenclature{RFC}{Request for Comments}
 \nomenclature{OS}{operačný systém}
+\nomenclature{QOS}{Quality of service}
+\nomenclature{MB/s}{Megabyte za sekundu, jednotka rýchlosti dátového presnosu}
+\nomenclature{Gb/s}{Gigabit za sekundu, jednotka rýchlosti dátového presnosu}
 %----------------DELENIE SLOV-------------
 %\hyphenation{IPFIXFlowRecord FlowRecordDispatcher}
 
@@ -173,11 +177,33 @@ počas celého štúdia na vysokej škole.
 \kpodakovania
 
 \predhovor
-Predhovor je povinnou náležitosťou záverečnej práce, pozri
-\citep{gonda}. V~predhovore autor uvedie základné charakteristiky
-svojej záverečnej práce a~okolnosti jej vzniku. Vysvetlí dôvody, ktoré
-ho viedli k~voľbe témy, cieľ a~účel práce a~stručne informuje
-o~hlavných metódach, ktoré pri spracovaní záverečnej práce použil.
+
+Trendom posledných rokov v počítačových sieťach sú tzv. konvergované siete, ktoré spájajú prenos dát, 
+hlasu a video komunikácie do jednej spoločnej infraštruktúry. Avšak so zvyšujúcimi sa možnosťami rastú 
+aj nároky a dôraz na kvalitu. Aby sa kvalita sietí a poskytovaných služieb mohla zvyšovať, resp. 
+porovnávať, je potrebné siete merať.
+
+Meracia architektúra SLAmeter vyvíjaná výskumnou skupinou MONICA v Laboratóriu počítačových sietí na 
+Technickej univerzite v Košiciach predstavuje nástroj na pasívne meranie a analýzu parametrov 
+počítačových sietí na báze tokov za účelom určovania ich triedy kvality.
+
+Meranie na báze tokov je populárnou a osvedčenou metódou rôznych monitorovacích infraštruktúr. Avšak 
+zdieľanie informácií o tokoch medzi monitorovacími aplikáciami s rôznymi požiadavkami vyvoláva problémy 
+týkajúce sa škálovateľnosti meracieho systému, flexibility monitorovania tokov, ale aj spoľahlivosti 
+exportovania a kapacity meracieho systému. Tieto problémy môže vyriešiť sprostredkovanie správ -
+\emph{IP Flow Information Export (IPFIX) Mediation}.
+
+Hlavnou ulohou tejto práce je navrhnúť aplikačný rámec pre sprostredkovanie správ medzi exportérom a kolektorom
+v nástroji SLAmeter. K výberu tejto témy ma viedla možnosť skĺbenia mojich niekoľkých záľub, a to 
+záujmu o počítačové siete spolu so záujmom o programovanie a vyvíjanie nových aplikácii. Navyše členom 
+výskumnej skupiny MONICA som už niekoľko rokov.
+
+
+%Predhovor je povinnou náležitosťou záverečnej práce, pozri
+%\citep{gonda}. V~predhovore autor uvedie základné charakteristiky
+%svojej záverečnej práce a~okolnosti jej vzniku. Vysvetlí dôvody, ktoré
+%ho viedli k~voľbe témy, cieľ a~účel práce a~stručne informuje
+%o~hlavných metódach, ktoré pri spracovaní záverečnej práce použil.
 \kpredhovoru
 
 \thispagestyle{empty}
@@ -204,7 +230,6 @@ o~hlavných metódach, ktoré pri spracovaní záverečnej práce použil.
 \slovnikterminov
 
 \begin{description}
-	
 	\item[Unix Timestamp] nazývaný tiež Unix time, alebo POSIX time je systém na vyjadrovanie 
 	hodnoty času. Je definovaný ako počet uplynutých sekúnd od polnoci 1. januára 1970 UTC.
 	
@@ -236,8 +261,8 @@ o~hlavných metódach, ktoré pri spracovaní záverečnej práce použil.
 	\item[Buffer] je oblasť pamäte používaná na dočasné uchovanie dát pred ich presunom na iné 
 	miesto - vyrovnávacia pamäť.
 	
-	\item[paket]
-	\item[soket]
+	\item[Socket] je koncovym bodom spojenia v TCP/IP sietach. Je tvoreny kombinaciou portu a IP 
+	adresy. \citep{linktionary} 
 	
 \end{description}
 

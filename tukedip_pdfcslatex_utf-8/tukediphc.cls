@@ -239,7 +239,7 @@ vlo\v{z}en\'y origin\'al zad\'avacieho listu!
 
 \bigskip
 
-Vyhlasujem, \v{z}e som diplomov\'u pr\'acu vypracoval(a) samostatne
+Vyhlasujem, \v{z}e som diplomov\'u pr\'acu vypracoval samostatne
 s~pou\v{z}it\'{\i}m uvedenej odbornej literat\'ury.
 
 \bigskip

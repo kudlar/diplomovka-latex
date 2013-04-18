@@ -37,7 +37,6 @@ protokolu UDP na spolahlivy SCTP.
 Tato praca analyzuje nastoleny problem sprostredkovania sprav a sprostredkovatelskych entit nazyvany 
 \emph{IP Flow Information Export (IPFIX) Mediation Problem}. Jej hlavnym cielom je navrhnut a implementovat
 aplikacny ramec pre sprostredkovatelsku entitu zvanu IPFIX Mediator pre ucely nastroja SLAmeter. 
-%% TODO co to zlepsi a tak je ti super fasa
 
 Struktura prace je nasledovna. V uvodnej kapitole je formulovana definicia ulohy. Druha kapitola sa 
 v kratkosti venuje protokolu IPFIX. Popisuje len format IPFIX sprav, jej hlavicku, tri typy

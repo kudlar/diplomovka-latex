@@ -1,6 +1,8 @@
-\section{Anal\'yza protokolu IPFIX}
+\section{Anal\'yza}
 
-Protokol IPFIX \citep{rfc5101, ipfixProtocol, juvhaugen, veri} je IETF (Internet Engineering Task Force)
+\subsection{Anal\'yza protokolu IPFIX}
+
+Protokol IPFIX - \emph{IP Flow Information Export} je IETF (Internet Engineering Task Force)
 štandard pre export informácií o sieťových tokoch zo smerovačov, meracích sond, 
 alebo špecializovaných nástrojov. 
 Aby bolo možné prenášať tieto informácie 
@@ -10,7 +12,8 @@ Protokol je vyvíjaný rovnomennou pracovnou skupinou \citep{ipfixCharter} od ro
 vznikol ako priamy nasledovník proprietárneho protokolu Cisco Netflow Version 9 \citep{rfc3954}. 
 To znamená, že IPFIX je založený na systéme výmeny informácií na základe šablón. To ho robí veľmi
 flexibilným, pretože je možné nakonfigurovať, ktoré vlastnosti tokov sa majú merať.
-Zjednodušená architektúra protokolu IPFIX je na obrázku \ref{o:ipfix_architekture_basic}.
+Zjednodušená architektúra protokolu IPFIX je na obrázku \ref{o:ipfix_architekture_basic}. 
+\citep{rfc5101, ipfixProtocol, juvhaugen, veri}
 
 \begin{figure}[ht!]
 \centering
@@ -18,7 +21,7 @@ Zjednodušená architektúra protokolu IPFIX je na obrázku \ref{o:ipfix_archite
 \caption{Zjednodušená verzia IPFIX architektúry}\label{o:ipfix_architekture_basic}
 \end{figure}
 
-\subsection{Terminológia} \label{sec:ipfix_terminology}
+\subsubsection{Terminológia} \label{sec:ipfix_terminology}
 
 Podľa \citep{rfc3917} existuje veľa definícií termínu \uv{tok} používaných Internetovou komunitou.
 Pracovná skupina IPFIX používa nasledujúcu:
@@ -102,7 +105,7 @@ Tieto elementy navyše obsahujú identifikátor organizácie (PEN), ktorý musí
 \footnote{http://www.iana.org/assignments/enterprise-numbers}.
 \end{description}
 
-\subsection{Formát IPFIX správ} \label{sec:message_format}
+\subsubsection{Formát IPFIX správ} \label{sec:message_format}
 
 Formát správ je definovaný v Špecifikácii IPFIX Protokolu \citep{rfc5101}. Správa pozostáva z 
 hlavičky, nasledovaná niekoľkými IPFIX sadami. 
@@ -117,7 +120,7 @@ v akomkoľvek poradí.
 \caption{Príklad formátu IPFIX správy}\label{o:ipfix_message_format}
 \end{figure}
 
-\subsubsection{Formát hlavičky správy}
+\paragraph{Formát hlavičky správy}
 
 Formát hlavičky správy je znázornený na obrázku \ref{o:ipfix_message_header}. Pozostáva z piatich poli:
 \begin{itemize}
@@ -136,7 +139,7 @@ Formát hlavičky správy je znázornený na obrázku \ref{o:ipfix_message_heade
 \caption{Formát hlavičky IPFIX správy}\label{o:ipfix_message_header}
 \end{figure}
 
-\subsubsection{Formát sady}
+\paragraph{Formát sady}
 
 V IPFIX terminológii je sada všeobecný pojem pre kolekciu záznamov s podobnou štruktúrou. 
 IPFIX správa môže obsahovať tri rôzne druhy sád:
@@ -189,7 +192,7 @@ sa určuje začiatok ďalšej sady, pretože sada môže obsahovať rôzny poče
 \caption{Formát hlavičky sady}\label{o:set_header}
 \end{figure}
 
-\subsubsection{Špecifikátory poľa}
+\paragraph{Špecifikátory poľa}
 
 Špecifikátor poľa je akousi obálkou nad informačným elementom, obrázok \ref{o:field_specifier_format}, 
 vďaka nemu vie zhromažďovací proces spracovávať prijaté dáta. 
@@ -214,7 +217,7 @@ Informačný model.
 
 
 
-\subsubsection{Formát záznamov šablóny}
+\paragraph{Formát záznamov šablóny}
 
 Záznamy šablóny patria k nevyhnutným prvkom IPFIX správy. Na ich základe, a základe Informačného modelu
 IPFIX \citep{rfc5102} vie zhromažďovací proces dekódovať dátové záznamy.
@@ -234,7 +237,7 @@ na dátovú sadu, ktorej štruktúru popisuje. \emph{Počet polí} sa týka poč
 \caption{Formát hlavičky záznamu šablóny}\label{o:template_record_header}
 \end{figure}
 
-\subsubsection{Formát záznamov šablóny možností}
+\paragraph{Formát záznamov šablóny možností}
 
 Tieto záznamy dávajú exportéru možnosť poskytnúť kolektoru dodatočné informácie o kontexte posielaných dát, 
 ktoré by zo samotných 
@@ -255,7 +258,7 @@ súčtom polí pôsobnosti a špecifikátorov poľa.
 \caption{Formát hlavičky záznamu šablóny možností}\label{o:options_record_header}
 \end{figure}
 
-\subsubsection{Formát dátových záznamov}
+\paragraph{Formát dátových záznamov}
 
 Dátové záznamy sú posielané v dátových sadách. Ich formát je veľmi 
 jednoduchý. Pozostávajú len z hodnôt polí, nemajú ani vlastnú hlavičku. 

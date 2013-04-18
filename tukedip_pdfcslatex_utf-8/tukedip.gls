@@ -5,7 +5,7 @@
   \item [{a pod.}]\begingroup a podobne\nomeqref {0.0}\nompageref{1}
   \item [{ACP}]\begingroup Analyzer-Colector Protocol\nomeqref {0.0}
 		\nompageref{1}
-  \item [{atd.}]\begingroup a tak dalej\nomeqref {0.0}\nompageref{1}
+  \item [{atd.}]\begingroup a tak ďalej\nomeqref {0.0}\nompageref{1}
 
  \nomgroup{B}
 
@@ -65,7 +65,7 @@
 		\nompageref{1}
   \item [{JVM}]\begingroup Java Virtual Machine\nomeqref {0.0}
 		\nompageref{1}
-  \item [{JXColl}]\begingroup Java XML Collector\nomeqref {0.0}
+  \item [{JXColl}]\begingroup Java SXML Collector\nomeqref {0.0}
 		\nompageref{1}
 
  \nomgroup{L}
@@ -98,15 +98,22 @@
   \item [{PEN}]\begingroup Private Enterprise Number\nomeqref {0.0}
 		\nompageref{1}
 
+ \nomgroup{Q}
+
+  \item [{QOS}]\begingroup Quality of service\nomeqref {0.0}
+		\nompageref{1}
+
  \nomgroup{R}
 
-  \item [{resp.}]\begingroup respektívne\nomeqref {0.0}\nompageref{1}
+  \item [{resp.}]\begingroup respektíve\nomeqref {0.0}\nompageref{1}
+  \item [{RFC}]\begingroup Request for Comments\nomeqref {0.0}
+		\nompageref{1}
 
  \nomgroup{S}
 
   \item [{SCTP}]\begingroup Stream Control Transmission Protocol\nomeqref {0.0}
 		\nompageref{1}
-  \item [{SLAmeter}]\begingroup Service-level agreement metering\nomeqref {0.0}
+  \item [{SLA}]\begingroup Service-level agreement\nomeqref {0.0}
 		\nompageref{1}
   \item [{SQL}]\begingroup Structured Query Language\nomeqref {0.0}
 		\nompageref{1}
@@ -115,6 +122,7 @@
 
   \item [{TCP}]\begingroup Transmission Control Protocol\nomeqref {0.0}
 		\nompageref{1}
+  \item [{tzv.}]\begingroup takzvaný\nomeqref {0.0}\nompageref{1}
 
  \nomgroup{U}
 

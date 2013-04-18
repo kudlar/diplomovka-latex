@@ -145,23 +145,35 @@ behu a pri vysokom zaťažení v podobe veľkého množstva súbežných tokov. 
 prevádzky postarala konzolová verzia BitTorrent klienta \emph{Transmission}, ktorá sťahovala rôzne 
 distribúcie OS Ubuntu.
 
-%% TODO dopisat cas a pamat.
+%% TODO dopisat cas a pamat / dat screenshot profilingu?
 Experiment odhalil úzke hrdlo nielen Mediátora, ale aj exportéra mybeem. Keď sa spojili dva faktory: 
 enormný počet dátových tokov a rýchlosť prenosu medzi 20 MB/s a 40 MB/s, tak sa niekedy stávalo, že vstupný 
-buffer sprostredkovateľského procesu \verb|ExampleProcess| sa preplnil a začal zahadzovať pakety. Podľa
-môjho názoru bola príčinou 
-synchronizovaná metóda \verb|dispatchFlowRecord(...)| triedy \verb|FlowRecordDispatcher|.
-Tato trieda je asi najvyťaženejšou častou architektúry, pretože deleguje distribúciu záznamov o tokoch 
-medzi zhromažďovacím procesom, sprostredkovateľskými modulmi a exportovacím procesom. O spomínanú metódu
-sa teda bijú viaceré vlákna. V prípade, že zhromažďovací proces prijíma extrémne množstvo správ, môže sa stat,
-že delegovaciu metódu zadržiava pre seba na dlhú dobu. Vtedy ju \verb|ExampleProcess| nemôže zavolať, a teda 
-sa nemôže \uv{zbaviť} svojich záznamov, ktoré spracoval. Zároveň však delegovacia metóda napĺňa jeho
-vstupný buffer. Toto spôsobuje hromadenie záznamov, ktoré mu preplnia vstupný buffer, až ich musí zahadzovať.
-
-Zvýšenie veľkosti vstupného buffera z 25 záznamov na 100 odstránilo tento nedostatok, no považujem to za 
-povrchné a dočasné riešenie, ktoré pri väčšom počte modulov ani nemusí postačovať. Úplným riešením by mohla 
-byt vyrovnávacia pamäť typu \verb|ArrayBlockingQueue|, použitá aj na iných miestach architektúry, ktorá 
-by mohla zmierniť nárazový nápor na \verb|FlowRecordDispatcher|.
+buffer sprostredkovateľského procesu \verb|ExampleProcess| sa preplnil a začal zahadzovať pakety. 
+Analyza vytazenosti vlakien vo vyvojarskom prostredi \emph{NetBeans 7.3} ukazala, ze pricina zahadzovania 
+paketov nie je sposobena tym, ze \verb|ExampleProcess| nestiha v dostatocnej rychlosti spracovavat pakety.
+Proces bol az 95\% casu v stave \emph{wait}, teda cakal na zaznamy o toku. Avsak mybeem exportoval spravy
+v takych zhlukoch, ktore narazovo zaplnali cely vstupny buffer procesu. Stavalo sa, ze do vstupneho
+buffera procesu bol zapisany zhluk 30 zaznamov behom $0,003$ sekundy!
+%Podľa
+%môjho názoru bola príčinou 
+%synchronizovaná metóda \verb|dispatchFlowRecord(...)| triedy \verb|FlowRecordDispatcher|.
+%Tato trieda je asi najvyťaženejšou častou architektúry, pretože deleguje distribúciu záznamov o tokoch 
+%medzi zhromažďovacím procesom, sprostredkovateľskými modulmi a exportovacím procesom. O spomínanú metódu
+%sa teda bijú viaceré vlákna. V prípade, že zhromažďovací proces prijíma extrémne množstvo správ, môže sa stat,
+%že delegovaciu metódu zadržiava pre seba na dlhú dobu. Vtedy ju \verb|ExampleProcess| nemôže zavolať, a teda 
+%sa nemôže \uv{zbaviť} svojich záznamov, ktoré spracoval. Zároveň však delegovacia metóda napĺňa jeho
+%vstupný buffer. Toto spôsobuje hromadenie záznamov, ktoré mu preplnia vstupný buffer, až ich musí zahadzovať.
+%
+%Zvýšenie veľkosti vstupného buffera z 25 záznamov na 100 odstránilo tento nedostatok, no považujem to za 
+%povrchné a dočasné riešenie, ktoré pri väčšom počte modulov ani nemusí postačovať. Úplným riešením by mohla 
+%byt vyrovnávacia pamäť typu \verb|ArrayBlockingQueue|, použitá aj na iných miestach architektúry, ktorá 
+%by mohla zmierniť nárazový nápor na \verb|FlowRecordDispatcher|.
+Zvýšenie veľkosti vstupného buffera z 25 na 100 záznamov odstránilo tento nedostatok. Stalo by za uvahu,
+ci by nebolo vhodne triedu zodpovednu za delegovanie toku zaznamov - \verb|FlowRecordDispatcher| 
+implementovat ako samostatne vlakno. Dispecerovi by bola predradena dostatocne velka vyrovnavacia pamat 
+typu \verb|ArrayBlockingQueue|, použitá aj na iných miestach architektúry, ktorá by mohla zmierniť 
+nárazový nápor zaznamov. Zhromazdovaci proces a moduly by tak nevolali priamo synchronizovanu metodu
+dispecera ako je tomu teraz, ale svoje zaznamy by zapisovali do tejto pamate.
 
 Druhý nedostatok bol odhalený v exportéri. Nástroj mybeem rovnako hlásil preplnenie paketovej cache a 
 preto zahadzoval správy. Tento fakt bol oznámený riešiteľskému tímu zodpovednému za exportér.

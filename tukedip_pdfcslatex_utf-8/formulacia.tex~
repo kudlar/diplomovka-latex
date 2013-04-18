@@ -2,8 +2,7 @@
 \section{Formul\'acia \'ulohy}
 
 Cielom tejto diplomovej prace je analyzovat, navrhnut, implementovat a otestovat aplikacny ramec 
-pre problem sprostredkovania sprav v protokole IPFIX. Riesenie je potrebne integrovat s existujucou 
-architekturou nastroja SLAmeter
+pre problem sprostredkovania sprav v protokole IPFIX. 
 
 
 %Text záverečnej práce musí obsahovať\/ kapitolu s~formuláciou

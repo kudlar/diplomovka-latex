@@ -133,41 +133,54 @@ obidvoch tvrdení.
 
 \subsection{Záťažový test}
 
-Posledny experiment sa nazyva aj \uv{\emph{stress test}}. Jeho ulohou je intenzivne a narocne testovanie 
-za ucelom overenia stability systemu. Pre tento experiment som nepouzil topologiu ako v ostatnych testoch.
-Zatazovy test prebiehal na virtualnom serveri \emph{monica-med.monica.cnl.sk} v infrastrukture Laboratoria
-pocitacovych sieti na Technickej Univerzite v Kosiciach.
+Posledný experiment sa nazýva aj \uv{\emph{stress test}}. Jeho úlohou je intenzívne a náročné testovanie 
+za účelom overenia stability systému. Pre tento experiment som nepoužil topológiu ako v ostatných testoch.
+Záťažový test prebiehal na virtuálnom serveri \emph{monica-med.monica.cnl.sk} v infraštruktúre Laboratória
+počítačových sietí na Technickej Univerzite v Košiciach.
 
-Na serveri bol nainstalovany Mediator 1.0 z instalacneho .deb balicka a mybeem poslednej verzie, ktora 
-ma podporu pre Mediator. Myslienkou experimentu bolo zistit, ako sa bude spravat Mediator pri dlhodobom 
-behu a pri vysokom zatazeni v podobe velkeho mnozstva subeznych tokov. Protokol \emph{BitTorrent}
-\citep{bittorrent} je znamy prave tym, ze nadvadzuje vela spojeni. Preto sa o generovanie sietovej 
-prevadzky postarala konzolova verzia BitTorrent klienta \emph{Transmission}, ktora stahovala rozne 
-distribucie OS Ubuntu.
+Na serveri bol nainštalovaný Mediátor 1.0 z inštalačného .deb balíčka a mybeem poslednej verzie, ktorá 
+má podporu pre Mediátor. Myšlienkou experimentu bolo zistiť, ako sa bude správať Mediátor pri dlhodobom 
+behu a pri vysokom zaťažení v podobe veľkého množstva súbežných tokov. Protokol \emph{BitTorrent}
+\citep{bittorrent} je známy práve tým, že nadväzuje veľa spojení. Preto sa o generovanie sieťovej 
+prevádzky postarala konzolová verzia BitTorrent klienta \emph{Transmission}, ktorá sťahovala rôzne 
+distribúcie OS Ubuntu.
 
-%% TODO dopisat cas a pamat.
-Experiment odhalil uzke hrdlo nielen Mediatora, ale aj exportera mybeem. Ked sa spojili dva faktory: 
-enormny pocet datovych tokov a rychlost prenosu medzi 20 MB/s a 40 MB/s, tak sa niekedy stavalo, ze vstupny 
-buffer sprostredkovateľského procesu \verb|ExampleProcess| sa preplnil a zacal zahadzovat pakety. Podla
-mojho nazoru bola pricinou 
-synchronizovana metoda \verb|dispatchFlowRecord(...)| triedy \verb|FlowRecordDispatcher|.
-Tato trieda je asi najvytazenejsou castou architektury, pretoze deleguje distribuciu zaznamov o tokoch 
-medzi zhromazdovacim procesom, sprostredkovateľskými modulmi a exportovacim procesom. O spominanu metodu
-sa teda biju viacere vlakna. V pripade, ze zhromazdovaci proces prijima extremne mnozstvo sprav, moze sa stat,
-ze delegovaciu metodu zadrziava pre seba na dlhu dobu. Vtedy ju \verb|ExampleProcess| nemoze zavolat, a teda 
-sa nemoze \uv{zbavit} svojich zaznamov, ktore spracoval. Zaroven vsak delegovacia metoda naplna jeho
-vstupny buffer. Toto sposobuje hromadenie zaznamov, ktore mu preplnia vstupny buffer, az ich musi zahadzovat.
+%% TODO dopisat cas a pamat / dat screenshot profilingu?
+Experiment odhalil úzke hrdlo nielen Mediátora, ale aj exportéra mybeem. Keď sa spojili dva faktory: 
+enormný počet dátových tokov a rýchlosť prenosu medzi 20 MB/s a 40 MB/s, tak sa niekedy stávalo, že vstupný 
+buffer sprostredkovateľského procesu \verb|ExampleProcess| sa preplnil a začal zahadzovať pakety. 
+Analyza vytazenosti vlakien vo vyvojarskom prostredi \emph{NetBeans 7.3} ukazala, ze pricina zahadzovania 
+paketov nie je sposobena tym, ze \verb|ExampleProcess| nestiha v dostatocnej rychlosti spracovavat pakety.
+Proces bol az 95\% casu v stave \emph{wait}, teda cakal na zaznamy o toku. Avsak mybeem exportoval spravy
+v takych zhlukoch, ktore narazovo zaplnali cely vstupny buffer procesu. Stavalo sa, ze do vstupneho
+buffera procesu bol zapisany zhluk 30 zaznamov behom $0,003$ sekundy!
+%Podľa
+%môjho názoru bola príčinou 
+%synchronizovaná metóda \verb|dispatchFlowRecord(...)| triedy \verb|FlowRecordDispatcher|.
+%Tato trieda je asi najvyťaženejšou častou architektúry, pretože deleguje distribúciu záznamov o tokoch 
+%medzi zhromažďovacím procesom, sprostredkovateľskými modulmi a exportovacím procesom. O spomínanú metódu
+%sa teda bijú viaceré vlákna. V prípade, že zhromažďovací proces prijíma extrémne množstvo správ, môže sa stat,
+%že delegovaciu metódu zadržiava pre seba na dlhú dobu. Vtedy ju \verb|ExampleProcess| nemôže zavolať, a teda 
+%sa nemôže \uv{zbaviť} svojich záznamov, ktoré spracoval. Zároveň však delegovacia metóda napĺňa jeho
+%vstupný buffer. Toto spôsobuje hromadenie záznamov, ktoré mu preplnia vstupný buffer, až ich musí zahadzovať.
+%
+%Zvýšenie veľkosti vstupného buffera z 25 záznamov na 100 odstránilo tento nedostatok, no považujem to za 
+%povrchné a dočasné riešenie, ktoré pri väčšom počte modulov ani nemusí postačovať. Úplným riešením by mohla 
+%byt vyrovnávacia pamäť typu \verb|ArrayBlockingQueue|, použitá aj na iných miestach architektúry, ktorá 
+%by mohla zmierniť nárazový nápor na \verb|FlowRecordDispatcher|.
+Zvýšenie veľkosti vstupného buffera z 25 na 100 záznamov odstránilo tento nedostatok. Stalo by za uvahu,
+ci by nebolo vhodne triedu zodpovednu za delegovanie toku zaznamov - \verb|FlowRecordDispatcher| 
+implementovat ako samostatne vlakno.
 
-Zvysenie velkosti vstupneho buffra z 25 zaznamov na 100 odstranilo tento nedostatok, no povazujem to za 
-povrchne a docasne riesenie, ktore pri vacsom pocte modulov ani nemusi stacit. Uplnym riesenim by mohla 
-byt vyrovnavacia pamat typu \verb|ArrayBlockingQueue|, pouzita aj na inych miestach architektury, ktora 
-by mohla zmiernit narazovy napor na \verb|FlowRecordDispatcher|.
+Úplným riešením by mohla 
+byt vyrovnávacia pamäť typu \verb|ArrayBlockingQueue|, použitá aj na iných miestach architektúry, ktorá 
+by mohla zmierniť nárazový nápor na \verb|FlowRecordDispatcher|.
 
-Druhy nedostatok bol odhaleny v exporteri. Nastroj mybeem rovnako hlasil preplnenie paketovej cache a 
-preto zahadzoval spravy. Tento fakt bol oznameny riesitelskemu timu zodpovednemu za exporter.
+Druhý nedostatok bol odhalený v exportéri. Nástroj mybeem rovnako hlásil preplnenie paketovej cache a 
+preto zahadzoval správy. Tento fakt bol oznámený riešiteľskému tímu zodpovednému za exportér.
 
-Pozitivnym vysledkom experimentu bolo to, ze dlhodobe spustenie Mediatora neprinieslo ziadnu nestabilitu 
-systemu. Spotreba pamate nemala stupajucu tendenciu a vyuzitie procesora nepresiahlo 3\%.
+Pozitívnym výsledkom experimentu bolo to, že dlhodobé spustenie Mediátora neprinieslo žiadnu nestabilitu 
+systému. Spotreba pamäte nemala stúpajúcu tendenciu a využitie procesora nepresiahlo 3\%.
 
 
 

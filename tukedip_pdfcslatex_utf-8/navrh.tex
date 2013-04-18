@@ -599,7 +599,7 @@ Exportovaciu pamäť predstavuje trieda \verb|ExportCache|. Tá je rovnako ako \
 ale pokračovať vo svojej práci. Preto sa do cache zapisuje metódou \verb|offer()|.
 
 Jadrom exportovacieho procesu je trieda \verb|UDPExporter|, predstavujúca samostatné vlákno. V 
-konštruktori vytvára UDP soket na prijímanie a posielanie paketov a naviaže ho na akýkoľvek voľný port.
+konštruktori vytvára UDP socket na prijímanie a posielanie paketov a naviaže ho na akýkoľvek voľný port.
 K tomu slúži volanie bezparametrického konštruktora triedy \verb|DatagramSocket|. V jeho hlavnej metóde 
 \verb|run()| vykonáva cyklus dokiaľ nie je prerušený. V cykle číta a vyberá záznamy o tokoch z 
 vyrovnávacej pamäte pre export. Záznamy posiela triede \verb|MessageEncoder|, ktorá z neho poskladá 
@@ -667,7 +667,7 @@ správy. Prvým je prúd bytov hlavičky správy. Ak sa exportuje aj šablóna, 
 a posledným je prúd dátovej sady. Trieda \verb|UDPExporter| teraz z prúdu IPFIX správy vytvori 
 UDP paket. Na to slúži trieda \verb|DatagramPacket|, pričom jej parametrami sú dáta, dĺžka správy, 
 IP adresa a UDP port. Posledné dve menované sú zadané administrátorom v konfiguračnom súbore. Metódou 
-\verb|send()| zavolanou nad soketom je správa odoslaná.
+\verb|send()| zavolanou nad socketom je správa odoslaná.
 
 
 

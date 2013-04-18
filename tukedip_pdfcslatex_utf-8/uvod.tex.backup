@@ -17,9 +17,8 @@ V Laboratoriu pocitacovych sieti \emph{(CNL)} na Technickej Univerzite v Kosicia
 skupina MONICA pasivny merac parametrov sietovej prevadzky na baze tokov, ktory vyhodnocuje 
 dodrziavanie zmluvy o urovni poskytovanej sluzby \emph{(SLA)}. Jeho cielom je spracovat urcite parametre 
 sietovej prevadzky a na ich zaklade vypocitat triedu kvality. Tato aplikacia ma sluzit nielen poskytovatelom 
-pripojenia k Internetu ako monitorovaci nastroj. Triedy umoznuju aj ich klientom jednoducho 
-porovnavat kvalitu poskytovanych sluzieb. Jadro nastroja SLAmeter sa sklada z komponentov, ktore su 
-navrhnute v sulade s protokolom IPFIX.
+pripojenia k Internetu ako monitorovaci nastroj, ale aj ich klientom na jednoduche porovnanie poskytovanych 
+sluzieb. 
 
 Komponentmi architektury IPFIX \emph{(IP Flow Information Export)} podla RFC 5470 \citep{rfc5470}
 su exportery a kolektory komunikujuce protokolom IPFIX. Vzhľadom k trvalému rastu IP prevádzky
@@ -37,7 +36,6 @@ protokolu UDP na spolahlivy SCTP.
 Tato praca analyzuje nastoleny problem sprostredkovania sprav a sprostredkovatelskych entit nazyvany 
 \emph{IP Flow Information Export (IPFIX) Mediation Problem}. Jej hlavnym cielom je navrhnut a implementovat
 aplikacny ramec pre sprostredkovatelsku entitu zvanu IPFIX Mediator pre ucely nastroja SLAmeter. 
-%% TODO co to zlepsi a tak je ti super fasa
 
 Struktura prace je nasledovna. V uvodnej kapitole je formulovana definicia ulohy. Druha kapitola sa 
 v kratkosti venuje protokolu IPFIX. Popisuje len format IPFIX sprav, jej hlavicku, tri typy

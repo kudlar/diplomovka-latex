@@ -11,13 +11,14 @@
 \glossaryentry{MONICA@[{MONICA}]\begingroup Monitoring and Optimization of Network Infrastructures Communications and Applications\nomeqref {0.0}|nompageref}{1}
 \glossaryentry{napr.@[{napr.}]\begingroup napríklad\nomeqref {0.0}|nompageref}{1}
 \glossaryentry{a pod.@[{a pod.}]\begingroup a podobne\nomeqref {0.0}|nompageref}{1}
-\glossaryentry{atd.@[{atd.}]\begingroup a tak dalej\nomeqref {0.0}|nompageref}{1}
-\glossaryentry{resp.@[{resp.}]\begingroup respektívne\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{atd.@[{atd.}]\begingroup a tak ďalej\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{resp.@[{resp.}]\begingroup respektíve\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{tzv.@[{tzv.}]\begingroup takzvaný\nomeqref {0.0}|nompageref}{1}
 \glossaryentry{BGP@[{BGP}]\begingroup Border Gateway Protocol\nomeqref {0.0}|nompageref}{1}
 \glossaryentry{ID@[{ID}]\begingroup Identification (number)\nomeqref {0.0}|nompageref}{1}
 \glossaryentry{CNL@[{CNL}]\begingroup Computer Networks Laboratory\nomeqref {0.0}|nompageref}{1}
 \glossaryentry{BEEM@[{BEEM}]\begingroup BasicMeter Exporting and Measuring process\nomeqref {0.0}|nompageref}{1}
-\glossaryentry{JXColl@[{JXColl}]\begingroup Java XML Collector\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{JXColl@[{JXColl}]\begingroup Java SXML Collector\nomeqref {0.0}|nompageref}{1}
 \glossaryentry{ACP@[{ACP}]\begingroup Analyzer-Colector Protocol\nomeqref {0.0}|nompageref}{1}
 \glossaryentry{SQL@[{SQL}]\begingroup Structured Query Language\nomeqref {0.0}|nompageref}{1}
 \glossaryentry{ECAM@[{ECAM}]\begingroup Exporter-Collector-Analyzer Manager\nomeqref {0.0}|nompageref}{1}
@@ -26,7 +27,7 @@
 \glossaryentry{UDP@[{UDP}]\begingroup User Datagram Protocol\nomeqref {0.0}|nompageref}{1}
 \glossaryentry{TCP@[{TCP}]\begingroup Transmission Control Protocol\nomeqref {0.0}|nompageref}{1}
 \glossaryentry{SCTP@[{SCTP}]\begingroup Stream Control Transmission Protocol\nomeqref {0.0}|nompageref}{1}
-\glossaryentry{SLAmeter@[{SLAmeter}]\begingroup Service-level agreement metering\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{SLA@[{SLA}]\begingroup Service-level agreement\nomeqref {0.0}|nompageref}{1}
 \glossaryentry{bmIDS@[{bmIDS}]\begingroup BasicMeter Intrusion Detection System\nomeqref {0.0}|nompageref}{1}
 \glossaryentry{FIFO@[{FIFO}]\begingroup First-In-First-Out\nomeqref {0.0}|nompageref}{1}
 \glossaryentry{JVM@[{JVM}]\begingroup Java Virtual Machine\nomeqref {0.0}|nompageref}{1}
@@ -34,6 +35,8 @@
 \glossaryentry{JDK@[{JDK}]\begingroup Java Development Kit\nomeqref {0.0}|nompageref}{1}
 \glossaryentry{MAC@[{MAC}]\begingroup Media Access Control\nomeqref {0.0}|nompageref}{1}
 \glossaryentry{LTS@[{LTS}]\begingroup Long Term Support\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{RFC@[{RFC}]\begingroup Request for Comments\nomeqref {0.0}|nompageref}{1}
 \glossaryentry{OS@[{OS}]\begingroup operačný systém\nomeqref {0.0}|nompageref}{1}
+\glossaryentry{QOS@[{QOS}]\begingroup Quality of service\nomeqref {0.0}|nompageref}{1}
 \glossaryentry{MB/s@[{MB/s}]\begingroup Megabyte za sekundu, jednotka rýchlosti dátového presnosu\nomeqref {0.0}|nompageref}{1}
 \glossaryentry{Gb/s@[{Gb/s}]\begingroup Gigabit za sekundu, jednotka rýchlosti dátového presnosu\nomeqref {0.0}|nompageref}{1}
