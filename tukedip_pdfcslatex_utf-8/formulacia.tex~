@@ -1,9 +1,25 @@
 %%
 \section{Formul\'acia \'ulohy}
 
-Cielom tejto diplomovej prace je analyzovat, navrhnut, implementovat a otestovat aplikacny ramec 
-pre problem sprostredkovania sprav v protokole IPFIX. 
+Cieľom tejto diplomovej práce je analyzovať, navrhnúť, implementovať a otestovať aplikačný rámec 
+pre problém sprostredkovania správ v protokole IPFIX. Riešenie je zároveň potrebné integrovať s 
+existujúcou architektúrou nástroja SLAmeter. Za týmto účelom je nutné vykonať nasledujúce kroky. 
 
+V prvom rade je potrebné analyzovať IPFIX z pohľadu protokolu ale aj architektúry.
+Najväčší dôraz sa kladie na analýzu správ, pretože 
+úlohou Mediátora bude aj ich dekódovanie a následné zakódovanie podľa špecifikovaného formátu.
+
+Druhým krokom je analýza problému sprostredkovania správ v IPFIX. Konkrétne ide o definovanie terminológie,
+analýzu výhod a príkladov použitia, ale aj priblíženie niektorých problémov spojených s implementáciou 
+takéhoto nástroja.
+
+Následne je potrebné čitateľovi aspoň stručne priblížiť projekty skupiny MONICA, medzi ktoré patrí
+BasicMeter a jeho nadstavba SLAmeter. 
+
+Stvrtym a najdolezitejsim krokom je navrhnut a implementovat samotny aplikacny ramec podla definovaynch 
+poziadaviek. Riesenie musi byt experimentalne overenie vhodnymi testami.
+
+Poslednym, no nie menej dolezitym krokom je podla pokynov vypracovat dokumentaciu vykonanej práce.
 
 %Text záverečnej práce musí obsahovať\/ kapitolu s~formuláciou
 %úlohy resp. úloh riešených v~rámci záverečnej práce. V~tejto časti

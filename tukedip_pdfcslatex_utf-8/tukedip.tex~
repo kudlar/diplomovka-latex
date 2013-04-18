@@ -152,6 +152,8 @@ nemožno deliť a~uvádzať na dvoch strabách).}
 
 \abstraktsk % abstrakt v SK 
 
+\kabstrakt
+
 \abstrakteng % abstrakt v ENG
 
 \kabstrakt % koniec abstraktov, nova strana
@@ -161,10 +163,6 @@ nemožno deliť a~uvádzať na dvoch strabách).}
 \zadanieprace
 
 \cestnevyhlasenie
-% Niektorí autori metodických príručiek o~záverečných prácach sa
-% nazdávajú, že takéto vyhlásenie je zbytočné, nakoľko povinnosť
-% vypracovať záverečnú prácu samostatne, vyplýva študentovi zo zákona a
-% na autora práce sa vzťahuje autorský zákon.
 
 \podakovanie
 Na tomto mieste sa chcem poďakovať vedúcemu diplomovej práce Ing. Petrovi 
@@ -184,7 +182,7 @@ aj nároky a dôraz na kvalitu. Aby sa kvalita sietí a poskytovaných služieb 
 porovnávať, je potrebné siete merať.
 
 Meracia architektúra SLAmeter vyvíjaná výskumnou skupinou MONICA v Laboratóriu počítačových sietí na 
-Technickej univerzite v Košiciach predstavuje nástroj na pasívne meranie a analýzu parametrov 
+Technickej univerzite v Košiciach predstavuje nástroj na pasívne meranie a analýzu parametrov prevadzky
 počítačových sietí na báze tokov za účelom určovania ich triedy kvality.
 
 Meranie na báze tokov je populárnou a osvedčenou metódou rôznych monitorovacích infraštruktúr. Avšak 

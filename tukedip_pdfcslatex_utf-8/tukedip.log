@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  18 APR 2013 18:36
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  18 APR 2013 22:15
 entering extended mode
  %&-line parsing enabled.
 **tukedip.tex
@@ -741,7 +741,7 @@ l.36
 s been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.271 \include{uvod}
+l.267 \include{uvod}
                      [2]
 \openout2 = `formulacia.aux'.
 
@@ -749,7 +749,7 @@ l.271 \include{uvod}
 (name{page.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.273 \include{formulacia}
+l.269 \include{formulacia}
                            [3
 
 
@@ -852,13 +852,13 @@ File: figures/options_record_header.pdf Graphic file (type pdf)
  the same identifier (name{page.11}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.275 \include{analyza}
+l.271 \include{analyza}
                         [11 <./figures/template_record_header.pdf> <./figures/o
 ptions_record_header.pdf>]pdfTeX warning (ext4): destination with the same iden
 tifier (name{page.12}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.275 \include{analyza}
+l.271 \include{analyza}
                         [12]
 \openout2 = `mediator.aux'.
 
@@ -1144,7 +1144,7 @@ e/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm
 nts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.p
 fb></usr/share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf/fonts/t
 ype1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb>
-Output written on tukedip.pdf (92 pages, 1714349 bytes).
+Output written on tukedip.pdf (92 pages, 1715194 bytes).
 PDF statistics:
  1271 PDF objects out of 1440 (max. 8388607)
  244 named destinations out of 1000 (max. 500000)
