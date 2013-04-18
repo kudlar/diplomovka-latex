@@ -6,50 +6,51 @@
 \section*{\'Uvod}
 \addcontentsline{toc}{section}{\numberline{}\'Uvod}
 
-Rozmach pocitacovych sieti prinasa ludstvu nove moznosti a sluzby, o akych sme kedysi ani nesnivali.
-Internet sa stal sucastou nasho kazdodenneho zivota, mnohi su pripojeni aj 24 hodin denne, nielen 
-prostrednictvom pocitacov, ale aj mobilnych zariadeni. Prave vdaka rozmachu mobilneho Internetu si uz
-ani nevieme predstavit situaciu, ze by sme neboli v dosahu Internetoveho obsahu. Tymto su kladene 
-obzvlast vysoke naroky na kvalitu sieti a poskytovanych sluzieb. Aby poskytovatelia Internetu mohli 
-zabezpecovat a zlepsovat kvalitu sluzieb (QoS), musia ju vediet merat.
+Rozmach počítačových sietí prináša ľudstvu nové možnosti a služby, o akých sme kedysi ani nesnívali.
+Internet sa stal súčasťou nášho každodenného života, mnohí sú pripojení aj 24 hodín denne, nielen 
+prostredníctvom počítačov, ale aj mobilných zariadení. Práve vďaka rozmachu mobilného Internetu si už
+ani nevieme predstaviť situáciu, že by sme neboli v dosahu Internetového obsahu. Týmto sú kladené 
+obzvlášť vysoké nároky na kvalitu sietí a poskytovaných služieb. Aby poskytovatelia Internetu mohli 
+zabezpečovať a zlepšovať kvalitu služieb (QoS), musia ju vedieť merať.
 
-V Laboratoriu pocitacovych sieti \emph{(CNL)} na Technickej Univerzite v Kosiciach vyvija vyskumna 
-skupina MONICA pasivny merac parametrov sietovej prevadzky na baze tokov, ktory vyhodnocuje 
-dodrziavanie zmluvy o urovni poskytovanej sluzby \emph{(SLA)}. Jeho cielom je spracovat urcite parametre 
-sietovej prevadzky a na ich zaklade vypocitat triedu kvality. Tato aplikacia ma sluzit nielen poskytovatelom 
-pripojenia k Internetu ako monitorovaci nastroj. Triedy umoznuju aj ich klientom jednoducho 
-porovnavat kvalitu poskytovanych sluzieb. Jadro nastroja SLAmeter sa sklada z komponentov, ktore su 
-navrhnute v sulade s protokolom IPFIX.
+V Laboratóriu počítačových sietí \emph{(CNL)} na Technickej Univerzite v Košiciach vyvíja výskumná 
+skupina MONICA pasívny merač parametrov sieťovej prevádzky na báze tokov, ktorý vyhodnocuje 
+dodržiavanie zmluvy o úrovni poskytovanej služby \emph{(SLA)}. Jeho cieľom je spracovať určité parametre 
+sieťovej prevádzky a na ich základe vypočítať triedu kvality. Táto aplikácia má slúžiť nielen poskytovateľom 
+pripojenia k Internetu ako monitorovací nástroj. Triedy umožňujú aj ich klientom jednoducho 
+porovnávať kvalitu poskytovaných služieb. Jadro nástroja SLAmeter sa skladá z komponentov, ktoré sú 
+navrhnuté v súlade s protokolom IPFIX.
 
-Komponentmi architektury IPFIX \emph{(IP Flow Information Export)} podla RFC 5470 \citep{rfc5470}
-su exportery a kolektory komunikujuce protokolom IPFIX. Vzhľadom k trvalému rastu IP prevádzky
-v heterogénnych sieťových prostrediach, tieto exporter-kolektor systemy mozu viest k problemom 
-skalovatelnosti. Ba co viac, neposkytuju flexibilitu potrebnu pre siroky rad maracich aplikacii.
+Komponentmi architektúry IPFIX \emph{(IP Flow Information Export)} podla RFC 5470 \citep{rfc5470}
+sú exportéry a kolektory komunikujúce protokolom IPFIX. Vzhľadom k trvalému rastu IP prevádzky
+v heterogénnych sieťových prostrediach, tieto exportér-kolektor systémy môžu viesť k problémom 
+škálovateľnosti. Ba čo viac, neposkytujú flexibilitu potrebnú pre široký rad meracích aplikácii.
 
-Pre naplnenie požiadaviek aplikácií s obmedzenými systémovými zdrojmi, IPFIX architektúra zavadza 
-sprostredkovatelsku entitu medzi exportery a kolektory. Z pohladu manipulácie s dátami môže tento subjekt 
-poskytovat agregáciu, koreláciu, filtrovanie, anonymizaciu a ine úpravy zaznamov o tokoch za ucelom 
-setrenia vypoctovych zdrojov meracieho systemu a vykonávania predspracovania úloh pre kolektor. Z hladiska
-interoperability nastrojov roznych vyvojarov, môže poskytovat konverziu z inych protokolov na IPFIX, 
-respektive zvysovat spolahlivost exportov napriklad prevodom z nespolahliveho, bezspojovo orientovaneho 
-protokolu UDP na spolahlivy SCTP. 
+Pre naplnenie požiadaviek aplikácií s obmedzenými systémovými zdrojmi, IPFIX architektúra zavádza 
+sprostredkovateľskú entitu medzi exportéry a kolektory. Z pohľadu manipulácie s dátami môže tento subjekt 
+poskytovať agregáciu, koreláciu, filtrovanie, anonymizáciu a iné úpravy záznamov o tokoch za účelom 
+šetrenia výpočtových zdrojov meracieho systému a vykonávania predspracovania úloh pre kolektor. Z hľadiska
+interoperability nástrojov rôznych vývojárov, môže poskytovať konverziu z iných protokolov na IPFIX, 
+respektíve zvyšovať spoľahlivosť exportov napríklad prevodom z nespoľahlivého, bezspojovo orientovaného 
+protokolu UDP na spoľahlivý SCTP. \citep{rfc6183}
 
-Tato praca analyzuje nastoleny problem sprostredkovania sprav a sprostredkovatelskych entit nazyvany 
-\emph{IP Flow Information Export (IPFIX) Mediation Problem}. Jej hlavnym cielom je navrhnut a implementovat
-aplikacny ramec pre sprostredkovatelsku entitu zvanu IPFIX Mediator pre ucely nastroja SLAmeter. 
-%% TODO co to zlepsi a tak je ti super fasa
+Táto práca analyzuje nastolený problém sprostredkovania správ a sprostredkovateľských entít nazývaný 
+\emph{IP Flow Information Export (IPFIX) Mediation Problem}. Jej hlavným cieľom je navrhnúť a implementovať
+aplikačný rámec pre sprostredkovateľskú entitu zvanú IPFIX Mediátor pre účely nástroja SLAmeter. 
+Rámec musí klásť veľký dôraz na jeho modularitu, aby bolo jednoduché a pohodlné implementovať nové 
+sprostredkovateľské moduly a tým zvyšovať možnosti monitorovania aplikáciou SLAmeter.
 
-Struktura prace je nasledovna. V uvodnej kapitole je formulovana definicia ulohy. Druha kapitola sa 
-v kratkosti venuje protokolu IPFIX. Popisuje len format IPFIX sprav, jej hlavicku, tri typy
-sad a ich komponenty. Ostatne rysy protokolu si moze citatel vyhladat v prislusnych dokumentoch RFC.
-Nasledujuca kapitola podrobne analyzuje problem sprostredkovania sprav v IPFIX. Uvodom definuje prislusnu 
-terminologiu. Analyzuje nevyhody exporter-kolektor architektur bez Mediatora, priklady pouzitia 
-sprostredkovania, ale aj jeho implementacno-specificke problemy. Dalsia sekcia sa zaobera analyze 
-aplikacneho ramca pre IPFIX Mediator. Tretia kapitola strucne priblizi projekty vyskumnej skupiny MONICA.
-Nasledujuca kapitola s poradovym cislo styri, tvori jadro prace. V nej sa citatel docita o navrhu a 
-implementacii aplikacneho ramca pre sprostredkovatelsku entitu. Jednotlivym triedam a metodam vyssieho 
-vyznamu je venovane podrobne vysvetlenie. Predposledna kapitola niekolkymi testami experimentalne 
-overuje implementovane riesenie. Zaver uz len zhodnoti diplomovu pracu a jej dosiahnute vysledky. 
+Štruktúra práce je nasledovná. V úvodnej kapitole je formulovaná definícia úlohy. Druhá kapitola sa 
+v krátkosti venuje protokolu IPFIX. Popisuje len formát IPFIX správy, jej hlavičku, tri typy
+sád a ich komponenty. Ostatné rysy protokolu si môže čitateľ vyhľadať v príslušných dokumentoch RFC.
+Nasledujúca kapitola podrobne analyzuje problém sprostredkovania správ v IPFIX. Úvodom definuje použitú 
+terminológiu. Analyzuje nevýhody exportér-kolektor architektúr bez Mediátora, príklady použitia 
+sprostredkovania, ale aj jeho implementačno-špecifické problémy. Ďalšia sekcia sa zaoberá analýzou 
+aplikačného rámca pre IPFIX Mediátor. Tretia kapitola stručne priblíži projekty výskumnej skupiny MONICA.
+Nasledujúca kapitola s poradovým číslom štyri, tvorí jadro práce. V nej sa čitateľ dočíta o návrhu a 
+implementácii aplikačného rámca pre sprostredkovateľskú entitu. Jednotlivým triedam a metódam vyššieho 
+významu je venované podrobné vysvetlenie. Predposledná kapitola niekoľkými testami experimentálne 
+overuje implementované riešenie. Záver už len zhodnotí diplomovú prácu a jej dosiahnuté výsledky. 
 
 
 %V~úvode autor podrobnejšie ako v~predhovore, pritom výstižne a~krátko

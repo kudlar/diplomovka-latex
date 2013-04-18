@@ -198,7 +198,7 @@ IPFIX Mediátor medzi exportérom a kolektorom.
 \paragraph{Distribúcia dátových záznamov}
 
 Trendom v moderných dátových sieťach je súčasný prenos dát, hlasu a video komunikácie jednou 
-spoločnou infraštruktúrou. Takéto siete nazývame konvertovanými sieťami. 
+spoločnou infraštruktúrou. Takéto siete nazývame konvergovanými sieťami. 
 Počítačové siete paralelne prenášajú dáta viacerých protokolov ako napríklad
 IPv4, IPv6, VPN, MPLS a pod. Dátové záznamy každého z týchto protokolov musia byť analyzované 
 oddelene a z rôznych perspektív pre rôzne organizácie.
@@ -270,7 +270,7 @@ nad dátovými záznamami. Kolektor nedokáže rozlíšiť medzi spájaním čas
 Mediátor neexportuje použitú funkciu. Niektoré parametre vzťahujúce sa k funkcii by tiež mali byť 
 exportované. 
 
-V prípade spájania času, kolektor musí poznať minimálne aktívny timeout \emph{active timeout} 
+V prípade spájania času, kolektor musí poznať aktívny timeout \emph{active timeout} 
 pôvodných záznamov o tokoch. Pri spájaní priestoru je potrebné poznať nad akou oblasťou bola 
 vykonaná kompozícia dátových záznamov.\citep{rfc5982}
 
