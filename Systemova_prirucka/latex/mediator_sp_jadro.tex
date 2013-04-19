@@ -614,9 +614,23 @@ Vracia jedinecnu instanciu objektu.
 
 \subsection{Balík sk.tuke.cnl.bm.Mediator.IntermediateProcesses}
 
+
+Diagram tried rozhrania pre sprostredkovateµské procesy, vrátane triedy \verb|ExampleProcess| je znázornený
+na obrázku \ref{o:intermediate_class}.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=1.0\textwidth]{intermediate_class}
+\caption{Diagram tried rozhrania pre sprostredkovateµské procesy}\label{o:intermediate_class}
+\end{figure}
+
+
+
 \subsubsection{Trieda AIntermediateProcess}
 Abstraktna trieda, poskytuje vychodiskove metody sprostredkovatelskym procesom a tvori akesi
-rozhranie medzi modulmi a aplikacnym ramcom. Dedi od triedy \verb|Thread|.
+rozhranie medzi modulmi a aplikacnym ramcom. Dedi od triedy \verb|Thread|.\\
+\\
+\\
 
 \bigskip
 \textbf{Kon¹truktor} 
@@ -750,9 +764,8 @@ Anonymizovana IP adresa, vratena ako retazec.
 
 Reprezentuje vstupny buffer sprostredkovatelskych modulov. Tato trieda je cache pre zaznamy o tokoch. 
 Jej pouzitie je kriticke vo vysokorychlostnych sietach, pretoze udrziava elementy a tym padom moze 
-vyrovnavat narazovy napor. Je synchronizovana a jej implementacia je FIFO front typu \verb|ArrayBlockingQueue|.
+vyrovnavat narazovy napor. Je synchronizovana a jej implementacia je FIFO front typu \verb|ArrayBlockingQueue|.\\
 
-\clearpage
 \textbf{Metody:}
 
 \emph{public boolean \textbf{write}(IPFIXFlowRecord flowRecord)}
@@ -790,6 +803,16 @@ pocas cakania.
 
 \subsection{Balik sk.tuke.cnl.bm.Mediator.collecting}
 
+Zjednodu¹ený diagram tried tohto balika mô¾eme vidie» na Obr. \ref{o:collecting1_class} a na 
+Obr. \ref{o:collecting2_class}.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=1.0\textwidth]{collecting1_class}
+\caption{Diagram tried prvej fázy zhroma¾ïovacieho procesu}\label{o:collecting1_class}
+\end{figure}
+
+
 \subsubsection{Trieda UDPServer}
 Slú¾i ako UDP server. Prijíma UDP datagramy cez \verb|DatagramChannel| a uklada ich do 
 \verb|PacketCache|. 
@@ -818,7 +841,11 @@ portom exportera metode \emph{write()}, ktora ich zapise do \verb|PacketCache|.
 
 Táto metóda zru¹í èistiace vlákno pre UDP Template Cache. Je volaná pri preru¹ení tohto vlákna.
 
-
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=1.0\textwidth]{collecting2_class}
+\caption{Diagram tried druhej fázy zhroma¾ïovacieho procesu}\label{o:collecting2_class}
+\end{figure}
 %---------
 
 \subsubsection{Trieda IpfixParser}
@@ -836,6 +863,14 @@ posunuty triede \verb|FlowRecordDispatcher|.
 % --------------------- EXPORTING ---------------------------
 
 \subsection{Balik sk.tuke.cnl.bm.Mediator.exporting}
+
+Diagram tried exportovacieho procesu je na Obr. \ref{o:exporting_class}.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=1.0\textwidth]{exporting_class}
+\caption{Diagram tried exportovacieho procesu}\label{o:exporting_class}
+\end{figure}
 
 \subsubsection{Trieda ExportCache}
 
@@ -875,7 +910,165 @@ Vracia pocet elementov v cache.
 \subsubsection{Trieda MessageEncoder}
 
 Trieda sluzi na zakodovanie resp. zabalenie zaznamu o toku do IPFIX paketu podla specifikacie v RFC 5101 
-a RFC 5102.
+a RFC 5102.\\
+\\
+
+\textbf{Metody:}
+
+
+\emph{public static MessageEncoder \textbf{getInstance}()}
+
+\textbf{Návratová hodnota:}\\
+Metoda vracia jedinecnu instanciu objektu triedy podla navrhoveho vzoru \emph{Singleton}.\\
+
+
+
+\emph{protected byte[] \textbf{createIPFIXMessage}(IPFIXFlowRecord flowRecord)}
+
+Na zaklade zaznamu o toku vytvara prud bytov z IPFIX spravy. Vola jednotlive motody, ktore robia 
+ciastkove ulohy ako zakodovanie sad, hlavicky a podobne.\\
+\textbf{Parametre:}\\
+\emph{IPFIXFlowRecord} flowRecord - zaznam o toku\\
+\textbf{Návratová hodnota:}\\
+Pole bytov prudu IPFIX spravy.\\
+
+
+
+\emph{private byte[] \textbf{encodeMessageHeader}(IPFIXMessage.IPFIXMessageHeader header, short length)}
+
+Zakoduje hlavicku IPFIX spravy.\\
+\textbf{Parametre:}\\
+\emph{IPFIXMessage.IPFIXMessageHeader} header - hlavicka, ktora sa ma zakodovat\\
+\emph{short} length - celkova dlzka IPFIX spravy\\
+\textbf{Návratová hodnota:}\\
+Pole bytov prudu hlavicky IPFIX spravy.\\
+
+
+
+\emph{private byte[] \textbf{encodeTemplateRecord}(IPFIXTemplateRecord templateRecord)}
+
+Zakoduje zaznam sablony.\\
+\textbf{Parametre:}\\
+\emph{IPFIXTemplateRecord} templateRecord - zaznam sablony, ktory sa ma zakodovat\\
+\textbf{Návratová hodnota:}\\
+Pole bytov prudu zaznamu sablony.\\
+
+
+
+\emph{private byte[] \textbf{encodeTemplateSet}(byte[] templateRecordBytes)}
+
+Zakoduje sadu sablon.\\
+\textbf{Parametre:}\\
+\emph{byte[]} templateRecordBytes - pole bytov prudu zaznamov sablony, ktore obsahuje sada sablony\\
+\textbf{Návratová hodnota:}\\
+Pole bytov prudu sady sablon.\\
+
+
+
+\emph{private byte[] \textbf{encodeDataRecord}(IPFIXDataRecord dataRecord)}
+
+Zakoduje datovy zaznam.\\
+\textbf{Parametre:}\\
+\emph{IPFIXDataRecord} dataRecord - datovy zaznam, ktory sa ma zakodovat\\
+\textbf{Návratová hodnota:}\\
+Pole bytov prudu datoveho zaznamu.\\
+
+
+\emph{private byte[] \textbf{encodeDataSet}(ByteArrayOutputStream dataRecordsStream, int templateID)}
+
+Zakoduje datovu sadu.\\
+\textbf{Parametre:}\\
+\emph{ByteArrayOutputStream} dataRecordsStream - prud bytov datovych zaznamov, ktore obsahuje sada sablony\\
+\emph{int} templateID - ID prisluchajucej sablony \\
+\textbf{Návratová hodnota:}\\
+Pole bytov prudu datovej sady.
+
+
+
+\emph{private byte[] \textbf{appendByteArray}(byte[] first, byte[] second)}
+
+Pomocna metoda, ktora na koniec prveho pola bytov pripoji druhe pole bytov .\\
+\textbf{Parametre:}\\
+\emph{byte[]} first - prve pole bytov \\
+\emph{byte[]} second - druhe pole bytov\\
+\textbf{Návratová hodnota:}\\
+Pole bytov vysledneho pola.\\
+
+
+\emph{private short \textbf{getMessageLength}(byte[] templateSetBytes, byte[] dataSetBytes, byte[] optionsTemplateSetStream)}
+
+Vracia celkovu dlzku IPFIX spravy.\\
+\textbf{Parametre:}\\
+\emph{byte[]} templateSetBytes - pole bytov sady sablon\\
+\emph{byte[]} dataSetBytes - pole bytov datovej sady\\
+\emph{byte[]} optionsTemplateSetStream - pole bytov sady sablon moznosti\\
+\textbf{Návratová hodnota:}\\
+Celkova dlzka IPFIX spravy, vratane hlavicky. Navratovy typ je \emph{short}.
+
+
+
+\subsubsection{Trieda UDPExporter}
+
+
+Trieda je samostatnym vlaknom, zaznamy o toku cita z ExportCache. Tie potom posle triede 
+\verb|MessageEncoder|, ktora ich zabali do IPFIX sprav. Zakodovane spravy exportuje kolektoru na IP 
+adresu a port, ktore su definovane v konfiguracnom subore. \\
+
+\textbf{Kon¹truktor:}
+
+\emph{private \textbf{UDPExporter}()}
+
+Bezparametricky konstruktor. Vola rodicovsky konstruktor s parametrom svojho mena. Potom sa pokusi 
+vytvorit socket pomocou triedy \verb|DatagramSocket|.\\
+
+\textbf{Metódy:}
+
+\emph{public static MessageEncoder \textbf{getInstance}()}
+
+\textbf{Návratová hodnota:}\\
+Metoda vracia jedinecnu instanciu objektu triedy podla navrhoveho vzoru \emph{Singleton}.\\
+
+
+\emph{public void \textbf{run}()}
+
+Hlavna metoda vlakna. Dokial nie je vlakno prerusene, cyklicky cita zaznamy o toku z ExportCache.
+Prostrednictvom treidy \verb|MessageEncoder| vytvori zo zaznamu o toku vystupny prud bytov. 
+Ten spolu s dlzkou prudu, IP adresou a portom zabali do paketu - objektu triedy \verb|DatagramPacket|.
+Vzniknuty paket odosle.
+
+
+
+
+
+%%--------------
+
+
+
+%%
+
+
+
+
+%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

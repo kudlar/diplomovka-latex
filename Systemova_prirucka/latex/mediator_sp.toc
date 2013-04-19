@@ -19,21 +19,22 @@
 \contentsline {subsubsection}{\numberline {4.2.3}Trieda IPFIXMessageHeader}{25}{subsubsection.4.2.3}
 \contentsline {subsection}{\numberline {4.3}Balík sk.tuke.cnl.bm.Mediator.IntermediateProcesses}{25}{subsection.4.3}
 \contentsline {subsubsection}{\numberline {4.3.1}Trieda AIntermediateProcess}{25}{subsubsection.4.3.1}
-\contentsline {subsubsection}{\numberline {4.3.2}Trieda ExampleProcess}{28}{subsubsection.4.3.2}
-\contentsline {subsubsection}{\numberline {4.3.3}Trieda IPInputBuffer}{29}{subsubsection.4.3.3}
+\contentsline {subsubsection}{\numberline {4.3.2}Trieda ExampleProcess}{29}{subsubsection.4.3.2}
+\contentsline {subsubsection}{\numberline {4.3.3}Trieda IPInputBuffer}{30}{subsubsection.4.3.3}
 \contentsline {subsection}{\numberline {4.4}Balik sk.tuke.cnl.bm.Mediator.collecting}{31}{subsection.4.4}
-\contentsline {subsubsection}{\numberline {4.4.1}Trieda UDPServer}{31}{subsubsection.4.4.1}
-\contentsline {subsubsection}{\numberline {4.4.2}Trieda IpfixParser}{32}{subsubsection.4.4.2}
-\contentsline {subsection}{\numberline {4.5}Balik sk.tuke.cnl.bm.Mediator.exporting}{32}{subsection.4.5}
-\contentsline {subsubsection}{\numberline {4.5.1}Trieda ExportCache}{32}{subsubsection.4.5.1}
-\contentsline {subsubsection}{\numberline {4.5.2}Trieda MessageEncoder}{33}{subsubsection.4.5.2}
-\contentsline {section}{\numberline {5}Preklad programu}{34}{section.5}
-\contentsline {subsection}{\numberline {5.1}Zoznam zdrojových textov}{34}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Po¾iadavky na technické prostriedky pri preklade}{35}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}Po¾iadavky na programové prostriedky pri preklade}{35}{subsection.5.3}
-\contentsline {subsection}{\numberline {5.4}Náväznos» na iné programové produkty}{35}{subsection.5.4}
-\contentsline {subsection}{\numberline {5.5}Vlastný preklad}{36}{subsection.5.5}
-\contentsline {subsection}{\numberline {5.6}Vytvorenie in¹talaèného DEB súboru}{36}{subsection.5.6}
-\contentsline {subsection}{\numberline {5.7}Opis známych chýb}{37}{subsection.5.7}
-\contentsline {section}{\numberline {6}Zhodnotenie rie¹enia}{38}{section.6}
-\contentsline {section}{\hbox to\@tempdima {\hfil }Zoznam pou¾itej literatúry}{38}{section.6}
+\contentsline {subsubsection}{\numberline {4.4.1}Trieda UDPServer}{32}{subsubsection.4.4.1}
+\contentsline {subsubsection}{\numberline {4.4.2}Trieda IpfixParser}{33}{subsubsection.4.4.2}
+\contentsline {subsection}{\numberline {4.5}Balik sk.tuke.cnl.bm.Mediator.exporting}{34}{subsection.4.5}
+\contentsline {subsubsection}{\numberline {4.5.1}Trieda ExportCache}{34}{subsubsection.4.5.1}
+\contentsline {subsubsection}{\numberline {4.5.2}Trieda MessageEncoder}{35}{subsubsection.4.5.2}
+\contentsline {subsubsection}{\numberline {4.5.3}Trieda UDPExporter}{38}{subsubsection.4.5.3}
+\contentsline {section}{\numberline {5}Preklad programu}{40}{section.5}
+\contentsline {subsection}{\numberline {5.1}Zoznam zdrojových textov}{40}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Po¾iadavky na technické prostriedky pri preklade}{41}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Po¾iadavky na programové prostriedky pri preklade}{41}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}Náväznos» na iné programové produkty}{41}{subsection.5.4}
+\contentsline {subsection}{\numberline {5.5}Vlastný preklad}{42}{subsection.5.5}
+\contentsline {subsection}{\numberline {5.6}Vytvorenie in¹talaèného DEB súboru}{42}{subsection.5.6}
+\contentsline {subsection}{\numberline {5.7}Opis známych chýb}{43}{subsection.5.7}
+\contentsline {section}{\numberline {6}Zhodnotenie rie¹enia}{44}{section.6}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Zoznam pou¾itej literatúry}{44}{section.6}

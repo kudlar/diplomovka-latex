@@ -1,3 +1,7 @@
 \select@language {slovak}
 \contentsline {figure}{\numberline {2\tmspace +\thinmuskip {.1667em}--\tmspace +\thinmuskip {.1667em}1}{\ignorespaces Referenèný model sprostredkovania správ v IPFIX}}{9}{figure.2.1}
 \contentsline {figure}{\numberline {2\tmspace +\thinmuskip {.1667em}--\tmspace +\thinmuskip {.1667em}2}{\ignorespaces Zjednodu¹ený model komponentov IPFIX Mediátora}}{10}{figure.2.2}
+\contentsline {figure}{\numberline {4\tmspace +\thinmuskip {.1667em}--\tmspace +\thinmuskip {.1667em}1}{\ignorespaces Diagram tried rozhrania pre sprostredkovateµské procesy}}{26}{figure.4.1}
+\contentsline {figure}{\numberline {4\tmspace +\thinmuskip {.1667em}--\tmspace +\thinmuskip {.1667em}2}{\ignorespaces Diagram tried prvej fázy zhroma¾ïovacieho procesu}}{32}{figure.4.2}
+\contentsline {figure}{\numberline {4\tmspace +\thinmuskip {.1667em}--\tmspace +\thinmuskip {.1667em}3}{\ignorespaces Diagram tried druhej fázy zhroma¾ïovacieho procesu}}{33}{figure.4.3}
+\contentsline {figure}{\numberline {4\tmspace +\thinmuskip {.1667em}--\tmspace +\thinmuskip {.1667em}4}{\ignorespaces Diagram tried exportovacieho procesu}}{34}{figure.4.4}
