@@ -13,10 +13,16 @@
 \contentsline {subsubsection}{\numberline {4.1.4}Trieda IPLoader}{15}{subsubsection.4.1.4}
 \contentsline {subsubsection}{\numberline {4.1.5}Trieda Mediator}{16}{subsubsection.4.1.5}
 \contentsline {subsubsection}{\numberline {4.1.6}Trieda Support}{17}{subsubsection.4.1.6}
-\contentsline {subsection}{\numberline {4.2}Balik sk.tuke.cnl.bm.Mediator.collecting}{19}{subsection.4.2}
-\contentsline {subsubsection}{\numberline {4.2.1}Trieda UDPServer}{19}{subsubsection.4.2.1}
-\contentsline {subsubsection}{\numberline {4.2.2}Trieda IpfixParser}{20}{subsubsection.4.2.2}
-\contentsline {subsubsection}{\numberline {4.2.3}Trieda IpfixDecoder}{20}{subsubsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2}Balík sk.tuke.cnl.bm.Mediator.IPFIX}{19}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}Trieda IPFIXEncoder}{19}{subsubsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2}Trieda IPFIXFlowRecord}{24}{subsubsection.4.2.2}
+\contentsline {subsubsection}{\numberline {4.2.3}Trieda IPFIXFlowRecord}{24}{subsubsection.4.2.3}
+\contentsline {subsubsection}{\numberline {4.2.4}Trieda IPFIXMessage}{24}{subsubsection.4.2.4}
+\contentsline {subsubsection}{\numberline {4.2.5}Trieda IPFIXMessage}{24}{subsubsection.4.2.5}
+\contentsline {subsubsection}{\numberline {4.2.6}Trieda IPFIXTemplateRecord}{24}{subsubsection.4.2.6}
+\contentsline {subsection}{\numberline {4.3}Balik sk.tuke.cnl.bm.Mediator.collecting}{24}{subsection.4.3}
+\contentsline {subsubsection}{\numberline {4.3.1}Trieda UDPServer}{24}{subsubsection.4.3.1}
+\contentsline {subsubsection}{\numberline {4.3.2}Trieda IpfixParser}{26}{subsubsection.4.3.2}
 \contentsline {section}{\numberline {5}Preklad programu}{27}{section.5}
 \contentsline {subsection}{\numberline {5.1}Zoznam zdrojových textov}{27}{subsection.5.1}
 \contentsline {subsection}{\numberline {5.2}Po¾iadavky na technické prostriedky pri preklade}{28}{subsection.5.2}

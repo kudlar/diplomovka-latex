@@ -176,21 +176,26 @@ Zvysuje pocet strat sposobenych preplnenim vstupneho buffera sprostredkovateµský
 \textbf{Parametre:} \\
 \emph{String} processName - meno procesu
 
+
 \textit{public static void \textbf{exportCacheDropsUP}()}
 
-Zvysuje pocet strat sposobenych \verb|ExportCache| o jeden.
+Zvysuje pocet strat sposobenych \verb|ExportCache| o jeden.\\
+
 
 \textit{public static void \textbf{encodingDropsUp}()}
 
-Zvysuje pocet strat sposobenych chybou pri kodovani o jeden.
+Zvysuje pocet strat sposobenych chybou pri kodovani o jeden.\\
+
 
 \textit{public static void \textbf{decodingDropsUp}()}
 
-Zvysuje pocet strat sposobenych chybou pri dekodovani o jeden.
+Zvysuje pocet strat sposobenych chybou pri dekodovani o jeden.\\
+
 
 \textit{public static void \textbf{packetDropsUp}()}
 
-Zvysuje pocet IPFIX paketov zahodenych UDP serverom o jeden.
+Zvysuje pocet IPFIX paketov zahodenych UDP serverom o jeden.\\
+
 
 \textit{public static void \textbf{printStats}()}
 
@@ -212,10 +217,10 @@ v sulade s IPFIX Mediator Framework (RFC 6183). Tato trieda je implementovana po
 Implementuje vzor \emph{Singleton}. Vytvori a vrati jedinecnu instanciu v pripade ze neexistuje, v opacnom pripade 
 ju iba vrati. \\
 \textbf{Návratová hodnota:} \\
-Jedinecny objekt typu \verb|FlowRecordDispatcher|.
+Jedinecny objekt typu \verb|FlowRecordDispatcher|.\\
 
 
-\textit{public synchronized void \textbf{dispatchFlowRecord}()}
+\textit{public synchronized void \textbf{dispatchFlowRecord}(IPFIXFlowRecord flowRecord, String inputProcess)}
 
 Posiela prijate zaznamy o tokoch prislusnym sprostredkovatelskym procesom, alebo exportovaciemu procesu 
 podla konfiguracie. Najprv ziska zoznam prijimatelov toku na zaklade mena povodcu. Ak je zoznam prazdny - 
@@ -225,17 +230,17 @@ prijimatelov toku a zaznam im zapise do vstupneho buffera. Tato metoda je synchr
 pristupna viacerym vlaknam. \\
 \textbf{Parametre:} \\
 \emph{IPFIXFlowRecord} flowRecord - zaznam o toku, ktory sa ma distribuovat dalej \\
-\emph{String} inputProcess - meno povodcu zaznamu o toku
+\emph{String} inputProcess - meno povodcu zaznamu o toku.\\
 
-\textit{private void \textbf{fillInputBuffer}()}
+\textit{private void \textbf{fillInputBuffer}(AIntermediateProcess process, IPFIXFlowRecord flowRecord)}
 
 Metoda, ktora zapisuje zaznamy o tokoch do vstupneho buffra sprostredkovatelskych procesov. V pripade
 neuspechu za zvysi pocitadlo v \verb|DropsCounter| a vypise error. \\
 \textbf{Parametre:} \\
-\emph{AIntermediateProcess} process - instancia sprostredkovatelskeho procesu \\
-\emph{IPFIXFlowRecord} flowRecord - zaznam o toku, ktory sa ma zapisat
+\emph{AIntermediateProcess} process - instancia sprostredkovatelskeho procesu. \\
+\emph{IPFIXFlowRecord} flowRecord - zaznam o toku, ktory sa ma zapisat.\\
 
-\textit{private ArrayList$<$String$>$ \textbf{getReceiversList}()}
+\textit{private ArrayList$<$String$>$ \textbf{getReceiversList}(String inputDevice)}
 
 Ziskava zoznam prijemcov zaznamu o toku od zadaneho povodcu toku. \\
 \textbf{Parametre:} \\
@@ -255,7 +260,7 @@ subore. Implementuje navrhovy vzor \emph{Singleton}.
 \textit{public static IPLoader \textbf{getInstance}()}
 
 Implementuje vzor \emph{Singleton}. Vytvori a vrati jedinecnu instanciu v pripade ze neexistuje, v opacnom pripade 
-ju iba vrati.
+ju iba vrati.\\
 
 
 \textit{public void \textbf{loadProcesses}()}
@@ -295,34 +300,314 @@ Rovnako je Mediator zastaveny po stlaceni kombinacie klaves \verb|Ctrl+c|.
 \bigskip
 \textbf{Metódy} 
 
-\textit{public static void \textbf{main}()}
+\textit{public static void \textbf{main}(String[] args)}
 
 Hlavna metoda triedy. \\
 \textbf{Parametre:} \\
-\emph{String[]} args - argumenty prikazoveho riadku.
+\emph{String[]} args - argumenty prikazoveho riadku.\\
 
 
-\emph{public static void \textbf{stopMediator()}}
+\emph{public static void \textbf{stopMediator}()}
 
-Metoda, ktora korektne ukoncuje beh programu. Zastavi vsetky spustene vlakna a uvolni vsetky druhy pamate.
+Metoda, ktora korektne ukoncuje beh programu. Zastavi vsetky spustene vlakna a uvolni vsetky druhy pamate.\\
 
-\emph{public static void \textbf{interruptThread()}}
+\clearpage
+\emph{public static void \textbf{interruptThread}()}
 
 Prerusi vykonavanie vlakna. \\
 \textbf{Parametre:} \\
-\emph{Thread} thread - objekt vlakna, ktore sa ma zastavit.
+\emph{Thread} thread - objekt vlakna, ktore sa ma zastavit.\\
 
 
-\emph{private static void \textbf{loggingToFile()}}
-    
-    
+\emph{private static void \textbf{loggingToFile}()}
 
-
-
+Metoda, ktora vykonava logovanie do suboru namiesto standardneho vystupu.
 
 
 
+\subsubsection{Trieda Support}
+Podporna trieda, ktora obsahuje pomocne metody potrebne pri de(kodovani) a pri validacii formatu dat. 
+Uvadzam iba vlastne metody.
 
+\bigskip
+\textbf{Metódy} 
+
+
+\emph{public static byte[] \textbf{byteToByteArray}(byte x)}
+
+Konvertuje primitivny typ \emph{byte} na pole bytov v usporadani bytov Big Endian. \\
+\textbf{Parametre:} \\
+\emph{byte} x - hodnota, ktora sa ma zakodovat. \\
+\textbf{Návratová hodnota:} \\
+Pole bytov, typ \emph{byte[]}. \\
+
+
+\emph{public static byte[] \textbf{shortToByteArray}(short x)}
+
+Konvertuje primitivny typ \emph{short} na pole bytov v usporadani bytov Big Endian. \\
+\textbf{Parametre:} \\
+\emph{short} x - hodnota, ktora sa ma zakodovat. \\
+\textbf{Návratová hodnota:} \\
+Pole bytov, typ \emph{byte[]}. \\
+
+
+\emph{public static byte[] \textbf{intToByteArray}(int x)}
+
+Konvertuje primitivny typ \emph{int} na pole bytov v usporadani bytov Big Endian. \\
+\textbf{Parametre:} \\
+\emph{int} x - hodnota, ktora sa ma zakodovat. \\
+\textbf{Návratová hodnota:} \\
+Pole bytov, typ \emph{byte[]}. \\
+
+
+\emph{public static byte[] \textbf{longToByteArray}(long x)}
+
+Konvertuje primitivny typ \emph{long} na pole bytov v usporadani bytov Big Endian. \\
+\textbf{Parametre:} \\
+\emph{long} x - hodnota, ktora sa ma zakodovat. \\
+\textbf{Návratová hodnota:} \\
+Pole bytov, typ \emph{byte[]}. \\
+
+
+\emph{public static byte[] \textbf{floatToByteArray}(float x)}
+
+Konvertuje primitivny typ \emph{float} na pole bytov v usporadani bytov Big Endian. \\
+\textbf{Parametre:} \\
+\emph{float} x - hodnota, ktora sa ma zakodovat. \\
+\textbf{Návratová hodnota:} \\
+Pole bytov, typ \emph{byte[]}. \\
+
+
+\emph{public static byte[] \textbf{doubleToByteArray}(double x)}
+
+Konvertuje primitivny typ \emph{double} na pole bytov v usporadani bytov Big Endian. \\
+\textbf{Parametre:} \\
+\emph{double} x - hodnota, ktora sa ma zakodovat. \\
+\textbf{Návratová hodnota:} \\
+Pole bytov, typ \emph{byte[]}. \\
+
+
+\emph{public static boolean \textbf{validateMAC}(String macAddress)}
+
+Validuje format MAC adresy. \\
+\textbf{Parametre:} \\
+\emph{String} macAddress - adresa, ktorej format sa ma overit. \\
+\textbf{Návratová hodnota:} \\
+\emph{true} - v pripade, ze je adresa v spravnom formate.\\
+\emph{false} - opacne.
+
+
+
+
+
+% ----------BALIK IPFIX --------------------------------------
+
+\subsection{Balík sk.tuke.cnl.bm.Mediator.IPFIX}
+
+\subsubsection{Trieda IPFIXEncoder}
+Trieda so statickými metódami slú¾iacimi na zakódovanie retazcovej reprezentacie hodnot informacnych
+elementov na abstraktne datove typy podla RFC 5101 a RFC 5102. Je presnym opakom triedy \verb|IPFIXDecoder|.
+
+
+\bigskip
+{\bfseries Metódy}
+
+
+\textit{public static byte[] \textbf{encode}(String dataType, String value)}
+
+Zakóduje hodnotu datoveho typu do pola bytov podµa ¹pecifikácie IPFIX.
+Priamo nevykonáva zakódovanie, volá konkrétne metódy podµa kategórie dátového typu.\\
+{\bfseries Parametre:}\\
+\emph{String} dataType - re»azec definujúci dátový typ obsiahnutý v~buffri.\\
+\emph{String} value - samotné dáta, ktoré sú predmetom zakódovania\\
+{\bfseries Návratová hodnota:} \\
+Pole bytov reprezentujúce interpretovanú retazcovu hodnotu na základ predaného typu. \\
+{\bfseries Hád¾e:} \\
+\verb|UnsupportedDataException| - Ak dátový typ nie je podporovaný\\
+\verb|OutOfBoundsException| - Ak je hodnota mimo povoleneho rozsahu\\
+\verb|UnknownHostException| - Ak program nevie rozpoznat host, alebo IP adresu \\
+\verb|DataException| - Ak je chyba v formate kodovanej hodnoty vzhladom na datovy typ\\
+
+
+
+\textit{public static byte[] \textbf{encodeUnsignedIntegralType}(String dataType, String value)}
+
+Zakóduje celoèíselné bezznamiekové dátové typy unsigned8, unsigned16, unsigned32, unsigned64 a unsigned128. \\
+{\bfseries Parametre:}\\
+\emph{String} dataType - re»azec definujúci dátový typ obsiahnutý v~buffri.\\
+\emph{String} value - samotné dáta, ktoré sú predmetom zakódovania\\
+{\bfseries Návratová hodnota:} \\
+Pole bytov reprezentujúce interpretovanú retazcovu hodnotu na základ predaného typu. \\
+{\bfseries Hád¾e:} \\
+\verb|UnsupportedDataException| - Ak dátový typ nie je podporovaný\\
+\verb|NumberFormatException| - Ak je chyba v formate kodovanej hodnoty vzhladom na datovy typ\\
+\verb|OutOfBoundsException| - Ak je hodnota mimo povoleneho rozsahu\\
+
+
+
+\textit{public static byte[] \textbf{encodeSignedIntegralType}(String dataType, String value)}
+
+Zakóduje celoèíselné znamienkové dátové typy signed8, signed16, signed32 a signed64. \\
+{\bfseries Parametre:}\\
+\emph{String} dataType - re»azec definujúci dátový typ obsiahnutý v~buffri.\\
+\emph{String} value - samotné dáta, ktoré sú predmetom zakódovania\\
+{\bfseries Návratová hodnota:} \\
+Pole bytov reprezentujúce interpretovanú retazcovu hodnotu na základ predaného typu. \\
+{\bfseries Hád¾e:} \\
+\verb|UnsupportedDataException| - Ak dátový typ nie je podporovaný\\
+\verb|NumberFormatException| - Ak je chyba v formate kodovanej hodnoty vzhladom na datovy typ\\
+
+
+
+
+\textit{public static byte[] \textbf{encodeFloatType}(String dataType, String value)}
+
+Zakóduje desatinné dátové typy float32 a float64. \\
+{\bfseries Parametre:}\\
+\emph{String} dataType - re»azec definujúci dátový typ obsiahnutý v~buffri.\\
+\emph{String} value - samotné dáta, ktoré sú predmetom zakódovania\\
+{\bfseries Návratová hodnota:} \\
+Pole bytov reprezentujúce interpretovanú retazcovu hodnotu na základ predaného typu. \\
+{\bfseries Hád¾e:} \\
+\verb|UnsupportedDataException| - Ak dátový typ nie je podporovaný\\
+\verb|NumberFormatException| - Ak je chyba v formate kodovanej hodnoty vzhladom na datovy typ\\
+
+
+
+
+\textit{public static byte[] \textbf{encodeAddressType}(String dataType, String value)}
+
+Zakóduje dátové typy obsahujúce adresy: ipv4Address, ipv6Address a macAddress.
+{\bfseries Parametre:}\\
+\emph{String} dataType - re»azec definujúci dátový typ obsiahnutý v~buffri.\\
+\emph{String} value - samotné dáta, ktoré sú predmetom zakódovania\\
+{\bfseries Návratová hodnota:} \\
+Pole bytov reprezentujúce interpretovanú retazcovu hodnotu na základ predaného typu. \\
+{\bfseries Hád¾e:}\\
+\verb|UnsupportedDataException| - Ak dátový typ nie je podporovaný\\
+\verb|UnknownHostException| - Ak program nevie rozpoznat host, alebo IP adresu \\
+\verb|DataException| - Ak je chyba v formate kodovanej hodnoty vzhladom na datovy typ\\
+
+
+
+
+\textit{public String \textbf{encodeBooleanType}(String value)}
+
+Dekóduje boolean reprezentujúci pravdivostnú hodnotu.
+
+{\bfseries Návratová hodnota:}
+
+Re»azec reprezentujúci pravdivostnú hodnotu, "true" alebo "false".
+
+{\bfseries Hád¾e:}
+
+DataException - Ak je buffer nesprávnej veµkosti vzhµadom na dátový typ, alebo ak obsahuje inú hodnotu ako 0 alebo 1\\
+UnsupportedDataException - Ak dátový typ nie je podporovaný\\
+
+
+\textit{public String \textbf{decodeStringType}(String value)}
+
+Dekóduje dáta v~buffri ako re»azec v~kódovaní UTF-8.
+
+{\bfseries Návratová hodnota:}
+
+Re»azec v~kódovaní UTF-8.
+
+
+\textit{public String \textbf{decodeOctetArrayType}(String value)}
+
+Dáta v~buffri prevedie na re»azec do kódu Base64.
+
+{\bfseries Návratová hodnota:}
+
+Re»azec predstavujúci binárne dáta zakódované v~Base64.
+
+
+\textit{public String \textbf{decodeDateTimeType}(String dataType, String value)}
+
+Dekóduje dátové typy èasových známok: dateTimeSeconds, dateTimeMilliseconds, dateTimeMicroseconds a dateTimeNanoseconds.
+
+{\bfseries Parametre:}
+
+type - re»azec definujúci dátový typ obsiahnutý v~buffri.\\
+buffer - samotné dáta, ktoré sú predmetom dekódovania\\
+
+{\bfseries Návratová hodnota:}
+
+Re»azec reprezentujúci interpretovanú hodnotu buffra na základ predaného typu.
+Dátové typy dateTimeSeconds a dateTimeMilliseconds predstavujú poèet sekúnd, resp. milisekúnd od Unix epochy (00:00 1.1.1970 UTC).
+Dátové typy dateTimeMicroseconds a dateTimeNanoseconds sú zakódované vo formáte èasovej známky NTP Timestamp.
+Berie sa do úvahy redukované kódovanie prvých dvoch menovaných typov.
+
+{\bfseries Hád¾e:}
+
+DataException - Ak je buffer nesprávnej veµkosti vzhµadom na dátový typ\\
+UnsupportedDataException - Ak dátový typ nie je podporovaný\\
+
+
+
+\textit{public ByteBuffer \textbf{parseMacAddress}(byte[] input)}
+
+Konvertuje bajty vo vstupnom poli bajtov na re»azec v~tvare XX:XX:XX:XX:XX:XX.
+
+{\bfseries Parametre:}
+
+input - vstupné pole bajtov obsahujúce dáta skráteného informaèného elementu.\\
+arraySize - veµkos» informaèného elementu podµa definície v~informaènom modeli IPFIX.\\
+isSigned - ak je dátový typ dát vo vstupnom poli bajtov znamienkové èíslo, táto hodnota by mala by» true.\\
+
+{\bfseries Návratová hodnota:}
+
+ByteBuffer obsahujúci informaèný dáta informaèného elementu o~¹tandardnej veµkosti.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsubsection{Trieda IPFIXFlowRecord}
+\subsubsection{Trieda IPFIXFlowRecord}
+\subsubsection{Trieda IPFIXMessage}
+\subsubsection{Trieda IPFIXMessage}
+\subsubsection{Trieda IPFIXTemplateRecord}
 
 
 
@@ -393,204 +678,7 @@ posunuty triede \verb|FlowRecordDispatcher|.
 
 
 
-\subsubsection{Trieda IpfixDecoder}
-Trieda so statickými metódami slú¾iacimi na dekódovanie dát z~dátového záznamu. \\
 
-\clearpage
-\bigskip
-{\bfseries Metódy}
-\bigskip
-
-
-
-\textit{public String \textbf{decode}(String type, ByteBuffer buffer)}
-
-Dekóduje dátový typ obsiahnutý v~buffri do podoby re»azca podµa ¹pecifikácie IPFIX.
-Priamo nevykonáva dekódovanie, volá konkrétne metódy podµa kategórie dátového typu.
-
-{\bfseries Parametre:}
-
-type - re»azec definujúci dátový typ obsiahnutý v~buffri.\\
-buffer - samotné dáta, ktoré sú predmetom dekódovania\\
-
-{\bfseries Návratová hodnota:}
-
-Re»azec reprezentujúci interpretovanú hodnotu buffra na základ predaného typu.
-
-{\bfseries Hád¾e:}
-
-DataException - Ak je buffer nesprávnej veµkosti vzhµadom na dátový typ\\
-UnsupportedDataException - Ak dátový typ nie je podporovaný\\
-
-
-
-
-\textit{public String \textbf{decodeUnsignedIntegralType}(String type, ByteBuffer buffer)}
-
-Dekóduje celoèíselné bezznamiekové dátové typy unsigned8, unsigned16, unsigned32 a unsigned64. Berie ohµad na skrátené dátové typy.
-
-{\bfseries Parametre:}
-
-type - re»azec definujúci dátový typ obsiahnutý v~buffri.\\
-buffer - samotné dáta, ktoré sú predmetom dekódovania\\
-
-{\bfseries Návratová hodnota:}
-
-Re»azec reprezentujúci interpretovanú hodnotu buffra na základ predaného typu.
-
-{\bfseries Hád¾e:}
-
-DataException - Ak je buffer nesprávnej veµkosti vzhµadom na dátový typ\\
-UnsupportedDataException - Ak dátový typ nie je podporovaný\\
-
-
-
-\textit{public String \textbf{decodeSignedIntegralType}(String type, ByteBuffer buffer)}
-
-Dekóduje celoèíselné znamienkové dátové typy signed8, signed16, signed32 a signed64. Berie ohµad na skrátené dátové typy.
-
-{\bfseries Parametre:}
-
-type - re»azec definujúci dátový typ obsiahnutý v~buffri.\\
-buffer - samotné dáta, ktoré sú predmetom dekódovania\\
-
-{\bfseries Návratová hodnota:}
-
-Re»azec reprezentujúci interpretovanú hodnotu buffra na základ predaného typu.
-
-{\bfseries Hád¾e:}
-
-DataException - Ak je buffer nesprávnej veµkosti vzhµadom na dátový typ\\
-UnsupportedDataException - Ak dátový typ nie je podporovaný\\
-
-
-
-
-\textit{public String \textbf{decodeFloatType}(String type, ByteBuffer buffer)}
-
-Dekóduje desatinné dátové typy float32 a float64. Berie ohµad na skrátené dátové typy.
-
-{\bfseries Parametre:}
-
-type - re»azec definujúci dátový typ obsiahnutý v~buffri.\\
-buffer - samotné dáta, ktoré sú predmetom dekódovania\\
-
-{\bfseries Návratová hodnota:}
-
-Re»azec reprezentujúci interpretovanú hodnotu buffra na základ predaného typu.
-
-{\bfseries Hád¾e:}
-
-DataException - Ak je buffer nesprávnej veµkosti vzhµadom na dátový typ\\
-UnsupportedDataException - Ak dátový typ nie je podporovaný\\
-
-
-
-
-\textit{public String \textbf{decodeAddressType}(String type, ByteBuffer buffer)}
-
-Dekóduje dátové typy obsahujúce adresy: ipv4Address, ipv6Address a macAddress.
-
-{\bfseries Parametre:}
-
-type - re»azec definujúci dátový typ obsiahnutý v~buffri.\\
-buffer - samotné dáta, ktoré sú predmetom dekódovania\\
-
-{\bfseries Návratová hodnota:}
-
-Re»azec reprezentujúci interpretovanú hodnotu buffra na základ predaného typu.
-
-{\bfseries Hád¾e:}
-
-DataException - Ak je buffer nesprávnej veµkosti vzhµadom na dátový typ\\
-UnsupportedDataException - Ak dátový typ nie je podporovaný\\
-
-
-\clearpage
-\textit{public String \textbf{decodeBooleanType}(ByteBuffer buffer)}
-
-Dekóduje boolean reprezentujúci pravdivostnú hodnotu.
-
-{\bfseries Návratová hodnota:}
-
-Re»azec reprezentujúci pravdivostnú hodnotu, "true" alebo "false".
-
-{\bfseries Hád¾e:}
-
-DataException - Ak je buffer nesprávnej veµkosti vzhµadom na dátový typ, alebo ak obsahuje inú hodnotu ako 0 alebo 1\\
-UnsupportedDataException - Ak dátový typ nie je podporovaný\\
-
-
-\textit{public String \textbf{decodeStringType}(ByteBuffer buffer)}
-
-Dekóduje dáta v~buffri ako re»azec v~kódovaní UTF-8.
-
-{\bfseries Návratová hodnota:}
-
-Re»azec v~kódovaní UTF-8.
-
-
-\textit{public String \textbf{decodeOctetArrayType}(ByteBuffer buffer)}
-
-Dáta v~buffri prevedie na re»azec do kódu Base64.
-
-{\bfseries Návratová hodnota:}
-
-Re»azec predstavujúci binárne dáta zakódované v~Base64.
-
-
-\textit{public String \textbf{decodeDateTimeType}(String type, ByteBuffer buffer)}
-
-Dekóduje dátové typy èasových známok: dateTimeSeconds, dateTimeMilliseconds, dateTimeMicroseconds a dateTimeNanoseconds.
-
-{\bfseries Parametre:}
-
-type - re»azec definujúci dátový typ obsiahnutý v~buffri.\\
-buffer - samotné dáta, ktoré sú predmetom dekódovania\\
-
-{\bfseries Návratová hodnota:}
-
-Re»azec reprezentujúci interpretovanú hodnotu buffra na základ predaného typu.
-Dátové typy dateTimeSeconds a dateTimeMilliseconds predstavujú poèet sekúnd, resp. milisekúnd od Unix epochy (00:00 1.1.1970 UTC).
-Dátové typy dateTimeMicroseconds a dateTimeNanoseconds sú zakódované vo formáte èasovej známky NTP Timestamp.
-Berie sa do úvahy redukované kódovanie prvých dvoch menovaných typov.
-
-{\bfseries Hád¾e:}
-
-DataException - Ak je buffer nesprávnej veµkosti vzhµadom na dátový typ\\
-UnsupportedDataException - Ak dátový typ nie je podporovaný\\
-
-
-
-\textit{public ByteBuffer \textbf{handleReducedSizeEncoding}(byte[] input, int arraySize, boolean isSigned)}
-
-Vytvorí zo vstupného poµa bajtov buffer stanovenej då¾ky.  
-
-{\bfseries Parametre:}
-
-input - vstupné pole bajtov obsahujúce dáta skráteného informaèného elementu.\\
-arraySize - veµkos» informaèného elementu podµa definície v~informaènom modeli IPFIX.\\
-isSigned - ak je dátový typ dát vo vstupnom poli bajtov znamienkové èíslo, táto hodnota by mala by» true.\\
-
-{\bfseries Návratová hodnota:}
-
-ByteBuffer obsahujúci informaèný dáta informaèného elementu o~¹tandardnej veµkosti.
-
-
-
-\textit{public ByteBuffer \textbf{parseMacAddress}(byte[] input)}
-
-Konvertuje bajty vo vstupnom poli bajtov na re»azec v~tvare XX:XX:XX:XX:XX:XX.
-
-{\bfseries Parametre:}
-
-input - vstupné pole bajtov obsahujúce dáta skráteného informaèného elementu.\\
-arraySize - veµkos» informaèného elementu podµa definície v~informaènom modeli IPFIX.\\
-isSigned - ak je dátový typ dát vo vstupnom poli bajtov znamienkové èíslo, táto hodnota by mala by» true.\\
-
-{\bfseries Návratová hodnota:}
-
-ByteBuffer obsahujúci informaèný dáta informaèného elementu o~¹tandardnej veµkosti.
 
 
 % -------------------------------------------
