@@ -145,7 +145,7 @@ procesy. Hlavne triedy novych modulov musia byt umiestnene v tomto baliku!
 
 
 
-
+\clearpage
 \section{Popis tried, èlenských premenných a~metód}
 
 Ked¾e niektore triedy Mediatora su kvoli jednotnosti rieseni v ramci vyskumnej skupiny MONICA totozne 
@@ -163,8 +163,228 @@ ani ziadne metody, iba verejne pristupne staticke konstanty.
 
 
 
+\subsubsection{Trieda DropsCounter}
+Sluzi na vypocet statistiky zahodenych entit. Pod entitou sa myslia zaznamy o tokoch, datove zaznamy, 
+alebo IPFIX pakety. Obsahuje len staticke metody.
 
-% ----------COLLECTING --------------------------------------
+\bigskip
+\textbf{Metódy} 
+
+\textit{public static void \textbf{inputBufferDropsUP}()}
+
+Zvysuje pocet strat sposobenych preplnenim vstupneho buffera sprostredkovateµských porcesov o jeden. \\
+\textbf{Parametre:} \\
+\emph{String} processName - meno procesu
+
+\textit{public static void \textbf{exportCacheDropsUP}()}
+
+Zvysuje pocet strat sposobenych \verb|ExportCache| o jeden.\\
+
+\textit{public static void \textbf{encodingDropsUp}()}
+
+Zvysuje pocet strat sposobenych chybou pri kodovani o jeden.\\
+
+\textit{public static void \textbf{decodingDropsUp}()}
+
+Zvysuje pocet strat sposobenych chybou pri dekodovani o jeden.\\
+
+\textit{public static void \textbf{packetDropsUp}()}
+
+Zvysuje pocet IPFIX paketov zahodenych UDP serverom o jeden.\\
+
+\textit{public static void \textbf{printStats}()}
+
+Vypise statistiku vsetkych zahodenych entit.
+
+
+
+\subsubsection{Trieda FlowRecordDispatcher}
+Ulohou tejto triedy je na zaklade konfiguracneho suboru distribuovat prijate zaznamy o toku 
+sprostredkovatelskym procesom (seriovo alebo paralelne) a exportovaciemu porcesu. Distribucia prebieha
+v sulade s IPFIX Mediator Framework (RFC 6183). Tato trieda je implementovana podla navrhoveho vzoru 
+\emph{Singleton}.
+
+\bigskip
+\textbf{Metódy} 
+
+\textit{public static FlowRecordDispatcher \textbf{getInstance}()}
+
+Implementuje vzor \emph{Singleton}. Vytvori a vrati jedinecnu instanciu v pripade ze neexistuje, v opacnom pripade 
+ju iba vrati. \\
+\textbf{Návratová hodnota:} \\
+Jedinecny objekt typu \verb|FlowRecordDispatcher|.\\
+
+
+\textit{public synchronized void \textbf{dispatchFlowRecord}()}
+
+Posiela prijate zaznamy o tokoch prislusnym sprostredkovatelskym procesom, alebo exportovaciemu procesu 
+podla konfiguracie. Najprv ziska zoznam prijimatelov toku na zaklade mena povodcu. Ak je zoznam prazdny - 
+zaznam o toku je 
+urceny na export, preto ho zapise do \verb|ExportCache|. Ak zoznam nie je prazdny, ziska si instancie 
+prijimatelov toku a zaznam im zapise do vstupneho buffera. Tato metoda je synchronizovana, lebo je
+pristupna viacerym vlaknam. \\
+\textbf{Parametre:} \\
+\emph{IPFIXFlowRecord} flowRecord - zaznam o toku, ktory sa ma distribuovat dalej \\
+\emph{String} inputProcess - meno povodcu zaznamu o toku.\\
+
+\textit{private void \textbf{fillInputBuffer}()}
+
+Metoda, ktora zapisuje zaznamy o tokoch do vstupneho buffra sprostredkovatelskych procesov. V pripade
+neuspechu za zvysi pocitadlo v \verb|DropsCounter| a vypise error. \\
+\textbf{Parametre:} \\
+\emph{AIntermediateProcess} process - instancia sprostredkovatelskeho procesu. \\
+\emph{IPFIXFlowRecord} flowRecord - zaznam o toku, ktory sa ma zapisat.\\
+
+\textit{private ArrayList$<$String$>$ \textbf{getReceiversList}()}
+
+Ziskava zoznam prijemcov zaznamu o toku od zadaneho povodcu toku. \\
+\textbf{Parametre:} \\
+\emph{String} inputDevice - povodca zaznamu o toku \\
+\textbf{Návratová hodnota:} \\
+Zoznam prijemcov toku, typ \verb|ArrayList|.
+
+
+
+\subsubsection{Trieda IPLoader}
+Trieda je zodpovedna za dynamicke nacitavanie sprostredkovatelskych procesov definovanych v konfiguracnom
+subore. Implementuje navrhovy vzor \emph{Singleton}.
+
+\bigskip
+\textbf{Metódy} 
+
+\textit{public static IPLoader \textbf{getInstance}()}
+
+Implementuje vzor \emph{Singleton}. Vytvori a vrati jedinecnu instanciu v pripade ze neexistuje, v opacnom pripade 
+ju iba vrati.\\
+
+
+\textit{public void \textbf{loadProcesses}()}
+
+Hlavna metoda triedy, dynamicky nacitava sprostredkovatelske moduly definovane v konfiguracnom subore. 
+Najprv ziska systemovy \emph{classLoader}. V cykle prechadza zoznam spostredkovatelskych modulov. 
+Kazdy retazec obsahujuci meno prevedie na binarne meno (meno triedy vratane balickov)  a pomocou 
+classLoader-a ziska jeho \verb|Class| objekt. Na zaklade tohto objektu ziska jedinecnu instanciu 
+modulu a kedze sa jedna o vlakno, spusti ho tak, ze zavola jeho metodu \verb|start()|. \\
+\textbf{Hád¾e:} \\
+\verb|IPLoaderException| - V pripade akejkolvek chyby, ktora moze nastat pri vykonavani metody. Chyby, ktore 
+su zachytavane su typov:
+\begin{itemize}
+ \item \verb|SecurityException|
+ \item \verb|ClassNotFoundException|
+ \item \verb|IllegalAccessException|
+ \item \verb|NoSuchMethodException|
+ \item \verb|InvocationTargetException|
+\end{itemize}
+
+
+
+\subsubsection{Trieda Mediator}
+Ulohou hlavnej triedy Mediatora je postupne spustit vsetky vlakna a procesy potrebne pre beh programu.
+Najprv sa precitaju a spracuju argumenty prikazoveho riadku. Program vie rozpoznavat dva druhy 
+argumentov. Prvym je cesta ku konfiguracnemu suboru. Ak nie je zadana, pouziva sa vychodiskovy 
+konfiguracny subor. Druhym argumentom moze byt zadana moznost \verb|--logtofile|. Vtedy su vsetky 
+logovacie vystupy presmerovane zo standardneho vystupu do suboru.
+
+Potom ako program nacita vsetky nastavenia z konfiguracneho suboru, spusti vsetky svoje moduly - 
+sprostredkovateµské procesy pomocou triedy \verb|IPLoader|. Nasleduje spustenie vlakna, ktore prijima 
+IPFIX pakety prostrednictvom protokolu UDP a vlakna, ktore ich spracovava. Hovorime o \verb|UDPServer| 
+a \verb|UDPProcessor|. Nakoniec je spustene exportovacie vlakno - \verb|UDPExporter|. Kedykolvek ked 
+nastane chyba je Mediator korektne ukonceny a to tak, ze uvolni vsetku pamat a zastavi beziace vlakna. 
+Rovnako je Mediator zastaveny po stlaceni kombinacie klaves \verb|Ctrl+c|.
+
+\bigskip
+\textbf{Metódy} 
+
+\textit{public static void \textbf{main}()}
+
+Hlavna metoda triedy. \\
+\textbf{Parametre:} \\
+\emph{String[]} args - argumenty prikazoveho riadku.\\
+
+
+\emph{public static void \textbf{stopMediator()}}
+
+Metoda, ktora korektne ukoncuje beh programu. Zastavi vsetky spustene vlakna a uvolni vsetky druhy pamate.\\
+
+\clearpage
+\emph{public static void \textbf{interruptThread()}}
+
+Prerusi vykonavanie vlakna. \\
+\textbf{Parametre:} \\
+\emph{Thread} thread - objekt vlakna, ktore sa ma zastavit.\\
+
+
+\emph{private static void \textbf{loggingToFile()}}
+
+Metoda, ktora vykonava logovanie do suboru namiesto standardneho vystupu.
+
+
+
+\subsubsection{Trieda Support}
+Podporna trieda, ktora obsahuje pomocne metody potrebne pri de(kodovani) a pri validacii formatu dat. 
+Uvadzam iba vlastne metody.
+
+\bigskip
+\textbf{Metódy} 
+
+public static byte[] byteToByteArray()
+
+Konvertuje primitivny typ \emph{byte} na pole bytov v usporadani bytov Big Endian. \\
+\textbf{Parametre:} \\
+\emph{byte} x\\
+\textbf{Návratová hodnota:} \\
+
+public static byte[] shortToByteArray()
+
+Konvertuje primitivny typ \emph{short} na pole bytov v usporadani bytov Big Endian. \\
+\textbf{Parametre:} \\
+short x\\
+\textbf{Návratová hodnota:} \\
+
+public static byte[] intToByteArray()
+
+Konvertuje primitivny typ \emph{int} na pole bytov v usporadani bytov Big Endian. \\
+\textbf{Parametre:} \\
+int x\\
+\textbf{Návratová hodnota:} \\
+
+public static byte[] longToByteArray()
+
+Konvertuje primitivny typ \emph{long} na pole bytov v usporadani bytov Big Endian. \\
+\textbf{Parametre:} \\
+long x\\
+\textbf{Návratová hodnota:} \\
+
+public static byte[] floatToByteArray()
+
+Konvertuje primitivny typ \emph{float} na pole bytov v usporadani bytov Big Endian. \\
+\textbf{Parametre:} \\
+float x\\
+\textbf{Návratová hodnota:} \\
+
+public static byte[] doubleToByteArray()
+
+Konvertuje primitivny typ \emph{double} na pole bytov v usporadani bytov Big Endian. \\
+\textbf{Parametre:} \\
+double x\\
+\textbf{Návratová hodnota:} \\
+
+public static boolean validateMAC()
+
+Validuje format MAC adresy. \\
+\textbf{Parametre:} \\
+String macAddress \\
+\textbf{Návratová hodnota:} \\
+
+
+
+
+
+
+
+
+
+ ----------COLLECTING --------------------------------------
 
 \subsection{Balik sk.tuke.cnl.bm.Mediator.collecting}
 
@@ -175,12 +395,12 @@ Slú¾i ako UDP server. Prijíma UDP datagramy cez \verb|DatagramChannel| a uklada 
 \bigskip
 \textbf{Kon¹truktor} 
 
-\textit{public \textbf{UDPServer}(int port)}
+\textit{public \textbf{UDPServer}()}
 
 Kon¹truktor inicializuje \verb|DatagramChannel|, nastaví mu blokovací re¾im a privia¾e ho k~portu 
 definovanom v~konfiguraènom súbore, ktory mu je predany ako parameter. Nastaví meno vlákna.\\
 \textbf{Parametre:} \\
-port - cislo portu
+\emph{int} port - cislo portu
 
 \bigskip
 \textbf{Metódy}
@@ -502,9 +722,8 @@ Preklad programu si vy¾aduje nasledovnú hardvérovú konfiguráciu:
 
 \subsection{Po¾iadavky na programové prostriedky pri preklade}
 \begin{itemize}
-\item  operaèný systém GNU/Linux s~verziou jadra 2.6 a vy¹¹ou (odporúèa sa kvôli podpore SCTP)
+\item operaèný systém GNU/Linux s~verziou jadra 2.6 a vy¹¹ou 
 \item Java Runtime Environment (JRE) verzie 1.7.0\_03 a~vy¹¹ej
-\item balík lksctp-tools
 \item kni¾nice dodávané na in¹talaènom médiu
 \end{itemize}
 
@@ -590,16 +809,10 @@ RFC 3954. 2004
 VERE©ÈÁK, T.: Optimalizácia zhroma¾ïovacieho procesu nástroja BasicMeter, 2012,
 Diplomová práca, Príloha A, Systémová príruèka JXColl v3.9, KPI FEI TU, Ko¹ice
 
-%\noindent [1]  Ko¹èo, M.: Opis sie»ových protokolov prostredníctvom jazyka XML, 2005,
-%Diplomová práca, KPI FEI TU, Ko¹ice
-%
-%\noindent [2]  Ka¹èák, M.: Príspevok k~problematike aplikaèného vyu¾itia meraní prevádzkových parametrov poèítaèových sietí, 2007,
-%Diplomová práce, KPI FEI TU, Ko¹ice
 %
 %\noindent [2]  Pekár, A.: Meranie prevádzkových parametrov siete v~reálnom èase, 2009,
 %Bakalárska práca, KPI FEI TU, Ko¹ice
 %
-
 %
 %\noindent [4]  Pekár, A.: Optimalizácia zhroma¾ïovacieho procesu nástroja BasicMeter, 2011,
 %Diplomová práca, KPI FEI TU, Ko¹ice
