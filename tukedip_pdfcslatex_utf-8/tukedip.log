@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  18 APR 2013 22:15
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  19 APR 2013 02:37
 entering extended mode
  %&-line parsing enabled.
 **tukedip.tex
@@ -734,7 +734,7 @@ Overfull \hbox (0.39272pt too wide) detected at line 13
 ge.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.36 
+l.37 
       [1
 
 ])pdfTeX warning (ext4): destination with the same identifier (name{page.2}) ha
@@ -878,15 +878,15 @@ File: figures/exp_med_coll.pdf Graphic file (type pdf)
 identifier (name{page.14}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.57 \begin{enumerate}
+l.59 \begin{enumerate}
                        [14 <./figures/exp_med_coll.pdf>]pdfTeX warning (ext4): 
 destination with the same identifier (name{page.15}) has been already used, dup
 licate ignored
 <to be read again> 
                    \relax 
-l.90 
+l.94 
       [15]
-Overfull \hbox (2.65904pt too wide) in paragraph at lines 120--125
+Overfull \hbox (2.65904pt too wide) in paragraph at lines 129--134
  \IL2/lmr/bx/n/12 2.2.3.1 Pris-pô-so-bo-va-nie gra-nu-la-rity to-kov[][] \IL2/l
 mr/m/n/12 Naj-zá-klad-ne-j¹ia sada kµú-èov toku
  []
@@ -895,17 +895,17 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.16}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.125 
+l.134 
        [16]pdfTeX warning (ext4): destination with the same identifier (name{pa
 ge.17}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.154 
+l.164 
        [17]pdfTeX warning (ext4): destination with the same identifier (name{pa
 ge.18}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.187 
+l.199 
        [18] [19] [20]
 <figures/loss_of_exporter.pdf, id=717, 400.49625pt x 208.78pt>
 File: figures/loss_of_exporter.pdf Graphic file (type pdf)
@@ -926,7 +926,7 @@ File: figures/mediation_reference_model.pdf Graphic file (type pdf)
 File: figures/mediator_component_model.pdf Graphic file (type pdf)
 
 <use figures/mediator_component_model.pdf>
-Overfull \hbox (3.37172pt too wide) in paragraph at lines 43--50
+Overfull \hbox (3.37172pt too wide) in paragraph at lines 42--49
 \IL2/lmr/m/n/12 ne-lí¹i od zhro-ma-¾ïo-va-cieho pro-cesu po-pí-sa-ného v ¹pe-ci
 -fi-ká-cii IP-FIX pro-to-kolu ([]Claise
  []
@@ -1144,7 +1144,7 @@ e/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm
 nts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.p
 fb></usr/share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf/fonts/t
 ype1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb>
-Output written on tukedip.pdf (92 pages, 1715194 bytes).
+Output written on tukedip.pdf (92 pages, 1714991 bytes).
 PDF statistics:
  1271 PDF objects out of 1440 (max. 8388607)
  244 named destinations out of 1000 (max. 500000)

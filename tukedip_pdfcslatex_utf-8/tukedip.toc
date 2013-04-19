@@ -20,7 +20,7 @@
 \contentsline {paragraph}{\numberline {2.2.2.4}Zhrnutie probl\IeC {\'e}mov}{16}{paragraph.2.2.2.4}
 \contentsline {subsubsection}{\numberline {2.2.3}Vybran\IeC {\'e} pr\IeC {\'\i }klady pou\IeC {\v z}itia sprostredkovania spr\IeC {\'a}v}{16}{subsubsection.2.2.3}
 \contentsline {paragraph}{\numberline {2.2.3.1}Prisp\IeC {\^o}sobovanie granularity tokov}{17}{paragraph.2.2.3.1}
-\contentsline {paragraph}{\numberline {2.2.3.2}Zhroma\IeC {\v z}\IeC {\v d}ovacia infra\IeC {\v s}trukt\IeC {\'u}ra}{17}{paragraph.2.2.3.2}
+\contentsline {paragraph}{\numberline {2.2.3.2}Distribuovan\IeC {\'a} zhroma\IeC {\v z}\IeC {\v d}ovacia infra\IeC {\v s}trukt\IeC {\'u}ra}{17}{paragraph.2.2.3.2}
 \contentsline {paragraph}{\numberline {2.2.3.3}Sp\IeC {\'a}janie \IeC {\v c}asu}{17}{paragraph.2.2.3.3}
 \contentsline {paragraph}{\numberline {2.2.3.4}Sp\IeC {\'a}janie priestoru}{18}{paragraph.2.2.3.4}
 \contentsline {paragraph}{\numberline {2.2.3.5}Anonymiz\IeC {\'a}cia d\IeC {\'a}tov\IeC {\'y}ch z\IeC {\'a}znamov}{19}{paragraph.2.2.3.5}

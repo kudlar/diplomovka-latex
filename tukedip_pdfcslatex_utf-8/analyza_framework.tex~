@@ -1,8 +1,8 @@
 \subsection{Analýza aplikačného rámca pre IPFIX Mediátor} \label{sec:framework}
 
 Analýze aplikačného rámca pre sprostredkovanie správ v IPFIX sa venuje RFC 6183 \citep{rfc6183}. 
-V jednotlivých kapitolách si podrobnejšie priblížime referenčný model, vybrané funkčné bloky 
-aplikačného rámca a TODO ...
+V nasledujucich kapitolách si podrobnejšie priblížime referenčný model a vybrané komponenty, či procesy 
+aplikačného rámca.
 
 \subsubsection{Referenčný model sprostredkovania správ v IPFIX}
 
@@ -15,7 +15,6 @@ aplikačného rámca a TODO ...
 Obrázok \ref{o:mediation_reference_model} predstavuje referenčný model sprostredkovania správ v IPFIX 
 ako rozšírenie referenčného modelu IPFIX, popísaného v \emph{Architecture for IP Flow Information Export} 
 \citep{rfc5470}. Táto schéma zobrazuje možné scenáre, ktoré môžu existovať v meracej architektúre.
-
 Funkčné komponenty v rámci každej entity sú ohraničené zátvorkami []. Mediátor môže prijímať 
 záznamy o toku od iných mediátorov a exportérov a prúd záznamov z iných zdrojov.
 Za iné zdroje sa považujú nástroje iných protokolov, ako napríklad NetFlow exportéry \citep{rfc3954}. 
@@ -98,8 +97,8 @@ procesov je konfigurovaná nasledujúcimi spôsobmi.
  paralelne tak, aby boli splnené požiadavky koncových aplikácií. V tomto scenári, každý 
  sprostredkovateľský proces dostáva kópiu celého prúdu záznamov ako vstup.
  \item \textbf{Sériové spracovanie} - Aby bolo zabezpečené flexibilné spracovanie prúdu záznamov, sprostredkovateľské
- procesy sú zapojene sériovo. V tomto prípade výstupný prúd záznamov jedného procesu je vstupným prúdom nasledujúceho 
- procesu.
+ procesy sú zapojene sériovo. V tomto prípade výstupný prúd záznamov jedného procesu je vstupným prúdom 
+ nasledujúceho procesu.
 \end{itemize}
 
 

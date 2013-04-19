@@ -44,7 +44,9 @@ Dodatočne zadefinujeme nasledujúce termíny:
 \end{figure}
 
 
+
 \subsubsection{Anal\'yza nev\'yhod architekt\'ury bez Medi\'atora}
+
 
 Problematika sprostredkovania IPFIX správ je podrobne spracovaná v \citep{rfc5982}. 
 Hovori o tom, že sieťoví administrátori často celia problémom týkajúcim sa škálovateľnosti meracieho 
@@ -60,6 +62,7 @@ toku}, či \emph{spoľahlivosť exportu}. Tieto okolnosti závisia na dvoch fakt
  
  \item \textbf{Požiadavky aplikácie} - rôzne aplikácie vyžadujú rôznu zrnitosť záznamov o tokoch a presnosť dát.
 \end{enumerate}
+
 
 
 \paragraph{Vyrovnanie sa s rastom sieťovej prev\'adzky}
@@ -79,6 +82,7 @@ Filtrovanie spôsobuje, že len podmnožina dátových záznamov je exportovaná
 Vzhľadom k týmto nedostatkom sa vyžaduje aby sa veľké meracie infraštruktúry nespoliehali na 
 spomínané redukčné techniky.
 
+
 \paragraph{Vyrovnanie sa s viacúčelovým meraním}
 
 Rôzne monitorovacie aplikácie majú rôzne požiadavky na meraciu infraštruktúru. Niektoré vyžadujú 
@@ -87,6 +91,7 @@ monitorovanie na úrovni tokov, iné informácie o individuálnych paketoch a ď
 Ak by mal exportér naplniť tieto požiadavky, musel by paralelne vykonávať rôzne meracie operácie, čo je
 kvôli limitovaným výpočtovým zdrojom takmer nemožné. Preto je výhodnejšie použiť exportér s jednoduchším a 
 výkonnejším nastavením a namerané dáta vhodne spracovávať na ďalšej úrovni meracej architektúry.
+
 
 
 \paragraph{Vyrovnanie sa s heterogénnym prostredím}
@@ -99,6 +104,7 @@ interoperability týchto zariadení nie je možné.
 Monitorovací systém sa vie vysporiadať s týmto problémom iba keď je prítomné sprostredkovanie IPFIX správ.
 Avšak obsiahnuť sprostredkovanie vo všetkých zhromažďovacích zariadeniach je náročné.
 
+
 \paragraph{Zhrnutie problémov}
 
 Vzhľadom k limitovaným zdrojom monitorovacieho systému, je dôležité použiť techniky redukcie sieťových 
@@ -110,10 +116,13 @@ rôznych monitorovacích aplikácii vyžaduje škálovateľnú a flexibilnú zhr
 Toto zhrnutie implikuje, že nové sprostredkovateľské funkcie sú potrebné v typických exportér - kolektor
 infraštruktúrach. 
 
+
 \subsubsection{Vybrané príklady použitia sprostredkovania správ} \label{sec:mediator_examples}
+
 
 RFC 5982 \citep{rfc5982} uvádza viacero príkladov zaradenia IPFIX Mediátora do klasickej
 exportér - kolektor architektúry. Uveďme aspoň niektoré.
+
 
 \paragraph{Prispôsobovanie granularity tokov}
 
@@ -129,7 +138,8 @@ Najvhodnejšia implementácia predstavuje konfigurovateľný merací proces v ex
 V opačnom prípade, kde merací proces nemá schopnosť nastavovať kľúče toku exportéra, IPFIX Mediátor 
 môže agregovať dátové záznamy na základe definovaných kľúčov vo svojej konfigurácii.
 
-\paragraph{Zhromažďovacia infraštruktúra}
+
+\paragraph{Distribuovaná zhromažďovacia infraštruktúra}
 
 Zvyšovanie počtu IPFIX exportérov, rast objemu IP dát a rôzne požiadavky na operácie vykonávané nad 
 dátovými záznamami v kolektore spôsobujú vysokú náročnosť na implementáciu všetkých meracích
@@ -151,6 +161,7 @@ presnejšie výsledky a sledovanie aj menších zmien.
 Jedna z možných implementácii je použitie sprostredkovateľského procesu umiestneného medzi 
 meracím a exportovacím procesom exportéra. Druhou možnosťou je samostatný IPFIX Mediátor situovaný medzi
 exportérom a kolektorom. Táto možnosť prináša väčšiu flexibilitu a nezaťažuje exportér ďalšími výpočtami.
+
 
 \paragraph{Spájanie priestoru} \label{sec:spatial}
 
@@ -176,6 +187,7 @@ pozorovacích domén. Delí sa na tieto štyri typy:
 Implementácia pomocou sprostredkovateľského procesu umiestneného v exportéri rieši prípady 1 a 2. 
 Separátny IPFIX Mediátor je riešením pre  všetky štyri prípady.
 
+
 \paragraph{Anonymizácia dátových záznamov}
 
 IPFIX exporty krížom cez administratívne domény, tak ako to bolo popísané v prípade 4 
@@ -194,6 +206,7 @@ zamedzenie identifikácie užívateľov, alebo smerovačov.
 Jedným z možných prevedení v tomto prípade používa anonymizačnú funkciu v exportéri. 
 To však príliš zvyšuje zaťaženie exportéra. Flexibilnejšia implementácia využíva samostatný 
 IPFIX Mediátor medzi exportérom a kolektorom.
+
 
 \paragraph{Distribúcia dátových záznamov}
 
@@ -217,6 +230,7 @@ Sofistikovanejšie prevedenie používa sprostredkovateľský proces v exportér
 ktorému kolektoru sa dáta pošlú, v závislosti na hodnotách určitých polí. Ak exportér nemá
 túto schopnosť, posiela dátové záznamy IPFIX Mediátoru, a ten ich distribuuje kolektorom.
 
+
 \paragraph{Interoperabilita medzi protokolmi starších verzií a IPFIX}
 
 Počas migrácie z protokolov starších verzií ako napríklad NetFlow \citep{rfc3954} na IPFIX
@@ -226,7 +240,9 @@ IPFIX kolektora je nutné monitorovať sieť, hoci exportér je verzie NetFlow.
 Jedna z možností je použiť IPFIX Mediátor, ktorý bude konvertovať starší protokol na IPFIX.
 
 
+
 \subsubsection{Vybrané implementačno-špecifické problémy IPFIX Mediátora} \label{sec:problems}
+
 
 \paragraph{Strata informácie o pôvodnom exportéri} \label{sec:loss_info}
 
@@ -248,6 +264,7 @@ a 192.0.2.2 (exportér 2). To nie je správne. Mediátor musí informovať kolek
 \caption{Strata informácie o originálnom exportéri}\label{o:loss_of_exporter}
 \end{figure}
 
+
 \paragraph{Strata informácie o čase exportu} \label{sec:loss_time}
 
 Pole čas exportu \emph{export time}, ktoré je zahrnuté v hlavičke správy predstavuje referenčnú 
@@ -257,13 +274,8 @@ Pole čas exportu \emph{export time}, ktoré je zahrnuté v hlavičke správy pr
 času exportu,  tak časová známka delta týmto stráca význam. Kolektor však túto situáciu nevie 
 rozpoznať a tak pracuje so zlými hodnotami.
 
-%\paragraph{Spravovanie ID Sablon}
-%
-%ani ja nechápem...
-
 
 \paragraph{Interpretácia sprostredkovaných správ}
-
 
 V niektorých prípadoch potrebuje kolektor vedieť, ktoré konkrétne operácie resp. funkcie vykonal Mediátor 
 nad dátovými záznamami. Kolektor nedokáže rozlíšiť medzi spájaním času a spájaním priestoru, v prípade, že 
@@ -273,7 +285,4 @@ exportované.
 V prípade spájania času, kolektor musí poznať aktívny timeout \emph{active timeout} 
 pôvodných záznamov o tokoch. Pri spájaní priestoru je potrebné poznať nad akou oblasťou bola 
 vykonaná kompozícia dátových záznamov.\citep{rfc5982}
-
-%
-% KED BUDE MALO PRIDAM SEKURITU, CELKOM ZAUJIMAVA JE
 

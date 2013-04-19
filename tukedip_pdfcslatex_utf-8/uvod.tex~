@@ -27,7 +27,8 @@ v heterogénnych sieťových prostrediach, tieto exportér-kolektor systémy mô
 škálovateľnosti. Ba čo viac, neposkytujú flexibilitu potrebnú pre široký rad meracích aplikácii.
 
 Pre naplnenie požiadaviek aplikácií s obmedzenými systémovými zdrojmi, IPFIX architektúra zavádza 
-sprostredkovateľskú entitu medzi exportéry a kolektory. Z pohľadu manipulácie s dátami môže tento subjekt 
+sprostredkovateľskú entitu medzi exportéry a kolektory. Z pohľadu manipulácie s dátami môžu sprostredkovateľské
+moduly  
 poskytovať agregáciu, koreláciu, filtrovanie, anonymizáciu a iné úpravy záznamov o tokoch za účelom 
 šetrenia výpočtových zdrojov meracieho systému a vykonávania predspracovania úloh pre kolektor. Z hľadiska
 interoperability nástrojov rôznych vývojárov, môže poskytovať konverziu z iných protokolov na IPFIX, 
@@ -49,8 +50,8 @@ sprostredkovania, ale aj jeho implementačno-špecifické problémy. Ďalšia se
 aplikačného rámca pre IPFIX Mediátor. Tretia kapitola stručne priblíži projekty výskumnej skupiny MONICA.
 Nasledujúca kapitola s poradovým číslom štyri, tvorí jadro práce. V nej sa čitateľ dočíta o návrhu a 
 implementácii aplikačného rámca pre sprostredkovateľskú entitu. Jednotlivým triedam a metódam vyššieho 
-významu je venované podrobne vysvetlenie. Predposledná kapitola niekoľkými testami experimentálne 
-overuje implementované riešenie. Zaver už len zhodnotí diplomovú prácu a jej dosiahnute výsledky. 
+významu je venované podrobné vysvetlenie. Predposledná kapitola niekoľkými testami experimentálne 
+overuje implementované riešenie. Záver už len zhodnotí diplomovú prácu a jej dosiahnuté výsledky. 
 
 
 %V~úvode autor podrobnejšie ako v~predhovore, pritom výstižne a~krátko
