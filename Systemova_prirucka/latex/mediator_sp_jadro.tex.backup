@@ -477,7 +477,7 @@ Pole bytov reprezentujúce interpretovanú retazcovu hodnotu na základ predaného t
 
 \textit{public static byte[] \textbf{encodeAddressType}(String dataType, String value)}
 
-Zakóduje dátové typy obsahujúce adresy: ipv4Address, ipv6Address a macAddress.
+Zakóduje dátové typy obsahujúce adresy: ipv4Address, ipv6Address a macAddress. \\
 {\bfseries Parametre:}\\
 \emph{String} dataType - re»azec definujúci dátový typ obsiahnutý v~buffri.\\
 \emph{String} value - samotné dáta, ktoré sú predmetom zakódovania\\
@@ -491,123 +491,193 @@ Pole bytov reprezentujúce interpretovanú retazcovu hodnotu na základ predaného t
 
 
 
-\textit{public String \textbf{encodeBooleanType}(String value)}
+\textit{public static byte[] \textbf{encodeBooleanType}(String value)}
 
-Dekóduje boolean reprezentujúci pravdivostnú hodnotu.
+Zakóduje boolean reprezentujúci pravdivostnú hodnotu.\\
+{\bfseries Návratová hodnota:}\\
+Pole bytov reprezentujúci pravdivostnú hodnotu, "true" alebo "false". \\
+{\bfseries Hád¾e:} \\
+\verb|OutOfBoundsException| - Ak je hodnota mimo povoleneho rozsahu\\
 
-{\bfseries Návratová hodnota:}
 
-Re»azec reprezentujúci pravdivostnú hodnotu, "true" alebo "false".
 
-{\bfseries Hád¾e:}
+\textit{public static byte[] \textbf{encodeStringType}(String value)}
 
-DataException - Ak je buffer nesprávnej veµkosti vzhµadom na dátový typ, alebo ak obsahuje inú hodnotu ako 0 alebo 1\\
-UnsupportedDataException - Ak dátový typ nie je podporovaný\\
+Zakóduje retazec v kódovaní UTF-8 do pole bytov.\\
+{\bfseries Návratová hodnota:}\\
+Pole bytov retazca v~kódovaní UTF-8.\\
 
 
-\textit{public String \textbf{decodeStringType}(String value)}
 
-Dekóduje dáta v~buffri ako re»azec v~kódovaní UTF-8.
+\textit{public static byte[] \textbf{encodeOctetArrayType}(String value)}
 
-{\bfseries Návratová hodnota:}
+Re»azec v kódu Base64 prevedie na pole bytov.\\
+{\bfseries Návratová hodnota:}\\
+Pole bytov predstavujúce binárne dáta zakódované v~Base64. \\
 
-Re»azec v~kódovaní UTF-8.
 
 
-\textit{public String \textbf{decodeOctetArrayType}(String value)}
+\textit{public static byte[] \textbf{encodeDateTimeType}(String dataType, String value)}
 
-Dáta v~buffri prevedie na re»azec do kódu Base64.
+Zakóduje dátové typy èasových známok: dateTimeSeconds, dateTimeMilliseconds, dateTimeMicroseconds a 
+dateTimeNanoseconds do pola bytov. \\
+{\bfseries Parametre:}\\
+\emph{String} dataType - re»azec definujúci dátový typ obsiahnutý v~buffri.\\
+\emph{String} value - samotné dáta, ktoré sú predmetom zakódovania\\
+{\bfseries Návratová hodnota:}\\
+Pole bytov reprezentujúce interpretovanú hodnotu retazca na základe predaného typu.
+Dátové typy dateTimeSeconds a dateTimeMilliseconds predstavujú poèet sekúnd, resp. milisekúnd od Unix 
+epochy (00:00 1.1.1970 UTC).
+Dátové typy dateTimeMicroseconds a dateTimeNanoseconds sú zakódované vo formáte èasovej známky NTP 
+Timestamp.\\
+{\bfseries Hád¾e:}\\
+\verb|UnsupportedDataException| - Ak dátový typ nie je podporovaný\\
+\verb|NumberFormatException| - Ak je chyba v formate kodovanej hodnoty vzhladom na datovy typ\\
+\verb|OutOfBoundsException| - Ak je hodnota mimo povoleneho rozsahu\\
 
-{\bfseries Návratová hodnota:}
 
-Re»azec predstavujúci binárne dáta zakódované v~Base64.
 
+\textit{public static void \textbf{checkStringNumbersRange}(String min, String max, String value, String dataType)}
 
-\textit{public String \textbf{decodeDateTimeType}(String dataType, String value)}
-
-Dekóduje dátové typy èasových známok: dateTimeSeconds, dateTimeMilliseconds, dateTimeMicroseconds a dateTimeNanoseconds.
-
-{\bfseries Parametre:}
-
-type - re»azec definujúci dátový typ obsiahnutý v~buffri.\\
-buffer - samotné dáta, ktoré sú predmetom dekódovania\\
-
-{\bfseries Návratová hodnota:}
-
-Re»azec reprezentujúci interpretovanú hodnotu buffra na základ predaného typu.
-Dátové typy dateTimeSeconds a dateTimeMilliseconds predstavujú poèet sekúnd, resp. milisekúnd od Unix epochy (00:00 1.1.1970 UTC).
-Dátové typy dateTimeMicroseconds a dateTimeNanoseconds sú zakódované vo formáte èasovej známky NTP Timestamp.
-Berie sa do úvahy redukované kódovanie prvých dvoch menovaných typov.
-
-{\bfseries Hád¾e:}
-
-DataException - Ak je buffer nesprávnej veµkosti vzhµadom na dátový typ\\
-UnsupportedDataException - Ak dátový typ nie je podporovaný\\
-
-
-
-\textit{public ByteBuffer \textbf{parseMacAddress}(byte[] input)}
-
-Konvertuje bajty vo vstupnom poli bajtov na re»azec v~tvare XX:XX:XX:XX:XX:XX.
-
-{\bfseries Parametre:}
-
-input - vstupné pole bajtov obsahujúce dáta skráteného informaèného elementu.\\
-arraySize - veµkos» informaèného elementu podµa definície v~informaènom modeli IPFIX.\\
-isSigned - ak je dátový typ dát vo vstupnom poli bajtov znamienkové èíslo, táto hodnota by mala by» true.\\
-
-{\bfseries Návratová hodnota:}
-
-ByteBuffer obsahujúci informaèný dáta informaèného elementu o~¹tandardnej veµkosti.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Overi, ci ciselna hodnota v retazci spada do rozsahu daneho datovym typom. \\
+{\bfseries Parametre:}\\
+\emph{String} min - dolna hranica rozsahu \\
+\emph{String} max - horna hranica rozsahu\\
+\emph{String} value - hodnota, ktora sa ma overit\\
+\emph{String} dataType - datovy typ hodnoty\\
+{\bfseries Hád¾e:}\\
+\verb|OutOfBoundsException| - Ak je hodnota mimo povoleneho rozsahu
 
 
 
 
 \subsubsection{Trieda IPFIXFlowRecord}
-\subsubsection{Trieda IPFIXFlowRecord}
-\subsubsection{Trieda IPFIXMessage}
-\subsubsection{Trieda IPFIXMessage}
-\subsubsection{Trieda IPFIXTemplateRecord}
+Tato trieda je reprezentaciou IPFIX Flow record-u, teda zaznamu o toku.
+
+\bigskip
+\textbf{Kon¹truktor} 
+
+\textit{public \textbf{IPFIXFlowRecord}(IPFIXTemplateRecord referencedTemplate, 
+ArrayList $<$IPFIXDataRecord$>$ dataRecords, IPFIXMessage.IPFIXMessageHeader messageHeader)}
+
+Konstruktor prostrednictvom predanych parametrov inicializuje clenske premenne.\\
+\textbf{Parametre:}\\
+\emph{IPFIXTemplateRecord} referencedTemplate - sablona patriaca datovym zaznamom\\
+\emph{ArrayList$<$IPFIXDataRecord$>$} dataRecords - pole datovych zaznamov\\
+\emph{IPFIXMessage.IPFIXMessageHeader} messageHeader - hlavicka IPFIX spravy, ktora obsahovala tento
+zaznam o toku
+
+
+\emph{public \textbf{IPFIXFlowRecord}()}
+
+Bezparametricky konstruktor. Iba inicializuje prazdne pole datovych zaznamov. \\
+
+
+\textbf{Metódy:}\\
+Metody, ktore tu nie su spomenute, su klasicke gettery a settery.
+
+
+
+\emph{public int \textbf{getReferencedTemplateID}()}
+
+{\bfseries Návratová hodnota:}\\
+Vracia ID sablony z IPFIX spravy, ktora obsahovala tento zaznam o toku.\\
+
+
+
+\clearpage
+\emph{public void \textbf{addDataRecord}(IPFIXDataRecord dataRecord)}
+
+Prida datovy zaznam do pola datovych zaznamom flow record-u.\\
+\textbf{Parametre:}\\
+\emph{IPFIXDataRecord} dataRecord - datovy zaznam, ktory sa priradi zaznamu o toku.
+
+
+
+\subsubsection{Trieda IPFIXMessageHeader}
+Trieda reprezentujuca hlavicku IPFIX spravy. Implementuje navrhovy vzor Singleton.
+
+\bigskip
+\textbf{Metody:}\\
+Metody, ktore tu nie su spomenute, su klasicke gettery a settery.
+
+\emph{public static IPFIXMessageHeader \textbf{getInstance}()}
+
+{\bfseries Návratová hodnota:}\\
+Vracia jedinecnu instanciu objektu.
+
+
+
+
+
+% ----------BALIK INTERMEDIATE PROCESS ----------------------------------
+
+\subsection{Balík sk.tuke.cnl.bm.Mediator.IntermediateProcesses}
+
+\subsubsection{Trieda AIntermediateProcess}
+Abstraktna trieda, poskytuje vychodiskove metody sprostredkovatelskym procesom a tvori akesi
+rozhranie medzi modulmi a aplikacnym ramcom. Dedi od triedy \verb|Thread|.
+
+\bigskip
+\textbf{Kon¹truktor} 
+
+\emph{\textbf{AIntermediateProcess}(String childName)}
+
+Nastavi meno procesu, podla prijateho parametra. Inicializuje vstupny buffer a ziska jedinecnu instanciu
+triedy \verb|IPFIXElements|.\\
+\textbf{Parametre:}\\
+\emph{String} childName - meno triedy potomka
+
+\emph{\textbf{AIntermediateProcess}()}
+
+Bezparametricky konstruktor. Inicializuje vstupny buffer a ziska jedinecnu instanciu
+triedy \verb|IPFIXElements|.\\
+
+
+\textbf{Metody:}\\
+
+\emph{public static final synchronized $<$T extends AIntermediateProcess$>$ T \textbf{getInstance} (Class clazz)}
+
+Toto rie¹enie je hybridom viacerých prístupov, ktoré sa diskutujú na Internete, no vychádza z 
+návrhového vzoru \emph{Factory method}. Výsledkom je abstraktná trieda, slú¾iaca ako továreò na 
+podtriedy tým, ¾e volá jej statickú metódu \emph{getInstance(Class clazz)}. 
+Ak sú splnené podmienky, ¾e konkrétna trieda, napr. \verb|SelectionProcess| je definovaná v rovnakom 
+balíèku ako \verb|AIntermediateProcess| a ich kon¹truktory nemajú explicitne nastavený prístup 
+(predvoleným prístupom je \uv{privátny v rámci balíèka}), tak 
+jediným spôsobom ako získa» in¹tanciu podtriedy mimo balíèka je cez kon¹trukciu:
+\begin{verbatim}
+ SelectionProcess instance = 
+ AIntermediateProcess.getInstance(SelectionProcess.class);
+\end{verbatim}
+Dalo by sa vyèíta», ¾e vytváranie in¹tancií pou¾íva reflexiu, ktorá je pomalá. Av¹ak, keï¾e vytvárame 
+Singletony, volanie \emph{newInstance()} sa vykoná pre ka¾dý modul pravé raz. \\
+\textbf{Parametre:}\\
+\emph{Class} clazz = class objekt pozadovanej triedy \\
+\textbf{Návratová hodnota:}\\
+Objekt typu T, pricom T dedi od \verb|AIntermediateProcess|.
+
+
+
+\emph{public static final synchronized $<$T extends AIntermediateProcess$>$ T \textbf{getInstance} (String processName)}
+   
+
+
+
+
+
+
+
+
+
+Aby bolo mo¾né získava» in¹tancie modulov aj na základe mena triedy a nie len cez class objekty, vytvoril 
+som ïal¹iu metódu \emph{getInstance(String processName)}. Parameter \emph{processName} je práve meno 
+procesu, napr \verb|SelectionProcess|. 
+Premenná \emph{name} je binárne meno procesu, podµa ¹pecifikácie jazyka Java \citep{java_spec},
+napr. \verb|sk.tuke.cnl.Mediator.SelectionProcess|.
+Tato metóda naèíta \emph{class} objekt sprostredkovateµského procesu cez systémový class loader,
+tak ako to bolo vy¹¹ie spomínané. Potom zavolá pôvodnú metódu \emph{getInstance(Class clazz)} a 
+vráti in¹tanciu procesu.
+
 
 
 
@@ -625,7 +695,7 @@ Slú¾i ako UDP server. Prijíma UDP datagramy cez \verb|DatagramChannel| a uklada 
 \bigskip
 \textbf{Kon¹truktor} 
 
-\textit{public \textbf{UDPServer}()}
+\textit{public \textbf{UDPServer}(int port)}
 
 Kon¹truktor inicializuje \verb|DatagramChannel|, nastaví mu blokovací re¾im a privia¾e ho k~portu 
 definovanom v~konfiguraènom súbore, ktory mu je predany ako parameter. Nastaví meno vlákna.\\
@@ -641,7 +711,7 @@ Hlavná metóda vlákna. Pokiaµ nedôjde k~preru¹eniu, prijima cez vytvoreny kanal d
 Prijate data obali do objektu \verb|ByteBuffer| a predá ich spolu s casom prijatia a IP adresou a 
 portom exportera metode \emph{write()}, ktora ich zapise do \verb|PacketCache|.
 
-\clearpage
+
 \textit{public void \textbf{cleanUp}()}
 
 Táto metóda zru¹í èistiace vlákno pre UDP Template Cache. Je volaná pri preru¹ení tohto vlákna.

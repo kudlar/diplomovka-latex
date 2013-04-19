@@ -537,7 +537,6 @@ Timestamp.\\
 
 
 
-
 \textit{public static void \textbf{checkStringNumbersRange}(String min, String max, String value, String dataType)}
 
 Overi, ci ciselna hodnota v retazci spada do rozsahu daneho datovym typom. \\
@@ -547,63 +546,247 @@ Overi, ci ciselna hodnota v retazci spada do rozsahu daneho datovym typom. \\
 \emph{String} value - hodnota, ktora sa ma overit\\
 \emph{String} dataType - datovy typ hodnoty\\
 {\bfseries Hád¾e:}\\
-\verb|OutOfBoundsException| - Ak je hodnota mimo povoleneho rozsahu\\
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\verb|OutOfBoundsException| - Ak je hodnota mimo povoleneho rozsahu
 
 
 
 
 \subsubsection{Trieda IPFIXFlowRecord}
-\subsubsection{Trieda IPFIXFlowRecord}
-\subsubsection{Trieda IPFIXMessage}
-\subsubsection{Trieda IPFIXMessage}
-\subsubsection{Trieda IPFIXTemplateRecord}
+Tato trieda je reprezentaciou IPFIX Flow record-u, teda zaznamu o toku.
+
+\bigskip
+\textbf{Kon¹truktor} 
+
+\textit{public \textbf{IPFIXFlowRecord}(IPFIXTemplateRecord referencedTemplate, 
+ArrayList $<$IPFIXDataRecord$>$ dataRecords, IPFIXMessage.IPFIXMessageHeader messageHeader)}
+
+Konstruktor prostrednictvom predanych parametrov inicializuje clenske premenne.\\
+\textbf{Parametre:}\\
+\emph{IPFIXTemplateRecord} referencedTemplate - sablona patriaca datovym zaznamom\\
+\emph{ArrayList$<$IPFIXDataRecord$>$} dataRecords - pole datovych zaznamov\\
+\emph{IPFIXMessage.IPFIXMessageHeader} messageHeader - hlavicka IPFIX spravy, ktora obsahovala tento
+zaznam o toku
+
+
+\emph{public \textbf{IPFIXFlowRecord}()}
+
+Bezparametricky konstruktor. Iba inicializuje prazdne pole datovych zaznamov. \\
+
+
+\textbf{Metódy:}\\
+Metody, ktore tu nie su spomenute, su klasicke gettery a settery.
+
+
+
+\emph{public int \textbf{getReferencedTemplateID}()}
+
+{\bfseries Návratová hodnota:}\\
+Vracia ID sablony z IPFIX spravy, ktora obsahovala tento zaznam o toku.\\
+
+
+
+\clearpage
+\emph{public void \textbf{addDataRecord}(IPFIXDataRecord dataRecord)}
+
+Prida datovy zaznam do pola datovych zaznamom flow record-u.\\
+\textbf{Parametre:}\\
+\emph{IPFIXDataRecord} dataRecord - datovy zaznam, ktory sa priradi zaznamu o toku.
+
+
+
+\subsubsection{Trieda IPFIXMessageHeader}
+Trieda reprezentujuca hlavicku IPFIX spravy. Implementuje navrhovy vzor Singleton.
+
+\bigskip
+\textbf{Metody:}\\
+Metody, ktore tu nie su spomenute, su klasicke gettery a settery.
+
+\emph{public static IPFIXMessageHeader \textbf{getInstance}()}
+
+{\bfseries Návratová hodnota:}\\
+Vracia jedinecnu instanciu objektu.
 
 
 
 
 
+% ----------BALIK INTERMEDIATE PROCESS ----------------------------------
 
- ----------COLLECTING --------------------------------------
+\subsection{Balík sk.tuke.cnl.bm.Mediator.IntermediateProcesses}
+
+\subsubsection{Trieda AIntermediateProcess}
+Abstraktna trieda, poskytuje vychodiskove metody sprostredkovatelskym procesom a tvori akesi
+rozhranie medzi modulmi a aplikacnym ramcom. Dedi od triedy \verb|Thread|.
+
+\bigskip
+\textbf{Kon¹truktor} 
+
+\emph{\textbf{AIntermediateProcess}(String childName)}
+
+Nastavi meno procesu, podla prijateho parametra. Inicializuje vstupny buffer a ziska jedinecnu instanciu
+triedy \verb|IPFIXElements|.\\
+\textbf{Parametre:}\\
+\emph{String} childName - meno triedy potomka
+
+\emph{\textbf{AIntermediateProcess}()}
+
+Bezparametricky konstruktor. Inicializuje vstupny buffer a ziska jedinecnu instanciu
+triedy \verb|IPFIXElements|.\\
+
+
+\textbf{Metody:}\\
+
+\emph{public static final synchronized $<$T extends AIntermediateProcess$>$ T \textbf{getInstance} (Class clazz)}
+
+Toto rie¹enie je hybridom viacerých prístupov, ktoré sa diskutujú na Internete, no vychádza z 
+návrhového vzoru \emph{Factory method}. Výsledkom je abstraktná trieda, slú¾iaca ako továreò na 
+podtriedy tým, ¾e volá jej statickú metódu \emph{getInstance(Class clazz)}. 
+Ak sú splnené podmienky, ¾e konkrétna trieda, napr. \verb|SelectionProcess| je definovaná v rovnakom 
+balíèku ako \verb|AIntermediateProcess| a ich kon¹truktory nemajú explicitne nastavený prístup 
+(predvoleným prístupom je \uv{privátny v rámci balíèka}), tak 
+jediným spôsobom ako získa» in¹tanciu podtriedy mimo balíèka je cez kon¹trukciu:
+\begin{verbatim}
+ SelectionProcess instance = 
+ AIntermediateProcess.getInstance(SelectionProcess.class);
+\end{verbatim}
+Dalo by sa vyèíta», ¾e vytváranie in¹tancií pou¾íva reflexiu, ktorá je pomalá. Av¹ak, keï¾e vytvárame 
+Singletony, volanie \emph{newInstance()} sa vykoná pre ka¾dý modul pravé raz. \\
+\textbf{Parametre:}\\
+\emph{Class} clazz = class objekt pozadovanej triedy \\
+\textbf{Návratová hodnota:}\\
+Objekt typu T, pricom T dedi od \verb|AIntermediateProcess|.
+
+
+
+\emph{public static final synchronized $<$T extends AIntermediateProcess$>$ T \textbf{getInstance} (String processName)}
+   
+Aby bolo mo¾né získava» in¹tancie modulov aj na základe mena triedy a nie len cez class objekty, vytvoril 
+som túto metódu. Premennú \emph{processName} prevedie na binárne meno procesu, podµa ¹pecifikácie jazyka 
+Java, teda nazov triedy vratane balickov, napr. 
+\verb|sk.tuke.cnl.Mediator.SelectionProcess|.
+Tato metóda naèíta \emph{class} objekt sprostredkovateµského procesu cez systémový class loader,
+tak ako to bolo vy¹¹ie spomínané. Potom zavolá pôvodnú metódu \emph{getInstance(Class clazz)} a 
+vráti in¹tanciu procesu.\\
+\textbf{Parametre:}\\
+\emph{String} processName = meno pozadovanej triedy \\
+\textbf{Návratová hodnota:}\\
+Objekt typu T, pricom T dedi od \verb|AIntermediateProcess|.\\
+
+
+
+
+\emph{protected final HashMap \textbf{decodeDataRecord}(IPFIXTemplateRecord template, IPFIXDataRecord dataRecord)}
+
+Pri prvom prechode funkciou sa generuje pamatovy zaznam o informacnych elementoch (ie) z XML suboru. 
+Vytiahnu sa informacie o ie, ktore sa nachadzaju v sablone, dekoduju sa ich datove typy a prislusnost k 
+skupine.\\
+\textbf{Parametre:}\\
+\emph{IPFIXTemplateRecord} template - sablona dat\\
+\emph{IPFIXDataRecord} dataRecord - datovy zaznam\\
+\textbf{Návratová hodnota:}\\
+Dekodovane data ako objekt typu \verb|HashMap|.\\
+
+
+\emph{protected final IPFIXDataRecord \textbf{encodeDataRecord}(IPFIXTemplateRecord template, 
+HashMap$<$String, String$>$ dataMap)}
+
+Zakoduje vsetky hodnoty z hashmapy obsahujucej hodnoty informacnych elementov podla sablony do datoveho 
+zaznamu. \\
+\textbf{Parametre:}\\
+\emph{IPFIXTemplateRecord} template - sablona dat \\
+\emph{HashMap$<$String, String$>$} dataMap - hodnoty informacnych elementov v hashmape, ktora sa ma zakodovat\\
+\textbf{Návratová hodnota:}\\
+Vracia objekt datoveho zaznamu -  \verb|IPFIXDataRecord|.\\
+\textbf{Hád¾e:}\\
+\verb|EncodingException| - Ak nastane chyba pri kodovani.\\
+
+
+
+\emph{protected final void \textbf{dispatchFlowRecord}(IPFIXFlowRecord flowRecord, String inputProcess)}
+
+Vytvara rozhranie pre pristup k metode frameworku.\\
+\textbf{Parametre:}\\
+\emph{IPFIXFlowRecord} flowRecord - zaznam o toku, ktory sa ma posunut dalej \\
+\emph{String} inputProcess - povodca zaznamu o toku 
+
+
+
+\subsubsection{Trieda ExampleProcess}
+
+Tato trieda je vzorovym riesenim jednoducheho sprostredkovatelskeho procesu, vykonavajuceho 
+anonymizaciu. Ucelom triedy je pomoc dalsej generacii riesitelov.
+
+\bigskip
+\textbf{Kon¹truktor} 
+
+\emph{\textbf{ExampleProcess}()}
+
+Vola rodicovsky konstruktor a predava mu svoje meno ako parameter.\\
+
+\textbf{Metody:}\\
+\emph{public void \textbf{run}()}
+
+Hlavna metoda vlakna. V cykle èaká na záznamy o tokoch vo svojom vstupnom bufferi \emph{(inputBuffer)} a 
+postupne ich odtiaµ èíta a odstraòuje. Nazvime ich 
+\emph{vstupne záznamy}. Vstupný buffer jej napåòa trieda \verb|FlowRecordDispatcher|. Po preèítaní 
+vstupného záznamu vytvorí a inicializuje \emph{výstupný záznam}. Následne prechádza v¹etky dátové záznamy
+vstupného záznamu, dekóduje ich, anonymizuje zdrojovú a cieµovú IP adresu a naspa» zakóduje. Ak v¹etko 
+prebehlo bez problémov, tak dátový záznam priradí výstupnému záznamu. Napokon výstupný záznam o toku 
+posunie distribútorovi záznamov, ktorý ho bude prepo¹le 
+nasledujúcemu sprostredkovateµskému procesu, alebo pripraví na export. \\
+
+
+\emph{private String \textbf{anonymizeIPv4}(String address)}
+
+Metoda na velmi jednoduchu anonymizaciu IP adresy, cislo v poslednom oktete zmeni na 0.\\
+\textbf{Parametre:}\\
+\emph{String} address - IP adresa, ktora sa anonymizovat \\
+\textbf{Návratová hodnota:}\\
+Anonymizovana IP adresa, vratena ako retazec.
+
+
+
+\subsubsection{Trieda IPInputBuffer}
+
+Reprezentuje vstupny buffer sprostredkovatelskych modulov. Tato trieda je cache pre zaznamy o tokoch. 
+Jej pouzitie je kriticke vo vysokorychlostnych sietach, pretoze udrziava elementy a tym padom moze 
+vyrovnavat narazovy napor. Je synchronizovana a jej implementacia je FIFO front typu \verb|ArrayBlockingQueue|.
+
+\clearpage
+\textbf{Metody:}
+
+\emph{public boolean \textbf{write}(IPFIXFlowRecord flowRecord)}
+
+Zapisuje zaznamy o tokoch do frontu. Ak je front plny, zaznam sa zahadzuje.\\
+\textbf{Parametre:}\\
+\emph{IPFIXFlowRecord} flowRecord - zaznam o toku\\
+\textbf{Návratová hodnota:}\\
+Pravdivostna hodnota podla toho, ci zaznam bol, alebo nebol zapisany do cache.\\
+
+
+\emph{public void \textbf{write}(IPFIXTemplateRecord template, ArrayList$<$IPFIXDataRecord$>$ dataRecords, IPFIXMessage.IPFIXMessageHeader messageHeader)}
+
+Metoda obali prijate parametre do objektu tiredy \verb|IPFIXFlowRecord| a zavola predchadzajucu metodu.\\
+\textbf{Parametre:}\\
+\emph{IPFIXTemplateRecord} template - sablona\\
+\emph{ArrayList$<$IPFIXDataRecord$>$} dataRecords - pole datovych zaznamov\\
+\emph{IPFIXMessage.IPFIXMessageHeader} messageHeader - hlavicka IPFIX spravy, z ktorej tento zaznam o toku 
+pochadza\\
+
+
+
+\emph{public IPFIXFlowRecord \textbf{read}()}
+
+Precita a zmaze vrchol frontu. Ak je front prazdny caka dokial sa tam nejaky element neprida.\\
+\textbf{Návratová hodnota:}\\
+Objekt triedy \verb|IPFIXFlowRecord|.\\
+\textbf{Hád¾e:}\\
+\verb|InterruptedException| - Ak nastala chyba pri synchronizovani vlakien, alebo ak bolo vlakno prerusene 
+pocas cakania.
+
+
+
+%----------COLLECTING --------------------------------------
 
 \subsection{Balik sk.tuke.cnl.bm.Mediator.collecting}
 
@@ -614,7 +797,7 @@ Slú¾i ako UDP server. Prijíma UDP datagramy cez \verb|DatagramChannel| a uklada 
 \bigskip
 \textbf{Kon¹truktor} 
 
-\textit{public \textbf{UDPServer}()}
+\textit{public \textbf{UDPServer}(int port)}
 
 Kon¹truktor inicializuje \verb|DatagramChannel|, nastaví mu blokovací re¾im a privia¾e ho k~portu 
 definovanom v~konfiguraènom súbore, ktory mu je predany ako parameter. Nastaví meno vlákna.\\
@@ -630,7 +813,7 @@ Hlavná metóda vlákna. Pokiaµ nedôjde k~preru¹eniu, prijima cez vytvoreny kanal d
 Prijate data obali do objektu \verb|ByteBuffer| a predá ich spolu s casom prijatia a IP adresou a 
 portom exportera metode \emph{write()}, ktora ich zapise do \verb|PacketCache|.
 
-\clearpage
+
 \textit{public void \textbf{cleanUp}()}
 
 Táto metóda zru¹í èistiace vlákno pre UDP Template Cache. Je volaná pri preru¹ení tohto vlákna.
@@ -647,24 +830,52 @@ objektu triedy
 zaznam o toku je spolu s retazcom predstavujucim zdroj zaznamu (v tomto pripade \uv{exporter})
 posunuty triede \verb|FlowRecordDispatcher|.
 
-% ------------------------------------------------
 
 
 
+% --------------------- EXPORTING ---------------------------
+
+\subsection{Balik sk.tuke.cnl.bm.Mediator.exporting}
+
+\subsubsection{Trieda ExportCache}
+
+Analogia k triede \verb|IPInputBuffer|. Reprezentuje exportovaciu cache, ktora je synchronizovana a 
+jej implementacia je FIFO front typu \verb|ArrayBlockingQueue|.
+
+\textbf{Metody:}
+
+\emph{public static boolean \textbf{write}(IPFIXFlowRecord flowRecord)}
+
+Zapisuje zaznamy o tokoch do frontu. Ak je front plny, zaznam sa zahadzuje.\\
+\textbf{Parametre:}\\
+\emph{IPFIXFlowRecord} flowRecord - zaznam o toku\\
+\textbf{Návratová hodnota:}\\
+Pravdivostna hodnota podla toho, ci zaznam bol, alebo nebol zapisany do cache.\\
 
 
 
+\emph{public static IPFIXFlowRecord \textbf{read}()}
+
+Precita a zmaze vrchol frontu. Ak je front prazdny caka dokial sa tam nejaky element neprida.\\
+\textbf{Návratová hodnota:}\\
+Objekt triedy \verb|IPFIXFlowRecord|.\\
+\textbf{Hád¾e:}\\
+\verb|InterruptedException| - Ak nastala chyba pri synchronizovani vlakien, alebo ak bolo vlakno prerusene 
+pocas cakania.\\
 
 
 
+\emph{public static int \textbf{getSize}()}
+
+\textbf{Návratová hodnota:}\\
+Vracia pocet elementov v cache.
 
 
 
+\subsubsection{Trieda MessageEncoder}
 
-
-% ----------------------------------------------------------
-
-
+Trieda sluzi na zakodovanie resp. zabalenie zaznamu o toku do IPFIX paketu podla specifikacie v RFC 5101 
+a RFC 5102.
 
 
 

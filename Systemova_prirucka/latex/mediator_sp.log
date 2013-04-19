@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  19 APR 2013 16:58
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  19 APR 2013 20:18
 entering extended mode
  %&-line parsing enabled.
 **mediator_sp.tex
@@ -699,12 +699,12 @@ File: il2lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 [7
 
 ] [8]
-<figures/mediation_reference_model.pdf, id=227, 458.71375pt x 428.60126pt>
+<figures/mediation_reference_model.pdf, id=242, 458.71375pt x 428.60126pt>
 File: figures/mediation_reference_model.pdf Graphic file (type pdf)
 
 <use figures/mediation_reference_model.pdf> [9 <./figures/mediation_reference_m
 odel.pdf>]
-<figures/mediator_component_model.pdf, id=239, 474.77374pt x 366.36874pt>
+<figures/mediator_component_model.pdf, id=254, 474.77374pt x 366.36874pt>
 File: figures/mediator_component_model.pdf Graphic file (type pdf)
 
 <use figures/mediator_component_model.pdf> [10 <./figures/mediator_component_mo
@@ -855,38 +855,106 @@ Underfull \hbox (badness 10000) in paragraph at lines 522--537
 
  []
 
+[23]
+Overfull \hbox (0.10513pt too wide) in paragraph at lines 563--569
+\IL2/lmr/m/it/12 IPFIXMessage.IPFIXMessageHeader \IL2/lmr/m/n/12 mes-sa-ge-He-a
+-der - hla-vicka IP-FIX spravy, ktora
+ []
 
-Underfull \hbox (badness 10000) in paragraph at lines 543--551
+
+Underfull \hbox (badness 10000) in paragraph at lines 573--574
 
  []
 
-[23] [24] [25] [26
 
-] [27
+Underfull \hbox (badness 10000) in paragraph at lines 583--585
 
-] [28] [29] [30]) [31] (./mediator_sp.aux
-(./mediator_sp_jadro.aux)) ) 
+ []
+
+[24] [25
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 633--635
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 637--638
+
+ []
+
+[26]
+Underfull \hbox (badness 10000) in paragraph at lines 663--674
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 680--688
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 693--702
+
+ []
+
+[27]
+Underfull \hbox (badness 10000) in paragraph at lines 724--725
+
+ []
+
+[28]
+Underfull \hbox (badness 10000) in paragraph at lines 729--737
+
+ []
+
+[29]
+Underfull \hbox (badness 10000) in paragraph at lines 760--765
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 769--775
+
+ []
+
+[30
+
+] [31]
+Underfull \hbox (badness 10000) in paragraph at lines 849--854
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 859--865
+
+ []
+
+[32] [33] [34
+
+] [35] [36] [37]) [38] (./mediator_sp.aux (./mediator_sp_jadro.aux)) ) 
 Here is how much of TeX's memory you used:
- 9726 strings out of 495027
- 133204 string characters out of 1181419
- 202106 words of memory out of 3000000
- 12572 multiletter control sequences out of 15000+50000
+ 9740 strings out of 495027
+ 133372 string characters out of 1181419
+ 203106 words of memory out of 3000000
+ 12575 multiletter control sequences out of 15000+50000
  62735 words of font info for 74 fonts, out of 3000000 for 9000
  38 hyphenation exceptions out of 8191
- 38i,9n,40p,1061b,482s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-cstt.enc}{/
-usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dv
-ips/lm/lm-cs.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}</usr/share/te
-xmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lm
-bx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbxi10.pfb></usr/share/texmf/
-fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.
-pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/t
-ype1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></u
-sr/share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf/fonts/type1/p
-ublic/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb>
-Output written on mediator_sp.pdf (31 pages, 556636 bytes).
+ 38i,9n,40p,1061b,481s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/sha
+re/texmf/fonts/enc/dvips/lm/lm-cstt.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
+-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-cs.enc}{/usr/share/texmf/fo
+nts/enc/dvips/lm/lm-ts1.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmbxi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></us
+r/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/
+texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/
+lmss10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf
+/fonts/type1/public/lm/lmtt8.pfb>
+Output written on mediator_sp.pdf (38 pages, 576957 bytes).
 PDF statistics:
- 417 PDF objects out of 1000 (max. 8388607)
- 90 named destinations out of 1000 (max. 500000)
- 283 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 466 PDF objects out of 1000 (max. 8388607)
+ 101 named destinations out of 1000 (max. 500000)
+ 307 words of extra memory for PDF output out of 10000 (max. 10000000)
 
