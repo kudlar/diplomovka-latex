@@ -469,12 +469,7 @@ Zdrojové texty sú k~dispozícii v~prílohe diplomovej práce.
    AIntermediateProcess.java
    ExampleProcess.java
    IPInputBuffer.java
-- balík sk.tuke.cnl.bm.Mediator.collecting:
-   IPFIXParser.java
-   PacketCache.java
-   PacketObject.java
-   UDPProcessor.java
-   UDPServer.java
+- balík sk.tuke.cnl.bm.Mediator.collectiong:
 - balík sk.tuke.cnl.bm.Mediator.exporting:
    ExportCache.java
    MessageEncoder.java   
@@ -496,14 +491,17 @@ Preklad programu si vy¾aduje nasledovnú hardvérovú konfiguráciu:
   \item CPU Intel Pentium III 1Ghz alebo ekvivalent
   \item operaèná pamä» 512MB
   \item pevný disk s~1GB voµného miesta
+  \item grafická karta novej generácie s~minimálne 64MB pamä»ou
   \item sie»ová karta 100Mb/s
+
 \end{itemize}
 \noindent
 
 \subsection{Po¾iadavky na programové prostriedky pri preklade}
 \begin{itemize}
-\item operaèný systém GNU/Linux s~verziou jadra 2.6 a vy¹¹ou 
+\item  operaèný systém GNU/Linux s~verziou jadra 2.6 a vy¹¹ou (odporúèa sa kvôli podpore SCTP)
 \item Java Runtime Environment (JRE) verzie 1.7.0\_03 a~vy¹¹ej
+\item balík lksctp-tools
 \item kni¾nice dodávané na in¹talaènom médiu
 \end{itemize}
 

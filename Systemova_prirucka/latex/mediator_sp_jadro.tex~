@@ -502,8 +502,9 @@ Preklad programu si vy¾aduje nasledovnú hardvérovú konfiguráciu:
 
 \subsection{Po¾iadavky na programové prostriedky pri preklade}
 \begin{itemize}
-\item operaèný systém GNU/Linux s~verziou jadra 2.6 a vy¹¹ou 
+\item  operaèný systém GNU/Linux s~verziou jadra 2.6 a vy¹¹ou (odporúèa sa kvôli podpore SCTP)
 \item Java Runtime Environment (JRE) verzie 1.7.0\_03 a~vy¹¹ej
+\item balík lksctp-tools
 \item kni¾nice dodávané na in¹talaènom médiu
 \end{itemize}
 

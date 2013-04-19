@@ -52,10 +52,10 @@
 %%   Grave accent  \`     Left brace    \{     Vertical bar  \|
 %%   Right brace   \}     Tilde         \~}
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{mediator_sp_hc}
+\ProvidesClass{tukediphc}
               [2010/05/05 v1.4 TUKE thesis class]
 
-\ClassInfo{mediator_sp_hc}
+\ClassInfo{tukediphc}
   {Technical University of Kosice (official)\MessageBreak
    Bachelor's/Master's thesis document class\@gobble}
 

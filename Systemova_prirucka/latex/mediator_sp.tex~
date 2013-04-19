@@ -48,8 +48,8 @@
 %%
 %\usepackage[dvips]{graphicx}
 %\DeclareGraphicsExtensions{.eps}
-%\usepackage[pdftex]{graphicx}
-\DeclareGraphicsExtensions{.pdf,.png,.jpg,.mps}
+\usepackage[pdftex]{graphicx}
+%\DeclareGraphicsExtensions{.pdf,.png,.jpg,.mps}
 \graphicspath{{figures/}} % priecinok na obrazky
 %%
 %% Cislovane citovanie
