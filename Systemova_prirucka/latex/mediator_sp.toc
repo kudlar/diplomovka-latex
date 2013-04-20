@@ -1,8 +1,8 @@
 \select@language {slovak}
-\contentsline {section}{\numberline {1}Funkcia programu}{7}{section.1}
+\contentsline {section}{\numberline {1}Funkcia programu}{6}{section.1}
 \contentsline {section}{\numberline {2}Analýza problému}{7}{section.2}
-\contentsline {subsection}{\numberline {2.1}Vybrané príklady pou¾itia sprostredkovania správ}{8}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Analýza aplikaèného rámca pre IPFIX Mediátor}{9}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.1}Vybrané príklady pou¾itia sprostredkovania správ}{7}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Analýza aplikaèného rámca pre IPFIX Mediátor}{8}{subsection.2.2}
 \contentsline {section}{\numberline {3}Popis programu}{11}{section.3}
 \contentsline {subsection}{\numberline {3.1}Popis rie¹enia}{11}{subsection.3.1}
 \contentsline {section}{\numberline {4}Popis tried, èlenských premenných a~metód}{12}{section.4}
@@ -21,13 +21,14 @@
 \contentsline {subsubsection}{\numberline {4.3.1}Trieda AIntermediateProcess}{25}{subsubsection.4.3.1}
 \contentsline {subsubsection}{\numberline {4.3.2}Trieda ExampleProcess}{29}{subsubsection.4.3.2}
 \contentsline {subsubsection}{\numberline {4.3.3}Trieda IPInputBuffer}{30}{subsubsection.4.3.3}
-\contentsline {subsection}{\numberline {4.4}Balik sk.tuke.cnl.bm.Mediator.collecting}{31}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.4}Balík sk.tuke.cnl.bm.Mediator.collecting}{31}{subsection.4.4}
 \contentsline {subsubsection}{\numberline {4.4.1}Trieda UDPServer}{32}{subsubsection.4.4.1}
 \contentsline {subsubsection}{\numberline {4.4.2}Trieda IpfixParser}{33}{subsubsection.4.4.2}
-\contentsline {subsection}{\numberline {4.5}Balik sk.tuke.cnl.bm.Mediator.exporting}{34}{subsection.4.5}
+\contentsline {subsection}{\numberline {4.5}Balík sk.tuke.cnl.bm.Mediator.exporting}{34}{subsection.4.5}
 \contentsline {subsubsection}{\numberline {4.5.1}Trieda ExportCache}{34}{subsubsection.4.5.1}
 \contentsline {subsubsection}{\numberline {4.5.2}Trieda MessageEncoder}{35}{subsubsection.4.5.2}
 \contentsline {subsubsection}{\numberline {4.5.3}Trieda UDPExporter}{38}{subsubsection.4.5.3}
+\contentsline {subsection}{\numberline {4.6}Balík sk.tuke.cnl.bm.exceptions}{39}{subsection.4.6}
 \contentsline {section}{\numberline {5}Preklad programu}{40}{section.5}
 \contentsline {subsection}{\numberline {5.1}Zoznam zdrojových textov}{40}{subsection.5.1}
 \contentsline {subsection}{\numberline {5.2}Po¾iadavky na technické prostriedky pri preklade}{41}{subsection.5.2}
@@ -37,4 +38,4 @@
 \contentsline {subsection}{\numberline {5.6}Vytvorenie in¹talaèného DEB súboru}{42}{subsection.5.6}
 \contentsline {subsection}{\numberline {5.7}Opis známych chýb}{43}{subsection.5.7}
 \contentsline {section}{\numberline {6}Zhodnotenie rie¹enia}{44}{section.6}
-\contentsline {section}{\hbox to\@tempdima {\hfil }Zoznam pou¾itej literatúry}{44}{section.6}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Zoznam pou¾itej literatúry}{45}{section.6}

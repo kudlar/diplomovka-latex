@@ -1,22 +1,27 @@
 %%
 \section{Funkcia programu}
 
-Program Mediator je implementaciou aplikacneho ramca pre problem sprostredkovania sprav v protokole IPFIX 
-\emph{(IP Flow Information Export (IPFIX) Mediation Problem)} vyvijany vyskumnou skupinou MONICA sidliacou
-v Laboratoriu pocitacovych sieti \emph{(CNL)} na Technickej Univerzite v Kosiciach. Je sucastou meracej
-architektury SLAmeter, ktorej ulohou je pasivne meranie parametrov sietovej prevadzky na baze tokov. 
-Na zaklade nameranych hodnot urcuje triedu kvality sluzieb a Internetoveho pripojenia poskytovatelov 
-Internetu. Trieda kvality vypoveda o dodrziavani zmluvy o urovni poskytovanej sluzby - \emph{SLA}.
+Program Mediátor je implementáciou aplikaèného rámca pre problém sprostredkovania správ v protokole IPFIX 
+\emph{(IP Flow Information Export (IPFIX) Mediation Problem)} vyvíjaný výskumnou skupinou MONICA sídliacou
+v Laboratóriu poèítaèových sietí \emph{(CNL)} na Technickej Univerzite v Ko¹iciach. Je súèas»ou meracej
+architektúry SLAmeter, ktorej úlohou je pasívne meranie parametrov sie»ovej prevádzky na báze tokov. 
+Na základe nameraných hodnôt urèuje triedu kvality slu¾ieb a Internetového pripojenia poskytovateµov 
+Internetu. Trieda kvality vypovedá o dodr¾iavaní zmluvy o úrovni poskytovanej slu¾by - \emph{SLA}.
 
-Mediaotrebnú pre ¹iroký rad meracích aplikácii.
-Sprostredkovatelske moduly Mediatora mozu z pohµadu manipulácie s dátami poskytova» agregáciu, koreláciu,
+Komponentmi architektúry IPFIX (IP Flow Information Export) podµa RFC 5470 \citep{rfc5470}
+sú exportéry a kolektory komunikujúce protokolom IPFIX.
+Vzhµadom k trvalému rastu IP prevádzky v heterogénnych sie»ových prostrediach,
+tieto exportér-kolektor systémy mô¾u vies» k problémom ¹kálovateµnosti. Naviac,
+neposkytujú flexibilitu potrebnú pre ¹iroký rad meracích aplikácii.
+
+Sprostredkovateµské moduly Mediátora mô¾u z pohµadu manipulácie s dátami poskytova» agregáciu, koreláciu,
 filtrovanie, anonymizáciu 
 a iné úpravy záznamov o tokoch za úèelom ¹etrenia výpoètových zdrojov meracieho systému a vykonávania 
 predspracovania úloh pre kolektor. Z hµadiska interoperability nástrojov rôznych vývojárov, mô¾u 
 poskytova» konverziu z iných protokolov na IPFIX, respektíve zvy¹ova» spoµahlivos» exportov
 napríklad prevodom z nespoµahlivého, bezspojovo orientovaného protokolu UDP na spoµahlivý SCTP. 
 
-Program bol v roku 2013 vytvorený Rastislavom Kudlom v ramci jeho diplomovej prace.
+Program bol v roku 2013 vytvorený Rastislavom Kudlom v rámci jeho diplomovej práce.
 
 
 
@@ -55,7 +60,7 @@ exportér - kolektor architektúry. Uveïme aspoò niektoré:
 \end{itemize}
   \item anonymizácia dátových záznamov,
   \item distribúcia dátových záznamov,
-  \item konverzia z protokolu nizsej verzie na IPFIX,
+  \item konverzia z protokolu ni¾¹ej verzie na IPFIX,
 \end{itemize}
 
 
@@ -63,7 +68,7 @@ exportér - kolektor architektúry. Uveïme aspoò niektoré:
 \subsection{Analýza aplikaèného rámca pre IPFIX Mediátor} 
 
 Analýze aplikaèného rámca pre sprostredkovanie správ v IPFIX sa venuje RFC 6183 \citep{rfc6183}. 
-Na Obrazku \ref{o:mediation_reference_model} je zobrazeny referenèný model sprostredkovania správ v IPFIX 
+Na Obrázku \ref{o:mediation_reference_model} je zobrazený referenèný model sprostredkovania správ v IPFIX 
 ako roz¹írenie referenèného modelu IPFIX, popísaného v \emph{Architecture for IP Flow Information Export} 
 \citep{rfc5470}. Táto schéma zobrazuje mo¾né scenáre, ktoré mô¾u existova» v meracej architektúre.
 
@@ -108,12 +113,12 @@ Mediátor je schopný súèasne podporova» viac ako jeden sprostredkovateµský proces
 Jednotlivé èasti programu sú umiestnené v~nasledujúcich balíkoch:
 
 \begin{itemize}
-\item \verb|sk.tuke.cnl.bm.Mediator.collecting| - implementacia zhromazdovacieho procesu
-\item \verb|sk.tuke.cnl.bm.Mediator.exporting| - implementacia exportovacieho procesu
-\item \verb|sk.tuke.cnl.bm.Mediator.IntermediateProcesses| - triedy tvoriace podporu pre sprostredkovatelske 
-procesy. Hlavne triedy novych modulov musia byt umiestnene v tomto baliku!
+\item \verb|sk.tuke.cnl.bm.Mediator.collecting| - implementácia zhroma¾ïovacieho procesu
+\item \verb|sk.tuke.cnl.bm.Mediator.exporting| - implementácia exportovacieho procesu
+\item \verb|sk.tuke.cnl.bm.Mediator.IntermediateProcesses| - triedy tvoriace podporu pre sprostredkovateµské 
+procesy. Hlavne triedy nových modulov musia by» umiestnené v tomto balíku!
 \item \verb|sk.tuke.cnl.bm.Mediator.IPFIX| - triedy s~manuálnou implementáciou protokolu IPFIX
-\item \verb|sk.tuke.cnl.bm.Mediator.exceptions| - vlastne vynimky aplikacie
+\item \verb|sk.tuke.cnl.bm.Mediator.exceptions| - vlastné výnimky aplikácie
 \item \verb|sk.tuke.cnl.bm.Mediator| - hlavné triedy samotného programu
 \end{itemize}
 
@@ -148,65 +153,65 @@ procesy. Hlavne triedy novych modulov musia byt umiestnene v tomto baliku!
 \clearpage
 \section{Popis tried, èlenských premenných a~metód}
 
-Ked¾e niektore triedy Mediatora su kvoli jednotnosti rieseni v ramci vyskumnej skupiny MONICA totozne 
-s triedami nastroja JXColl, v~nasledujúcich èastiach budú uvedené len tie, ktoré sa tykaju vyhradne 
-Mediatora. Popis ostatných tried a~metód je uvedený v~systemovej príruèke programu 
+Keï¾e niektoré triedy Mediátora sú kvôli jednotnosti rie¹ení v rámci výskumnej skupiny MONICA toto¾né 
+s triedami nastroja JXColl, v~nasledujúcich èastiach budú uvedené len tie, ktoré sa tykajú výhradne 
+Mediátora. Popis ostatných tried a~metód je uvedený v~systémovej príruèke programu 
 JXColl \citep{jxcoll_sp}.  
 
-% ----------HLAVNY BALIK --------------------------------------
+% ----------HLAVNÝ BALÍK --------------------------------------
 
 \subsection{Balík sk.tuke.cnl.bm.Mediator}
 
 \subsubsection{Trieda Default}
-Trieda predstavuje rozhranie obsahujuce vychodiskove hodnoty konfiguracneho suboru. Neobsahuje konstruktor
-ani ziadne metody, iba verejne pristupne staticke konstanty.
+Trieda predstavuje rozhranie obsahujúce východiskové hodnoty konfiguraèného súboru. Neobsahuje kon¹truktor
+ani ¾iadne metódy, iba verejne prístupné statické kon¹tanty.
 
 
 
 \subsubsection{Trieda DropsCounter}
-Sluzi na vypocet statistiky zahodenych entit. Pod entitou sa myslia zaznamy o tokoch, datove zaznamy, 
-alebo IPFIX pakety. Obsahuje len staticke metody.
+Slú¾i na výpoèet ¹tatistiky zahodených entít. Pod entitou sa myslia záznamy o tokoch, dátové záznamy, 
+alebo IPFIX pakety. Obsahuje len statické metódy.
 
 \bigskip
 \textbf{Metódy} 
 
 \textit{public static void \textbf{inputBufferDropsUP}()}
 
-Zvysuje pocet strat sposobenych preplnenim vstupneho buffera sprostredkovateµských porcesov o jeden. \\
+Zvy¹uje poèet strát spôsobených preplnením vstupného buffera sprostredkovateµských procesov o jeden. \\
 \textbf{Parametre:} \\
 \emph{String} processName - meno procesu
 
 
 \textit{public static void \textbf{exportCacheDropsUP}()}
 
-Zvysuje pocet strat sposobenych \verb|ExportCache| o jeden.\\
+Zvy¹uje poèet strát spôsobených \verb|ExportCache| o jeden.\\
 
 
 \textit{public static void \textbf{encodingDropsUp}()}
 
-Zvysuje pocet strat sposobenych chybou pri kodovani o jeden.\\
+Zvy¹uje poèet strát spôsobených chybou pri kódovaní o jeden.\\
 
 
 \textit{public static void \textbf{decodingDropsUp}()}
 
-Zvysuje pocet strat sposobenych chybou pri dekodovani o jeden.\\
+Zvy¹uje poèet strát spôsobených chybou pri dekódovaní o jeden.\\
 
 
 \textit{public static void \textbf{packetDropsUp}()}
 
-Zvysuje pocet IPFIX paketov zahodenych UDP serverom o jeden.\\
+Zvy¹uje poèet IPFIX paketov zahodených UDP serverom o jeden.\\
 
 
 \textit{public static void \textbf{printStats}()}
 
-Vypise statistiku vsetkych zahodenych entit.
+Vypí¹e ¹tatistiku v¹etkých zahodených entít.
 
 
 
 \subsubsection{Trieda FlowRecordDispatcher}
-Ulohou tejto triedy je na zaklade konfiguracneho suboru distribuovat prijate zaznamy o toku 
-sprostredkovatelskym procesom (seriovo alebo paralelne) a exportovaciemu porcesu. Distribucia prebieha
-v sulade s IPFIX Mediator Framework (RFC 6183). Tato trieda je implementovana podla navrhoveho vzoru 
+Úlohou tejto triedy je na základe konfiguraèného súboru distribuova» prijaté záznamy o toku 
+sprostredkovateµským procesom (sériovo alebo paralelne) a exportovaciemu procesu. Distribúcia prebieha
+v súlade s IPFIX Mediator Framework (RFC 6183). Táto trieda je implementovaná podµa návrhového vzoru 
 \emph{Singleton}.
 
 \bigskip
@@ -214,65 +219,65 @@ v sulade s IPFIX Mediator Framework (RFC 6183). Tato trieda je implementovana po
 
 \textit{public static FlowRecordDispatcher \textbf{getInstance}()}
 
-Implementuje vzor \emph{Singleton}. Vytvori a vrati jedinecnu instanciu v pripade ze neexistuje, v opacnom pripade 
-ju iba vrati. \\
+Implementuje vzor \emph{Singleton}. Vytvorí a vráti jedineènú in¹tanciu v prípade ¾e neexistuje, v 
+opaènom prípade ju iba vráti. \\
 \textbf{Návratová hodnota:} \\
-Jedinecny objekt typu \verb|FlowRecordDispatcher|.\\
+Jedineèný objekt typu \verb|FlowRecordDispatcher|.\\
 
 
 \textit{public synchronized void \textbf{dispatchFlowRecord}(IPFIXFlowRecord flowRecord, String inputProcess)}
 
-Posiela prijate zaznamy o tokoch prislusnym sprostredkovatelskym procesom, alebo exportovaciemu procesu 
-podla konfiguracie. Najprv ziska zoznam prijimatelov toku na zaklade mena povodcu. Ak je zoznam prazdny - 
-zaznam o toku je 
-urceny na export, preto ho zapise do \verb|ExportCache|. Ak zoznam nie je prazdny, ziska si instancie 
-prijimatelov toku a zaznam im zapise do vstupneho buffera. Tato metoda je synchronizovana, lebo je
-pristupna viacerym vlaknam. \\
+Posiela prijaté záznamy o tokoch príslu¹ným sprostredkovateµským procesom, alebo exportovaciemu procesu 
+podµa konfigurácie. Najprv získa zoznam prijímateµov toku na základe mena pôvodcu. Ak je zoznam prázdny - 
+záznam o toku je 
+urèený na export, preto ho zapí¹e do \verb|ExportCache|. Ak zoznam nie je prázdny, získa si in¹tancie 
+prijímateµov toku a záznam im zapí¹e do vstupného buffera. Táto metóda je synchronizovaná, lebo je
+prístupná viacerým vláknam. \\
 \textbf{Parametre:} \\
-\emph{IPFIXFlowRecord} flowRecord - zaznam o toku, ktory sa ma distribuovat dalej \\
-\emph{String} inputProcess - meno povodcu zaznamu o toku.\\
+\emph{IPFIXFlowRecord} flowRecord - záznam o toku, ktorý sa má distribuova» ïalej \\
+\emph{String} inputProcess - meno pôvodcu záznamu o toku.\\
 
 \textit{private void \textbf{fillInputBuffer}(AIntermediateProcess process, IPFIXFlowRecord flowRecord)}
 
-Metoda, ktora zapisuje zaznamy o tokoch do vstupneho buffra sprostredkovatelskych procesov. V pripade
-neuspechu za zvysi pocitadlo v \verb|DropsCounter| a vypise error. \\
+Metóda, ktorá zapisuje záznamy o tokoch do vstupného buffera sprostredkovateµských procesov. V prípade
+neúspechu sa zvý¹i poèítadlo v \verb|DropsCounter| a vypí¹e error. \\
 \textbf{Parametre:} \\
-\emph{AIntermediateProcess} process - instancia sprostredkovatelskeho procesu. \\
-\emph{IPFIXFlowRecord} flowRecord - zaznam o toku, ktory sa ma zapisat.\\
+\emph{AIntermediateProcess} process - in¹tancia sprostredkovateµského procesu. \\
+\emph{IPFIXFlowRecord} flowRecord - záznam o toku, ktorý sa má zapísa».\\
 
 \textit{private ArrayList$<$String$>$ \textbf{getReceiversList}(String inputDevice)}
 
-Ziskava zoznam prijemcov zaznamu o toku od zadaneho povodcu toku. \\
+Získava zoznam príjemcov záznamu o toku od zadaného pôvodcu toku. \\
 \textbf{Parametre:} \\
-\emph{String} inputDevice - povodca zaznamu o toku \\
+\emph{String} inputDevice - pôvodca záznamu o toku \\
 \textbf{Návratová hodnota:} \\
-Zoznam prijemcov toku, typ \verb|ArrayList|.
+Zoznam príjemcov toku, typ \verb|ArrayList|.
 
 
 
 \subsubsection{Trieda IPLoader}
-Trieda je zodpovedna za dynamicke nacitavanie sprostredkovatelskych procesov definovanych v konfiguracnom
-subore. Implementuje navrhovy vzor \emph{Singleton}.
+Trieda je zodpovedná za dynamické naèítavanie sprostredkovateµských procesov definovaných v konfiguraènom
+súbore. Implementuje návrhový vzor \emph{Singleton}.
 
 \bigskip
 \textbf{Metódy} 
 
 \textit{public static IPLoader \textbf{getInstance}()}
 
-Implementuje vzor \emph{Singleton}. Vytvori a vrati jedinecnu instanciu v pripade ze neexistuje, v opacnom pripade 
-ju iba vrati.\\
+Implementuje vzor \emph{Singleton}. Vytvorí a vráti jedineènú in¹tanciu v prípade ¾e neexistuje, v opaènom prípade 
+ju iba vráti.\\
 
 
 \textit{public void \textbf{loadProcesses}()}
 
-Hlavna metoda triedy, dynamicky nacitava sprostredkovatelske moduly definovane v konfiguracnom subore. 
-Najprv ziska systemovy \emph{classLoader}. V cykle prechadza zoznam spostredkovatelskych modulov. 
-Kazdy retazec obsahujuci meno prevedie na binarne meno (meno triedy vratane balickov)  a pomocou 
-classLoader-a ziska jeho \verb|Class| objekt. Na zaklade tohto objektu ziska jedinecnu instanciu 
-modulu a kedze sa jedna o vlakno, spusti ho tak, ze zavola jeho metodu \verb|start()|. \\
+Hlavná metóda triedy, dynamicky naèítava sprostredkovateµské moduly definované v konfiguraènom súbore. 
+Najprv získa systémový \emph{classLoader}. V cykle prechádza zoznam sprostredkovateµských modulov. 
+Ka¾dý re»azec obsahujúci meno prevedie na binárne meno (meno triedy vrátane balíèkov)  a pomocou 
+classLoader-a získa jeho \verb|Class| objekt. Na základe tohto objektu získa jedineènú in¹tanciu 
+modulu a keï¾e sa jedná o vlákno, spustí ho tak, ¾e zavolá jeho metódu \verb|start()|. \\
 \textbf{Hád¾e:} \\
-\verb|IPLoaderException| - V pripade akejkolvek chyby, ktora moze nastat pri vykonavani metody. Chyby, ktore 
-su zachytavane su typov:
+\verb|IPLoaderException| - V prípade akejkoµvek chyby, ktorá mô¾e nasta» pri vykonávaní metódy. Chyby, ktoré 
+sú zachytávané sú typov:
 \begin{itemize}
  \item \verb|SecurityException|
  \item \verb|ClassNotFoundException|
@@ -284,50 +289,50 @@ su zachytavane su typov:
 
 
 \subsubsection{Trieda Mediator}
-Ulohou hlavnej triedy Mediatora je postupne spustit vsetky vlakna a procesy potrebne pre beh programu.
-Najprv sa precitaju a spracuju argumenty prikazoveho riadku. Program vie rozpoznavat dva druhy 
-argumentov. Prvym je cesta ku konfiguracnemu suboru. Ak nie je zadana, pouziva sa vychodiskovy 
-konfiguracny subor. Druhym argumentom moze byt zadana moznost \verb|--logtofile|. Vtedy su vsetky 
-logovacie vystupy presmerovane zo standardneho vystupu do suboru.
+Úlohou hlavnej triedy Mediátora je postupne spusti» v¹etky vlákna a procesy potrebné pre beh programu.
+Najprv sa preèítajú a spracujú argumenty príkazového riadku. Program vie rozpoznáva» dva druhy 
+argumentov. Prvým je cesta ku konfiguraènému súboru. Ak nie je zadaná, pou¾íva sa východiskový 
+konfiguraèný súbor. Druhým argumentom mô¾e by» zadaná mo¾nos» \verb|--logtofile|. Vtedy sú v¹etky 
+logovacie výstupy presmerované zo ¹tandardného výstupu do súboru.
 
-Potom ako program nacita vsetky nastavenia z konfiguracneho suboru, spusti vsetky svoje moduly - 
-sprostredkovateµské procesy pomocou triedy \verb|IPLoader|. Nasleduje spustenie vlakna, ktore prijima 
-IPFIX pakety prostrednictvom protokolu UDP a vlakna, ktore ich spracovava. Hovorime o \verb|UDPServer| 
-a \verb|UDPProcessor|. Nakoniec je spustene exportovacie vlakno - \verb|UDPExporter|. Kedykolvek ked 
-nastane chyba je Mediator korektne ukonceny a to tak, ze uvolni vsetku pamat a zastavi beziace vlakna. 
-Rovnako je Mediator zastaveny po stlaceni kombinacie klaves \verb|Ctrl+c|.
+Potom ako program naèíta v¹etky nastavenia z konfiguraèného súboru, spustí v¹etky svoje moduly - 
+sprostredkovateµské procesy pomocou triedy \verb|IPLoader|. Nasleduje spustenie vlákna, ktoré prijíma 
+IPFIX pakety prostredníctvom protokolu UDP a vlákna, ktoré ich spracováva. Hovoríme o \verb|UDPServer| 
+a \verb|UDPProcessor|. Nakoniec je spustené exportovacie vlákno - \verb|UDPExporter|. Kedykoµvek keï 
+nastane chyba je Mediátor korektne ukonèený a to tak, ¾e uvolní v¹etku pamä» a zastaví be¾iace vlákna. 
+Rovnako je Mediátor zastavený po stlaèení kombinácie kláves \verb|Ctrl+c|.
 
 \bigskip
 \textbf{Metódy} 
 
 \textit{public static void \textbf{main}(String[] args)}
 
-Hlavna metoda triedy. \\
+Hlavná metóda triedy. \\
 \textbf{Parametre:} \\
-\emph{String[]} args - argumenty prikazoveho riadku.\\
+\emph{String[]} args - argumenty príkazového riadku.\\
 
 
 \emph{public static void \textbf{stopMediator}()}
 
-Metoda, ktora korektne ukoncuje beh programu. Zastavi vsetky spustene vlakna a uvolni vsetky druhy pamate.\\
+Metóda, ktorá korektne ukonèuje beh programu. Zastaví v¹etky spustené vlákna a uvoµní v¹etky druhy pamäte.\\
 
 \clearpage
 \emph{public static void \textbf{interruptThread}()}
 
-Prerusi vykonavanie vlakna. \\
+Preru¹í vykonávanie vlákna. \\
 \textbf{Parametre:} \\
-\emph{Thread} thread - objekt vlakna, ktore sa ma zastavit.\\
+\emph{Thread} thread - objekt vlákna, ktoré sa má zastavi».\\
 
 
 \emph{private static void \textbf{loggingToFile}()}
 
-Metoda, ktora vykonava logovanie do suboru namiesto standardneho vystupu.
+Metóda, ktorá vykonáva logovanie do súboru namiesto ¹tandardného výstupu.
 
 
 
 \subsubsection{Trieda Support}
-Podporna trieda, ktora obsahuje pomocne metody potrebne pri de(kodovani) a pri validacii formatu dat. 
-Uvadzam iba vlastne metody.
+Podporná trieda, ktorá obsahuje pomocné metódy potrebné pri de(kódovaní) a pri validácii formátu dát. 
+Uvádzam iba vlastné metódy.
 
 \bigskip
 \textbf{Metódy} 
@@ -335,78 +340,78 @@ Uvadzam iba vlastne metody.
 
 \emph{public static byte[] \textbf{byteToByteArray}(byte x)}
 
-Konvertuje primitivny typ \emph{byte} na pole bytov v usporadani bytov Big Endian. \\
+Konvertuje primitívny typ \emph{byte} na pole bytov v usporiadaní bytov Big Endian. \\
 \textbf{Parametre:} \\
-\emph{byte} x - hodnota, ktora sa ma zakodovat. \\
+\emph{byte} x - hodnota, ktorá sa má zakódova». \\
 \textbf{Návratová hodnota:} \\
 Pole bytov, typ \emph{byte[]}. \\
 
 
 \emph{public static byte[] \textbf{shortToByteArray}(short x)}
 
-Konvertuje primitivny typ \emph{short} na pole bytov v usporadani bytov Big Endian. \\
+Konvertuje primitívny typ \emph{short} na pole bytov v usporiadaní bytov Big Endian. \\
 \textbf{Parametre:} \\
-\emph{short} x - hodnota, ktora sa ma zakodovat. \\
+\emph{short} x - hodnota, ktorá sa má zakódova». \\
 \textbf{Návratová hodnota:} \\
 Pole bytov, typ \emph{byte[]}. \\
 
 
 \emph{public static byte[] \textbf{intToByteArray}(int x)}
 
-Konvertuje primitivny typ \emph{int} na pole bytov v usporadani bytov Big Endian. \\
+Konvertuje primitívny typ \emph{int} na pole bytov v usporiadaní bytov Big Endian. \\
 \textbf{Parametre:} \\
-\emph{int} x - hodnota, ktora sa ma zakodovat. \\
+\emph{int} x - hodnota, ktorá sa má zakódova». \\
 \textbf{Návratová hodnota:} \\
 Pole bytov, typ \emph{byte[]}. \\
 
 
 \emph{public static byte[] \textbf{longToByteArray}(long x)}
 
-Konvertuje primitivny typ \emph{long} na pole bytov v usporadani bytov Big Endian. \\
+Konvertuje primitívny typ \emph{long} na pole bytov v usporiadaní bytov Big Endian. \\
 \textbf{Parametre:} \\
-\emph{long} x - hodnota, ktora sa ma zakodovat. \\
+\emph{long} x - hodnota, ktorá sa má zakódova». \\
 \textbf{Návratová hodnota:} \\
 Pole bytov, typ \emph{byte[]}. \\
 
 
 \emph{public static byte[] \textbf{floatToByteArray}(float x)}
 
-Konvertuje primitivny typ \emph{float} na pole bytov v usporadani bytov Big Endian. \\
+Konvertuje primitívny typ \emph{float} na pole bytov v usporiadaní bytov Big Endian. \\
 \textbf{Parametre:} \\
-\emph{float} x - hodnota, ktora sa ma zakodovat. \\
+\emph{float} x - hodnota, ktorá sa má zakódova». \\
 \textbf{Návratová hodnota:} \\
 Pole bytov, typ \emph{byte[]}. \\
 
 
 \emph{public static byte[] \textbf{doubleToByteArray}(double x)}
 
-Konvertuje primitivny typ \emph{double} na pole bytov v usporadani bytov Big Endian. \\
+Konvertuje primitívny typ \emph{double} na pole bytov v usporiadaní bytov Big Endian. \\
 \textbf{Parametre:} \\
-\emph{double} x - hodnota, ktora sa ma zakodovat. \\
+\emph{double} x - hodnota, ktorá sa má zakódova». \\
 \textbf{Návratová hodnota:} \\
 Pole bytov, typ \emph{byte[]}. \\
 
 
 \emph{public static boolean \textbf{validateMAC}(String macAddress)}
 
-Validuje format MAC adresy. \\
+Validuje formát MAC adresy. \\
 \textbf{Parametre:} \\
-\emph{String} macAddress - adresa, ktorej format sa ma overit. \\
+\emph{String} macAddress - adresa, ktorej formát sa má overi». \\
 \textbf{Návratová hodnota:} \\
-\emph{true} - v pripade, ze je adresa v spravnom formate.\\
-\emph{false} - opacne.
+\emph{true} - v prípade, ¾e je adresa v správnom formáte.\\
+\emph{false} - opaène.
 
 
 
 
 
-% ----------BALIK IPFIX --------------------------------------
+% ----------BALÍK IPFIX --------------------------------------
 
 \subsection{Balík sk.tuke.cnl.bm.Mediator.IPFIX}
 
 \subsubsection{Trieda IPFIXEncoder}
-Trieda so statickými metódami slú¾iacimi na zakódovanie retazcovej reprezentacie hodnot informacnych
-elementov na abstraktne datove typy podla RFC 5101 a RFC 5102. Je presnym opakom triedy \verb|IPFIXDecoder|.
+Trieda so statickými metódami slú¾iacimi na zakódovanie re»azcovej reprezentácie hodnôt informaèných
+elementov na abstraktne dátové typy podµa RFC 5101 a RFC 5102. Je presným opakom triedy \verb|IPFIXDecoder|.
 
 
 \bigskip
@@ -415,18 +420,18 @@ elementov na abstraktne datove typy podla RFC 5101 a RFC 5102. Je presnym opakom
 
 \textit{public static byte[] \textbf{encode}(String dataType, String value)}
 
-Zakóduje hodnotu datoveho typu do pola bytov podµa ¹pecifikácie IPFIX.
+Zakóduje hodnotu dátového typu do poµa bytov podµa ¹pecifikácie IPFIX.
 Priamo nevykonáva zakódovanie, volá konkrétne metódy podµa kategórie dátového typu.\\
 {\bfseries Parametre:}\\
-\emph{String} dataType - re»azec definujúci dátový typ obsiahnutý v~buffri.\\
+\emph{String} dataType - re»azec definujúci dátový typ obsiahnutý v~bufferi.\\
 \emph{String} value - samotné dáta, ktoré sú predmetom zakódovania\\
 {\bfseries Návratová hodnota:} \\
-Pole bytov reprezentujúce interpretovanú retazcovu hodnotu na základ predaného typu. \\
+Pole bytov reprezentujúce interpretovanú re»azcovú hodnotu na základe predaného typu. \\
 {\bfseries Hád¾e:} \\
 \verb|UnsupportedDataException| - Ak dátový typ nie je podporovaný\\
-\verb|OutOfBoundsException| - Ak je hodnota mimo povoleneho rozsahu\\
-\verb|UnknownHostException| - Ak program nevie rozpoznat host, alebo IP adresu \\
-\verb|DataException| - Ak je chyba v formate kodovanej hodnoty vzhladom na datovy typ\\
+\verb|OutOfBoundsException| - Ak je hodnota mimo povoleného rozsahu\\
+\verb|UnknownHostException| - Ak program nevie rozpozna» host, alebo IP adresu \\
+\verb|DataException| - Ak je chyba v formáte kódovanej hodnoty vzhµadom na dátový typ\\
 
 
 
@@ -434,14 +439,14 @@ Pole bytov reprezentujúce interpretovanú retazcovu hodnotu na základ predaného t
 
 Zakóduje celoèíselné bezznamiekové dátové typy unsigned8, unsigned16, unsigned32, unsigned64 a unsigned128. \\
 {\bfseries Parametre:}\\
-\emph{String} dataType - re»azec definujúci dátový typ obsiahnutý v~buffri.\\
+\emph{String} dataType - re»azec definujúci dátový typ obsiahnutý v~bufferi.\\
 \emph{String} value - samotné dáta, ktoré sú predmetom zakódovania\\
 {\bfseries Návratová hodnota:} \\
-Pole bytov reprezentujúce interpretovanú retazcovu hodnotu na základ predaného typu. \\
+Pole bytov reprezentujúce interpretovanú re»azcovú hodnotu na základe predaného typu. \\
 {\bfseries Hád¾e:} \\
 \verb|UnsupportedDataException| - Ak dátový typ nie je podporovaný\\
-\verb|NumberFormatException| - Ak je chyba v formate kodovanej hodnoty vzhladom na datovy typ\\
-\verb|OutOfBoundsException| - Ak je hodnota mimo povoleneho rozsahu\\
+\verb|NumberFormatException| - Ak je chyba v formáte kódovanej hodnoty vzhµadom na dátový typ\\
+\verb|OutOfBoundsException| - Ak je hodnota mimo povoleného rozsahu\\
 
 
 
@@ -449,13 +454,13 @@ Pole bytov reprezentujúce interpretovanú retazcovu hodnotu na základ predaného t
 
 Zakóduje celoèíselné znamienkové dátové typy signed8, signed16, signed32 a signed64. \\
 {\bfseries Parametre:}\\
-\emph{String} dataType - re»azec definujúci dátový typ obsiahnutý v~buffri.\\
+\emph{String} dataType - re»azec definujúci dátový typ obsiahnutý v~bufferi.\\
 \emph{String} value - samotné dáta, ktoré sú predmetom zakódovania\\
 {\bfseries Návratová hodnota:} \\
-Pole bytov reprezentujúce interpretovanú retazcovu hodnotu na základ predaného typu. \\
+Pole bytov reprezentujúce interpretovanú re»azcovú hodnotu na základe predaného typu. \\
 {\bfseries Hád¾e:} \\
 \verb|UnsupportedDataException| - Ak dátový typ nie je podporovaný\\
-\verb|NumberFormatException| - Ak je chyba v formate kodovanej hodnoty vzhladom na datovy typ\\
+\verb|NumberFormatException| - Ak je chyba v formáte kódovanej hodnoty vzhµadom na dátový typ\\
 
 
 
@@ -464,13 +469,13 @@ Pole bytov reprezentujúce interpretovanú retazcovu hodnotu na základ predaného t
 
 Zakóduje desatinné dátové typy float32 a float64. \\
 {\bfseries Parametre:}\\
-\emph{String} dataType - re»azec definujúci dátový typ obsiahnutý v~buffri.\\
+\emph{String} dataType - re»azec definujúci dátový typ obsiahnutý v~bufferi.\\
 \emph{String} value - samotné dáta, ktoré sú predmetom zakódovania\\
 {\bfseries Návratová hodnota:} \\
-Pole bytov reprezentujúce interpretovanú retazcovu hodnotu na základ predaného typu. \\
+Pole bytov reprezentujúce interpretovanú re»azcovú hodnotu na základe predaného typu. \\
 {\bfseries Hád¾e:} \\
 \verb|UnsupportedDataException| - Ak dátový typ nie je podporovaný\\
-\verb|NumberFormatException| - Ak je chyba v formate kodovanej hodnoty vzhladom na datovy typ\\
+\verb|NumberFormatException| - Ak je chyba v formáte kódovanej hodnoty vzhµadom na dátový typ\\
 
 
 
@@ -479,14 +484,14 @@ Pole bytov reprezentujúce interpretovanú retazcovu hodnotu na základ predaného t
 
 Zakóduje dátové typy obsahujúce adresy: ipv4Address, ipv6Address a macAddress. \\
 {\bfseries Parametre:}\\
-\emph{String} dataType - re»azec definujúci dátový typ obsiahnutý v~buffri.\\
+\emph{String} dataType - re»azec definujúci dátový typ obsiahnutý v~bufferi.\\
 \emph{String} value - samotné dáta, ktoré sú predmetom zakódovania\\
 {\bfseries Návratová hodnota:} \\
-Pole bytov reprezentujúce interpretovanú retazcovu hodnotu na základ predaného typu. \\
+Pole bytov reprezentujúce interpretovanú re»azcovú hodnotu na základe predaného typu. \\
 {\bfseries Hád¾e:}\\
 \verb|UnsupportedDataException| - Ak dátový typ nie je podporovaný\\
-\verb|UnknownHostException| - Ak program nevie rozpoznat host, alebo IP adresu \\
-\verb|DataException| - Ak je chyba v formate kodovanej hodnoty vzhladom na datovy typ\\
+\verb|UnknownHostException| - Ak program nevie rozpozna» host, alebo IP adresu \\
+\verb|DataException| - Ak je chyba v formáte kódovanej hodnoty vzhµadom na dátový typ\\
 
 
 
@@ -497,15 +502,15 @@ Zakóduje boolean reprezentujúci pravdivostnú hodnotu.\\
 {\bfseries Návratová hodnota:}\\
 Pole bytov reprezentujúci pravdivostnú hodnotu, "true" alebo "false". \\
 {\bfseries Hád¾e:} \\
-\verb|OutOfBoundsException| - Ak je hodnota mimo povoleneho rozsahu\\
+\verb|OutOfBoundsException| - Ak je hodnota mimo povoleného rozsahu\\
 
 
 
 \textit{public static byte[] \textbf{encodeStringType}(String value)}
 
-Zakóduje retazec v kódovaní UTF-8 do pole bytov.\\
+Zakóduje re»azec v kódovaní UTF-8 do pole bytov.\\
 {\bfseries Návratová hodnota:}\\
-Pole bytov retazca v~kódovaní UTF-8.\\
+Pole bytov re»azca v~kódovaní UTF-8.\\
 
 
 
@@ -520,39 +525,39 @@ Pole bytov predstavujúce binárne dáta zakódované v~Base64. \\
 \textit{public static byte[] \textbf{encodeDateTimeType}(String dataType, String value)}
 
 Zakóduje dátové typy èasových známok: dateTimeSeconds, dateTimeMilliseconds, dateTimeMicroseconds a 
-dateTimeNanoseconds do pola bytov. \\
+dateTimeNanoseconds do poµa bytov. \\
 {\bfseries Parametre:}\\
-\emph{String} dataType - re»azec definujúci dátový typ obsiahnutý v~buffri.\\
+\emph{String} dataType - re»azec definujúci dátový typ obsiahnutý v~bufferi.\\
 \emph{String} value - samotné dáta, ktoré sú predmetom zakódovania\\
 {\bfseries Návratová hodnota:}\\
-Pole bytov reprezentujúce interpretovanú hodnotu retazca na základe predaného typu.
+Pole bytov reprezentujúce interpretovanú hodnotu re»azca na základe predaného typu.
 Dátové typy dateTimeSeconds a dateTimeMilliseconds predstavujú poèet sekúnd, resp. milisekúnd od Unix 
 epochy (00:00 1.1.1970 UTC).
 Dátové typy dateTimeMicroseconds a dateTimeNanoseconds sú zakódované vo formáte èasovej známky NTP 
 Timestamp.\\
 {\bfseries Hád¾e:}\\
 \verb|UnsupportedDataException| - Ak dátový typ nie je podporovaný\\
-\verb|NumberFormatException| - Ak je chyba v formate kodovanej hodnoty vzhladom na datovy typ\\
-\verb|OutOfBoundsException| - Ak je hodnota mimo povoleneho rozsahu\\
+\verb|NumberFormatException| - Ak je chyba v formáte kódovanej hodnoty vzhµadom na dátový typ\\
+\verb|OutOfBoundsException| - Ak je hodnota mimo povoleného rozsahu\\
 
 
 
 \textit{public static void \textbf{checkStringNumbersRange}(String min, String max, String value, String dataType)}
 
-Overi, ci ciselna hodnota v retazci spada do rozsahu daneho datovym typom. \\
+Overí, èi èíselná hodnota v re»azci spadá do rozsahu daného dátovým typom. \\
 {\bfseries Parametre:}\\
-\emph{String} min - dolna hranica rozsahu \\
-\emph{String} max - horna hranica rozsahu\\
-\emph{String} value - hodnota, ktora sa ma overit\\
-\emph{String} dataType - datovy typ hodnoty\\
+\emph{String} min - dolná hranica rozsahu \\
+\emph{String} max - horná hranica rozsahu\\
+\emph{String} value - hodnota, ktorá sa má overi»\\
+\emph{String} dataType - dátový typ hodnoty\\
 {\bfseries Hád¾e:}\\
-\verb|OutOfBoundsException| - Ak je hodnota mimo povoleneho rozsahu
+\verb|OutOfBoundsException| - Ak je hodnota mimo povoleného rozsahu
 
 
 
 
 \subsubsection{Trieda IPFIXFlowRecord}
-Tato trieda je reprezentaciou IPFIX Flow record-u, teda zaznamu o toku.
+Táto trieda je reprezentáciou IPFIX Flow record-u, teda záznamu o toku.
 
 \bigskip
 \textbf{Kon¹truktor} 
@@ -560,57 +565,57 @@ Tato trieda je reprezentaciou IPFIX Flow record-u, teda zaznamu o toku.
 \textit{public \textbf{IPFIXFlowRecord}(IPFIXTemplateRecord referencedTemplate, 
 ArrayList $<$IPFIXDataRecord$>$ dataRecords, IPFIXMessage.IPFIXMessageHeader messageHeader)}
 
-Konstruktor prostrednictvom predanych parametrov inicializuje clenske premenne.\\
+Kon¹truktor prostredníctvom predaných parametrov inicializuje èlenské premenné.\\
 \textbf{Parametre:}\\
-\emph{IPFIXTemplateRecord} referencedTemplate - sablona patriaca datovym zaznamom\\
-\emph{ArrayList$<$IPFIXDataRecord$>$} dataRecords - pole datovych zaznamov\\
-\emph{IPFIXMessage.IPFIXMessageHeader} messageHeader - hlavicka IPFIX spravy, ktora obsahovala tento
-zaznam o toku
+\emph{IPFIXTemplateRecord} referencedTemplate - ¹ablóna patriaca dátovým záznamom\\
+\emph{ArrayList$<$IPFIXDataRecord$>$} dataRecords - pole dátových záznamov\\
+\emph{IPFIXMessage.IPFIXMessageHeader} messageHeader - hlavièka IPFIX správy, ktorá obsahovala tento
+záznam o toku
 
 
 \emph{public \textbf{IPFIXFlowRecord}()}
 
-Bezparametricky konstruktor. Iba inicializuje prazdne pole datovych zaznamov. \\
+Bezparametrický kon¹truktor. Iba inicializuje prázdne pole dátových záznamov. \\
 
 
 \textbf{Metódy:}\\
-Metody, ktore tu nie su spomenute, su klasicke gettery a settery.
+Metódy, ktoré tu nie sú spomenuté, sú klasické gettery a settery.
 
 
 
 \emph{public int \textbf{getReferencedTemplateID}()}
 
 {\bfseries Návratová hodnota:}\\
-Vracia ID sablony z IPFIX spravy, ktora obsahovala tento zaznam o toku.\\
+Vracia ID ¹ablóny z IPFIX správy, ktorá obsahovala tento záznam o toku.\\
 
 
 
 \clearpage
 \emph{public void \textbf{addDataRecord}(IPFIXDataRecord dataRecord)}
 
-Prida datovy zaznam do pola datovych zaznamom flow record-u.\\
+Pridá dátový záznam do poµa dátových záznamom flow record-u.\\
 \textbf{Parametre:}\\
-\emph{IPFIXDataRecord} dataRecord - datovy zaznam, ktory sa priradi zaznamu o toku.
+\emph{IPFIXDataRecord} dataRecord - dátový záznam, ktorý sa priradí záznamu o toku.
 
 
 
 \subsubsection{Trieda IPFIXMessageHeader}
-Trieda reprezentujuca hlavicku IPFIX spravy. Implementuje navrhovy vzor Singleton.
+Trieda reprezentujúca hlavièku IPFIX správy. Implementuje návrhový vzor Singleton.
 
 \bigskip
 \textbf{Metody:}\\
-Metody, ktore tu nie su spomenute, su klasicke gettery a settery.
+Metódy, ktoré tu nie sú spomenuté, sú klasické gettery a settery.
 
 \emph{public static IPFIXMessageHeader \textbf{getInstance}()}
 
 {\bfseries Návratová hodnota:}\\
-Vracia jedinecnu instanciu objektu.
+Vracia jedineènú in¹tanciu objektu.
 
 
 
 
 
-% ----------BALIK INTERMEDIATE PROCESS ----------------------------------
+% ----------BALÍK INTERMEDIATE PROCESS ----------------------------------
 
 \subsection{Balík sk.tuke.cnl.bm.Mediator.IntermediateProcesses}
 
@@ -627,8 +632,8 @@ na obrázku \ref{o:intermediate_class}.
 
 
 \subsubsection{Trieda AIntermediateProcess}
-Abstraktna trieda, poskytuje vychodiskove metody sprostredkovatelskym procesom a tvori akesi
-rozhranie medzi modulmi a aplikacnym ramcom. Dedi od triedy \verb|Thread|.\\
+Abstraktná trieda, poskytuje východiskové metódy sprostredkovateµským procesom a tvori akési
+rozhranie medzi modulmi a aplikaèným rámcom. Dedí od triedy \verb|Thread|.\\
 \\
 \\
 
@@ -637,14 +642,14 @@ rozhranie medzi modulmi a aplikacnym ramcom. Dedi od triedy \verb|Thread|.\\
 
 \emph{\textbf{AIntermediateProcess}(String childName)}
 
-Nastavi meno procesu, podla prijateho parametra. Inicializuje vstupny buffer a ziska jedinecnu instanciu
+Nastaví meno procesu, podµa prijatého parametra. Inicializuje vstupný buffer a získa jedineènú in¹tanciu
 triedy \verb|IPFIXElements|.\\
 \textbf{Parametre:}\\
 \emph{String} childName - meno triedy potomka
 
 \emph{\textbf{AIntermediateProcess}()}
 
-Bezparametricky konstruktor. Inicializuje vstupny buffer a ziska jedinecnu instanciu
+Bezparametrický kon¹truktor. Inicializuje vstupný buffer a získa jedineènú in¹tanciu
 triedy \verb|IPFIXElements|.\\
 
 
@@ -666,9 +671,9 @@ jediným spôsobom ako získa» in¹tanciu podtriedy mimo balíèka je cez kon¹trukciu:
 Dalo by sa vyèíta», ¾e vytváranie in¹tancií pou¾íva reflexiu, ktorá je pomalá. Av¹ak, keï¾e vytvárame 
 Singletony, volanie \emph{newInstance()} sa vykoná pre ka¾dý modul pravé raz. \\
 \textbf{Parametre:}\\
-\emph{Class} clazz = class objekt pozadovanej triedy \\
+\emph{Class} clazz = class objekt po¾adovanej triedy \\
 \textbf{Návratová hodnota:}\\
-Objekt typu T, pricom T dedi od \verb|AIntermediateProcess|.
+Objekt typu T, prièom T dedi od \verb|AIntermediateProcess|.
 
 
 
@@ -676,71 +681,71 @@ Objekt typu T, pricom T dedi od \verb|AIntermediateProcess|.
    
 Aby bolo mo¾né získava» in¹tancie modulov aj na základe mena triedy a nie len cez class objekty, vytvoril 
 som túto metódu. Premennú \emph{processName} prevedie na binárne meno procesu, podµa ¹pecifikácie jazyka 
-Java, teda nazov triedy vratane balickov, napr. 
+Java, teda názov triedy vrátane balíèkov, napr. 
 \verb|sk.tuke.cnl.Mediator.SelectionProcess|.
-Tato metóda naèíta \emph{class} objekt sprostredkovateµského procesu cez systémový class loader,
+Táto metóda naèíta \emph{class} objekt sprostredkovateµského procesu cez systémový class loader,
 tak ako to bolo vy¹¹ie spomínané. Potom zavolá pôvodnú metódu \emph{getInstance(Class clazz)} a 
 vráti in¹tanciu procesu.\\
 \textbf{Parametre:}\\
-\emph{String} processName = meno pozadovanej triedy \\
+\emph{String} processName = meno po¾adovanej triedy \\
 \textbf{Návratová hodnota:}\\
-Objekt typu T, pricom T dedi od \verb|AIntermediateProcess|.\\
+Objekt typu T, prièom T dedi od \verb|AIntermediateProcess|.\\
 
 
 
 
 \emph{protected final HashMap \textbf{decodeDataRecord}(IPFIXTemplateRecord template, IPFIXDataRecord dataRecord)}
 
-Pri prvom prechode funkciou sa generuje pamatovy zaznam o informacnych elementoch (ie) z XML suboru. 
-Vytiahnu sa informacie o ie, ktore sa nachadzaju v sablone, dekoduju sa ich datove typy a prislusnost k 
+Pri prvom prechode funkciou sa generuje pamä»ový záznam o informaèných elementoch (ie) z XML súboru. 
+Vytiahnu sa informácie o ie, ktoré sa nachádzajú v ¹ablóne, dekódujú sa ich dátové typy a príslu¹nos» k 
 skupine.\\
 \textbf{Parametre:}\\
-\emph{IPFIXTemplateRecord} template - sablona dat\\
-\emph{IPFIXDataRecord} dataRecord - datovy zaznam\\
+\emph{IPFIXTemplateRecord} template - ¹ablóna dát\\
+\emph{IPFIXDataRecord} dataRecord - dátový záznam\\
 \textbf{Návratová hodnota:}\\
-Dekodovane data ako objekt typu \verb|HashMap|.\\
+Dekódované dáta ako objekt typu \verb|HashMap|.\\
 
 
 \emph{protected final IPFIXDataRecord \textbf{encodeDataRecord}(IPFIXTemplateRecord template, 
 HashMap$<$String, String$>$ dataMap)}
 
-Zakoduje vsetky hodnoty z hashmapy obsahujucej hodnoty informacnych elementov podla sablony do datoveho 
-zaznamu. \\
+Zakóduje v¹etky hodnoty z hashmapy obsahujúcej hodnoty informaèných elementov podµa ¹ablóny do dátového 
+záznamu. \\
 \textbf{Parametre:}\\
-\emph{IPFIXTemplateRecord} template - sablona dat \\
-\emph{HashMap$<$String, String$>$} dataMap - hodnoty informacnych elementov v hashmape, ktora sa ma zakodovat\\
+\emph{IPFIXTemplateRecord} template - ¹ablóna dát \\
+\emph{HashMap$<$String, String$>$} dataMap - hodnoty informaèných elementov v hashmape, ktorá sa má zakódova»\\
 \textbf{Návratová hodnota:}\\
-Vracia objekt datoveho zaznamu -  \verb|IPFIXDataRecord|.\\
+Vracia objekt dátového záznamu -  \verb|IPFIXDataRecord|.\\
 \textbf{Hád¾e:}\\
-\verb|EncodingException| - Ak nastane chyba pri kodovani.\\
+\verb|EncodingException| - Ak nastane chyba pri kódovaní.\\
 
 
 
 \emph{protected final void \textbf{dispatchFlowRecord}(IPFIXFlowRecord flowRecord, String inputProcess)}
 
-Vytvara rozhranie pre pristup k metode frameworku.\\
+Vytvára rozhranie pre prístup k metóde aplikaèného rámca.\\
 \textbf{Parametre:}\\
-\emph{IPFIXFlowRecord} flowRecord - zaznam o toku, ktory sa ma posunut dalej \\
-\emph{String} inputProcess - povodca zaznamu o toku 
+\emph{IPFIXFlowRecord} flowRecord - záznam o toku, ktorý sa má posunú» ïalej \\
+\emph{String} inputProcess - pôvodca záznamu o toku 
 
 
 
 \subsubsection{Trieda ExampleProcess}
 
-Tato trieda je vzorovym riesenim jednoducheho sprostredkovatelskeho procesu, vykonavajuceho 
-anonymizaciu. Ucelom triedy je pomoc dalsej generacii riesitelov.
+Táto trieda je vzorovým rie¹ením jednoduchého sprostredkovateµského procesu, vykonávajúceho 
+anonymizáciu. Úèelom triedy je pomoc ïal¹ej generácii rie¹iteµov.
 
 \bigskip
 \textbf{Kon¹truktor} 
 
 \emph{\textbf{ExampleProcess}()}
 
-Vola rodicovsky konstruktor a predava mu svoje meno ako parameter.\\
+Vola rodièovský kon¹truktor a predáva mu svoje meno ako parameter.\\
 
 \textbf{Metody:}\\
 \emph{public void \textbf{run}()}
 
-Hlavna metoda vlakna. V cykle èaká na záznamy o tokoch vo svojom vstupnom bufferi \emph{(inputBuffer)} a 
+Hlavná metóda vlákna. V cykle èaká na záznamy o tokoch vo svojom vstupnom bufferi \emph{(inputBuffer)} a 
 postupne ich odtiaµ èíta a odstraòuje. Nazvime ich 
 \emph{vstupne záznamy}. Vstupný buffer jej napåòa trieda \verb|FlowRecordDispatcher|. Po preèítaní 
 vstupného záznamu vytvorí a inicializuje \emph{výstupný záznam}. Následne prechádza v¹etky dátové záznamy
@@ -752,58 +757,58 @@ nasledujúcemu sprostredkovateµskému procesu, alebo pripraví na export. \\
 
 \emph{private String \textbf{anonymizeIPv4}(String address)}
 
-Metoda na velmi jednoduchu anonymizaciu IP adresy, cislo v poslednom oktete zmeni na 0.\\
+Metóda na veµmi jednoduchú anonymizáciu IP adresy, èíslo v poslednom oktete zmení na 0.\\
 \textbf{Parametre:}\\
-\emph{String} address - IP adresa, ktora sa anonymizovat \\
+\emph{String} address - IP adresa, ktorá sa anonymizova» \\
 \textbf{Návratová hodnota:}\\
-Anonymizovana IP adresa, vratena ako retazec.
+Anonymizovaná IP adresa, vrátená ako re»azec.
 
 
 
 \subsubsection{Trieda IPInputBuffer}
 
-Reprezentuje vstupny buffer sprostredkovatelskych modulov. Tato trieda je cache pre zaznamy o tokoch. 
-Jej pouzitie je kriticke vo vysokorychlostnych sietach, pretoze udrziava elementy a tym padom moze 
-vyrovnavat narazovy napor. Je synchronizovana a jej implementacia je FIFO front typu \verb|ArrayBlockingQueue|.\\
+Reprezentuje vstupný buffer sprostredkovateµských modulov. Táto trieda je cache pre záznamy o tokoch. 
+Jej pou¾itie je kritické vo vysokorýchlostných sie»ach, preto¾e udr¾iava elementy a tým pádom mô¾e 
+vyrovnáva» nárazový nápor. Je synchronizovaná a jej implementácia je FIFO front typu \verb|ArrayBlockingQueue|.\\
 
-\textbf{Metody:}
+\textbf{Metódy:}
 
 \emph{public boolean \textbf{write}(IPFIXFlowRecord flowRecord)}
 
-Zapisuje zaznamy o tokoch do frontu. Ak je front plny, zaznam sa zahadzuje.\\
+Zapisuje záznamy o tokoch do frontu. Ak je front plný, záznam sa zahadzuje.\\
 \textbf{Parametre:}\\
-\emph{IPFIXFlowRecord} flowRecord - zaznam o toku\\
+\emph{IPFIXFlowRecord} flowRecord - záznam o toku\\
 \textbf{Návratová hodnota:}\\
-Pravdivostna hodnota podla toho, ci zaznam bol, alebo nebol zapisany do cache.\\
+Pravdivostná hodnota podµa toho, èi záznam bol, alebo nebol zapísaný do cache.\\
 
 
 \emph{public void \textbf{write}(IPFIXTemplateRecord template, ArrayList$<$IPFIXDataRecord$>$ dataRecords, IPFIXMessage.IPFIXMessageHeader messageHeader)}
 
-Metoda obali prijate parametre do objektu tiredy \verb|IPFIXFlowRecord| a zavola predchadzajucu metodu.\\
+Metóda obalí prijaté parametre do objektu triedy \verb|IPFIXFlowRecord| a zavolá predchádzajúcu metódu.\\
 \textbf{Parametre:}\\
-\emph{IPFIXTemplateRecord} template - sablona\\
-\emph{ArrayList$<$IPFIXDataRecord$>$} dataRecords - pole datovych zaznamov\\
-\emph{IPFIXMessage.IPFIXMessageHeader} messageHeader - hlavicka IPFIX spravy, z ktorej tento zaznam o toku 
-pochadza\\
+\emph{IPFIXTemplateRecord} template - ¹ablóna\\
+\emph{ArrayList$<$IPFIXDataRecord$>$} dataRecords - pole dátových záznamov\\
+\emph{IPFIXMessage.IPFIXMessageHeader} messageHeader - hlavièka IPFIX správy, z ktorej tento záznam o toku 
+pochádza\\
 
 
 
 \emph{public IPFIXFlowRecord \textbf{read}()}
 
-Precita a zmaze vrchol frontu. Ak je front prazdny caka dokial sa tam nejaky element neprida.\\
+Preèíta a zma¾e vrchol frontu. Ak je front prázdny èaká dokiaµ sa tam nejaký element nepridá.\\
 \textbf{Návratová hodnota:}\\
 Objekt triedy \verb|IPFIXFlowRecord|.\\
 \textbf{Hád¾e:}\\
-\verb|InterruptedException| - Ak nastala chyba pri synchronizovani vlakien, alebo ak bolo vlakno prerusene 
-pocas cakania.
+\verb|InterruptedException| - Ak nastala chyba pri synchronizovaní vlákien, alebo ak bolo vlákno preru¹ené 
+poèas èakania.
 
 
 
 %----------COLLECTING --------------------------------------
 
-\subsection{Balik sk.tuke.cnl.bm.Mediator.collecting}
+\subsection{Balík sk.tuke.cnl.bm.Mediator.collecting}
 
-Zjednodu¹ený diagram tried tohto balika mô¾eme vidie» na Obr. \ref{o:collecting1_class} a na 
+Zjednodu¹ený diagram tried tohto balíka mô¾eme vidie» na Obr. \ref{o:collecting1_class} a na 
 Obr. \ref{o:collecting2_class}.
 
 \begin{figure}[ht!]
@@ -814,7 +819,7 @@ Obr. \ref{o:collecting2_class}.
 
 
 \subsubsection{Trieda UDPServer}
-Slú¾i ako UDP server. Prijíma UDP datagramy cez \verb|DatagramChannel| a uklada ich do 
+Slú¾i ako UDP server. Prijíma UDP datagramy cez \verb|DatagramChannel| a ukladá ich do 
 \verb|PacketCache|. 
 
 \bigskip
@@ -823,18 +828,18 @@ Slú¾i ako UDP server. Prijíma UDP datagramy cez \verb|DatagramChannel| a uklada 
 \textit{public \textbf{UDPServer}(int port)}
 
 Kon¹truktor inicializuje \verb|DatagramChannel|, nastaví mu blokovací re¾im a privia¾e ho k~portu 
-definovanom v~konfiguraènom súbore, ktory mu je predany ako parameter. Nastaví meno vlákna.\\
+definovanom v~konfiguraènom súbore, ktorý mu je predaný ako parameter. Nastaví meno vlákna.\\
 \textbf{Parametre:} \\
-\emph{int} port - cislo portu
+\emph{int} port - èíslo portu
 
 \bigskip
 \textbf{Metódy}
 
 \textit{public void \textbf{run}()}
 
-Hlavná metóda vlákna. Pokiaµ nedôjde k~preru¹eniu, prijima cez vytvoreny kanal data od exportéra. 
-Prijate data obali do objektu \verb|ByteBuffer| a predá ich spolu s casom prijatia a IP adresou a 
-portom exportera metode \emph{write()}, ktora ich zapise do \verb|PacketCache|.
+Hlavná metóda vlákna. Pokiaµ nedôjde k~preru¹eniu, prijíma cez vytvorený kanál dáta od exportéra. 
+Prijate dáta obalí do objektu \verb|ByteBuffer| a predá ich spolu s èasom prijatia a IP adresou a 
+portom exportéra metóde \emph{write()}, ktorá ich zapí¹e do \verb|PacketCache|.
 
 
 \textit{public void \textbf{cleanUp}()}
@@ -849,20 +854,20 @@ Táto metóda zru¹í èistiace vlákno pre UDP Template Cache. Je volaná pri preru¹en
 %---------
 
 \subsubsection{Trieda IpfixParser}
-Táto trieda sa pou¾íva na parsovanie IPFIX správ a ich spracovanie. V porovnani s verziou 
-v aplikacii JXColl bola precistena. Boli vypustene sekcie spracovavajuce TCP a SCTP spojenia. 
-Zasadnejsia zmena prisla na vystupe z triedy. Sparsovane datove zaznamy su zabalene do vytvoreneho 
+Táto trieda sa pou¾íva na parsovanie IPFIX správ a ich spracovanie. V porovnaní s verziou 
+v aplikácii JXColl bola preèistená. Boli vypustené sekcie spracovávajúce TCP a SCTP spojenia. 
+Zásadnej¹ia zmena pri¹la na výstupe z triedy. Sparsované dátové záznamy sú zabalené do vytvoreného 
 objektu triedy 
-\verb|IPFIXFlowRecord|, spolu s prislusnou sablonou a hlavickou prijatej IPFIX spravy. Vytvoreny 
-zaznam o toku je spolu s retazcom predstavujucim zdroj zaznamu (v tomto pripade \uv{exporter})
-posunuty triede \verb|FlowRecordDispatcher|.
+\verb|IPFIXFlowRecord|, spolu s príslu¹nou ¹ablónou a hlavièkou prijatej IPFIX správy. Vytvorený 
+záznam o toku je spolu s re»azcom predstavujúcim zdroj záznamu (v tomto prípade \uv{exportér})
+posunutý triede \verb|FlowRecordDispatcher|.
 
 
 
 
 % --------------------- EXPORTING ---------------------------
 
-\subsection{Balik sk.tuke.cnl.bm.Mediator.exporting}
+\subsection{Balík sk.tuke.cnl.bm.Mediator.exporting}
 
 Diagram tried exportovacieho procesu je na Obr. \ref{o:exporting_class}.
 
@@ -874,210 +879,176 @@ Diagram tried exportovacieho procesu je na Obr. \ref{o:exporting_class}.
 
 \subsubsection{Trieda ExportCache}
 
-Analogia k triede \verb|IPInputBuffer|. Reprezentuje exportovaciu cache, ktora je synchronizovana a 
-jej implementacia je FIFO front typu \verb|ArrayBlockingQueue|.
+Analógia k triede \verb|IPInputBuffer|. Reprezentuje exportovaciu cache, ktorá je synchronizovaná a 
+jej implementácia je FIFO front typu \verb|ArrayBlockingQueue|.
 
-\textbf{Metody:}
+\textbf{Metódy:}
 
 \emph{public static boolean \textbf{write}(IPFIXFlowRecord flowRecord)}
 
-Zapisuje zaznamy o tokoch do frontu. Ak je front plny, zaznam sa zahadzuje.\\
+Zapisuje záznamy o tokoch do frontu. Ak je front plný, záznam sa zahadzuje.\\
 \textbf{Parametre:}\\
-\emph{IPFIXFlowRecord} flowRecord - zaznam o toku\\
+\emph{IPFIXFlowRecord} flowRecord - záznam o toku\\
 \textbf{Návratová hodnota:}\\
-Pravdivostna hodnota podla toho, ci zaznam bol, alebo nebol zapisany do cache.\\
+Pravdivostná hodnota podµa toho, èi záznam bol, alebo nebol zapísaný do cache.\\
 
 
 
 \emph{public static IPFIXFlowRecord \textbf{read}()}
 
-Precita a zmaze vrchol frontu. Ak je front prazdny caka dokial sa tam nejaky element neprida.\\
+Preèíta a zma¾e vrchol frontu. Ak je front prázdny èaká dokiaµ sa tam nejaký element nepridá.\\
 \textbf{Návratová hodnota:}\\
 Objekt triedy \verb|IPFIXFlowRecord|.\\
 \textbf{Hád¾e:}\\
-\verb|InterruptedException| - Ak nastala chyba pri synchronizovani vlakien, alebo ak bolo vlakno prerusene 
-pocas cakania.\\
+\verb|InterruptedException| - Ak nastala chyba pri synchronizovaní vlákien, alebo ak bolo vlákno preru¹ené 
+poèas èakania.\\
 
 
 
 \emph{public static int \textbf{getSize}()}
 
 \textbf{Návratová hodnota:}\\
-Vracia pocet elementov v cache.
+Vracia poèet elementov v cache.
 
 
 
 \subsubsection{Trieda MessageEncoder}
 
-Trieda sluzi na zakodovanie resp. zabalenie zaznamu o toku do IPFIX paketu podla specifikacie v RFC 5101 
+Trieda slú¾i na zakódovanie resp. zabalenie záznamu o toku do IPFIX paketu podµa ¹pecifikácie v RFC 5101 
 a RFC 5102.\\
 \\
 
-\textbf{Metody:}
+\textbf{Metódy:}
 
 
 \emph{public static MessageEncoder \textbf{getInstance}()}
 
 \textbf{Návratová hodnota:}\\
-Metoda vracia jedinecnu instanciu objektu triedy podla navrhoveho vzoru \emph{Singleton}.\\
+Metóda vracia jedineènú in¹tanciu objektu triedy podµa návrhového vzoru \emph{Singleton}.\\
 
 
 
 \emph{protected byte[] \textbf{createIPFIXMessage}(IPFIXFlowRecord flowRecord)}
 
-Na zaklade zaznamu o toku vytvara prud bytov z IPFIX spravy. Vola jednotlive motody, ktore robia 
-ciastkove ulohy ako zakodovanie sad, hlavicky a podobne.\\
+Na základe záznamu o toku vytvára prúd bytov z IPFIX správy. Vola jednotlive metódy, ktoré robia 
+èiastkové úlohy ako zakódovanie sád, hlavièky a podobne.\\
 \textbf{Parametre:}\\
-\emph{IPFIXFlowRecord} flowRecord - zaznam o toku\\
+\emph{IPFIXFlowRecord} flowRecord - záznam o toku\\
 \textbf{Návratová hodnota:}\\
-Pole bytov prudu IPFIX spravy.\\
+Pole bytov prúdu IPFIX správy.\\
 
 
 
 \emph{private byte[] \textbf{encodeMessageHeader}(IPFIXMessage.IPFIXMessageHeader header, short length)}
 
-Zakoduje hlavicku IPFIX spravy.\\
+Zakóduje hlavièku IPFIX správy.\\
 \textbf{Parametre:}\\
-\emph{IPFIXMessage.IPFIXMessageHeader} header - hlavicka, ktora sa ma zakodovat\\
-\emph{short} length - celkova dlzka IPFIX spravy\\
+\emph{IPFIXMessage.IPFIXMessageHeader} header - hlavièka, ktorá sa má zakódova»\\
+\emph{short} length - celková då¾ka IPFIX správy\\
 \textbf{Návratová hodnota:}\\
-Pole bytov prudu hlavicky IPFIX spravy.\\
+Pole bytov prúdu hlavièky IPFIX správy.\\
 
 
 
 \emph{private byte[] \textbf{encodeTemplateRecord}(IPFIXTemplateRecord templateRecord)}
 
-Zakoduje zaznam sablony.\\
+Zakóduje záznam ¹ablóny.\\
 \textbf{Parametre:}\\
-\emph{IPFIXTemplateRecord} templateRecord - zaznam sablony, ktory sa ma zakodovat\\
+\emph{IPFIXTemplateRecord} templateRecord - záznam ¹ablóny, ktorý sa má zakódova»\\
 \textbf{Návratová hodnota:}\\
-Pole bytov prudu zaznamu sablony.\\
+Pole bytov prúdu záznamu ¹ablóny.\\
 
 
 
 \emph{private byte[] \textbf{encodeTemplateSet}(byte[] templateRecordBytes)}
 
-Zakoduje sadu sablon.\\
+Zakóduje sadu ¹ablón.\\
 \textbf{Parametre:}\\
-\emph{byte[]} templateRecordBytes - pole bytov prudu zaznamov sablony, ktore obsahuje sada sablony\\
+\emph{byte[]} templateRecordBytes - pole bytov prúdu záznamov ¹ablóny, ktoré obsahuje sada ¹ablóny\\
 \textbf{Návratová hodnota:}\\
-Pole bytov prudu sady sablon.\\
+Pole bytov prúdu sady ¹ablón.\\
 
 
 
 \emph{private byte[] \textbf{encodeDataRecord}(IPFIXDataRecord dataRecord)}
 
-Zakoduje datovy zaznam.\\
+Zakóduje dátový záznam.\\
 \textbf{Parametre:}\\
-\emph{IPFIXDataRecord} dataRecord - datovy zaznam, ktory sa ma zakodovat\\
+\emph{IPFIXDataRecord} dataRecord - dátový záznam, ktorý sa má zakódova»\\
 \textbf{Návratová hodnota:}\\
-Pole bytov prudu datoveho zaznamu.\\
+Pole bytov prúdu dátového záznamu.\\
 
 
 \emph{private byte[] \textbf{encodeDataSet}(ByteArrayOutputStream dataRecordsStream, int templateID)}
 
-Zakoduje datovu sadu.\\
+Zakóduje dátovú sadu.\\
 \textbf{Parametre:}\\
-\emph{ByteArrayOutputStream} dataRecordsStream - prud bytov datovych zaznamov, ktore obsahuje sada sablony\\
-\emph{int} templateID - ID prisluchajucej sablony \\
+\emph{ByteArrayOutputStream} dataRecordsStream - prúd bytov dátových záznamov, ktoré obsahuje sada ¹ablóny\\
+\emph{int} templateID - ID prislúchajúcej ¹ablóny \\
 \textbf{Návratová hodnota:}\\
-Pole bytov prudu datovej sady.\\
+Pole bytov prúdu dátovej sady.
 
 
 
 \emph{private byte[] \textbf{appendByteArray}(byte[] first, byte[] second)}
 
-Pomocna metoda, ktora na koniec prveho pola bytov pripoji druhe pole bytov .\\
+Pomocná metóda, ktorá na koniec prvého poµa bytov pripojí druhé pole bytov .\\
 \textbf{Parametre:}\\
 \emph{byte[]} first - prve pole bytov \\
 \emph{byte[]} second - druhe pole bytov\\
 \textbf{Návratová hodnota:}\\
-Pole bytov vysledneho pola.\\
+Pole bytov výsledného poµa.\\
 
 
 \emph{private short \textbf{getMessageLength}(byte[] templateSetBytes, byte[] dataSetBytes, byte[] optionsTemplateSetStream)}
 
-Vracia celkovu dlzku IPFIX spravy.\\
+Vracia celkovú då¾ku IPFIX správy.\\
 \textbf{Parametre:}\\
-\emph{byte[]} templateSetBytes - pole bytov sady sablon\\
-\emph{byte[]} dataSetBytes - pole bytov datovej sady\\
-\emph{byte[]} optionsTemplateSetStream - pole bytov sady sablon moznosti\\
+\emph{byte[]} templateSetBytes - pole bytov sady ¹ablón\\
+\emph{byte[]} dataSetBytes - pole bytov dátovej sady\\
+\emph{byte[]} optionsTemplateSetStream - pole bytov sady ¹ablón mo¾ností\\
 \textbf{Návratová hodnota:}\\
-Celkova dlzka IPFIX spravy, vratane hlavicky. Navratovy typ je \emph{short}.
+Celková då¾ka IPFIX správy, vrátane hlavièky. Návratový typ je \emph{short}.
 
 
 
 \subsubsection{Trieda UDPExporter}
 
 
-Trieda je samostatnym vlaknom, zaznamy o toku cita z ExportCache. Tie potom posle triede 
-\verb|MessageEncoder|, ktora ich zabali do IPFIX sprav. Zakodovane spravy exportuje kolektoru na IP 
-adresu a port, ktore su definovane v konfiguracnom subore. \\
+Trieda je samostatným vláknom, záznamy o toku èíta z ExportCache. Tie potom po¹le triede 
+\verb|MessageEncoder|, ktorá ich zabalí do IPFIX správ. Zakódované správy exportuje kolektoru na IP 
+adresu a port, ktoré sú definované v konfiguraènom súbore. \\
 
 \textbf{Kon¹truktor:}
 
 \emph{private \textbf{UDPExporter}()}
 
-Bezparametricky konstruktor. Vola rodicovsky konstruktor s parametrom svojho mena. Potom sa pokusi 
-vytvorit socket pomocou triedy \verb|DatagramSocket|.\\
+Bezparametrický kon¹truktor. Vola rodièovský kon¹truktor s parametrom svojho mena. Potom sa pokúsi 
+vytvori» socket pomocou triedy \verb|DatagramSocket|.\\
 
 \textbf{Metódy:}
 
 \emph{public static MessageEncoder \textbf{getInstance}()}
 
 \textbf{Návratová hodnota:}\\
-Metoda vracia jedinecnu instanciu objektu triedy podla navrhoveho vzoru \emph{Singleton}.\\
+Metóda vracia jedineènú in¹tanciu objektu triedy podµa návrhového vzoru \emph{Singleton}.\\
 
 
 \emph{public void \textbf{run}()}
 
-Hlavna metoda vlakna. Dokial nie je vlakno prerusene, cyklicky cita zaznamy o toku z ExportCache.
-Prostrednictvom treidy \verb|MessageEncoder| vytvori zo zaznamu o toku vystupny prud bytov. 
-Ten spolu s dlzkou prudu, IP adresou a portom zabali do paketu - objektu triedy \verb|DatagramPacket|.
-Vzniknuty paket odosle.
+Hlavná metóda vlákna. Dokiaµ nie je vlákno preru¹ené, cyklicky èíta záznamy o toku z ExportCache.
+Prostredníctvom triedy \verb|MessageEncoder| vytvorí zo záznamu o toku výstupný prúd bytov. 
+Ten spolu s då¾kou prúdu, IP adresou a portom zabalí do paketu - objektu triedy \verb|DatagramPacket|.
+Vzniknutý paket odo¹le.
 
 
 
+% --------------------- EXCEPTIONS ---------------------------
 
+\subsection{Balík sk.tuke.cnl.bm.exceptions}
 
-%%--------------
-
-
-
-%%
-
-
-
-
-%%
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-% -------------------------------------------
-
+Balík obsahuje triedy výnimiek ¹pecifických pre Mediátor. V¹etky výnimky dedia od hlavnej triedy 
+výnimiek - \verb|MediatorException|.
 
 
 
@@ -1137,6 +1108,8 @@ Zdrojové texty sú k~dispozícii v~prílohe diplomovej práce.
    TemplateException.java
 \end{verbatim}
 
+
+
 \subsection{Po¾iadavky na technické prostriedky pri preklade}
 
 Preklad programu si vy¾aduje nasledovnú hardvérovú konfiguráciu:
@@ -1148,6 +1121,9 @@ Preklad programu si vy¾aduje nasledovnú hardvérovú konfiguráciu:
 \end{itemize}
 \noindent
 
+
+
+
 \subsection{Po¾iadavky na programové prostriedky pri preklade}
 \begin{itemize}
 \item operaèný systém GNU/Linux s~verziou jadra 2.6 a vy¹¹ou 
@@ -1155,34 +1131,43 @@ Preklad programu si vy¾aduje nasledovnú hardvérovú konfiguráciu:
 \item kni¾nice dodávané na in¹talaènom médiu
 \end{itemize}
 
+
+
+
 \subsection{Náväznos» na iné programové produkty}
 
-Program umo¾òuje ukladanie dát do databázy alebo ich sprístupnenie priamym pripojením, ktoré budú následne vyhodnotené
-príslu¹nými prídavnými modulmi. Je implementáciou zhroma¾ïovacieho procesu architektúry BasicMeter.
-Z~toho vyplýva jeho náväznos» na merací a exportovací proces - BEEM, alebo iné implementácie.
+Program umo¾òuje sprostredkovanie správ medzi meracím/exportovacím procesom a zhroma¾ïovacím procesom 
+IPFIX architektúry, ktoré budú následne vyhodnotené príslu¹nými aplikáciami. Je implementáciou 
+\emph{(IP Flow Information Export (IPFIX) Mediation Problem)} v architektúre SLAmeter.
+Z~toho vyplýva jeho náväznos» na merací/exportovací proces - BEEM a zhroma¾ïovací proces - JXColl 
+(alebo iné implementácie týchto procesov).
+
+
 
 
 \subsection{Vlastný preklad}
 
 Preklad programu spoèíva v~nakopírovaní zdrojových súborov a~spustení kompilátora jazyka
 Java s~potrebnými parametrami a~parametrom classpath nastaveným na prídavné kni¾nice.
-Odporúèa sa pou¾i» vá¹ obµubený java IDE, kde staèí jednoducho nastavi» verziu JDK na 7.0
+Odporúèa sa pou¾i» vá¹ obµúbený java IDE, kde staèí jednoducho nastavi» verziu JDK na 7.0
 alebo vy¹¹ie a~do cesty classpath prida» cesty ku v¹etkým potrebným kni¾niciam. V~prostredí
-Netbeans IDE potom staèí kliknú» na tlaèidlo \textit{Clean and Build}.
+NetBeans IDE potom staèí kliknú» na tlaèidlo \textit{Clean and Build}.
+
+
+
 
 \subsection{Vytvorenie in¹talaèného DEB súboru}
-Staèí spusti» skript \texttt{buildDeb.sh}, ktorý sa nachádza v~prieèinku jxcoll/deb.
+Staèí spusti» skript \texttt{buildDeb.sh}, ktorý sa nachádza v~prieèinku /deb.
 
 \begin{center}
 \texttt{sh buildDeb.sh }
 \end{center}
 
-Výstupom tohto skriptu je súbor s~názvom \texttt{debian.deb}, ktorý mô¾me následne premenova» podµa verzie JXColl 
-(napríklad na jxcoll\_3.9\_i386.deb). 
+Výstupom tohto skriptu je súbor s~názvom \texttt{debian.deb}, ktorý mô¾me následne premenova» podµa verzie Mediátora 
+(napríklad na mediator\_1.0\_i386.deb). 
 Tento skript vykonáva nasledovné:
 
 \begin{enumerate}
-\item v~prípade, ak neexistuje prieèinok debian, extrahuje ho z~archívu debian.tar.gz, inak tento krok preskoèí
 \item v~prípade, ak neexistuje prieèinok debian, extrahuje ho z~archívu debian.tar.gz, inak tento krok preskoèí
 \item skopíruje binárny súbor z~projektu do DEB balíèka (predpokladá sa, ¾e bol program kompilovaný v~Netbeans IDE pomocou Clean and Build tlaèidla)
 \item skopíruje konfiguraèný súbor z~projektu do DEB balíèka
@@ -1196,7 +1181,17 @@ Tento skript vykonáva nasledovné:
 \item archivuje vytvorený DEB balíèek do archívu debian.tar.gz
 \end{enumerate}
 
-Pred spustením skriptu je nutné skompilova» JXColl pomocou Netbeans IDE tlaèidlom \textit{Clean and Build}. Prípadné zmeny control alebo changelog súboru, manuálových stránok je nutné vykona» ruène. Manuálové stránky je vhodné upravi» pomocou programu \textit{GmanEdit} . Po spustení skriptu sa vytvorí DEB balíèek s~názvom \texttt{debian.deb}. Ten je vhodné premenova» podµa aktuálnej verzie. Vytvorí sa aj archív \texttt{debian.tar.gz}, ktorý obsahuje najaktuálnej¹iu adresárovú ¹truktúru DEB balíèka pre budúce vyu¾itie (ak neexistuje prieèinok debian, vytvorí sa extrakciou z~tohto archívu). Ak je potrebné len aktualizova» kód, staèí spusti» skript a ten sa o~v¹etko postará, prièom vytvorí aj adresár debian. Súbory mo¾no v~òom upravova» a¾ kým nie je v¹etko podµa predstáv. Ak je v¹etko hotové, v~Netbeans IDE je potrebné vymaza» prieèinok debian (vykoná sa SVN DELETE, namiesto obyèajného odstránenia zo súborového systému) a projekt ''commitnú»''.
+Pred spustením skriptu je nutné skompilova» Mediator pomocou Netbeans IDE tlaèidlom \textit{Clean and Build}. 
+Prípadné zmeny control alebo changelog súboru, manuálových stránok je nutné vykona» ruène. 
+Manuálové stránky je vhodné upravi» pomocou programu \textit{GmanEdit} . Po spustení skriptu sa vytvorí 
+DEB balíèek s~názvom \texttt{debian.deb}. Ten je vhodné premenova» podµa aktuálnej verzie. 
+Vytvorí sa aj archív \texttt{debian.tar.gz}, ktorý obsahuje najaktuálnej¹iu adresárovú ¹truktúru 
+DEB balíèka pre budúce vyu¾itie (ak neexistuje prieèinok debian, vytvorí sa extrakciou z~tohto archívu). 
+Ak je potrebné len aktualizova» kód, staèí spusti» skript a ten sa o~v¹etko postará, prièom vytvorí aj 
+adresár debian. Súbory mo¾no v~òom upravova» a¾ kým nie je v¹etko podµa predstáv. Ak je v¹etko hotové, 
+v~Netbeans IDE je potrebné vymaza» prieèinok debian (vykoná sa SVN DELETE, namiesto obyèajného 
+odstránenia zo súborového systému) a projekt ''commitnú»''. \citep{jxcoll_sp, ado_dp}
+
 
 \subsection{Opis známych chýb}
 V~súèasnosti nie sú známe ¾iadne vá¾ne chyby.
@@ -1208,12 +1203,12 @@ Hlavným cieµom práce bolo zvý¹i» interoperabilitu s~inými IPFIX rie¹eniami pomoc
 V~práci boli vyrie¹ené problémy, ktoré doteraz znemo¾òovali dekódovanie viacerých záznamov sade, informaèncých elementov s~variabilnou då¾kou, informaèných elementov s~redukovaným kódovaním alebo niektorých predtým neimplementovaných dátových typov. 
 
 Súèas»ou práce bolo roz¹írenie podpory prenosu údajov o~tokoch prostredníctvom transportných protokolov TCP a SCTP, èo zvy¹uje mo¾nosti
-nasadenia nástroja BasicMeter aj v~podmienkach s~vy¹¹ou náchylnos»ou na pre»a¾enie v~sieti. 
+nasadenia nástroja BasicMeter aj v~podmienkach s~vy¹¹ou náchylnos»ou na pre»a¾enie v~sietí. 
 
 Mo¾nosti budúceho vývoja zhroma¾ïovacieho procesu nástroja BasicMeter predstavuje implementácia podpory pre dátové typy umo¾òujúce
 prenos ¹truktúrovaných dát a podpora pre zabezpeèené pripojenia od exportérov.
 
-
+\clearpage
 \addcontentsline{toc}{section}{\numberline{}Zoznam pou¾itej literatúry}
 \begin{thebibliography}{999}
 
@@ -1237,11 +1232,12 @@ RFC 3954. 2004
 VERE©ÈÁK, T.: Optimalizácia zhroma¾ïovacieho procesu nástroja BasicMeter, 2012,
 Diplomová práca, Príloha A, Systémová príruèka JXColl v3.9, KPI FEI TU, Ko¹ice
 
-%
-%\noindent [2]  Pekár, A.: Meranie prevádzkových parametrov siete v~reálnom èase, 2009,
-%Bakalárska práca, KPI FEI TU, Ko¹ice
-%
-%
-%\noindent [4]  Pekár, A.: Optimalizácia zhroma¾ïovacieho procesu nástroja BasicMeter, 2011,
-%Diplomová práca, KPI FEI TU, Ko¹ice
+\harvarditem{Pekár}{2009}{ado_bc}
+PEKÁR, A.: Meranie prevádzkových parametrov siete v~reálnom èase, 2009,
+Bakalárska práca, KPI FEI TU, Ko¹ice
+
+\harvarditem{Pekár}{2011}{ado_dp}
+PEKÁR, A.: Optimalizácia zhroma¾ïovacieho procesu nástroja BasicMeter, 2011,
+Diplomová práca, KPI FEI TU, Ko¹ice
+
 \end{thebibliography}
