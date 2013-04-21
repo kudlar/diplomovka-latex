@@ -1117,7 +1117,7 @@ Zdrojové texty sú k~dispozícii v~prílohe diplomovej práce.
 Preklad programu si vy¾aduje nasledovnú hardvérovú konfiguráciu:
 \begin{itemize}
   \item CPU Intel Pentium III 1Ghz alebo ekvivalent
-  \item operaèná pamä» 512MB
+  \item operaèná pamä» 2MB
   \item pevný disk s~1GB voµného miesta
   \item sie»ová karta 100Mb/s
 \end{itemize}
@@ -1201,18 +1201,24 @@ V~súèasnosti nie sú známe ¾iadne vá¾ne chyby.
 
 \newpage
 \section{Zhodnotenie rie¹enia}
-Hlavným cieµom práce bolo zvý¹i» interoperabilitu s~inými IPFIX rie¹eniami pomocou zvý¹enia konformity so ¹tandardom IPFIX. 
-V~práci boli vyrie¹ené problémy, ktoré doteraz znemo¾òovali dekódovanie viacerých záznamov sade, informaèncých elementov s~variabilnou då¾kou, informaèných elementov s~redukovaným kódovaním alebo niektorých predtým neimplementovaných dátových typov. 
+%Hlavným cieµom práce bolo zvý¹i» interoperabilitu s~inými IPFIX rie¹eniami pomocou zvý¹enia konformity so ¹tandardom IPFIX. 
+%V~práci boli vyrie¹ené problémy, ktoré doteraz znemo¾òovali dekódovanie viacerých záznamov sade, informaèncých elementov s~variabilnou då¾kou, informaèných elementov s~redukovaným kódovaním alebo niektorých predtým neimplementovaných dátových typov. 
+%
+%Súèas»ou práce bolo roz¹írenie podpory prenosu údajov o~tokoch prostredníctvom transportných protokolov TCP a SCTP, èo zvy¹uje mo¾nosti
+%nasadenia nástroja BasicMeter aj v~podmienkach s~vy¹¹ou náchylnos»ou na pre»a¾enie v~sietí. 
+%
+%Mo¾nosti budúceho vývoja zhroma¾ïovacieho procesu nástroja BasicMeter predstavuje implementácia podpory pre dátové typy umo¾òujúce
+%prenos ¹truktúrovaných dát a podpora pre zabezpeèené pripojenia od exportérov.
+%
 
-Súèas»ou práce bolo roz¹írenie podpory prenosu údajov o~tokoch prostredníctvom transportných protokolov TCP a SCTP, èo zvy¹uje mo¾nosti
-nasadenia nástroja BasicMeter aj v~podmienkach s~vy¹¹ou náchylnos»ou na pre»a¾enie v~sietí. 
-
-Mo¾nosti budúceho vývoja zhroma¾ïovacieho procesu nástroja BasicMeter predstavuje implementácia podpory pre dátové typy umo¾òujúce
-prenos ¹truktúrovaných dát a podpora pre zabezpeèené pripojenia od exportérov.
 
 \clearpage
 \addcontentsline{toc}{section}{\numberline{}Zoznam pou¾itej literatúry}
 \begin{thebibliography}{999}
+
+\harvarditem{Sadasivan, et al.}{2009}{rfc5470}
+SADASIVAN, G. et al.: \emph{Architecture for IP Flow Information Export} 
+RFC 5470. 2009
 
 \harvarditem{Kobayashi, Claise}{2010}{rfc5982}
 KOBAYASHI, A. -- CLAISE, B. et al.: \emph{IP Flow Information Export (IPFIX) Mediation: Problem Statement.} 
@@ -1221,10 +1227,6 @@ RFC 5982. 2010
 \harvarditem{Kobayashi et al.}{2011}{rfc6183}
 KOBAYASHI, A. et al.: \emph{IP Flow Information Export (IPFIX) Mediation: Framework.} 
 RFC 6183. 2011
-
-\harvarditem{Sadasivan, et al.}{2009}{rfc5470}
-SADASIVAN, G. et al.: \emph{Architecture for IP Flow Information Export} 
-RFC 5470. 2009
 
 \harvarditem{Claise}{2004}{rfc3954}
 CLAISE, B.: \emph{Cisco Systems NetFlow Services Export Version 9.} 

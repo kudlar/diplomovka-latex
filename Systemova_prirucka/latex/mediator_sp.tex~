@@ -99,7 +99,7 @@ pdfsubject={Diplomov\'a pr\'aca}
 %priloha
 %\kategoria{Príloha B}
 %nazov prilohy
-%\dekan{SYSTÉMOVÁ PRÍRUÈKA JXColl v3.5}
+%\dekan{SYSTÉMOVÁ PRÍRUÈKA MEDIATOR v1.0}
 %rok prilohy
 %\osnova{ 2010}
 
@@ -154,10 +154,10 @@ pdfsubject={Diplomov\'a pr\'aca}
 \listoffigures
 \newpage
 
-\thispagestyle{empty}
+%\thispagestyle{empty}
 %\addcontentsline{toc}{section}{\numberline{}Zoznam tabuliek}
-\listoftables
-\newpage
+%\listoftables
+%\newpage
 
 \thispagestyle{empty}
 

@@ -67,16 +67,18 @@ exportér - kolektor architektúry. Uveïme aspoò niektoré:
 
 \subsection{Analýza aplikaèného rámca pre IPFIX Mediátor} 
 
-Analýze aplikaèného rámca pre sprostredkovanie správ v IPFIX sa venuje RFC 6183 \citep{rfc6183}. 
-Na Obrázku \ref{o:mediation_reference_model} je zobrazený referenèný model sprostredkovania správ v IPFIX 
-ako roz¹írenie referenèného modelu IPFIX, popísaného v \emph{Architecture for IP Flow Information Export} 
-\citep{rfc5470}. Táto schéma zobrazuje mo¾né scenáre, ktoré mô¾u existova» v meracej architektúre.
-
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=0.9\textwidth]{mediation_reference_model}
 \caption{Referenèný model sprostredkovania správ v IPFIX}\label{o:mediation_reference_model}
 \end{figure}
+
+Analýze aplikaèného rámca pre sprostredkovanie správ v IPFIX sa venuje RFC 6183 \citep{rfc6183}. 
+Na Obrázku \ref{o:mediation_reference_model} je zobrazený referenèný model sprostredkovania správ v IPFIX 
+ako roz¹írenie referenèného modelu IPFIX, popísaného v \emph{Architecture for IP Flow Information Export} 
+\citep{rfc5470}. Táto schéma zobrazuje mo¾né scenáre, ktoré mô¾u existova» v meracej architektúre.
+
+
 
 Funkèné komponenty v rámci ka¾dej entity sú ohranièené zátvorkami []. Mediátor mô¾e prijíma» 
 záznamy o toku od iných mediátorov a exportérov a prúd záznamov z iných zdrojov.
@@ -997,58 +999,58 @@ Pomocná metóda, ktorá na koniec prvého poµa bytov pripojí druhé pole bytov .\\
 \emph{byte[]} first - prve pole bytov \\
 \emph{byte[]} second - druhe pole bytov\\
 \textbf{Návratová hodnota:}\\
-Pole bytov vysledneho poµa.\\
+Pole bytov výsledného poµa.\\
 
 
 \emph{private short \textbf{getMessageLength}(byte[] templateSetBytes, byte[] dataSetBytes, byte[] optionsTemplateSetStream)}
 
-Vracia celkovu dlzku IPFIX správy.\\
+Vracia celkovú då¾ku IPFIX správy.\\
 \textbf{Parametre:}\\
-\emph{byte[]} templateSetBytes - pole bytov sady sablon\\
-\emph{byte[]} dataSetBytes - pole bytov datovej sady\\
-\emph{byte[]} optionsTemplateSetStream - pole bytov sady sablon moznosti\\
+\emph{byte[]} templateSetBytes - pole bytov sady ¹ablón\\
+\emph{byte[]} dataSetBytes - pole bytov dátovej sady\\
+\emph{byte[]} optionsTemplateSetStream - pole bytov sady ¹ablón mo¾ností\\
 \textbf{Návratová hodnota:}\\
-Celkova dlzka IPFIX správy, vratane hlavicky. Navratovy typ je \emph{short}.
+Celková då¾ka IPFIX správy, vrátane hlavièky. Návratový typ je \emph{short}.
 
 
 
 \subsubsection{Trieda UDPExporter}
 
 
-Trieda je samostatnym vlaknom, zaznamy o toku cita z ExportCache. Tie potom posle triede 
-\verb|MessageEncoder|, ktora ich zabali do IPFIX správ. Zakodovane správy exportuje kolektoru na IP 
-adresu a port, ktore su definované v konfiguracnom subore. \\
+Trieda je samostatným vláknom, záznamy o toku èíta z ExportCache. Tie potom po¹le triede 
+\verb|MessageEncoder|, ktorá ich zabalí do IPFIX správ. Zakódované správy exportuje kolektoru na IP 
+adresu a port, ktoré sú definované v konfiguraènom súbore. \\
 
 \textbf{Kon¹truktor:}
 
 \emph{private \textbf{UDPExporter}()}
 
-Bezparametricky konstruktor. Vola rodicovsky konstruktor s parametrom svojho mena. Potom sa pokusi 
-vytvorit socket pomocou triedy \verb|DatagramSocket|.\\
+Bezparametrický kon¹truktor. Vola rodièovský kon¹truktor s parametrom svojho mena. Potom sa pokúsi 
+vytvori» socket pomocou triedy \verb|DatagramSocket|.\\
 
 \textbf{Metódy:}
 
 \emph{public static MessageEncoder \textbf{getInstance}()}
 
 \textbf{Návratová hodnota:}\\
-Metóda vracia jedinecnu instanciu objektu triedy podµa navrhoveho vzoru \emph{Singleton}.\\
+Metóda vracia jedineènú in¹tanciu objektu triedy podµa návrhového vzoru \emph{Singleton}.\\
 
 
 \emph{public void \textbf{run}()}
 
-Hlavna metóda vlakna. Dokial nie je vlakno prerusene, cyklicky cita zaznamy o toku z ExportCache.
-Prostrednictvom treidy \verb|MessageEncoder| vytvori zo zaznamu o toku vystupny prud bytov. 
-Ten spolu s dlzkou prudu, IP adresou a portom zabali do paketu - objektu triedy \verb|DatagramPacket|.
-Vzniknuty paket odosle.
+Hlavná metóda vlákna. Dokiaµ nie je vlákno preru¹ené, cyklicky èíta záznamy o toku z ExportCache.
+Prostredníctvom triedy \verb|MessageEncoder| vytvorí zo záznamu o toku výstupný prúd bytov. 
+Ten spolu s då¾kou prúdu, IP adresou a portom zabalí do paketu - objektu triedy \verb|DatagramPacket|.
+Vzniknutý paket odo¹le.
 
 
 
 % --------------------- EXCEPTIONS ---------------------------
 
-\subsection{Balik sk.tuke.cnl.bm.exceptions}
+\subsection{Balík sk.tuke.cnl.bm.exceptions}
 
-Balik obsahuje triedy vynimiek specifickych pre Mediator. Vsetky vynimky dedia od hlavnej triedy 
-vynimiek - \verb|MediatorException|.
+Balík obsahuje triedy výnimiek ¹pecifických pre Mediátor. V¹etky výnimky dedia od hlavnej triedy 
+výnimiek - \verb|MediatorException|.
 
 
 
@@ -1136,11 +1138,11 @@ Preklad programu si vy¾aduje nasledovnú hardvérovú konfiguráciu:
 
 \subsection{Náväznos» na iné programové produkty}
 
-Program umo¾òuje sprostredkovanie správ medzi meracim/exportovacim procesom a zhromazdovacim procesom 
-IPFIX architektury, ktoré budú následne vyhodnotené príslu¹nými aplikaciami. Je implementáciou 
-\emph{(IP Flow Information Export (IPFIX) Mediation Problem)} v architektúe SLAmeter.
-Z~toho vyplýva jeho náväznos» na merací/exportovací proces - BEEM a zhromazdovaci proces - JXColl 
-(alebo ine implementácie tychto procesov).
+Program umo¾òuje sprostredkovanie správ medzi meracím/exportovacím procesom a zhroma¾ïovacím procesom 
+IPFIX architektúry, ktoré budú následne vyhodnotené príslu¹nými aplikáciami. Je implementáciou 
+\emph{(IP Flow Information Export (IPFIX) Mediation Problem)} v architektúre SLAmeter.
+Z~toho vyplýva jeho náväznos» na merací/exportovací proces - BEEM a zhroma¾ïovací proces - JXColl 
+(alebo iné implementácie týchto procesov).
 
 
 
@@ -1149,9 +1151,9 @@ Z~toho vyplýva jeho náväznos» na merací/exportovací proces - BEEM a zhromazdovac
 
 Preklad programu spoèíva v~nakopírovaní zdrojových súborov a~spustení kompilátora jazyka
 Java s~potrebnými parametrami a~parametrom classpath nastaveným na prídavné kni¾nice.
-Odporúèa sa pou¾i» vá¹ obµubený java IDE, kde staèí jednoducho nastavi» verziu JDK na 7.0
+Odporúèa sa pou¾i» vá¹ obµúbený java IDE, kde staèí jednoducho nastavi» verziu JDK na 7.0
 alebo vy¹¹ie a~do cesty classpath prida» cesty ku v¹etkým potrebným kni¾niciam. V~prostredí
-Netbeans IDE potom staèí kliknú» na tlaèidlo \textit{Clean and Build}.
+NetBeans IDE potom staèí kliknú» na tlaèidlo \textit{Clean and Build}.
 
 
 
@@ -1163,8 +1165,8 @@ Staèí spusti» skript \texttt{buildDeb.sh}, ktorý sa nachádza v~prieèinku /deb.
 \texttt{sh buildDeb.sh }
 \end{center}
 
-Výstupom tohto skriptu je súbor s~názvom \texttt{debian.deb}, ktorý mô¾me následne premenova» podµa verzie JXColl 
-(napríklad na jxcoll\_3.9\_i386.deb). 
+Výstupom tohto skriptu je súbor s~názvom \texttt{debian.deb}, ktorý mô¾me následne premenova» podµa verzie Mediátora 
+(napríklad na mediator\_1.0\_i386.deb). 
 Tento skript vykonáva nasledovné:
 
 \begin{enumerate}
@@ -1181,7 +1183,7 @@ Tento skript vykonáva nasledovné:
 \item archivuje vytvorený DEB balíèek do archívu debian.tar.gz
 \end{enumerate}
 
-Pred spustením skriptu je nutné skompilova» Mediator pomocou Netbeans IDE tlaèidlom \textit{Clean and Build}. 
+Pred spustením skriptu je nutné skompilova» Mediátor pomocou Netbeans IDE tlaèidlom \textit{Clean and Build}. 
 Prípadné zmeny control alebo changelog súboru, manuálových stránok je nutné vykona» ruène. 
 Manuálové stránky je vhodné upravi» pomocou programu \textit{GmanEdit} . Po spustení skriptu sa vytvorí 
 DEB balíèek s~názvom \texttt{debian.deb}. Ten je vhodné premenova» podµa aktuálnej verzie. 
@@ -1199,18 +1201,24 @@ V~súèasnosti nie sú známe ¾iadne vá¾ne chyby.
 
 \newpage
 \section{Zhodnotenie rie¹enia}
-Hlavným cieµom práce bolo zvý¹i» interoperabilitu s~inými IPFIX rie¹eniami pomocou zvý¹enia konformity so ¹tandardom IPFIX. 
-V~práci boli vyrie¹ené problémy, ktoré doteraz znemo¾òovali dekódovanie viacerých záznamov sade, informaèncých elementov s~variabilnou då¾kou, informaèných elementov s~redukovaným kódovaním alebo niektorých predtým neimplementovaných dátových typov. 
+%Hlavným cieµom práce bolo zvý¹i» interoperabilitu s~inými IPFIX rie¹eniami pomocou zvý¹enia konformity so ¹tandardom IPFIX. 
+%V~práci boli vyrie¹ené problémy, ktoré doteraz znemo¾òovali dekódovanie viacerých záznamov sade, informaèncých elementov s~variabilnou då¾kou, informaèných elementov s~redukovaným kódovaním alebo niektorých predtým neimplementovaných dátových typov. 
+%
+%Súèas»ou práce bolo roz¹írenie podpory prenosu údajov o~tokoch prostredníctvom transportných protokolov TCP a SCTP, èo zvy¹uje mo¾nosti
+%nasadenia nástroja BasicMeter aj v~podmienkach s~vy¹¹ou náchylnos»ou na pre»a¾enie v~sietí. 
+%
+%Mo¾nosti budúceho vývoja zhroma¾ïovacieho procesu nástroja BasicMeter predstavuje implementácia podpory pre dátové typy umo¾òujúce
+%prenos ¹truktúrovaných dát a podpora pre zabezpeèené pripojenia od exportérov.
+%
 
-Súèas»ou práce bolo roz¹írenie podpory prenosu údajov o~tokoch prostredníctvom transportných protokolov TCP a SCTP, èo zvy¹uje mo¾nosti
-nasadenia nástroja BasicMeter aj v~podmienkach s~vy¹¹ou náchylnos»ou na pre»a¾enie v~sietí. 
-
-Mo¾nosti budúceho vývoja zhroma¾ïovacieho procesu nástroja BasicMeter predstavuje implementácia podpory pre dátové typy umo¾òujúce
-prenos ¹truktúrovaných dát a podpora pre zabezpeèené pripojenia od exportérov.
 
 \clearpage
 \addcontentsline{toc}{section}{\numberline{}Zoznam pou¾itej literatúry}
 \begin{thebibliography}{999}
+
+\harvarditem{Sadasivan, et al.}{2009}{rfc5470}
+SADASIVAN, G. et al.: \emph{Architecture for IP Flow Information Export} 
+RFC 5470. 2009
 
 \harvarditem{Kobayashi, Claise}{2010}{rfc5982}
 KOBAYASHI, A. -- CLAISE, B. et al.: \emph{IP Flow Information Export (IPFIX) Mediation: Problem Statement.} 
@@ -1219,10 +1227,6 @@ RFC 5982. 2010
 \harvarditem{Kobayashi et al.}{2011}{rfc6183}
 KOBAYASHI, A. et al.: \emph{IP Flow Information Export (IPFIX) Mediation: Framework.} 
 RFC 6183. 2011
-
-\harvarditem{Sadasivan, et al.}{2009}{rfc5470}
-SADASIVAN, G. et al.: \emph{Architecture for IP Flow Information Export} 
-RFC 5470. 2009
 
 \harvarditem{Claise}{2004}{rfc3954}
 CLAISE, B.: \emph{Cisco Systems NetFlow Services Export Version 9.} 
