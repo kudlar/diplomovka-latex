@@ -1117,7 +1117,7 @@ Zdrojové texty sú k~dispozícii v~prílohe diplomovej práce.
 Preklad programu si vy¾aduje nasledovnú hardvérovú konfiguráciu:
 \begin{itemize}
   \item CPU Intel Pentium III 1Ghz alebo ekvivalent
-  \item operaèná pamä» 2MB
+  \item operaèná pamä» 256MB
   \item pevný disk s~1GB voµného miesta
   \item sie»ová karta 100Mb/s
 \end{itemize}
