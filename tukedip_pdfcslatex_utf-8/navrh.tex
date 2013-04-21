@@ -310,8 +310,8 @@ Singletony, volanie \emph{newInstance()} sa vykoná pre každý modul pravé raz
 
 Aby bolo možné získavať inštancie modulov aj na základe mena triedy a nie len cez class objekty, vytvoril 
 som ďalšiu metódu \emph{getInstance(String processName)}. Parameter \emph{processName} je práve meno 
-procesu, napr \verb|SelectionProcess|. 
-Premenná \emph{name} je binárne meno procesu, podľa špecifikácie jazyka Java \citep{java_spec},
+procesu, napr \verb|SelectionProcess|. Tuto premenne prevedie na binárne meno procesu, 
+podľa špecifikácie jazyka Java \citep{java_spec},
 napr. \verb|sk.tuke.cnl.Mediator.SelectionProcess|.
 Tato metóda načíta \emph{class} objekt sprostredkovateľského procesu cez systémový class loader,
 tak ako to bolo vyššie spomínané. Potom zavolá pôvodnú metódu \emph{getInstance(Class clazz)} a 
