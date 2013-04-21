@@ -252,9 +252,10 @@ Konfiguraèný súbor mô¾e obsahova» komentár, ktorý musí by» ohranièený znakmi:
     \multicolumn{4}{|c|}{} \\
     \multicolumn{4}{|c|}{\textbf{Modul:} Modul pre sprostredkovateµské procesy (processes)} \\
     \hline
-    name & -- & názov hlavnej triedy sprost. procesu v baliku IntermediateProcesses & meno sprostredkovateµského procesu \\
+    name & -- & alfanumerické znamky & meno sprostredkovateµského procesu (názov jeho hlavnej triedy v 
+    baliku IntermediateProcesses)\\
     \hline
-    input & -- & exporter, názov hlavnej triedy sprost. procesu v baliku IntermediateProcesses & nazov procesu, od ktorého tento proces prijíma záznamy o 
+    input & -- & exporter, alfanumericke znaky & nazov procesu, od ktorého tento proces prijíma záznamy o 
     tokoch. hodnota je buï exporter, alebo akýkoµvek sprostredkovateµský proces - jeho \uv{name}  \\
     \hline
    \end{tabular}
@@ -266,22 +267,21 @@ Konfiguraèný súbor mô¾e obsahova» komentár, ktorý musí by» ohranièený znakmi:
 
 \begin{sidewaystable}[ht]
 \tabcolsep=4pt 
-\caption{Voµby konfiguraèného súboru 2}
+\caption{Voµby konfiguraèného súboru 3}
 \renewcommand{\arraystretch}{0.3}
 \begin{center}
-  \begin{tabular}{|p{4cm}|p{2.3cm}|p{6cm}|p{9cm}|}
+  \begin{tabular}{|p{3cm}|p{2.3cm}|p{8cm}|p{8cm}|}
 % {|p{2cm}|p{1.7cm}|p{4cm}|p{4cm}|}
     \hline
     \textbf{Parameter} & \textbf{©tandardná hodnota}  & \textbf{Prípustné hodnoty}  & \textbf{Popis}\\
     \hline
     \hline
 
-    \multicolumn{4}{|c|}{} \\
     \multicolumn{4}{|c|}{\textbf{Modul:} Exportovací proces (exporting)} \\
     \hline
     version & 10 & 10 & verzia IPFIX protokolu\\
     \hline
-    host & 127.0.0.1 & názov alebo IP adresa kolektora/ineho mediatora & IP adresa IPFIX kolektora/mediatora\\
+    host & 127.0.0.1 & názov alebo IP adresa kolektora/ineho mediatora & IPFIX kolektor/mediator\\
     \hline
     port & 4739 & prir. èíslo z~intervalu $<$0-65535$>$  (kt. nie je obsadené) & port, na ktorom pocuva 
     kolektor/iny mediator\\
@@ -292,23 +292,8 @@ Konfiguraèný súbor mô¾e obsahova» komentár, ktorý musí by» ohranièený znakmi:
     príslu¹nú ¹ablónu (ak sa nastaví vy¹¹ia hodnota ako je v exportéri, tak reálne platí hodnota daná 
     exportérom)\\
     \hline
-    exportTime & RENEW & KEEP, RENEW & sposob, akym Mediator naraba s casom v poli hlavicky spravy - \uv{exportTime}\\
+    exportTime & bm & re»azec udávajúci heslo & heslo do databázy PostgreSQL\\
     \hline 
-    \hline 
-    
-    \multicolumn{4}{|c|}{} \\
-    \multicolumn{4}{|c|}{\textbf{Modul:} Expertné nastavenia (expertsOnly)} \\
-    \hline
-    packetCacheSize & 25 & prirodzené celé èíslo väè¹ie ako 0 & velkost cache pre IPFIX pakety na vstupe \\
-    \hline
-    inputBufferSize & 75 & prirodzené celé èíslo väè¹ie ako 0 & velkost vstupneho buffera 
-    sprostredkovatelskych procesov\\
-    \hline
-    exportCacheSize & 25 & prirodzené celé èíslo väè¹ie ako 0 & velkost exportovacej cache\\
-    \hline
-    maxInputPacketSize & 65540 & prirodzené celé èíslo väè¹ie ako 0 & maximalna povolena velkost jedneho 
-    IPFIX paketu\\
-    \hline
   \end{tabular}
   \label{tbl:conf3}
 \end{center}

@@ -1,0 +1,17 @@
+\select@language {slovak}
+\contentsline {section}{\numberline {1}Funkcia programu}{6}{section.1}
+\contentsline {section}{\numberline {2}S\'upis obsahu dod\'avky}{7}{section.2}
+\contentsline {section}{\numberline {3}In\v {s}tal\'acia programu}{8}{section.3}
+\contentsline {subsection}{\numberline {3.1}Po\v {z}iadavky na technick\'e prostriedky}{8}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Po\v {z}iadavky na programov\'e prostriedky}{8}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Vlastn\'a in\v {s}tal\'acia}{9}{subsection.3.3}
+\contentsline {subsubsection}{\numberline {3.3.1}In\v {s}tal\'acia Java 7 pod OS Ubuntu/Debian}{9}{subsubsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.2}In\v {s}tal\'acia samotnej aplik\'acie Mediator pod OS Ubuntu/Debian}{9}{subsubsection.3.3.2}
+\contentsline {section}{\numberline {4}Pou\v {z}itie programu}{10}{section.4}
+\contentsline {subsection}{\numberline {4.1}Popis dial\'ogu s~pou\v {z}\'ivate\v {l}om}{11}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Popis konfigura\v {c}n\'eho s\'uboru}{11}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Popis spr\'av pre syst\'emov\'eho program\'atora}{15}{subsection.4.3}
+\contentsline {section}{\numberline {5}Obmedzenia programu}{15}{section.5}
+\contentsline {section}{\numberline {6}Chybov\'e hl\'asenia}{17}{section.6}
+\contentsline {section}{\numberline {7}Pr\'iklad pou\v {z}itia}{22}{section.7}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Zoznam pou¾itej literatúry}{23}{section.7}

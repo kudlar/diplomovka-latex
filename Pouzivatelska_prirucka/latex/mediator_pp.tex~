@@ -45,13 +45,12 @@
 \usepackage{hhline}
 \usepackage{rotating}
 \usepackage{textcomp}
-
 %%
 %\usepackage[dvips]{graphicx}
 %\DeclareGraphicsExtensions{.eps}
 %\usepackage[pdftex]{graphicx}
-%\DeclareGraphicsExtensions{.pdf,.png,.jpg,.mps}
-%\graphicspath{{figures/}} % priecinok na obrazky
+\DeclareGraphicsExtensions{.pdf,.png,.jpg,.mps}
+\graphicspath{{figures/}} % priecinok na obrazky
 %%
 %% Cislovane citovanie
 \usepackage[numbers]{natbib}
@@ -67,10 +66,10 @@ pdfstartpage=1]{hyperref}
 \hypersetup{%
 baseurl={http://www.tuke.sk/sevcovic},
 pdfcreator={pdfcsLaTeX},
-pdfkeywords={Sprostredkovanie, Mediátor, IPFIX, SLAMeter, BasicMeter},
+pdfkeywords={Sprostredkovanie, Medi\'ator, IPFIX, SLAMeter, BasicMeter},
 pdftitle={Pou\v{z}\'ivate\v{l}sk\'a pr\'iru\v{c}ka Mediator v1.0},
 pdfauthor={Bc. Rastislav Kudla},
-pdfsubject={Diplomová práca}
+pdfsubject={Diplomov\'a pr\'aca}
 } 
 
 %\setlength{\parindent}{10mm}
@@ -82,7 +81,7 @@ pdfsubject={Diplomová práca}
 %% ked praca nema 'podnazov' zakomentujte nasledujuci riadok
 %% alebo polozku nechajte prazdnu
 \podnazov{}
-\klucoveslova{Sprostredkovanie, Mediátor, Kolektor, Exportér, IPFIX, SLAMeter, BasicMeter}
+\klucoveslova{IPFIX, Sprostredkovanie, Mediátor, Kolektor, Exportér, SLAmeter, BasicMeter, MONICA}
 \jazyk{slovenský}
 \titul{In¾inier}
 \univerzita{Technická univerzita v~Ko¹iciach}
@@ -115,9 +114,9 @@ pdfsubject={Diplomová práca}
 \rozsahprace{}
 \title{IPFIX Mediation Framework of the SLAmeter Tool}
 \subtitle{}
-\keywords{Mediation, Mediator, Collector, Exporter, IPFIX, SLAMeter, BasicMeter}
+\keywords{IPFIX, Mediation, Mediator, Collector, Exporter, SLAmeter, BasicMeter, MONICA}
 \datumzadania{20. 1. 2012}
-\datumodovzdania{26. 4. 2013}
+\datumodovzdania{29. 4. 2013}
 \datumobhajoby{22. 5. 2013}
 \mesto{Ko¹ice}
 \cpriloha{Príloha B}
@@ -144,6 +143,10 @@ pdfsubject={Diplomová práca}
     A~copy of the license can be found at http://www.gnu.org/licenses/fdl.html.
 \end{quote}
 \bigskip
+\newpage
+
+\thispagestyle{empty}
+\tableofcontents
 \newpage
 
 \thispagestyle{empty}

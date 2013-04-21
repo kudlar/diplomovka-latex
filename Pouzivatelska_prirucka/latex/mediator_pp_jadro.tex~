@@ -306,8 +306,8 @@ Konfiguraèný súbor mô¾e obsahova» komentár, ktorý musí by» ohranièený znakmi:
     \hline
     exportCacheSize & 25 & prirodzené celé èíslo väè¹ie ako 0 & velkost exportovacej cache\\
     \hline
-    maxInputPacketSize & 65540 & prirodzené celé èíslo väè¹ie ako 0 & maximalna povolena velkost jedneho 
-    IPFIX paketu\\
+    maxInputPacketSize & 65540 & prirodzené celé èíslo väè¹ie ako 0 & maximalna povolena velkost jedneho IPFIX 
+    paketu\\
     \hline
   \end{tabular}
   \label{tbl:conf3}
