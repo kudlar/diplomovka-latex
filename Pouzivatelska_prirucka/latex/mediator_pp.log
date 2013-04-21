@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  21 APR 2013 21:13
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  22 APR 2013 00:17
 entering extended mode
  %&-line parsing enabled.
 **mediator_pp.tex
@@ -716,14 +716,7 @@ Overfull \hbox (3.58574pt too wide) in paragraph at lines 119--121
 ope-ra-èných sys-té-moch Ubun-
  []
 
-[10]
-
-LaTeX Warning: Reference `tbl:conf2' on page 11 undefined on input line 196.
-
-
-LaTeX Warning: Reference `tbl:conf4' on page 11 undefined on input line 196.
-
-[11]
+[10] [11]
 Underfull \hbox (badness 10000) in paragraph at lines 204--208
 
  []
@@ -765,100 +758,126 @@ Overfull \hbox (14.08311pt too wide) in paragraph at lines 272--314
 
 [12] [13] [14] [15
 
-] [16]
-Underfull \hbox (badness 10000) in paragraph at lines 390--393
-
- []
-
-[17]
-Underfull \hbox (badness 10000) in paragraph at lines 409--412
+]
+Underfull \hbox (badness 10000) in paragraph at lines 382--385
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 418--421
+Overfull \hbox (2.45866pt too wide) in paragraph at lines 393--393
+[]\IL2/lmtt/m/n/8 ERROR [UDP Processor] FlowRecordDispatcher - InputBuffer proc
+esu () je plny. Zahadzujem flow records.[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 395--398
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 427--429
+Underfull \hbox (badness 10000) in paragraph at lines 406--409
+
+ []
+
+[16]
+Underfull \hbox (badness 10000) in paragraph at lines 415--419
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 435--438
-
- []
-
-[18]
-Underfull \hbox (badness 10000) in paragraph at lines 447--450
+Underfull \hbox (badness 10000) in paragraph at lines 424--427
 
  []
 
 
-Overfull \hbox (2.45866pt too wide) in paragraph at lines 465--465
-[]\IL2/lmtt/m/n/8 ERROR [TCP Processor] IpfixParser  - Corrupted data detected!
- Shutting down TCP connection to IP:port[] 
+Underfull \hbox (badness 10000) in paragraph at lines 432--435
+
  []
 
 
-Overfull \hbox (2.45866pt too wide) in paragraph at lines 468--468
-[]\IL2/lmtt/m/n/8 ERROR [TCP Processor] IpfixParser  - Corrupted data detected!
- Shutting down TCP connection to IP:port[] 
+Underfull \hbox (badness 10000) in paragraph at lines 440--443
+
+ []
+
+[17
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 450--452
+
  []
 
 
-Overfull \hbox (2.45866pt too wide) in paragraph at lines 471--471
-[]\IL2/lmtt/m/n/8 ERROR [TCP Processor] IpfixParser  - Corrupted data detected!
- Shutting down TCP connection to IP:port[] 
+Underfull \hbox (badness 10000) in paragraph at lines 461--465
+
  []
 
 
-Overfull \hbox (2.45866pt too wide) in paragraph at lines 474--474
-[]\IL2/lmtt/m/n/8 ERROR [TCP Processor] IpfixParser  - Corrupted data detected!
- Shutting down TCP connection to IP:port[] 
+Underfull \hbox (badness 10000) in paragraph at lines 472--476
+
+ []
+
+[18
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 492--496
+
  []
 
 
-Overfull \hbox (2.45866pt too wide) in paragraph at lines 477--477
-[]\IL2/lmtt/m/n/8 ERROR [TCP Processor] IpfixParser  - Corrupted data detected!
- Shutting down TCP connection to IP:port[] 
+Underfull \hbox (badness 10000) in paragraph at lines 507--510
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 524--527
+
  []
 
 [19]
-Underfull \hbox (badness 10000) in paragraph at lines 507--515
+Underfull \hbox (badness 10000) in paragraph at lines 552--554
 
  []
 
-[20] [21] [22]) [23
 
-] (./mediator_pp.aux (./mediator_pp_jadro.aux))
+Underfull \hbox (badness 10000) in paragraph at lines 559--561
 
-LaTeX Warning: There were undefined references.
+ []
 
- ) 
+
+Underfull \hbox (badness 10000) in paragraph at lines 568--570
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 574--582
+
+ []
+
+[20
+
+] [21]) [22] (./mediator_pp.aux (./mediator_pp_jadro.aux)) ) 
 Here is how much of TeX's memory you used:
- 9652 strings out of 495027
- 131870 string characters out of 1181419
- 214024 words of memory out of 3000000
- 12545 multiletter control sequences out of 15000+50000
+ 9655 strings out of 495027
+ 131904 string characters out of 1181419
+ 214099 words of memory out of 3000000
+ 12546 multiletter control sequences out of 15000+50000
  59611 words of font info for 73 fonts, out of 3000000 for 9000
  38 hyphenation exceptions out of 8191
  38i,13n,40p,474b,481s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-cstt.enc}{/usr/share/texmf/fonts/enc/
-dvips/lm/lm-cs.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/sha
-re/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-t
-s1.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fon
-ts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pf
-b></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/typ
-e1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/
-share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public
-/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/share/t
-exmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/l
-mtt8.pfb>
-Output written on mediator_pp.pdf (23 pages, 319706 bytes).
+{/usr/share/texmf/f
+onts/enc/dvips/lm/lm-cstt.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-cs.enc}{/
+usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dv
+ips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}</usr/share/te
+xmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lm
+bx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/f
+onts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pf
+b></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/typ
+e1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/
+share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf/fonts/type1/publ
+ic/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb>
+Output written on mediator_pp.pdf (22 pages, 319348 bytes).
 PDF statistics:
  261 PDF objects out of 1000 (max. 8388607)
- 47 named destinations out of 1000 (max. 500000)
+ 49 named destinations out of 1000 (max. 500000)
  129 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -12,6 +12,6 @@
 \contentsline {subsection}{\numberline {4.2}Popis konfigura\v {c}n\'eho s\'uboru}{11}{subsection.4.2}
 \contentsline {subsection}{\numberline {4.3}Popis spr\'av pre syst\'emov\'eho program\'atora}{15}{subsection.4.3}
 \contentsline {section}{\numberline {5}Obmedzenia programu}{15}{section.5}
-\contentsline {section}{\numberline {6}Chybov\'e hl\'asenia}{17}{section.6}
+\contentsline {section}{\numberline {6}Chybov\'e hl\'asenia}{16}{section.6}
 \contentsline {section}{\numberline {7}Pr\'iklad pou\v {z}itia}{22}{section.7}
-\contentsline {section}{\hbox to\@tempdima {\hfil }Zoznam pou¾itej literatúry}{23}{section.7}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Zoznam pou¾itej literatúry}{22}{section.7}

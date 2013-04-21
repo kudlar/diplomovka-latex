@@ -193,7 +193,7 @@ Ukonèenie programu sa vykoná stlaèením kombinácie kláves \emph{CTRL + C} alebo p
 Vychodiskovy adresar, kde sa nachadza konfiguracny subor je \verb|/etc/mediator/|. Jednotlivé konfiguraèné 
 parametre sa triedia podµa typu modulov, ktorých sa nastavenia týkajú. Tieto typy ako aj zoznam v¹etkých 
 mo¾ných parametrov, ich popis, ¹tandardné hodnoty a mo¾né voµby sa nachádzajú v~tabuµkách 
-\ref{tbl:conf1}, \ref{tbl:conf2}, \ref{tbl:conf3} a \ref{tbl:conf4}. V~prípade, ¾e daná hodnota pre 
+\ref{tbl:conf1} a \ref{tbl:conf2}. V~prípade, ¾e daná hodnota pre 
 akýkoµvek parameter nie je uvedená v~konfiguraènom súbore, parameter sa nastaví na ¹tandardnú hodnotu. 
 Uká¾kový konfiguraèný súbor na in¹talaènom médiu obsahuje pribli¾né popisy parametrov a ich ¹tandardné 
 hodnoty. 
@@ -310,19 +310,15 @@ Konfiguraèný súbor mô¾e obsahova» komentár, ktorý musí by» ohranièený znakmi:
     IPFIX paketu\\
     \hline
   \end{tabular}
-  \label{tbl:conf3}
+  \label{tbl:conf2}
 \end{center}
 \end{sidewaystable}
-
-
 
 
 
 \clearpage
 
 \subsection{Popis spr\'av pre syst\'emov\'eho program\'atora}
-V~dodanej verzii JXColl sa zmenil aj spôsob zobrazovania správ. Logovací subsystém v¹ak zostal nedotknutý. Správy oproti starej verzie programu sú teraz prehµadnej¹ie a krat¹ie.
-
 Poèas behu programu sa vypisujú rôzne hlásenia od chybových a¾ po informaèné. Logovací
 subsystém programu je mo¾né inicializova» rôznymi úrovòami. Ich popis je uvedený
 v~tabuµke~\ref{tbl:log}. Ka¾dá úroveò zahàòa v~sebe aj úrovne na ni¾¹om stupni, tak¾e napr. pre úroveò
@@ -358,153 +354,224 @@ ERROR sa budú zobrazova» aj hlásenia typu FATAL. Na reálnu prevádzku je vhodné n
   \label{tbl:log}
 \end{table}
 
+
+
+
 \section{Obmedzenia programu}
 
 Program sa bude na pomal¹ích poèítaèoch jednoznaène pomal¹ie spú¹»a», keï¾e Java je jazyk
-interpretovaný a~be¾iaci vo vlastnom virtuálnom stroji. Rýchlos» programu tie¾ závisí na mno¾stve prijatých dát.
-Ïal¹ie obmedzenie je dané schémou databázy, ktorá je vopred daná, a~pre jej zmenu je nutné zmeni» aj samotný zdrojový kód. 
+interpretovaný a~be¾iaci vo vlastnom virtuálnom stroji. Rýchlos» programu tie¾ závisí na mno¾stve 
+prijatých dát. 
+
+
+
 
 \newpage
 \section{Chybov\'e hl\'asenia}
 
-Poèas pou¾ívania programu mô¾e dôjs» k~nasledujúcim chybám. Èasové známky boli odstránené kvôli zvý¹eniu prehµadnosti.
-
-\noindent \textbf{Chyba:}
-\begin{verbatim}
-DEBUG [main] DBExport  - 
-Connecting to postgres@jdbc:postgresql://127.0.0.3:5432/bm... 
-
-ERROR [main] DBExport  - 
-Connection refused. Check that the hostname and port are correct and
-that the postmaster is accepting TCP/IP connections.
-
-INFO [main] DBExport  - 
-Login failed. org.postgresql.util.PSQLException: Connection refused. Check
-that the hostname and port are correct and that
-the postmaster is accepting TCP/IP connections. SQL error
-
-INFO [main] DBExport  - 
-Login failed. org.postgresql.util.PSQLException: FATAL: password authentication
-failed for user "postgres" SQL error
-\end{verbatim}
-\textbf{Popis a~rie¹enie:}
-V~týchto prípadoch sa JXColl nedoká¾e napoji» na databázu. Buï je zle zadaná adresa, port
-servera, prihlasovacie údaje alebo je spojenie blokované/nefunkèné.\\
+Poèas pou¾ívania programu mô¾e dôjs» k~nasledujúcim chybám. Èasové známky boli odstránené kvôli zvý¹eniu 
+prehµadnosti. Keï¾e niektoré triedy Mediátora sú kvôli jednotnosti rie¹ení v rámci výskumnej skupiny 
+MONICA toto¾né s triedami nastroja JXColl, v~nasledujúcich èastiach budú uvedené len tie chyby, ktoré sa 
+týkajú výhradne Mediátora.
 
 \noindent \textbf{Chyba:} 
 \begin{verbatim}
-INFO  [main] Config  - Loading config file: /zla/cesta/k/jxcoll_config.xml
-ERROR [main] Config  - Could not load config file: /zla/cesta/k/jxcoll_config.xml !
+INFO  [main] Config  - Loading config file: /zla/cesta/ku/config.xml
+ERROR [main] Config  - Could not load config file: /zla/cesta/ku/config.xml !
 \end{verbatim} 
 \textbf{Popis a~rie¹enie:}
-Nie je mo¾né naèíta» konfiguraèný súbor. Treba sa uisti», èi súbor /etc/jxcoll/jxcoll.conf existuje, alebo èi je k~nemu správne zadaná cesta.
+Nie je mo¾né naèíta» konfiguraèný súbor. Treba sa uisti», èi súbor /etc/mediator/mediator.conf existuje, 
+alebo èi je k~nemu správne zadaná cesta.\\
+
+
+\noindent \textbf{Chyba:} 
+\begin{verbatim}
+ERROR [UDP Server] PacketCache - PacketCache is full (SIZE). DROPING PACKETS.
+
+ERROR [UDP Processor] FlowRecordDispatcher - ExportCache je plna. Zahadzujem flow records.
+
+ERROR [UDP Processor] FlowRecordDispatcher - InputBuffer procesu () je plny. Zahadzujem flow records.
+\end{verbatim} 
+\textbf{Popis a~rie¹enie:}
+Prislusna cache pamat, alebo buffer su preplnene. Zaznamy o tokoch, alebo IPFIX pakety sa zahadzuju.
+Treba zvysit kapacitu prislusnej pamate.\\
+
+
+\noindent \textbf{Chyba:} 
+\begin{verbatim}
+ERROR [main] IPLoader - SecurityException occured: (MESSAGE)
+
+ERROR [main] IPLoader - IllegalAccessException occured: (MESSAGE)
+\end{verbatim} 
+\textbf{Popis a~rie¹enie:}
+Specificke chyby, ktore nastali pri dynamickom nacitavani sprostredkovatelskych procesov. Ich rie¹enie je 
+individualne.\\
+
+\clearpage
+\noindent \textbf{Chyba:} 
+\begin{verbatim}
+ERROR [main] IPLoader - Class (NAME) not found.
+\end{verbatim} 
+\textbf{Popis a~rie¹enie:}
+Chyba, ktoru vyvolalo dynamicke nacitavanie sprostredkovatelskych procesov. Proces s definovanym menom 
+neexistuje. Treba skontrolovat konfiguracny subor, a nastavit ho tak, ze vsetky mena procesov budu 
+zodpovedat menam hlavnych tried procesov.\\
+
+\noindent \textbf{Chyba:} 
+\begin{verbatim}
+ERROR [main] IPLoader - Missing method 'start' in process (NAME)
+\end{verbatim} 
+\textbf{Popis a~rie¹enie:}
+Sprostredkovatelsky proces neobsahuje metodu \verb|start()|. Treba skontrolovat, ci sprostredkovateµský
+proces dedi od triedy AIntermediateProcess. Ta dedi od Thread, ktory implementuje metodu \verb|start()|.\\
+
+\noindent \textbf{Chyba:} 
+\begin{verbatim}
+ERROR [main] IPLoader - Error while invoking method 'start' in process ().
+\end{verbatim} 
+\textbf{Popis a~rie¹enie:}
+Nastala specificka chyba pri inicializovani vlakna - sprostredkovateµského procesu. Riesenie je 
+individualne.\\
+
+\noindent \textbf{Chyba:} 
+\begin{verbatim}
+FATAL [main] Mediator - Some of the intermediate processes could not load properly.
+\end{verbatim} 
+\textbf{Popis a~rie¹enie:}
+Chyba je vyhodena spolu s inou, vyssie spominanou chybou tykajucou sa dynamickeho nacitavania (trieda
+\verb|IPLoader|). Povodna chyba odhali pricinu a nasledne riesenie problemu.\\
+
+\clearpage
+\noindent \textbf{Chyba:} 
+\begin{verbatim}
+WARN [main] Mediator - Too many arguments! Logging to console and using default config file from 
+/etc/mediator
+\end{verbatim} 
+\textbf{Popis a~rie¹enie:}
+Boli zadane viac ako 2 arguemnty prikazoveho riadka.\\
+
 
 \noindent \textbf{Chyba:}
 \begin{verbatim}
-FATAL [main] IpfixElements  - XML file "/etc/jxcoll/ipfixFields.xmla" 
+FATAL [main] IpfixElements - XML file "/etc/mediator/ipfixFields.xml" 
 	was not found!
-FATAL [main] JXColl  - JXColl could not start because of an error while 
+FATAL [main] Mediator - Mediator could not start because of an error while 
 	processing XML file!
 \end{verbatim}
 \textbf{Popis a~rie¹enie:}
 Nena¹iel sa ipfixFields.xml súbor, ktorý slú¾i na rozpoznanie údajov z~IPFIX paketu. 
-Treba sa uisti», èi sa súbor nachádza v~prieèinku definovanom v~konfiguraènom súbore alebo v~predvolenej ceste (/etc/jxcoll/ipfixFields.xml).\\
+Treba sa uisti», èi sa súbor nachádza v~prieèinku definovanom v~konfiguraènom súbore alebo v~predvolenej 
+ceste (\emph{/etc/mediator/ipfixFields.xml}).\\
+
 
 \noindent \textbf{Chyba:}
 \begin{verbatim}
-ERROR [ACP Thread 4] ACPIPFIXWorker  - IO EXCEPTION :null
-DEBUG [ACP Thread 4] ACPIPFIXWorker  - Closing connection in try-catch
+FATAL [main] Mediator - Listen port (PORT) is already used, another instance of Mediator might 
+be running!
 \end{verbatim}
 \textbf{Popis a~rie¹enie:}
-V~tomto prípade modul, ktorý pou¾íva protokol ACP na priame sprístupnenie nameraných dát, neèakane preru¹il spojenie. JXColl sa automaticky zotaví
-a~bude naïalej èaka» pripojenie cez protokol ACP.\\
+Port, na ktorom Mediator prijima pakety je obsadeny inym programom, alebo inym Mediatorom. Treba skontrolovat
+beziace procesy a ked sa jedna o inu instanciu Mediatora, tak je treba zastavit. V opacnom pripade je 
+potrebne nastavit iny \emph{listenPort}.\\
+
 
 \noindent \textbf{Chyba:}
 \begin{verbatim}
-ERROR [UDP Processor] DBExport  - Check if is DB connected failed:
-java.lang.NullPointerException
+ERROR [] AIntermediateProcess - Datatype (DATATYPE) unsupported!
+ERROR [] - Error while encoding dataRecord. Some of the data fields can not be encoded.
+
+ERROR [] AIntermediateProcess  - The boolean dataType should be only true(1) or false(0), but
+is: (VALUE)
+ERROR [] - Error while encoding dataRecord. Some of the data fields can not be encoded.
+
+ERROR [] AIntermediateProcess  - Cannot encode type (DATATYPE): value is out of bounds  (VALUE)
+ERROR [] - Error while encoding dataRecord. Some of the data fields can not be encoded.
+
+...
 \end{verbatim}
 \textbf{Popis a~rie¹enie:}
-Poèas spracovania údajov sa do¹lo k~preru¹ení spojenia s~databázou. Treba sa uisti», èi chyba nenastala v~spojení.\\
+Nastala chyba pri kodovani. V pripade prvej chyby je chyba bud v subore ipfixFields.xml, alebo boli
+od exportera prijate zle data. V pripade ostatnych chyb boli na export poslane zle hodnoty, su mimo
+povoleny rozsah.\\
+
 
 \noindent \textbf{Chyba:}
 \begin{verbatim}
-ERROR [Net Parser] RecordDispatcher  - Element with ID: 74 is not supported, 
-	skipped! Update XML file!
+ERROR [] AIntermediateProcess - Error in getInstance: Could not instantiate object for class 
+(CLASS): (MESSAGE)
+
+ERROR [] AIntermediateProcess - Error in getInstance: Could not register singleton (CLASS).
+
+ERROR [] AIntermediateProcess - SecurityException occured: (MESSAGE)
 \end{verbatim}
 \textbf{Popis a~rie¹enie:}
-Poèas spracovania údajov sa narazilo na nepodporovaný informaèný element. JXColl tento element preskoèí.
-Treba aktualizova» XML súbor ipfixFields.xml o~informácie o~tomto elemente, prípadne doimplementova» jeho podporu v~JXColl.\\
+Specificke chyby, ktore boli vyvolane pri pokuse o ziskanie jedinecnej instancii sprostredkovateµského
+procesu. Chyby maju individualne riesenie.\\
 
-\newpage
-\noindent \textbf{Chyba:}
-\begin{verbatim}
-ERROR [UDP Processor] RecordDispatcher  - i.e. 'icmpTypeCodeIPv6' (unsigned16) - 
-	received data has wrong datatype! (10 bytes)
-ERROR [UDP Processor] RecordDispatcher  - Skipping this element DB exportation!
-
-\end{verbatim}
-\textbf{Popis a~rie¹enie:}
-Poèas spracovania údajov sa narazilo na informaèný element, ktorého veµkos» nekore¹ponduje s~oèakávaným dátovým typom podµa XML súboru. 
-JXColl tento element preskoèí. Nápravu je nutné vykona» pravdepodobne na strane exportéra.\\
 
 \noindent \textbf{Chyba:}
 \begin{verbatim}
-ERROR [UDP Processor] RecordDispatcher  - "i.e. 'subTemplateMultiList' - 
-	Cannot decode datatype: subTemplateMultiList
-ERROR [UDP Processor] RecordDispatcher  - Skipping this element DB exportation!
+ERROR [] AIntermediateProcess - Element with ID: (IEID, ENTERPRISE) is not supported, 
+skipped! Update XML file!
 
+ERROR [] AIntermediateProcess - i.e. (IENAME) (DATATYPE) - received data has wrong datatype! 
+(SIZE) bytes
+ERROR [] AIntermediateProcess - Skipping this element decoding!
+
+ERROR [] AIntermediateProcess - i.e. (IENAME) Cannot decode datatype: (DATATYPE)
+ERROR [] AIntermediateProcess - Skipping this element decoding!
 \end{verbatim}
 \textbf{Popis a~rie¹enie:}
-Poèas spracovania údajov sa narazilo na informaèný element, ktorého dátový typ JXColl nevie dekódova». 
-JXColl tento element preskoèí. Nápravu je nutné vykona» na strane JXColl.
+Nastala chyba pri dekodovani. Vsetky chyby naznacuju, ze je chyba bud v neaktualnom subore 
+ipfixFields.xml, alebo boli od exportera prijate zle data.\\
+
+\clearpage
+\noindent \textbf{Chyba:}
+\begin{verbatim}
+ERROR [] AIntermediateProcess - Error while encoding dataRecord. Template defines more fields than 
+number of data values present.
+ERROR [ExampleProcess] ExampleProcess - No dataRecords in Flow Record -> not dispatching.
+
+ERROR [] AIntermediateProcess - Error while encoding dataRecord. Some of the data fields can not 
+be encoded.
+ERROR [ExampleProcess] ExampleProcess - No dataRecords in Flow Record -> not dispatching.
+\end{verbatim}
+\textbf{Popis a~rie¹enie:}
+Prijaty zaznam o tokoch, ktory ma byt posunuty dispecerovi zaznamov (\verb|FlowRecordDispatcher|) 
+neobsahuje zaiden datovy zaznam. Nema vyznam ho dalej distribuovat a preto je zahodeny. Pricinou je bud 
+to, ze na zakodovanie datoveho zaznamu bolo poslanych menej hodnot ako predpisuje sablona, alebo
+nastala specificka chyba pri kodovani.\
+
 
 \noindent \textbf{Chyba:}
 \begin{verbatim}
-ERROR [TCP Processor] IpfixParser  - Field data is longer than remaining bytes in Data Set!
-ERROR [TCP Processor] IpfixParser  - Corrupted data detected! Shutting down TCP connection to IP:port
+ERROR [UDP Server] UDPServer - Interrupted via InterruptedIOException
 
-ERROR [TCP Processor] IpfixParser  - Template Set is not long enough to hold all field specifiers!
-ERROR [TCP Processor] IpfixParser  - Corrupted data detected! Shutting down TCP connection to IP:port
-
-ERROR [TCP Processor] IpfixParser  - Options Template has field count set to 0!
-ERROR [TCP Processor] IpfixParser  - Corrupted data detected! Shutting down TCP connection to IP:port
-
-ERROR [TCP Processor] IpfixParser  - Message length (20) is not as stated in header (630)!
-ERROR [TCP Processor] IpfixParser  - Corrupted data detected! Shutting down TCP connection to IP:port
-
-ERROR [TCP Processor] IpfixParser  - Set states that it is longer than remaining data part is!!
-ERROR [TCP Processor] IpfixParser  - Corrupted data detected! Shutting down TCP connection to IP:port
-
+ERROR [UDP Server] UDPServer - Interrupted while putting data into PacketCache!
 \end{verbatim}
 \textbf{Popis a~rie¹enie:}
-Poèas príjmu údajov cez protokol TCP boli prijaté chybné dáta, spojenie sa uzatvára a vlákno konèí. Chyba bola spôsobená na strane exportéra
-poslaním po¹kodených dát. Tieto chybové správy platia a majú rovnaký význam aj pre protokol SCTP. Chyba bola spôsobená exportérom.
+Doslo k preruseniu UDP Servera. Chyba ma individualne riesenie.\\
 
 \noindent \textbf{Chyba:}
 \begin{verbatim}
-ERROR [TCP Processor] IpfixParser  - Attempt to withdraw Template #267, OD:0, 
-	which does not exist in cache!
-ERROR [TCP Processor] IpfixParser  - Shutting down TCP connection to IP:port
-
+ERROR [UDP Exporter] UDPExporter - Error while creating socket: (MESSAGE)
 \end{verbatim}
 \textbf{Popis a~rie¹enie:}
-Poèas príjmu údajov cez protokol TCP bola prijatá správa Template Withdrawal Message, ktorá ru¹í u¾ predtým zru¹enú alebo neexistujúcu ¹abl\'onu.
-Správa sa zahodí, spojenie sa násilne uzavrie (RST) a vlákno konèí. Rovnaký význam platí aj pre protokol SCTP. Chyba bola spôsobená exportérom.
+Nastale chyba pri vytvarani UDP socketu. Chyba ma individualne riesenie.\\
+
 
 \noindent \textbf{Chyba:}
 \begin{verbatim}
-ERROR [TCP Processor] IpfixParser  - Template #267 is already in cache!
-ERROR [TCP Processor] IpfixParser  - Shutting down TCP connection to IP:port
+ERROR [UDP Exporter] UDPExporter - (MESSAGE) --> INTERRUPTING UDPEXPORTER
 
 \end{verbatim}
 \textbf{Popis a~rie¹enie:}
-Ide o~pokus o~pridanie ¹abl\'ony do cache, ktorá tam u¾ existuje.
-Správa sa zahodí, spojenie sa násilne uzavrie (RST) a vlákno konèí. Rovnaký význam platí aj pre protokol SCTP.
-Chyba bola spôsobená exportérom.
+Doslo k preruseniu UDP Exportera. Chyba ma individualne riesenie.\\
 
 
-\noindent \textbf{Chybové hlásenia súvisiace s~Java Virtual Machine (JVM)}\\
+
+
+\noindent \textbf{Ostatne chybove hlasenia}\\
 \noindent Program je interpretovaný v~Java Virtual Machine.
 Chyby, ktoré mô¾u nasta» a~nie sú o¹etrené vlastnými chybovými hláseniami programu sú
 chyby, ktoré boli nepredvídané a~sú µahko rozoznateµné tým, ¾e nie sú formátované v~¹týle
@@ -517,6 +584,8 @@ mo¾né opravi» len v~zdrojovom kóde, teda sa berie ako programátorská chyba.\\
 \noindent V~súèasnosti neboli v~JXColl nájdené vá¾ne chyby.
 
 
+
+
 \newpage
 \section{Pr\'iklad pou\v{z}itia}
 
@@ -527,7 +596,6 @@ Analyzujúca aplikácia je primárne zastúpená BMAnalyzer-om, a~v~princípe mô¾e to 
 ktorý doká¾e spracováva» údaje získané buï prostredníctvom protokolu ACP, alebo z~databázy.
 Po úprave vkladacieho SQL re»azca v~zdrojovom kóde je mo¾né JXColl prispôsobi»  aj k~schéme inej databázy.
 
-\clearpage
 \addcontentsline{toc}{section}{\numberline{}Zoznam pou¾itej literatúry}
 \begin{thebibliography}{999}
 
@@ -535,20 +603,15 @@ Po úprave vkladacieho SQL re»azca v~zdrojovom kóde je mo¾né JXColl prispôsobi»  
 SADASIVAN, G. et al.: \emph{Architecture for IP Flow Information Export} 
 RFC 5470. 2009
 
+\harvarditem{Vere¹èák}{2012}{jxcoll_sp}
+VERE©ÈÁK, T.: Optimalizácia zhroma¾ïovacieho procesu nástroja BasicMeter, 2012,
+Diplomová práca, Príloha A, Systémová príruèka JXColl v3.9, KPI FEI TU, Ko¹ice
 
+\harvarditem{Pekár}{2009}{ado_bc}
+PEKÁR, A.: Meranie prevádzkových parametrov siete v~reálnom èase, 2009,
+Bakalárska práca, KPI FEI TU, Ko¹ice
 
-% [1]  Ko¹èo, M.: Opis sie»ových protokolov prostredníctvom jazyka XML, 2005,
-% Diplomová práca, KPI FEI TU, Ko¹ice
-% 
-% [2]  Ka¹èák, M.: Príspevok k~problematike aplikaèného vyu¾itia meraní prevádzkových parametrov poèítaèových sietí, 2007,
-% Diplomová práca, KPI FEI TU, Ko¹ice
-% 
-% [3]  Pekár, A.: Meranie prevádzkových parametrov siete v~reálnom èase, 2009,
-% Bakalárska práca, KPI FEI TU, Ko¹ice
-% 
-% [3]  Vere¹èák, T.: Zhroma¾ïovací proces nástroja BasicMeter, 2010,
-% Bakalárska práca, KPI FEI TU, Ko¹ice
-% 
-% [4]  Pekár, A.: Optimalizácia zhroma¾ïovacieho procesu nástroja BasicMeter, 2011,
-% Diplomová práca, KPI FEI TU, Ko¹ice
+\harvarditem{Pekár}{2011}{ado_dp}
+PEKÁR, A.: Optimalizácia zhroma¾ïovacieho procesu nástroja BasicMeter, 2011,
+Diplomová práca, KPI FEI TU, Ko¹ice
 \end{thebibliography}
