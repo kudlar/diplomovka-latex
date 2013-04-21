@@ -67,16 +67,18 @@ exportér - kolektor architektúry. Uveïme aspoò niektoré:
 
 \subsection{Analýza aplikaèného rámca pre IPFIX Mediátor} 
 
-Analýze aplikaèného rámca pre sprostredkovanie správ v IPFIX sa venuje RFC 6183 \citep{rfc6183}. 
-Na Obrázku \ref{o:mediation_reference_model} je zobrazený referenèný model sprostredkovania správ v IPFIX 
-ako roz¹írenie referenèného modelu IPFIX, popísaného v \emph{Architecture for IP Flow Information Export} 
-\citep{rfc5470}. Táto schéma zobrazuje mo¾né scenáre, ktoré mô¾u existova» v meracej architektúre.
-
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=0.9\textwidth]{mediation_reference_model}
 \caption{Referenèný model sprostredkovania správ v IPFIX}\label{o:mediation_reference_model}
 \end{figure}
+
+Analýze aplikaèného rámca pre sprostredkovanie správ v IPFIX sa venuje RFC 6183 \citep{rfc6183}. 
+Na Obrázku \ref{o:mediation_reference_model} je zobrazený referenèný model sprostredkovania správ v IPFIX 
+ako roz¹írenie referenèného modelu IPFIX, popísaného v \emph{Architecture for IP Flow Information Export} 
+\citep{rfc5470}. Táto schéma zobrazuje mo¾né scenáre, ktoré mô¾u existova» v meracej architektúre.
+
+
 
 Funkèné komponenty v rámci ka¾dej entity sú ohranièené zátvorkami []. Mediátor mô¾e prijíma» 
 záznamy o toku od iných mediátorov a exportérov a prúd záznamov z iných zdrojov.
@@ -1199,14 +1201,16 @@ V~súèasnosti nie sú známe ¾iadne vá¾ne chyby.
 
 \newpage
 \section{Zhodnotenie rie¹enia}
-Hlavným cieµom práce bolo zvý¹i» interoperabilitu s~inými IPFIX rie¹eniami pomocou zvý¹enia konformity so ¹tandardom IPFIX. 
-V~práci boli vyrie¹ené problémy, ktoré doteraz znemo¾òovali dekódovanie viacerých záznamov sade, informaèncých elementov s~variabilnou då¾kou, informaèných elementov s~redukovaným kódovaním alebo niektorých predtým neimplementovaných dátových typov. 
+%Hlavným cieµom práce bolo zvý¹i» interoperabilitu s~inými IPFIX rie¹eniami pomocou zvý¹enia konformity so ¹tandardom IPFIX. 
+%V~práci boli vyrie¹ené problémy, ktoré doteraz znemo¾òovali dekódovanie viacerých záznamov sade, informaèncých elementov s~variabilnou då¾kou, informaèných elementov s~redukovaným kódovaním alebo niektorých predtým neimplementovaných dátových typov. 
+%
+%Súèas»ou práce bolo roz¹írenie podpory prenosu údajov o~tokoch prostredníctvom transportných protokolov TCP a SCTP, èo zvy¹uje mo¾nosti
+%nasadenia nástroja BasicMeter aj v~podmienkach s~vy¹¹ou náchylnos»ou na pre»a¾enie v~sietí. 
+%
+%Mo¾nosti budúceho vývoja zhroma¾ïovacieho procesu nástroja BasicMeter predstavuje implementácia podpory pre dátové typy umo¾òujúce
+%prenos ¹truktúrovaných dát a podpora pre zabezpeèené pripojenia od exportérov.
+%
 
-Súèas»ou práce bolo roz¹írenie podpory prenosu údajov o~tokoch prostredníctvom transportných protokolov TCP a SCTP, èo zvy¹uje mo¾nosti
-nasadenia nástroja BasicMeter aj v~podmienkach s~vy¹¹ou náchylnos»ou na pre»a¾enie v~sietí. 
-
-Mo¾nosti budúceho vývoja zhroma¾ïovacieho procesu nástroja BasicMeter predstavuje implementácia podpory pre dátové typy umo¾òujúce
-prenos ¹truktúrovaných dát a podpora pre zabezpeèené pripojenia od exportérov.
 
 \clearpage
 \addcontentsline{toc}{section}{\numberline{}Zoznam pou¾itej literatúry}

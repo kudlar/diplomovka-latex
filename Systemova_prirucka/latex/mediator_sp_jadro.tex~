@@ -67,16 +67,18 @@ exportér - kolektor architektúry. Uveïme aspoò niektoré:
 
 \subsection{Analýza aplikaèného rámca pre IPFIX Mediátor} 
 
-Analýze aplikaèného rámca pre sprostredkovanie správ v IPFIX sa venuje RFC 6183 \citep{rfc6183}. 
-Na Obrázku \ref{o:mediation_reference_model} je zobrazený referenèný model sprostredkovania správ v IPFIX 
-ako roz¹írenie referenèného modelu IPFIX, popísaného v \emph{Architecture for IP Flow Information Export} 
-\citep{rfc5470}. Táto schéma zobrazuje mo¾né scenáre, ktoré mô¾u existova» v meracej architektúre.
-
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=0.9\textwidth]{mediation_reference_model}
 \caption{Referenèný model sprostredkovania správ v IPFIX}\label{o:mediation_reference_model}
 \end{figure}
+
+Analýze aplikaèného rámca pre sprostredkovanie správ v IPFIX sa venuje RFC 6183 \citep{rfc6183}. 
+Na Obrázku \ref{o:mediation_reference_model} je zobrazený referenèný model sprostredkovania správ v IPFIX 
+ako roz¹írenie referenèného modelu IPFIX, popísaného v \emph{Architecture for IP Flow Information Export} 
+\citep{rfc5470}. Táto schéma zobrazuje mo¾né scenáre, ktoré mô¾u existova» v meracej architektúre.
+
+
 
 Funkèné komponenty v rámci ka¾dej entity sú ohranièené zátvorkami []. Mediátor mô¾e prijíma» 
 záznamy o toku od iných mediátorov a exportérov a prúd záznamov z iných zdrojov.
@@ -1181,7 +1183,7 @@ Tento skript vykonáva nasledovné:
 \item archivuje vytvorený DEB balíèek do archívu debian.tar.gz
 \end{enumerate}
 
-Pred spustením skriptu je nutné skompilova» Mediator pomocou Netbeans IDE tlaèidlom \textit{Clean and Build}. 
+Pred spustením skriptu je nutné skompilova» Mediátor pomocou Netbeans IDE tlaèidlom \textit{Clean and Build}. 
 Prípadné zmeny control alebo changelog súboru, manuálových stránok je nutné vykona» ruène. 
 Manuálové stránky je vhodné upravi» pomocou programu \textit{GmanEdit} . Po spustení skriptu sa vytvorí 
 DEB balíèek s~názvom \texttt{debian.deb}. Ten je vhodné premenova» podµa aktuálnej verzie. 

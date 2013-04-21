@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  20 APR 2013 16:49
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  21 APR 2013 15:15
 entering extended mode
  %&-line parsing enabled.
 **mediator_sp.tex
@@ -694,180 +694,180 @@ File: il2lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
  (./mediator_sp_jadro.tex [6
 
 ] [7]
-<figures/mediation_reference_model.pdf, id=262, 458.71375pt x 428.60126pt>
+<figures/mediation_reference_model.pdf, id=259, 458.71375pt x 428.60126pt>
 File: figures/mediation_reference_model.pdf Graphic file (type pdf)
 
-<use figures/mediation_reference_model.pdf>
-<figures/mediator_component_model.pdf, id=264, 474.77374pt x 366.36874pt>
+<use figures/mediation_reference_model.pdf> [8 <./figures/mediation_reference_m
+odel.pdf>]
+<figures/mediator_component_model.pdf, id=272, 474.77374pt x 366.36874pt>
 File: figures/mediator_component_model.pdf Graphic file (type pdf)
 
-<use figures/mediator_component_model.pdf> [8] [9 <./figures/mediation_referenc
-e_model.pdf>] [10 <./figures/mediator_component_model.pdf>]
-LaTeX Font Info:    Try loading font information for IL2+lmtt on input line 116
+<use figures/mediator_component_model.pdf> [9 <./figures/mediator_component_mod
+el.pdf>] [10]
+LaTeX Font Info:    Try loading font information for IL2+lmtt on input line 118
 .
-
-(/usr/share/texmf/tex/latex/lm/il2lmtt.fd
+ (/usr/share/texmf/tex/latex/lm/il2lmtt.fd
 File: il2lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) [11
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 187--188
+Underfull \hbox (badness 10000) in paragraph at lines 189--190
 
  []
 
 [12
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 192--193
+Underfull \hbox (badness 10000) in paragraph at lines 194--195
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 197--198
+Underfull \hbox (badness 10000) in paragraph at lines 199--200
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 202--203
+Underfull \hbox (badness 10000) in paragraph at lines 204--205
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 222--226
+Underfull \hbox (badness 10000) in paragraph at lines 224--228
 
  []
 
 [13]
-Overfull \hbox (7.22208pt too wide) in paragraph at lines 228--229
+Overfull \hbox (7.22208pt too wide) in paragraph at lines 230--231
 []\IL2/lmr/m/it/12 public synch-ro-ni-zed void \IL2/lmr/bx/it/12 dis-patchF-lo-
 wRe-cord\IL2/lmr/m/it/12 (IPFIXFlowRecord flo-wRe-cord, String
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 230--239
+Underfull \hbox (badness 10000) in paragraph at lines 232--241
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 242--247
+Underfull \hbox (badness 10000) in paragraph at lines 244--249
 
  []
 
 [14]
-Underfull \hbox (badness 10000) in paragraph at lines 267--269
+Underfull \hbox (badness 10000) in paragraph at lines 269--271
 
  []
 
 [15]
-Underfull \hbox (badness 10000) in paragraph at lines 310--313
+Underfull \hbox (badness 10000) in paragraph at lines 312--315
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 317--318
+Underfull \hbox (badness 10000) in paragraph at lines 319--320
 
  []
 
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 322--325
+Underfull \hbox (badness 10000) in paragraph at lines 324--327
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 343--348
+Underfull \hbox (badness 10000) in paragraph at lines 345--350
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 352--357
+Underfull \hbox (badness 10000) in paragraph at lines 354--359
 
  []
 
 [17
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 361--366
+Underfull \hbox (badness 10000) in paragraph at lines 363--368
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 370--375
+Underfull \hbox (badness 10000) in paragraph at lines 372--377
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 379--384
+Underfull \hbox (badness 10000) in paragraph at lines 381--386
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 388--393
+Underfull \hbox (badness 10000) in paragraph at lines 390--395
 
  []
 
 [18]
-Underfull \hbox (badness 10000) in paragraph at lines 423--435
+Underfull \hbox (badness 10000) in paragraph at lines 425--437
 
  []
 
 [19]
-Underfull \hbox (badness 10000) in paragraph at lines 440--450
+Underfull \hbox (badness 10000) in paragraph at lines 442--452
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 455--464
+Underfull \hbox (badness 10000) in paragraph at lines 457--466
 
  []
 
 [20]
-Underfull \hbox (badness 10000) in paragraph at lines 470--479
+Underfull \hbox (badness 10000) in paragraph at lines 472--481
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 485--495
+Underfull \hbox (badness 10000) in paragraph at lines 487--497
 
  []
 
 [21]
-Underfull \hbox (badness 10000) in paragraph at lines 501--506
+Underfull \hbox (badness 10000) in paragraph at lines 503--508
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 511--514
+Underfull \hbox (badness 10000) in paragraph at lines 513--516
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 519--522
+Underfull \hbox (badness 10000) in paragraph at lines 521--524
 
  []
 
 [22]
-Underfull \hbox (badness 10000) in paragraph at lines 527--542
+Underfull \hbox (badness 10000) in paragraph at lines 529--544
 
  []
 
 [23]
-Overfull \hbox (0.10513pt too wide) in paragraph at lines 568--574
+Overfull \hbox (0.10513pt too wide) in paragraph at lines 570--576
 \IL2/lmr/m/it/12 IPFIXMessage.IPFIXMessageHeader \IL2/lmr/m/n/12 mes-sa-ge-He-a
 -der - hla-vi-èka IP-FIX správy, ktorá
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 578--579
+Underfull \hbox (badness 10000) in paragraph at lines 580--581
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 588--590
+Underfull \hbox (badness 10000) in paragraph at lines 590--592
 
  []
 
 [24]
-Overfull \hbox (22.37305pt too wide) in paragraph at lines 623--625
+Overfull \hbox (22.37305pt too wide) in paragraph at lines 625--627
 \IL2/lmr/m/n/12 Diagram tried ro-z-hra-nia pre spro-stred-ko-va-te-µské pro-ces
 y, vrá-tane triedy []\IL2/lmtt/m/n/12 ExampleProcess
  []
@@ -876,69 +876,69 @@ y, vrá-tane triedy []\IL2/lmtt/m/n/12 ExampleProcess
 File: figures/intermediate_class.png Graphic file (type png)
 
 <use figures/intermediate_class.png>
-Underfull \hbox (badness 10000) in paragraph at lines 635--639
+Underfull \hbox (badness 10000) in paragraph at lines 637--641
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 635--639
+Underfull \hbox (badness 10000) in paragraph at lines 637--641
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 635--639
+Underfull \hbox (badness 10000) in paragraph at lines 637--641
 
  []
 
 [25
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 652--654
+Underfull \hbox (badness 10000) in paragraph at lines 654--656
 
  []
 
 [26 <./figures/intermediate_class.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 656--657
+Underfull \hbox (badness 10000) in paragraph at lines 658--659
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 682--693
+Underfull \hbox (badness 10000) in paragraph at lines 684--695
 
  []
 
 [27]
-Underfull \hbox (badness 10000) in paragraph at lines 699--707
+Underfull \hbox (badness 10000) in paragraph at lines 701--709
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 712--721
+Underfull \hbox (badness 10000) in paragraph at lines 714--723
 
  []
 
 [28]
-Underfull \hbox (badness 10000) in paragraph at lines 743--744
+Underfull \hbox (badness 10000) in paragraph at lines 745--746
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 748--756
+Underfull \hbox (badness 10000) in paragraph at lines 750--758
 
  []
 
 [29]
-Underfull \hbox (badness 10000) in paragraph at lines 770--773
+Underfull \hbox (badness 10000) in paragraph at lines 772--775
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 778--783
+Underfull \hbox (badness 10000) in paragraph at lines 780--785
 
  []
 
 [30]
-Underfull \hbox (badness 10000) in paragraph at lines 787--793
+Underfull \hbox (badness 10000) in paragraph at lines 789--795
 
  []
 
@@ -954,84 +954,84 @@ File: figures/collecting2_class.png Graphic file (type png)
 File: figures/exporting_class.png Graphic file (type png)
 
 <use figures/exporting_class.png> [34 <./figures/exporting_class.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 889--894
+Underfull \hbox (badness 10000) in paragraph at lines 891--896
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 899--905
+Underfull \hbox (badness 10000) in paragraph at lines 901--907
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 917--920
+Underfull \hbox (badness 10000) in paragraph at lines 919--922
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 917--920
+Underfull \hbox (badness 10000) in paragraph at lines 919--922
 
  []
 
 [35]
-Underfull \hbox (badness 10000) in paragraph at lines 926--928
+Underfull \hbox (badness 10000) in paragraph at lines 928--930
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 933--939
+Underfull \hbox (badness 10000) in paragraph at lines 935--941
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 944--950
+Underfull \hbox (badness 10000) in paragraph at lines 946--952
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 955--960
+Underfull \hbox (badness 10000) in paragraph at lines 957--962
 
  []
 
 [36]
-Underfull \hbox (badness 10000) in paragraph at lines 965--970
+Underfull \hbox (badness 10000) in paragraph at lines 967--972
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 975--980
+Underfull \hbox (badness 10000) in paragraph at lines 977--982
 
  []
 
 
-Overfull \hbox (3.40434pt too wide) in paragraph at lines 982--983
+Overfull \hbox (3.40434pt too wide) in paragraph at lines 984--985
 []\IL2/lmr/m/it/12 private byte[] \IL2/lmr/bx/it/12 en-co-de-Da-ta-Set\IL2/lmr/
 m/it/12 (ByteArrayOutputStream da-ta-Re-cordsS-tream, int tem-
  []
 
 [37]
-Underfull \hbox (badness 10000) in paragraph at lines 995--1001
+Underfull \hbox (badness 10000) in paragraph at lines 997--1003
 
  []
 
 
-Overfull \hbox (8.09111pt too wide) in paragraph at lines 1003--1004
+Overfull \hbox (8.09111pt too wide) in paragraph at lines 1005--1006
 []\IL2/lmr/m/it/12 private short \IL2/lmr/bx/it/12 get-Mes-sa-ge-Length\IL2/lmr
 /m/it/12 (byte[] tem-pla-te-Set-By-tes, byte[] da-ta-Set-By-tes, byte[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1018--1021
+Underfull \hbox (badness 10000) in paragraph at lines 1020--1023
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1026--1028
+Underfull \hbox (badness 10000) in paragraph at lines 1028--1030
 
  []
 
 [38]
-Underfull \hbox (badness 10000) in paragraph at lines 1033--1035
+Underfull \hbox (badness 10000) in paragraph at lines 1035--1037
 
  []
 
@@ -1043,7 +1043,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1033--1035
 Here is how much of TeX's memory you used:
  9780 strings out of 495027
  134243 string characters out of 1181419
- 203556 words of memory out of 3000000
+ 203555 words of memory out of 3000000
  12600 multiletter control sequences out of 15000+50000
  62735 words of font info for 74 fonts, out of 3000000 for 9000
  38 hyphenation exceptions out of 8191
@@ -1059,7 +1059,7 @@ r/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/pub
 lic/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/shar
 e/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/l
 m/lmtt8.pfb>
-Output written on mediator_sp.pdf (45 pages, 817969 bytes).
+Output written on mediator_sp.pdf (45 pages, 817245 bytes).
 PDF statistics:
  536 PDF objects out of 1000 (max. 8388607)
  114 named destinations out of 1000 (max. 500000)
