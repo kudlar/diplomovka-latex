@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  19 APR 2013 02:37
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  21 APR 2013 15:33
 entering extended mode
  %&-line parsing enabled.
 **tukedip.tex
@@ -1088,48 +1088,92 @@ e 36.
 \openout2 = `prirucka.aux'.
 
  (./prirucka.tex
-<figures/collecting1_class.png, id=1143, 516.42938pt x 200.24812pt>
-File: figures/collecting1_class.png Graphic file (type png)
 
-<use figures/collecting1_class.png>
-<figures/collecting2_class.png, id=1145, 467.49657pt x 388.45125pt>
-File: figures/collecting2_class.png Graphic file (type png)
+! LaTeX Error: File `collecting1_class' not found.
 
-<use figures/collecting2_class.png>
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.5 ...ics[width=1.0\textwidth]{collecting1_class}
+                                                  
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: File `collecting2_class' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.15 ...cs[width=1.0\textwidth]{collecting2_class}
+                                                  
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
 Overfull \hbox (22.37305pt too wide) in paragraph at lines 21--23
 []\IL2/lmr/m/n/12 Diagram tried ro-z-hra-nia pre spro-stred-ko-va-te-µské pro-c
 esy, vrá-tane triedy []\IL2/lmtt/m/n/12 ExampleProcess
  []
 
-<figures/intermediate_class.png, id=1147, 459.96844pt x 373.395pt>
-File: figures/intermediate_class.png Graphic file (type png)
 
-<use figures/intermediate_class.png>
-<figures/exporting_class.png, id=1148, 403.5075pt x 285.31593pt>
-File: figures/exporting_class.png Graphic file (type png)
+! LaTeX Error: File `intermediate_class' not found.
 
-<use figures/exporting_class.png>) [71
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.26 ...s[width=1.0\textwidth]{intermediate_class}
+                                                  
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
 
- <./figures/collecting1_class.png>]
-[72 <./figures/collecting2_class.png>] [73 <./figures/intermediate_class.png>]
-[74 <./figures/exporting_class.png>]
+! LaTeX Error: File `exporting_class' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.37 ...hics[width=1.0\textwidth]{exporting_class}
+                                                  
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+) [71
+
+
+]
 
 Package natbib Warning: There were undefined citations.
 
 (./tukedip.aux (./uvod.aux) (./formulacia.aux) (./analyza.aux) (./mediator.aux)
 (./analyza_framework.aux) (./basic_sla_meter.aux) (./navrh.aux)
 (./experimenty.aux) (./zaver.aux) (./literatura.aux) (./prilohy.aux)
-(./prilohaa.aux) (./prilohab.aux) (./prilohac.aux) (./prirucka.aux)) )
+(./prilohaa.aux) (./prilohab.aux) (./prilohac.aux) (./prirucka.aux))
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 161 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 8170 strings out of 495027
- 110715 string characters out of 1181419
+ 8153 strings out of 495027
+ 110150 string characters out of 1181419
  188963 words of memory out of 3000000
- 10789 multiletter control sequences out of 15000+50000
+ 10773 multiletter control sequences out of 15000+50000
  68720 words of font info for 64 fonts, out of 3000000 for 9000
  38 hyphenation exceptions out of 8191
  38i,8n,41p,473b,567s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1144,9 +1188,9 @@ e/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm
 nts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.p
 fb></usr/share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf/fonts/t
 ype1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb>
-Output written on tukedip.pdf (92 pages, 1714991 bytes).
+Output written on tukedip.pdf (89 pages, 1487897 bytes).
 PDF statistics:
- 1271 PDF objects out of 1440 (max. 8388607)
- 244 named destinations out of 1000 (max. 500000)
- 706 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1250 PDF objects out of 1440 (max. 8388607)
+ 241 named destinations out of 1000 (max. 500000)
+ 686 words of extra memory for PDF output out of 10000 (max. 10000000)
 
