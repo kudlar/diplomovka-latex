@@ -15,7 +15,7 @@ tieto exportér-kolektor systémy mô¾u vies» k problémom ¹kálovateµnosti. Naviac,
 neposkytujú flexibilitu potrebnú pre ¹iroký rad meracích aplikácii.
 
 Sprostredkovateµské moduly Mediátora mô¾u z pohµadu manipulácie s dátami poskytova» agregáciu, koreláciu,
-filtrovanie, anonymizáciu 
+filtrovanie, selekciu, anonymizáciu 
 a iné úpravy záznamov o tokoch za úèelom ¹etrenia výpoètových zdrojov meracieho systému a vykonávania 
 predspracovania úloh pre kolektor. Z hµadiska interoperability nástrojov rôznych vývojárov, mô¾u 
 poskytova» konverziu z iných protokolov na IPFIX, respektíve zvy¹ova» spoµahlivos» exportov
@@ -58,8 +58,8 @@ Spoµahlivý beh samotného programu si vy¾aduje nasledovnú hardvérovú konfiguráciu
   \item sie»ová karta 100Mbit/s 
 \end{itemize}
 Program pre spoµahlivý beh vy¾aduje minimálne 32MB voµnej pamäte RAM. Nain¹talovaný program zaberá 
-pribli¾ne 3.9MB na pevnom disku. Uvedené voµné miesto na pevnom disku je potrebné, kvoli logovacim vystupom.
-Je potrebné si uvedomi», ¾e pri prepinaci \verb|--logtofile| program loguje do /var/log/mediator/ a pri 
+pribli¾ne 3.9MB na pevnom disku. Uvedené voµné miesto na pevnom disku je potrebné, kvôli logovacím výstupom.
+Je potrebné si uvedomi», ¾e pri prepínaèi \verb|--logtofile| program leguje do \verb|/var/log/mediator/| a pri 
 nastavenej úrovni logovania DEBUG, mô¾u logovacie súbory ma» znaènú veµkos». Pri dosiahnutí veµkosti 100MB 
 sa obsah log súboru zálohuje a skomprimuje. Archivuje sa posledných 10 rotácií (1GB log výstupu).
 Monitorovanie rozsiahlej¹ej siete (napr. sie» poskytovateµa komunikaèných slu¾ieb) si vy¾aduje podstatne 
@@ -399,9 +399,9 @@ Treba zvysit kapacitu prislusnej pamate.\\
 
 \noindent \textbf{Chyba:} 
 \begin{verbatim}
-ERROR [main] IPLoader - SecurityException occured: ...
+ERROR [main] IPLoader - SecurityException occured: (MESSAGE)
 
-ERROR [main] IPLoader - IllegalAccessException occured: ...
+ERROR [main] IPLoader - IllegalAccessException occured: (MESSAGE)
 \end{verbatim} 
 \textbf{Popis a~rie¹enie:}
 Specificke chyby, ktore nastali pri dynamickom nacitavani sprostredkovatelskych procesov. Ich rie¹enie je 
@@ -441,14 +441,14 @@ FATAL [main] Mediator - Some of the intermediate processes could not load proper
 Chyba je vyhodena spolu s inou, vyssie spominanou chybou tykajucou sa dynamickeho nacitavania (trieda
 \verb|IPLoader|). Povodna chyba odhali pricinu a nasledne riesenie problemu.\\
 
-
+\clearpage
 \noindent \textbf{Chyba:} 
 \begin{verbatim}
 WARN [main] Mediator - Too many arguments! Logging to console and using default config file from 
 /etc/mediator
 \end{verbatim} 
 \textbf{Popis a~rie¹enie:}
-Boli zadane viac ako 2 arguemntry prikazoveho riadka.\\
+Boli zadane viac ako 2 arguemnty prikazoveho riadka.\\
 
 
 \noindent \textbf{Chyba:}
@@ -525,7 +525,7 @@ ERROR [] AIntermediateProcess - Skipping this element decoding!
 Nastala chyba pri dekodovani. Vsetky chyby naznacuju, ze je chyba bud v neaktualnom subore 
 ipfixFields.xml, alebo boli od exportera prijate zle data.\\
 
-
+\clearpage
 \noindent \textbf{Chyba:}
 \begin{verbatim}
 ERROR [] AIntermediateProcess - Error while encoding dataRecord. Template defines more fields than 
@@ -545,24 +545,31 @@ nastala specificka chyba pri kodovani.\
 
 \noindent \textbf{Chyba:}
 \begin{verbatim}
-ERROR [UDP Server] Mediator - Listen port (PORT) is already used, another instance of Mediator might 
-be running!
+ERROR [UDP Server] UDPServer - Interrupted via InterruptedIOException
+
+ERROR [UDP Server] UDPServer - Interrupted while putting data into PacketCache!
 \end{verbatim}
 \textbf{Popis a~rie¹enie:}
-Port, na ktorom Mediator prijima pakety je obsadeny inym programom, alebo inym Mediatorom. Treba skontrolovat
-beziace procesy a ked sa jedna o inu instanciu Mediatora, tak je treba zastavit. V opacnom pripade je 
-potrebne nastavit iny \emph{listenPort}.\\
+Doslo k preruseniu UDP Servera. Chyba ma individualne riesenie.\\
+
+\noindent \textbf{Chyba:}
+\begin{verbatim}
+ERROR [UDP Exporter] UDPExporter - Error while creating socket: (MESSAGE)
+\end{verbatim}
+\textbf{Popis a~rie¹enie:}
+Nastale chyba pri vytvarani UDP socketu. Chyba ma individualne riesenie.\\
 
 
-Interrupted while putting data into PacketCache!
+\noindent \textbf{Chyba:}
+\begin{verbatim}
+ERROR [UDP Exporter] UDPExporter - (MESSAGE) --> INTERRUPTING UDPEXPORTER
 
-%%%--------------------------
---------------------------
+\end{verbatim}
+\textbf{Popis a~rie¹enie:}
+Doslo k preruseniu UDP Exportera. Chyba ma individualne riesenie.\\
 
 
-
-
-\noindent \textbf{Chybové hlásenia súvisiace s~Java Virtual Machine (JVM)}\\
+\noindent \textbf{Chybove hlasenia suvisiace s~Java Virtual Machine (JVM)}}\\
 \noindent Program je interpretovaný v~Java Virtual Machine.
 Chyby, ktoré mô¾u nasta» a~nie sú o¹etrené vlastnými chybovými hláseniami programu sú
 chyby, ktoré boli nepredvídané a~sú µahko rozoznateµné tým, ¾e nie sú formátované v~¹týle
@@ -572,18 +579,24 @@ Takéto chyby znamenajú po¹kodenie funkcie programu a~je nutné ho re¹tartova». Ch
 mo¾né opravi» len v~zdrojovom kóde, teda sa berie ako programátorská chyba.\\
 
 \noindent \textbf{Opis známych chýb}\\
-\noindent V~súèasnosti neboli v~JXColl nájdené vá¾ne chyby.
+\noindent V~súèasnosti neboli v~programe Mediator 1.0 nájdené vá¾ne chyby.
+
+
 
 
 \newpage
 \section{Pr\'iklad pou\v{z}itia}
 
-Program je mo¾né primárne pou¾i» v~spojení so zariadením alebo so softvérom, ktorý je schopný
-exportova» informácie o~tokoch v~sieti vo formáte IPFIX. Takéto zariadenie mô¾e
-by» napr. Cisco router schopný exportu IPFIX dát alebo z~modulov BasicMetra napríklad BEEM.
-Analyzujúca aplikácia je primárne zastúpená BMAnalyzer-om, a~v~princípe mô¾e to by» softvér,
-ktorý doká¾e spracováva» údaje získané buï prostredníctvom protokolu ACP, alebo z~databázy.
-Po úprave vkladacieho SQL re»azca v~zdrojovom kóde je mo¾né JXColl prispôsobi»  aj k~schéme inej databázy.
+Program je mo¾né pou¾i» ako sprostredkovaciu entitu medzi dvomi nastrojmi. Prvy z nich je 
+zariadenie alebo softver, ktorý je schopný exportova» informácie o~tokoch v~sieti vo formáte IPFIX. 
+Takéto zariadenie mô¾e by» napr. Cisco router schopný exportu IPFIX dát, alebo podla IPFIX architektury 
+zariadenie s nazvom exporter - z~modulov SLAmetra ide o BEEM. Druhym nastrojom je podla IPFIX architektury
+zariadenie predstavujuce zhromazdovaci proces, teda kolektor. V pripade SLAmetra mame na mysli JXColl.
+
+Po naimplementovani vhodnuch sprostredkovatelskych modulov moze Mediator vykonavat rozne predvypoctove 
+funkcie pre kolektor. Spomenme napriklad agregáciu, koreláciu, filtrovanie, selekciu ci anonymizáciu.
+
+
 
 \addcontentsline{toc}{section}{\numberline{}Zoznam pou¾itej literatúry}
 \begin{thebibliography}{999}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  22 APR 2013 00:17
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  22 APR 2013 02:38
 entering extended mode
  %&-line parsing enabled.
 **mediator_pp.tex
@@ -679,172 +679,162 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 \tf@toc=\write7
 \openout7 = `mediator_pp.toc'.
 
- [3] (./mediator_pp.lof)
-\tf@lof=\write8
-\openout8 = `mediator_pp.lof'.
+ [3] (./mediator_pp.lot)
+\tf@lot=\write8
+\openout8 = `mediator_pp.lot'.
 
- [4] (./mediator_pp.lot)
-\tf@lot=\write9
-\openout9 = `mediator_pp.lot'.
-
-
-[5]
+ [4]
 \openout2 = `mediator_pp_jadro.aux'.
 
- (./mediator_pp_jadro.tex [6
+ (./mediator_pp_jadro.tex
+[5
 
 ]
 LaTeX Font Info:    Try loading font information for IL2+lmss on input line 46.
 
  (/usr/share/texmf/tex/latex/lm/il2lmss.fd
 File: il2lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-[7]
+) [6]
 LaTeX Font Info:    Try loading font information for IL2+lmtt on input line 62.
 
- (/usr/share/texmf/tex/latex/lm/il2lmtt.fd
+
+(/usr/share/texmf/tex/latex/lm/il2lmtt.fd
 File: il2lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [8]
-Overfull \hbox (6.47258pt too wide) in paragraph at lines 109--112
-[]\IL2/lmr/m/n/12 Nakoniec je po-trebne na-sta-ve-nie kon-fi-gu-ra-èného sú-bor
-u []\IL2/lmtt/m/n/12 /etc/mediator/config.xml\IL2/lmr/m/n/12 .
+) [7]
+Overfull \hbox (1.25368pt too wide) in paragraph at lines 109--112
+[]\IL2/lmr/m/n/12 Nakoniec je po-trebné na-sta-vi» kon-fi-gu-ra-èný sú-bor []\I
+L2/lmtt/m/n/12 /etc/mediator/config.xml\IL2/lmr/m/n/12 . Naj-
  []
 
-[9]
+[8]
 Overfull \hbox (3.58574pt too wide) in paragraph at lines 119--121
 \IL2/lmr/m/n/12 Mediator je kon-zo-lová ap-li-ká-cia. Spus-te-nie prog-ramu na 
 ope-ra-èných sys-té-moch Ubun-
  []
 
-[10] [11]
-Underfull \hbox (badness 10000) in paragraph at lines 204--208
+[9] [10]
+Underfull \hbox (badness 10000) in paragraph at lines 205--209
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 224--224
+Underfull \hbox (badness 10000) in paragraph at lines 225--225
 []|\IL2/lmr/bx/n/12 ©tandardná
  []
 
 
-Overfull \hbox (4.35555pt too wide) in paragraph at lines 232--232
+Overfull \hbox (4.35555pt too wide) in paragraph at lines 233--233
 []|\IL2/lmr/m/n/12 /etc/mediator/ 
  []
 
 
-Overfull \hbox (1.64627pt too wide) in paragraph at lines 232--232
+Overfull \hbox (1.64627pt too wide) in paragraph at lines 233--233
 \IL2/lmr/m/n/12 ipfixFields.xml| 
  []
 
 
-Underfull \hbox (badness 1178) in paragraph at lines 257--257
-[]|\IL2/lmr/m/n/12 exporter, ná-zov hlav-nej triedy sprost.
+Underfull \hbox (badness 1178) in paragraph at lines 258--258
+[]|\IL2/lmr/m/n/12 exportér, ná-zov hlav-nej triedy sprost.
  []
 
 
-Overfull \hbox (22.61902pt too wide) in paragraph at lines 221--262
+Overfull \hbox (22.61902pt too wide) in paragraph at lines 222--263
  [] 
  []
 
 
-Overfull \hbox (2.51007pt too wide) in paragraph at lines 275--275
+Overfull \hbox (2.51007pt too wide) in paragraph at lines 276--276
 []|\IL2/lmr/bx/n/12 ©tandardná
  []
 
 
-Overfull \hbox (14.08311pt too wide) in paragraph at lines 272--314
+Overfull \hbox (14.08311pt too wide) in paragraph at lines 273--315
  [] 
  []
 
-[12] [13] [14] [15
+[11] [12] [13] [14
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 382--385
+Underfull \hbox (badness 10000) in paragraph at lines 383--386
 
  []
 
 
-Overfull \hbox (2.45866pt too wide) in paragraph at lines 393--393
-[]\IL2/lmtt/m/n/8 ERROR [UDP Processor] FlowRecordDispatcher - InputBuffer proc
-esu () je plny. Zahadzujem flow records.[] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 395--398
+Underfull \hbox (badness 10000) in paragraph at lines 397--400
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 406--409
+Underfull \hbox (badness 10000) in paragraph at lines 408--411
 
  []
 
-[16]
-Underfull \hbox (badness 10000) in paragraph at lines 415--419
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 424--427
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 417--421
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 432--435
+Underfull \hbox (badness 10000) in paragraph at lines 426--429
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 440--443
+Underfull \hbox (badness 10000) in paragraph at lines 434--437
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 442--445
+
+ []
+
+[16
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 452--454
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 463--467
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 474--478
 
  []
 
 [17
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 450--452
+Underfull \hbox (badness 10000) in paragraph at lines 494--498
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 461--465
+Underfull \hbox (badness 10000) in paragraph at lines 509--512
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 472--476
+Underfull \hbox (badness 10000) in paragraph at lines 526--529
 
  []
 
-[18
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 492--496
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 507--510
+[18]
+Underfull \hbox (badness 10000) in paragraph at lines 554--556
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 524--527
-
- []
-
-[19]
-Underfull \hbox (badness 10000) in paragraph at lines 552--554
+Underfull \hbox (badness 10000) in paragraph at lines 561--563
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 559--561
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 568--570
+Underfull \hbox (badness 10000) in paragraph at lines 570--572
 
  []
 
@@ -853,12 +843,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 574--582
 
  []
 
-[20
+[19
 
-] [21]) [22] (./mediator_pp.aux (./mediator_pp_jadro.aux)) ) 
+] [20]) [21] (./mediator_pp.aux (./mediator_pp_jadro.aux)) ) 
 Here is how much of TeX's memory you used:
- 9655 strings out of 495027
- 131904 string characters out of 1181419
+ 9650 strings out of 495027
+ 131851 string characters out of 1181419
  214099 words of memory out of 3000000
  12546 multiletter control sequences out of 15000+50000
  59611 words of font info for 73 fonts, out of 3000000 for 9000
@@ -875,9 +865,9 @@ b></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/typ
 e1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/
 share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf/fonts/type1/publ
 ic/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb>
-Output written on mediator_pp.pdf (22 pages, 319348 bytes).
+Output written on mediator_pp.pdf (21 pages, 319144 bytes).
 PDF statistics:
- 261 PDF objects out of 1000 (max. 8388607)
- 49 named destinations out of 1000 (max. 500000)
+ 255 PDF objects out of 1000 (max. 8388607)
+ 47 named destinations out of 1000 (max. 500000)
  129 words of extra memory for PDF output out of 10000 (max. 10000000)
 
