@@ -45,11 +45,11 @@ Dodatočne zadefinujeme nasledujúce termíny:
 
 
 
-\subsubsection{Anal\'yza nev\'yhod architekt\'ury bez Medi\'atora}
+\subsubsection{Anal\'yza nev\'yhod meracej architekt\'ury bez Medi\'atora}
 
 
 Problematika sprostredkovania IPFIX správ je podrobne spracovaná v \citep{rfc5982}. 
-Hovori o tom, že sieťoví administrátori často celia problémom týkajúcim sa škálovateľnosti meracieho 
+Hovorí o tom, že sieťoví administrátori často čelia problémom týkajúcim sa škálovateľnosti meracieho 
 systému, flexibility monitorovania na základe tokov, alebo aj spoľahlivosti exportovania.
 Napriek tomu, že sa vyvinuli známe techniky ako \emph{vzorkovanie a filtrovanie  paketov}, \emph{zoskupovanie 
 dátových záznamov}, alebo \emph{replikácia exportu}, tieto problémy nevymizli.
@@ -113,8 +113,9 @@ heterogénnom prostredí exportovacích nástrojov.
 Na druhej strane, udržovanie presnosti dát a granularity tokov tak, aby boli splnené požiadavky 
 rôznych monitorovacích aplikácii vyžaduje škálovateľnú a flexibilnú zhromažďovaciu infraštruktúru.
 
-Toto zhrnutie implikuje, že nové sprostredkovateľské funkcie sú potrebné v typických exportér - kolektor
-infraštruktúrach. 
+Toto zhrnutie implikuje, že sprostredkovateľská entita (Mediátor), ktorá bude zabezpečovať nové funkcie 
+a výpočty pred tým, ako sa IPFIX správy dostanú ku zhromažďovaciemu procesu je potrebná v typických
+exportér - kolektor infraštruktúrach.  
 
 
 \subsubsection{Vybrané príklady použitia sprostredkovania správ} \label{sec:mediator_examples}
@@ -124,22 +125,7 @@ RFC 5982 \citep{rfc5982} uvádza viacero príkladov zaradenia IPFIX Mediátora d
 exportér - kolektor architektúry. Uveďme aspoň niektoré.
 
 
-\paragraph{Prispôsobovanie granularity tokov}
-
-Najzákladnejšia sada kľúčov toku je pätica: \emph{protokol}, \emph{zdrojová a cieľová IP adresa}, 
-\emph{číslo zdrojového a cieľového portu}. Menšie sady kľúčov, teda trojice, dvojice, alebo len jeden 
-samotný prvok (napr. \emph{maska siete}, \emph{BGP čísla autonómnych systémov}, a pod.) vytvárajú viac 
-agregované záznamy o tokoch. Toto je vhodné pri meraní na úrovni 
-jadra sieťovej domény, alebo pri manipulovaní s výkonnosťou exportérov a kolektorov.
-
-Najvhodnejšia implementácia predstavuje konfigurovateľný merací proces v exportéri. Administrátor 
-špecifikuje požadovanú sadu kľúčov toku a tým pádom exportér generuje záznamy o toku želanej zrnitosti.
-
-V opačnom prípade, kde merací proces nemá schopnosť nastavovať kľúče toku exportéra, IPFIX Mediátor 
-môže agregovať dátové záznamy na základe definovaných kľúčov vo svojej konfigurácii.
-
-
-\paragraph{Zhromažďovacia infraštruktúra}
+\paragraph{Distribuovaná zhromažďovacia infraštruktúra}
 
 Zvyšovanie počtu IPFIX exportérov, rast objemu IP dát a rôzne požiadavky na operácie vykonávané nad 
 dátovými záznamami v kolektore spôsobujú vysokú náročnosť na implementáciu všetkých meracích
@@ -148,44 +134,6 @@ aplikácii v rámci jedného kolektora.
 Za účelom navýšenia zhromažďovacej kapacity resp. objemu spracovania dátových záznamov musia byť 
 nasadené distribuované kolektory čím bližšie ku exportérom. V tomto prípade sa kolektory stanú 
 IPFIX Mediátormi, ktoré budú preposielať dátové záznamy podľa požiadaviek centralizovaným aplikáciam.
-
-
-\paragraph{Spájanie času}
-
-Spájanie resp. kompozícia času je definovaná ako agregácia za sebou idúcich dátových záznamov s rovnakými
-kľúčmi toku. Tento proces vedie k rovnakému výstupu ako nastavenie dlhšieho aktívneho timeoutu
-\emph{(active timeout)} v exportéri, no má jednu výhodu. Nové metriky ako napríklad výpočet priemerných, 
-maximálnych, alebo minimálnych hodnôt zo záznamov o tokoch v kratších časových intervaloch umožňujú 
-presnejšie výsledky a sledovanie aj menších zmien.
-
-Jedna z možných implementácii je použitie sprostredkovateľského procesu umiestneného medzi 
-meracím a exportovacím procesom exportéra. Druhou možnosťou je samostatný IPFIX Mediátor situovaný medzi
-exportérom a kolektorom. Táto možnosť prináša väčšiu flexibilitu a nezaťažuje exportér ďalšími výpočtami.
-
-
-\paragraph{Spájanie priestoru} \label{sec:spatial}
-
-Spájanie priestoru je vlastne zoskupenie dátových záznamov v rámci množiny pozorovacích bodov jednej 
-pozorovacej domény, združovanie záznamov viacerých exportérov, alebo jedného exportéra ale viacerých 
-pozorovacích domén. Delí sa na tieto štyri typy:
-
-\begin{enumerate}
- \item \textbf{Spájanie priestoru v rámci jednej pozorovacej domény} \\ 
-    Príkladom je meranie dátového toku jedného logického rozhrania, ktoré vzniklo agregáciou liniek 
-    podla 802.3ad \citep{ieee802.3}.
- \item \textbf{Spájanie priestoru viacerých pozorovacích domén jedného exportéra} \\
-    Tak isto ako v predchádzajúcom príklade aj tu ide o agregáciu viacerých fyzických liniek. 
- \item \textbf{Spájanie priestoru niekoľkých exportérov} \\
-    Dátové záznamy namerané v rámci jednej administratívnej domény môžu byť zlučované.
- \item \textbf{Spájanie priestoru administratívnych domén} \\
-    Dátové záznamy zaznamenané vo viacerých administratívnych doménach, ako napríklad v rôznych klientskych 
-    sieťach, alebo v sieťach rozdielnych poskytovateľov Internetového pripojenia môžu byť tiež zlučované.
-    Kolektor vie na základe IP adresy exportéra rozlíšiť, ktorej klientskej sieti exportér patrí a tak 
-    rozlišovať klientske dáta.
-\end{enumerate}
-
-Implementácia pomocou sprostredkovateľského procesu umiestneného v exportéri rieši prípady 1 a 2. 
-Separátny IPFIX Mediátor je riešením pre  všetky štyri prípady.
 
 
 \paragraph{Anonymizácia dátových záznamov}
@@ -208,7 +156,7 @@ To však príliš zvyšuje zaťaženie exportéra. Flexibilnejšia implementáci
 IPFIX Mediátor medzi exportérom a kolektorom.
 
 
-\paragraph{Distribúcia dátových záznamov}
+\paragraph{Selektívne spracovanie dátových záznamov}
 
 Trendom v moderných dátových sieťach je súčasný prenos dát, hlasu a video komunikácie jednou 
 spoločnou infraštruktúrou. Takéto siete nazývame konvergovanými sieťami. 
@@ -239,6 +187,58 @@ IPFIX kolektora je nutné monitorovať sieť, hoci exportér je verzie NetFlow.
 
 Jedna z možností je použiť IPFIX Mediátor, ktorý bude konvertovať starší protokol na IPFIX.
 
+\paragraph{Prispôsobovanie granularity tokov}
+
+Najzákladnejšia sada kľúčov toku je pätica: \emph{protokol}, \emph{zdrojová a cieľová IP adresa}, 
+\emph{číslo zdrojového a cieľového portu}. Menšie sady kľúčov, teda trojice, dvojice, alebo len jeden 
+samotný prvok (napr. \emph{maska siete}, \emph{BGP čísla autonómnych systémov}, a pod.) vytvárajú viac 
+agregované záznamy o tokoch. Toto je vhodné pri meraní na úrovni 
+jadra sieťovej domény, alebo pri manipulovaní s výkonnosťou exportérov a kolektorov.
+
+Najvhodnejšia implementácia predstavuje konfigurovateľný merací proces v exportéri. Administrátor 
+špecifikuje požadovanú sadu kľúčov toku a tým pádom exportér generuje záznamy o toku želanej zrnitosti.
+
+V opačnom prípade, kde merací proces nemá schopnosť nastavovať kľúče toku exportéra, IPFIX Mediátor 
+môže agregovať dátové záznamy na základe definovaných kľúčov vo svojej konfigurácii.
+
+
+\paragraph{Spájanie času}
+
+Spájanie resp. kompozícia času je definovaná ako agregácia za sebou idúcich dátových záznamov s rovnakými
+kľúčmi toku. Tento proces vedie k rovnakému výstupu ako nastavenie dlhšieho aktívneho timeoutu
+\emph{(active timeout)} v exportéri, no má jednu výhodu. Nové metriky ako napríklad výpočet priemerných, 
+maximálnych, alebo minimálnych hodnôt zo záznamov o tokoch v kratších časových intervaloch umožňujú 
+presnejšie výsledky a sledovanie aj menších zmien.
+
+Jedna z možných implementácii je použitie sprostredkovateľského procesu umiestneného medzi 
+meracím a exportovacím procesom exportéra. Druhou možnosťou je samostatný IPFIX Mediátor situovaný medzi
+exportérom a kolektorom. Táto možnosť prináša väčšiu flexibilitu a nezaťažuje exportér ďalšími výpočtami.
+
+
+\paragraph{Spájanie priestoru} \label{sec:spatial}
+
+Spájanie priestoru je vlastne zoskupenie dátových záznamov v rámci množiny pozorovacích bodov jednej 
+pozorovacej domény, združovanie záznamov viacerých exportérov, alebo jedného exportéra ale viacerých 
+pozorovacích domén. Delí sa na tieto štyri typy:
+
+\clearpage
+\begin{enumerate}
+ \item \textbf{Spájanie priestoru v rámci jednej pozorovacej domény} \\ 
+    Príkladom je meranie dátového toku jedného logického rozhrania, ktoré vzniklo agregáciou liniek 
+    podla 802.3ad \citep{ieee802.3}.
+ \item \textbf{Spájanie priestoru viacerých pozorovacích domén jedného exportéra} \\
+    Tak isto ako v predchádzajúcom príklade aj tu ide o agregáciu viacerých fyzických liniek. 
+ \item \textbf{Spájanie priestoru niekoľkých exportérov} \\
+    Dátové záznamy namerané v rámci jednej administratívnej domény môžu byť zlučované.
+ \item \textbf{Spájanie priestoru administratívnych domén} \\
+    Dátové záznamy zaznamenané vo viacerých administratívnych doménach, ako napríklad v rôznych klientskych 
+    sieťach, alebo v sieťach rozdielnych poskytovateľov Internetového pripojenia môžu byť tiež zlučované.
+    Kolektor vie na základe IP adresy exportéra rozlíšiť, ktorej klientskej sieti exportér patrí a tak 
+    rozlišovať klientske dáta.
+\end{enumerate}
+
+Implementácia pomocou sprostredkovateľského procesu umiestneného v exportéri rieši prípady 1 a 2. 
+Separátny IPFIX Mediátor je riešením pre  všetky štyri prípady.
 
 
 \subsubsection{Vybrané implementačno-špecifické problémy IPFIX Mediátora} \label{sec:problems}
@@ -256,7 +256,7 @@ o exportéri neoznámi kolektoru, tak ten nesprávne usúdi, že IP adresa Medi�
 (exportéra).
 
 V nasledujúcom obrázku \ref{o:loss_of_exporter} kolektor vie rozoznať dve IP adresy - 192.0.2.3. (Mediátor) 
-a 192.0.2.2 (exportér 2). To nie je správne. Mediátor musí informovať kolektor o IP adrese exportéra 1.
+a 192.0.2.2 (Exportér 2). To nie je správne. Mediátor musí informovať Kolektor o IP adrese Exportéra 1.
 
 \begin{figure}[ht!]
 \centering

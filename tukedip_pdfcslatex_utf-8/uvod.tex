@@ -19,12 +19,12 @@ dodržiavanie zmluvy o úrovni poskytovanej služby \emph{(SLA)}. Jeho cieľom j
 sieťovej prevádzky a na ich základe vypočítať triedu kvality. Táto aplikácia má slúžiť nielen poskytovateľom 
 pripojenia k Internetu ako monitorovací nástroj. Triedy umožňujú aj ich klientom jednoducho 
 porovnávať kvalitu poskytovaných služieb. Jadro nástroja SLAmeter sa skladá z komponentov, ktoré sú 
-navrhnuté v súlade s protokolom IPFIX.
+navrhnuté v súlade s protokolom IPFIX. \citep{slameter}
 
 Komponentmi architektúry IPFIX \emph{(IP Flow Information Export)} podla RFC 5470 \citep{rfc5470}
 sú exportéry a kolektory komunikujúce protokolom IPFIX. Vzhľadom k trvalému rastu IP prevádzky
 v heterogénnych sieťových prostrediach, tieto exportér-kolektor systémy môžu viesť k problémom 
-škálovateľnosti. Ba čo viac, neposkytujú flexibilitu potrebnú pre široký rad meracích aplikácii.
+škálovateľnosti. Ba čo viac, neposkytujú flexibilitu potrebnú pre široký rad meracích aplikácií.
 
 Pre naplnenie požiadaviek aplikácií s obmedzenými systémovými zdrojmi, IPFIX architektúra zavádza 
 sprostredkovateľskú entitu medzi exportéry a kolektory. Z pohľadu manipulácie s dátami môžu sprostredkovateľské
@@ -44,7 +44,7 @@ sprostredkovateľské moduly a tým zvyšovať možnosti monitorovania aplikáci
 Štruktúra práce je nasledovná. V úvodnej kapitole je formulovaná definícia úlohy. Druhá kapitola sa 
 v krátkosti venuje protokolu IPFIX. Popisuje len formát IPFIX správy, jej hlavičku, tri typy
 sád a ich komponenty. Ostatné rysy protokolu si môže čitateľ vyhľadať v príslušných dokumentoch RFC.
-Nasledujúca kapitola podrobne analyzuje problém sprostredkovania správ v IPFIX. Úvodom definuje použitú 
+Nasledujúca podrobne analyzuje problém sprostredkovania správ v IPFIX. Úvodom definuje použitú 
 terminológiu. Analyzuje nevýhody exportér-kolektor architektúr bez Mediátora, príklady použitia 
 sprostredkovania, ale aj jeho implementačno-špecifické problémy. Ďalšia sekcia sa zaoberá analýzou 
 aplikačného rámca pre IPFIX Mediátor. Tretia kapitola stručne priblíži projekty výskumnej skupiny MONICA.

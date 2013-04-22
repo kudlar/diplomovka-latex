@@ -53,8 +53,8 @@ meranej sieťovej prevádzky \citep{evaluator}. \emph{Webové rozhranie} je modu
 s pohľadmi pre zákazníka a poskytovateľa Internetových služieb.
 
 Príklad architektúry nástroja SLAmeter so zapojením Mediátora je na obrázku \ref{o:sla_architecture}.
-BEEM môže posielať IPFIX správy priamo kolektoru JXColl. No v prípade, že chce využiť sprostredkovateľské 
-procesy na modifikáciu údajov, posiela správy Mediátoru a ten ich ďalej exportuje kolektoru.
+BEEM môže exportovať IPFIX správy priamo kolektoru JXColl. No v prípade, že chce využiť sprostredkovateľské 
+procesy na modifikáciu údajov, posiela správy Mediátoru a ten ich ďalej preposiela kolektoru.
 
 \begin{figure}[ht!]
 \centering

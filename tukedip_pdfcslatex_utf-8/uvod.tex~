@@ -19,16 +19,16 @@ dodržiavanie zmluvy o úrovni poskytovanej služby \emph{(SLA)}. Jeho cieľom j
 sieťovej prevádzky a na ich základe vypočítať triedu kvality. Táto aplikácia má slúžiť nielen poskytovateľom 
 pripojenia k Internetu ako monitorovací nástroj. Triedy umožňujú aj ich klientom jednoducho 
 porovnávať kvalitu poskytovaných služieb. Jadro nástroja SLAmeter sa skladá z komponentov, ktoré sú 
-navrhnuté v súlade s protokolom IPFIX.
+navrhnuté v súlade s protokolom IPFIX. \citep{slameter}
 
 Komponentmi architektúry IPFIX \emph{(IP Flow Information Export)} podla RFC 5470 \citep{rfc5470}
 sú exportéry a kolektory komunikujúce protokolom IPFIX. Vzhľadom k trvalému rastu IP prevádzky
 v heterogénnych sieťových prostrediach, tieto exportér-kolektor systémy môžu viesť k problémom 
-škálovateľnosti. Ba čo viac, neposkytujú flexibilitu potrebnú pre široký rad meracích aplikácii.
+škálovateľnosti. Ba čo viac, neposkytujú flexibilitu potrebnú pre široký rad meracích aplikácií.
 
 Pre naplnenie požiadaviek aplikácií s obmedzenými systémovými zdrojmi, IPFIX architektúra zavádza 
 sprostredkovateľskú entitu medzi exportéry a kolektory. Z pohľadu manipulácie s dátami môžu sprostredkovateľské
-moduly tejto entity poskytovať agregáciu, koreláciu, filtrovanie, anonymizáciu a iné úpravy záznamov o 
+moduly tejto entity poskytovať agregáciu, koreláciu, filtrovanie, selekciu, anonymizáciu a iné úpravy záznamov o 
 tokoch za účelom 
 šetrenia výpočtových zdrojov meracieho systému a vykonávania predspracovania úloh pre kolektor. Z hľadiska
 interoperability nástrojov rôznych vývojárov, môžu poskytovať konverziu z iných protokolov na IPFIX, 

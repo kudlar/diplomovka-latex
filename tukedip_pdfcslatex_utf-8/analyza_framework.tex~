@@ -56,8 +56,9 @@ Prídavné funkcie môžu byť nasledujúce:
  \item Prijímať spúšťač \emph{trigger} od sprostredkovateľských procesov, ktorý vyvolá odoslanie správy
  kolektoru na odstránenie neplatnej šablóny \emph{(Template Withdrawal Message)}.
  \item Z dôvodu uvedeného v kapitole \ref{sec:loss_info} na strane \pageref{sec:loss_info}, je potrebné 
- preposielať informácie o pôvodcovi dat (exporterovi), napríklad ID pozorovacieho bodu a pozorovacej 
- domény, IP adresa exportéra atď. Tieto dáta zakóduje do prídavných dátových záznamov, bud s využitím 
+ preposielať informácie o pôvodcovi dát (exportérovi), napríklad ID pozorovacieho bodu a pozorovacej 
+ domény, IP adresa exportéra atď. Exportovací proces tieto dáta zakóduje do prídavných dátových záznamov, 
+ buď s využitím 
  informačných elementov skupiny 2 (tabuľka \ref{t:ie-group2}), alebo organizáciou špecifikovaných 
  elementov.
 \end{itemize}
@@ -98,7 +99,7 @@ procesov je konfigurovaná nasledujúcimi spôsobmi.
  sprostredkovateľský proces dostáva kópiu celého prúdu záznamov ako vstup.
  \item \textbf{Sériové spracovanie} - Aby bolo zabezpečené flexibilné spracovanie prúdu záznamov, sprostredkovateľské
  procesy sú zapojene sériovo. V tomto prípade výstupný prúd záznamov jedného procesu je vstupným prúdom 
- nasledujúceho procesu.
+ nasledujúceho.
 \end{itemize}
 
 

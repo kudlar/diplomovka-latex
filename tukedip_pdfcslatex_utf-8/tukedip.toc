@@ -13,19 +13,19 @@
 \contentsline {paragraph}{\numberline {2.1.2.6}Form\IeC {\'a}t d\IeC {\'a}tov\IeC {\'y}ch z\IeC {\'a}znamov}{11}{paragraph.2.1.2.6}
 \contentsline {subsection}{\numberline {2.2}Anal\'yza sprostredkovania spr\'av v IPFIX}{13}{subsection.2.2}
 \contentsline {subsubsection}{\numberline {2.2.1}Terminol\IeC {\'o}gia}{13}{subsubsection.2.2.1}
-\contentsline {subsubsection}{\numberline {2.2.2}Anal\'yza nev\'yhod architekt\'ury bez Medi\'atora}{14}{subsubsection.2.2.2}
+\contentsline {subsubsection}{\numberline {2.2.2}Anal\'yza nev\'yhod meracej architekt\'ury bez Medi\'atora}{14}{subsubsection.2.2.2}
 \contentsline {paragraph}{\numberline {2.2.2.1}Vyrovnanie sa s rastom sie\IeC {\v t}ovej prev\'adzky}{15}{paragraph.2.2.2.1}
 \contentsline {paragraph}{\numberline {2.2.2.2}Vyrovnanie sa s viac\IeC {\'u}\IeC {\v c}elov\IeC {\'y}m meran\IeC {\'\i }m}{15}{paragraph.2.2.2.2}
 \contentsline {paragraph}{\numberline {2.2.2.3}Vyrovnanie sa s heterog\IeC {\'e}nnym prostred\IeC {\'\i }m}{16}{paragraph.2.2.2.3}
 \contentsline {paragraph}{\numberline {2.2.2.4}Zhrnutie probl\IeC {\'e}mov}{16}{paragraph.2.2.2.4}
 \contentsline {subsubsection}{\numberline {2.2.3}Vybran\IeC {\'e} pr\IeC {\'\i }klady pou\IeC {\v z}itia sprostredkovania spr\IeC {\'a}v}{16}{subsubsection.2.2.3}
-\contentsline {paragraph}{\numberline {2.2.3.1}Prisp\IeC {\^o}sobovanie granularity tokov}{17}{paragraph.2.2.3.1}
-\contentsline {paragraph}{\numberline {2.2.3.2}Distribuovan\IeC {\'a} zhroma\IeC {\v z}\IeC {\v d}ovacia infra\IeC {\v s}trukt\IeC {\'u}ra}{17}{paragraph.2.2.3.2}
-\contentsline {paragraph}{\numberline {2.2.3.3}Sp\IeC {\'a}janie \IeC {\v c}asu}{17}{paragraph.2.2.3.3}
-\contentsline {paragraph}{\numberline {2.2.3.4}Sp\IeC {\'a}janie priestoru}{18}{paragraph.2.2.3.4}
-\contentsline {paragraph}{\numberline {2.2.3.5}Anonymiz\IeC {\'a}cia d\IeC {\'a}tov\IeC {\'y}ch z\IeC {\'a}znamov}{19}{paragraph.2.2.3.5}
-\contentsline {paragraph}{\numberline {2.2.3.6}Distrib\IeC {\'u}cia d\IeC {\'a}tov\IeC {\'y}ch z\IeC {\'a}znamov}{19}{paragraph.2.2.3.6}
-\contentsline {paragraph}{\numberline {2.2.3.7}Interoperabilita medzi protokolmi star\IeC {\v s}\IeC {\'\i }ch verzi\IeC {\'\i } a IPFIX}{20}{paragraph.2.2.3.7}
+\contentsline {paragraph}{\numberline {2.2.3.1}Distribuovan\IeC {\'a} zhroma\IeC {\v z}\IeC {\v d}ovacia infra\IeC {\v s}trukt\IeC {\'u}ra}{17}{paragraph.2.2.3.1}
+\contentsline {paragraph}{\numberline {2.2.3.2}Anonymiz\IeC {\'a}cia d\IeC {\'a}tov\IeC {\'y}ch z\IeC {\'a}znamov}{17}{paragraph.2.2.3.2}
+\contentsline {paragraph}{\numberline {2.2.3.3}Selekt\IeC {\'\i }vne spracovanie d\IeC {\'a}tov\IeC {\'y}ch z\IeC {\'a}znamov}{17}{paragraph.2.2.3.3}
+\contentsline {paragraph}{\numberline {2.2.3.4}Interoperabilita medzi protokolmi star\IeC {\v s}\IeC {\'\i }ch verzi\IeC {\'\i } a IPFIX}{18}{paragraph.2.2.3.4}
+\contentsline {paragraph}{\numberline {2.2.3.5}Prisp\IeC {\^o}sobovanie granularity tokov}{18}{paragraph.2.2.3.5}
+\contentsline {paragraph}{\numberline {2.2.3.6}Sp\IeC {\'a}janie \IeC {\v c}asu}{19}{paragraph.2.2.3.6}
+\contentsline {paragraph}{\numberline {2.2.3.7}Sp\IeC {\'a}janie priestoru}{19}{paragraph.2.2.3.7}
 \contentsline {subsubsection}{\numberline {2.2.4}Vybran\IeC {\'e} implementa\IeC {\v c}no-\IeC {\v s}pecifick\IeC {\'e} probl\IeC {\'e}my IPFIX Medi\IeC {\'a}tora}{20}{subsubsection.2.2.4}
 \contentsline {paragraph}{\numberline {2.2.4.1}Strata inform\IeC {\'a}cie o p\IeC {\^o}vodnom export\IeC {\'e}ri}{20}{paragraph.2.2.4.1}
 \contentsline {paragraph}{\numberline {2.2.4.2}Strata inform\IeC {\'a}cie o \IeC {\v c}ase exportu}{21}{paragraph.2.2.4.2}
@@ -33,9 +33,9 @@
 \contentsline {subsection}{\numberline {2.3}Anal\IeC {\'y}za aplika\IeC {\v c}n\IeC {\'e}ho r\IeC {\'a}mca pre IPFIX Medi\IeC {\'a}tor}{22}{subsection.2.3}
 \contentsline {subsubsection}{\numberline {2.3.1}Referen\IeC {\v c}n\IeC {\'y} model sprostredkovania spr\IeC {\'a}v v IPFIX}{22}{subsubsection.2.3.1}
 \contentsline {subsubsection}{\numberline {2.3.2}Komponenty sprostredkovania spr\IeC {\'a}v v IPFIX}{23}{subsubsection.2.3.2}
-\contentsline {paragraph}{\numberline {2.3.2.1}Zhroma\IeC {\v z}\IeC {\v d}ovac\IeC {\'\i } proces}{24}{paragraph.2.3.2.1}
+\contentsline {paragraph}{\numberline {2.3.2.1}Zhroma\IeC {\v z}\IeC {\v d}ovac\IeC {\'\i } proces}{23}{paragraph.2.3.2.1}
 \contentsline {paragraph}{\numberline {2.3.2.2}Exportovac\IeC {\'\i } proces}{24}{paragraph.2.3.2.2}
-\contentsline {paragraph}{\numberline {2.3.2.3}Sprostredkovate\IeC {\v l}sk\IeC {\'e} procesy}{24}{paragraph.2.3.2.3}
+\contentsline {paragraph}{\numberline {2.3.2.3}Sprostredkovate\IeC {\v l}sk\IeC {\'e} procesy}{25}{paragraph.2.3.2.3}
 \contentsline {section}{\numberline {3}Projekty v\'yskumnej skupiny MONICA}{26}{section.3}
 \contentsline {subsection}{\numberline {3.1}Meracia platforma BasicMeter}{26}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Merac\IeC {\'\i } n\IeC {\'a}stroj SLAmeter}{27}{subsection.3.2}

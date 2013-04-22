@@ -1,6 +1,6 @@
-\section{Anal\'yza sprostredkovania spr\'av v IPFIX}
+\subsection{Anal\'yza sprostredkovania spr\'av v IPFIX}
 
-Výhodou monitorovania sieťovej prevádzky na báže tokov je to, že je možné merať 
+Výhodou monitorovania sieťovej prevádzky na báze tokov je to, že je možné merať 
 veľké množstvo sieťovej prevádzky v distribuovaných pozorovacích bodoch. 
 Zatiaľ čo tento typ monitorovania môže byť použitý na rôzne účely a pre rozmanité aplikácie, je veľmi 
 obtiažne aplikovať ho paralelne na viac aplikácii s veľmi rozdielnymi požiadavkami.
@@ -11,7 +11,7 @@ dátových tokov. Sprostredkovanie správ v IPFIX - \emph{IP Flow Information Ex
 vypĺňa túto medzeru medzi obmedzenými možnosťami merania a požiadavkami na monitorovacie aplikácie 
 zavedením sprostredkovateľského zariadenia nazývaného \emph{IPFIX Mediátor} \citep{rfc5982}.
 
-\subsection{Terminológia}
+\subsubsection{Terminológia}
 Terminológia použitá v tejto kapitole je čiastočne definovaná v podkapitole \ref{sec:ipfix_terminology} 
 na strane \pageref{sec:ipfix_terminology}. 
 Dodatočne zadefinujeme nasledujúce termíny:
@@ -44,10 +44,12 @@ Dodatočne zadefinujeme nasledujúce termíny:
 \end{figure}
 
 
-\subsection{Anal\'yza nev\'yhod architekt\'ury bez Medi\'atora}
+
+\subsubsection{Anal\'yza nev\'yhod meracej architekt\'ury bez Medi\'atora}
+
 
 Problematika sprostredkovania IPFIX správ je podrobne spracovaná v \citep{rfc5982}. 
-Hovori o tom, že sieťoví administrátori často celia problémom týkajúcim sa škálovateľnosti meracieho 
+Hovorí o tom, že sieťoví administrátori často čelia problémom týkajúcim sa škálovateľnosti meracieho 
 systému, flexibility monitorovania na základe tokov, alebo aj spoľahlivosti exportovania.
 Napriek tomu, že sa vyvinuli známe techniky ako \emph{vzorkovanie a filtrovanie  paketov}, \emph{zoskupovanie 
 dátových záznamov}, alebo \emph{replikácia exportu}, tieto problémy nevymizli.
@@ -62,7 +64,8 @@ toku}, či \emph{spoľahlivosť exportu}. Tieto okolnosti závisia na dvoch fakt
 \end{enumerate}
 
 
-\subsubsection{Vyrovnanie sa s rastom sieťovej prev\'adzky}
+
+\paragraph{Vyrovnanie sa s rastom sieťovej prev\'adzky}
 
 Veľké spoločnosti a poskytovatelia Internetového pripojenia (ISP) majú bežne vo svojej sieťovej 
 infraštruktúre linky so šírkou pásma 10 Gb/s a ich celková sieťová prevádzka presahuje 100 Gb/s. 
@@ -79,7 +82,8 @@ Filtrovanie spôsobuje, že len podmnožina dátových záznamov je exportovaná
 Vzhľadom k týmto nedostatkom sa vyžaduje aby sa veľké meracie infraštruktúry nespoliehali na 
 spomínané redukčné techniky.
 
-\subsubsection{Vyrovnanie sa s viacúčelovým meraním}
+
+\paragraph{Vyrovnanie sa s viacúčelovým meraním}
 
 Rôzne monitorovacie aplikácie majú rôzne požiadavky na meraciu infraštruktúru. Niektoré vyžadujú 
 monitorovanie na úrovni tokov, iné informácie o individuálnych paketoch a ďalšie agregované toky a pod.
@@ -89,7 +93,8 @@ kvôli limitovaným výpočtovým zdrojom takmer nemožné. Preto je výhodnejš
 výkonnejším nastavením a namerané dáta vhodne spracovávať na ďalšej úrovni meracej architektúry.
 
 
-\subsubsection{Vyrovnanie sa s heterogénnym prostredím}
+
+\paragraph{Vyrovnanie sa s heterogénnym prostredím}
 
 Administrátori môžu použivať IPFIX nástroje od rozmanitých výrobcov, s rozdielnymi verziami softvéru a s 
 rôznymi typmi sieťových zariadení (smerovač, prepínač, meracia sonda) v jednej sieťovej doméne.
@@ -99,7 +104,8 @@ interoperability týchto zariadení nie je možné.
 Monitorovací systém sa vie vysporiadať s týmto problémom iba keď je prítomné sprostredkovanie IPFIX správ.
 Avšak obsiahnuť sprostredkovanie vo všetkých zhromažďovacích zariadeniach je náročné.
 
-\subsubsection{Zhrnutie problémov}
+
+\paragraph{Zhrnutie problémov}
 
 Vzhľadom k limitovaným zdrojom monitorovacieho systému, je dôležité použiť techniky redukcie sieťových 
 dát čím nižšie v hierarchii systému, teda v exportéri. Avšak implementácia tohto návrhu je sťažená v 
@@ -107,15 +113,18 @@ heterogénnom prostredí exportovacích nástrojov.
 Na druhej strane, udržovanie presnosti dát a granularity tokov tak, aby boli splnené požiadavky 
 rôznych monitorovacích aplikácii vyžaduje škálovateľnú a flexibilnú zhromažďovaciu infraštruktúru.
 
-Toto zhrnutie implikuje, že nové sprostredkovateľské funkcie sú potrebné v typických exportér - kolektor
-infraštruktúrach. 
+Toto zhrnutie implikuje, že sprostredkovateľská entita (Mediátor), ktorá bude zabezpečovať nové funkcie 
+a výpočty pred tým, ako sa IPFIX správy dostanú ku zhromažďovaciemu procesu je potrebná v typických
+exportér - kolektor infraštruktúrach.  
 
-\subsection{Vybrané príklady použitia sprostredkovania správ} \label{sec:mediator_examples}
+\subsubsection{Vybrané príklady použitia sprostredkovania správ} \label{sec:mediator_examples}
+
 
 RFC 5982 \citep{rfc5982} uvádza viacero príkladov zaradenia IPFIX Mediátora do klasickej
 exportér - kolektor architektúry. Uveďme aspoň niektoré.
 
-\subsubsection{Prispôsobovanie granularity tokov}
+
+\paragraph{Prispôsobovanie granularity tokov}
 
 Najzákladnejšia sada kľúčov toku je pätica: \emph{protokol}, \emph{zdrojová a cieľová IP adresa}, 
 \emph{číslo zdrojového a cieľového portu}. Menšie sady kľúčov, teda trojice, dvojice, alebo len jeden 
@@ -129,7 +138,8 @@ Najvhodnejšia implementácia predstavuje konfigurovateľný merací proces v ex
 V opačnom prípade, kde merací proces nemá schopnosť nastavovať kľúče toku exportéra, IPFIX Mediátor 
 môže agregovať dátové záznamy na základe definovaných kľúčov vo svojej konfigurácii.
 
-\subsubsection{Zhromažďovacia infraštruktúra}
+
+\paragraph{Distribuovaná zhromažďovacia infraštruktúra}
 
 Zvyšovanie počtu IPFIX exportérov, rast objemu IP dát a rôzne požiadavky na operácie vykonávané nad 
 dátovými záznamami v kolektore spôsobujú vysokú náročnosť na implementáciu všetkých meracích
@@ -140,7 +150,7 @@ nasadené distribuované kolektory čím bližšie ku exportérom. V tomto príp
 IPFIX Mediátormi, ktoré budú preposielať dátové záznamy podľa požiadaviek centralizovaným aplikáciam.
 
 
-\subsubsection{Spájanie času}
+\paragraph{Spájanie času}
 
 Spájanie resp. kompozícia času je definovaná ako agregácia za sebou idúcich dátových záznamov s rovnakými
 kľúčmi toku. Tento proces vedie k rovnakému výstupu ako nastavenie dlhšieho aktívneho timeoutu
@@ -152,61 +162,64 @@ Jedna z možných implementácii je použitie sprostredkovateľského procesu um
 meracím a exportovacím procesom exportéra. Druhou možnosťou je samostatný IPFIX Mediátor situovaný medzi
 exportérom a kolektorom. Táto možnosť prináša väčšiu flexibilitu a nezaťažuje exportér ďalšími výpočtami.
 
-\subsubsection{Spájanie priestoru} \label{sec:spatial}
 
-Spájanie priestoru je vlastne zoskupenie dátových záznamov v rámci mnoziny pozorovacich bodov jednej 
-pozorovacej domeny, zdruzovanie zaznamov viacerych exporterov, alebo jedneho expotera ale viacerych 
-pozorovacich domen. Deli sa na tieto styri typy:
+\paragraph{Spájanie priestoru} \label{sec:spatial}
+
+Spájanie priestoru je vlastne zoskupenie dátových záznamov v rámci množiny pozorovacích bodov jednej 
+pozorovacej domény, združovanie záznamov viacerých exportérov, alebo jedného exportéra ale viacerých 
+pozorovacích domén. Delí sa na tieto štyri typy:
 
 \begin{enumerate}
- \item \textbf{Spajanie priestoru v ramci jednej pozorovacej domeny} \\ 
-    Prikaldom je meranie dátoveho toku jedneho logickeho rozhrania, ktore vzniklo agregaciou liniek 
+ \item \textbf{Spájanie priestoru v rámci jednej pozorovacej domény} \\ 
+    Príkladom je meranie dátového toku jedného logického rozhrania, ktoré vzniklo agregáciou liniek 
     podla 802.3ad \citep{ieee802.3}.
- \item \textbf{Spajanie priestoru viacerych pozorovacich domen jedneho exportera} \\
-    Tak isto ako v predchadzajucom priklade aj tu sa jedna o agregaciu viacerych fyzickych liniek. 
- \item \textbf{Spajanie priestoru niekolkych exporterov} \\
-    Datove zaznamy namerane v ramci jednej administrativnej domeny mozu byť zlucovane.
- \item \textbf{Spajanie priestoru administrativnych domen} \\
-    Datove zaznamy zaznamenane vo viacerych administrativnych domenach, ako napriklad v roznych klientskych 
-    sietach, alebo v sietach rozdielnych poskytovatelov Internetoveho pripojenia mozu byť tiez zlucovane.
-    Kolektor vie na zaklade IP adresy exportera rozlisit, ktorej klientskej sieti exporter patri a tak 
-    rozlisovat klientske dáta.
+ \item \textbf{Spájanie priestoru viacerých pozorovacích domén jedného exportéra} \\
+    Tak isto ako v predchádzajúcom príklade aj tu ide o agregáciu viacerých fyzických liniek. 
+ \item \textbf{Spájanie priestoru niekoľkých exportérov} \\
+    Dátové záznamy namerané v rámci jednej administratívnej domény môžu byť zlučované.
+ \item \textbf{Spájanie priestoru administratívnych domén} \\
+    Dátové záznamy zaznamenané vo viacerých administratívnych doménach, ako napríklad v rôznych klientskych 
+    sieťach, alebo v sieťach rozdielnych poskytovateľov Internetového pripojenia môžu byť tiež zlučované.
+    Kolektor vie na základe IP adresy exportéra rozlíšiť, ktorej klientskej sieti exportér patrí a tak 
+    rozlišovať klientske dáta.
 \end{enumerate}
 
-Implementacia pomocou sprostredkovatelskeho procesu umiestneneho v exporteri riesi pripady 1 a 2. 
-Separatny IPFIX Mediator je riesenim pre  vsetky styri pripady.
+Implementácia pomocou sprostredkovateľského procesu umiestneného v exportéri rieši prípady 1 a 2. 
+Separátny IPFIX Mediátor je riešením pre  všetky štyri prípady.
 
-\subsubsection{Anonymizacia dátovych zaznamov}
 
-IPFIX exporty krizom cez administrativne domeny, tak ako to bolo popisane v pripade 4 
-v podkapitole \ref{sec:spatial}, na strane \pageref{sec:spatial} mozu 
-byt pouzite na monitorovanie sietovej prevadzky na velke vzdialenosti, 
-napriklad pred analyzu dátovych trendov v Internete. Pri takomto pouziti sa musia administratori riadit
-pravidlami pre ochranu sukromia a predist monitorovaniu dovernej sietovej prevadzky cudzimi osobami.
-Typicky anonymizačné techniky umožňujú poskytovanie sieťových dát inym osobam bez porušenia týchto zásad.
+\paragraph{Anonymizácia dátových záznamov}
 
-Všeobecne platí, že anonymizácia upraví sadu dát, tak aby chránila identitu ľudí alebo subjektov, 
+IPFIX exporty krížom cez administratívne domény, tak ako to bolo popísané v prípade 4 
+v podkapitole \ref{sec:spatial}, na strane \pageref{sec:spatial} môžu 
+byt použité na monitorovanie sieťovej prevádzky na veľké vzdialenosti, 
+napríklad pre analýzu dátových trendov v Internete. Pri takomto použití sa musia administrátori riadiť
+pravidlami pre ochranu súkromia a predísť monitorovaniu dôvernej sieťovej prevádzky cudzími osobami.
+Typicky anonymizačné techniky umožňujú poskytovanie sieťových dát iným osobám bez porušenia týchto zásad.
+
+Všeobecne platí, že anonymizácia upraví sadu dát tak, aby chránila identitu ľudí alebo subjektov, 
 ktorých sa súbor dát týka. Zároveň sa pokúša zachovať dáta tak, aby boli stále zmysluplné pre danú 
-analýzu ale súčasne nemôžu byť stopovateľné naspäť ku konkrétnym sietam, pracovnym staniciam, alebo 
+analýzu ale súčasne nemôžu byť stopovateľné naspäť ku konkrétnym sieťam, pracovným staniciam, alebo 
 používateľom generujúcim tieto dáta. Napríklad, anonymizácia IP adresy je veľmi dôležitá pre 
 zamedzenie identifikácie užívateľov, alebo smerovačov. 
 
 Jedným z možných prevedení v tomto prípade používa anonymizačnú funkciu v exportéri. 
-To však príliš zvyšuje zaťaženie exportéra. Flexibilnejsia implementácia využíva samostatný 
+To však príliš zvyšuje zaťaženie exportéra. Flexibilnejšia implementácia využíva samostatný 
 IPFIX Mediátor medzi exportérom a kolektorom.
 
-\subsubsection{Distribúcia dátových záznamov}
 
-Trendom v modernych dátovych sietach je sucasny prenos dát, hlasu a video komunikacie jednou 
-spolocnou infrastrukturou. Taketo siete nazyvame konvergovanymi sietami. 
-Pocitacove siete paralelne prenasaju dáta viacerych protokolov ako napriklad
-IPv4, IPv6, VPN, MPLS a pod. Datove zaznamy kazdeho z tychto protokolov musia byť analyzovane 
-oddelene a z roznych perspektiv pre rozne organizacie.
+\paragraph{Distribúcia dátových záznamov}
 
-Jeden kolektor pokryvajuci vsetky typy dátovych zaznamov sa moze stat uzkym hrdlom 
-zhromazdovacej infrastruktury. Preto je lepsie distribuovat dátove zaznamy na zaklade ich 
-typu viacerym kolektorom, co ma za nasledok rozlozenie zataze. Pod typom dátoveho 
-zaznamu mame na mysli napriklad typ sietoveho protokolu, ktorym boli dáta prenasane. 
+Trendom v moderných dátových sieťach je súčasný prenos dát, hlasu a video komunikácie jednou 
+spoločnou infraštruktúrou. Takéto siete nazývame konvergovanými sieťami. 
+Počítačové siete paralelne prenášajú dáta viacerých protokolov ako napríklad
+IPv4, IPv6, VPN, MPLS a pod. Dátové záznamy každého z týchto protokolov musia byť analyzované 
+oddelene a z rôznych perspektív pre rôzne organizácie.
+
+Jeden kolektor pokrývajúci všetky typy dátových záznamov sa môže stať úzkym hrdlom 
+zhromažďovacej infraštruktúry. Preto je lepšie distribuovať dátové záznamy na základe ich 
+typu viacerým kolektorom, čo má za následok rozloženie zátaže. Pod typom dátového 
+záznamu máme na mysli napríklad typ sieťového protokolu, ktorým boli dáta prenášane. 
 
 Jedna z možných implementácií v tomto prípade používa replikáciu IPFIX správy v exportéri 
 pre viac kolektorov. Každý kolektor potom dekóduje tie dátové záznamy, ktoré jeho aplikácia
@@ -217,30 +230,33 @@ Sofistikovanejšie prevedenie používa sprostredkovateľský proces v exportér
 ktorému kolektoru sa dáta pošlú, v závislosti na hodnotách určitých polí. Ak exportér nemá
 túto schopnosť, posiela dátové záznamy IPFIX Mediátoru, a ten ich distribuuje kolektorom.
 
-\subsubsection{Interoperabilita medzi protokolmi starsich verzii a IPFIX}
 
-Pocas migracie z protokolov starsich verzii ako napriklad NetFlow \citep{rfc3954} na IPFIX
-zvyknu nastroje tychto protokolov sucasne existovat v jednej sieti. Napriklad aj po zavedeni 
-IPFIX kolektora je nutne monitorovat siet, hoci exporter je verzie NetFlow.
+\paragraph{Interoperabilita medzi protokolmi starších verzií a IPFIX}
 
-Jedna z moznosti je pouzit IPFIX Mediator, ktory bude konvertovat starsi protokol na IPFIX.
+Počas migrácie z protokolov starších verzií ako napríklad NetFlow \citep{rfc3954} na IPFIX
+zvyknú nástroje týchto protokolov súčasne existovať v jednej sieti. Napríklad aj po zavedení 
+IPFIX kolektora je nutné monitorovať sieť, hoci exportér je verzie NetFlow.
+
+Jedna z možností je použiť IPFIX Mediátor, ktorý bude konvertovať starší protokol na IPFIX.
 
 
-\subsection{Vybrane implementacno specificke problemy IPFIX Mediatora}
 
-\subsubsection{Strata informacie o povodnom exporteri}
+\subsubsection{Vybrané implementačno-špecifické problémy IPFIX Mediátora} \label{sec:problems}
 
-Pri vyuzivani sprostredkovania správ v IPFIX dochadza k strate potrebnych informacii. V prvom rade to je 
-IP adresa exportera, ktora bola ziskavana zo zdrojovej IP adresy transportnej relacie, rovnako 
-ako identifikacne cislo pozorovacej domeny, ktore je zahrnute v hlavicke IPFIX správy.
-V niektorých prípadoch môže Mediator zahodit tieto informácie úmyselne. 
-Vo všeobecnosti však plati, ze kolektor musi rozpoznat pôvod nameranych dát, ako napríklad IP adresu 
-exportera, ID pozorovacej domeny, alebo dokonca ID pozorovacieho bodu. Ak Mediator tieto informacie 
-o exporteri neoznami kolektoru, tak ten nesprávne usúdi, že IP adresa Mediátora je adresa povodcu dát 
-(exportera).
 
-V nasledujucom obrazku \ref{o:loss_of_exporter} kolektor vie rozoznat dve IP adresy - 192.0.2.3. (Mediator) 
-a 192.0.2.2 (exporter 2). To nie je správne. Mediator musi informovat kolektor o IP adrese exportera 1.
+\paragraph{Strata informácie o pôvodnom exportéri} \label{sec:loss_info}
+
+Pri využívaní sprostredkovania správ v IPFIX dochádza k strate potrebných informácii. V prvom rade to je 
+IP adresa exportéra, ktorá bola získavaná zo zdrojovej IP adresy transportnej relácie, rovnako 
+ako identifikačné číslo pozorovacej domény, ktoré je zahrnuté v hlavičke IPFIX správy.
+V niektorých prípadoch môže Mediátor zahodiť tieto informácie úmyselne. 
+Vo všeobecnosti však platí, že kolektor musí rozpoznať pôvod nameraných dát, ako napríklad IP adresu 
+exportéra, ID pozorovacej domény, alebo dokonca ID pozorovacieho bodu. Ak Mediátor tieto informácie 
+o exportéri neoznámi kolektoru, tak ten nesprávne usúdi, že IP adresa Mediátora je adresa pôvodcu dát 
+(exportéra).
+
+V nasledujúcom obrázku \ref{o:loss_of_exporter} kolektor vie rozoznať dve IP adresy - 192.0.2.3. (Mediátor) 
+a 192.0.2.2 (exportér 2). To nie je správne. Mediátor musí informovať kolektor o IP adrese exportéra 1.
 
 \begin{figure}[ht!]
 \centering
@@ -248,32 +264,25 @@ a 192.0.2.2 (exporter 2). To nie je správne. Mediator musi informovat kolektor 
 \caption{Strata informácie o originálnom exportéri}\label{o:loss_of_exporter}
 \end{figure}
 
-\subsubsection{Strata informacie o case exportu}
 
-Pole cas exportu \emph{export time}, ktore je zahrnuté v hlavičke správy predstavuje referenčnú 
-časovú znamku dátove záznamy. Niektoré informacne elementy popisane v \citep{rfc5102} nesu 
-časové znamky delta \emph{delta timestamps}, ktore udavaju časový rozdiel voci hodnote v poli 
-cas exportu. Ak dátovy záznam zahŕňa nejake pole s časovou znamkou delta a Mediator prepíše hodnotu 
-casu exportu,  tak casova znamka delta tymto straca význam. Kolektor vsak túto situaciu nevie 
-rozpoznať a tak pracuje so zlymi hodnotami.
+\paragraph{Strata informácie o čase exportu} \label{sec:loss_time}
 
-%\subsubsection{Spravovanie ID Sablon}
-%
-%ani ja nechapem...
+Pole čas exportu \emph{export time}, ktoré je zahrnuté v hlavičke správy predstavuje referenčnú 
+časovú známku dátové záznamy. Niektoré informačné elementy popísané v \citep{rfc5102} nesú 
+časové známky delta \emph{delta timestamps}, ktoré udávajú časový rozdiel voči hodnote v poli 
+čas exportu. Ak dátový záznam zahŕňa nejaké pole s časovou známkou delta a Mediátor prepíše hodnotu 
+času exportu,  tak časová známka delta týmto stráca význam. Kolektor však túto situáciu nevie 
+rozpoznať a tak pracuje so zlými hodnotami.
 
 
-\subsubsection{Interpretacia sprostredkovanych správ}
+\paragraph{Interpretácia sprostredkovaných správ}
 
-
-V niektorých prípadoch potrebuje kolektor vediet, ktoré konkrétne operacie resp. funkcie vykonal Mediator 
-nad dátovými záznamami. Kolektor nedokáže rozlíšiť medzi spajanim casu a spajanim priestoru, v prípade, že 
-Mediator neexportuje použitú funkciu. Niektoré parametre vzťahujúce sa k funkcii by tiez mali byť 
+V niektorých prípadoch potrebuje kolektor vedieť, ktoré konkrétne operácie resp. funkcie vykonal Mediátor 
+nad dátovými záznamami. Kolektor nedokáže rozlíšiť medzi spájaním času a spájaním priestoru, v prípade, že 
+Mediátor neexportuje použitú funkciu. Niektoré parametre vzťahujúce sa k funkcii by tiež mali byť 
 exportované. 
 
-V prípade spajania času, kolektor musi poznat minimalne aktívny timeout \emph{active timeout} 
-povodnych zaznamov o tokoch. Pri spajani priestoru je potrebne poznat nad akou oblastou bola 
-vykonana kompozicia dátovych zaznamov.\citep{rfc5982}
-
-%
-% KED BUDE MALO PRIDAM SEKURITU, CELKOM ZAUJIMAVA JE
+V prípade spájania času, kolektor musí poznať aktívny timeout \emph{active timeout} 
+pôvodných záznamov o tokoch. Pri spájaní priestoru je potrebné poznať nad akou oblasťou bola 
+vykonaná kompozícia dátových záznamov.\citep{rfc5982}
 

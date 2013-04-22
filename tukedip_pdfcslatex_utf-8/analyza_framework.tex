@@ -56,8 +56,9 @@ Prídavné funkcie môžu byť nasledujúce:
  \item Prijímať spúšťač \emph{trigger} od sprostredkovateľských procesov, ktorý vyvolá odoslanie správy
  kolektoru na odstránenie neplatnej šablóny \emph{(Template Withdrawal Message)}.
  \item Z dôvodu uvedeného v kapitole \ref{sec:loss_info} na strane \pageref{sec:loss_info}, je potrebné 
- preposielať informácie o pôvodcovi dat (exporterovi), napríklad ID pozorovacieho bodu a pozorovacej 
- domény, IP adresa exportéra atď. Tieto dáta zakóduje do prídavných dátových záznamov, bud s využitím 
+ preposielať informácie o pôvodcovi dát (exportérovi), napríklad ID pozorovacieho bodu a pozorovacej 
+ domény, IP adresa exportéra atď. Exportovací proces tieto dáta zakóduje do prídavných dátových záznamov, 
+ buď s využitím 
  informačných elementov skupiny 2 (tabuľka \ref{t:ie-group2}), alebo organizáciou špecifikovaných 
  elementov.
 \end{itemize}
@@ -86,7 +87,7 @@ Prídavné funkcie môžu byť nasledujúce:
 
 \paragraph{Sprostredkovateľské procesy} \label{sec:framework_intermediate}
 
-Sprostredkovateľské procesy sú kľúčovými funkčnými blokmi sprostredkovania správ v IPFIX. Musia pokryť 
+Sprostredkovateľské procesy sú kľúčovými funkčnými blokmi sprostredkovania správ v IPFIX. Pokrývajú 
 každý príklad použitia sprostredkovania správ z kapitoly \ref{sec:mediator_examples} na strane 
 \pageref{sec:mediator_examples}. 
 Mediátor musí byť schopný súčasne podporovať viac ako jeden sprostredkovateľský proces. Spolupráca viacerých 
