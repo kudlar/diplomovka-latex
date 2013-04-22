@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  23 APR 2013 01:15
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  23 APR 2013 01:46
 entering extended mode
  %&-line parsing enabled.
 **tukedip.tex
@@ -1053,23 +1053,24 @@ figures/konektivita_mediator.png>]
 <figures/porovnanie_wireshark.png, id=1024, 695.59875pt x 667.49374pt>
 File: figures/porovnanie_wireshark.png Graphic file (type png)
 
-<use figures/porovnanie_wireshark.png>
-<figures/porovnanie_db.png, id=1025, 1116.17pt x 185.69376pt>
+<use figures/porovnanie_wireshark.png> [55 <./figures/porovnanie_wireshark.png>
+] <figures/porovnanie_db.png, id=1032, 1116.17pt x 185.69376pt>
 File: figures/porovnanie_db.png Graphic file (type png)
 
-<use figures/porovnanie_db.png> [55 <./figures/porovnanie_wireshark.png>]
+<use figures/porovnanie_db.png>
 <figures/anonym_wireshark.png, id=1033, 694.595pt x 677.53125pt>
 File: figures/anonym_wireshark.png Graphic file (type png)
 
-<use figures/anonym_wireshark.png> [56 <./figures/porovnanie_db.png>]
-<figures/anonym_db.png, id=1040, 1118.1775pt x 183.68625pt>
+<use figures/anonym_wireshark.png>
+<figures/anonym_db.png, id=1034, 1118.1775pt x 183.68625pt>
 File: figures/anonym_db.png Graphic file (type png)
 
-<use figures/anonym_db.png> [57 <./figures/anonym_wireshark.png> <./figures/ano
-nym_db.png>] [58]) [59]
+<use figures/anonym_db.png> [56 <./figures/porovnanie_db.png>] [57 <./figures/a
+nonym_wireshark.png> <./figures/anonym_db.png>] [58]) [59]
 \openout2 = `zaver.aux'.
 
- (./zaver.tex) [60
+ (./zaver.tex)
+[60
 
 
 ]
@@ -1160,7 +1161,7 @@ hare/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public
 2.pfb></usr/share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf/font
 s/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb
 >
-Output written on tukedip.pdf (87 pages, 1520742 bytes).
+Output written on tukedip.pdf (87 pages, 1520622 bytes).
 PDF statistics:
  1242 PDF objects out of 1440 (max. 8388607)
  235 named destinations out of 1000 (max. 500000)
