@@ -1,4 +1,5 @@
 \documentclass[]{tukediphc}
+\pdfoutput=1
 %% -----------------------------------------------------------------
 %% tento subor ma kodovanie utf-8
 %%
@@ -32,7 +33,7 @@
 %%
 %% Cislovane citovanie
 %\usepackage[numbers]{natbib}
-%\usepackage{pdfpages}%spoji vystupne pdfko s dalsim pdfkom <-pre zadavaci list
+\usepackage{pdfpages}%spoji vystupne pdfko s dalsim pdfkom <-pre zadavaci list
 %%
 %% Citovanie podľa mena autora a roku
 \usepackage{natbib} \citestyle{chicago}
@@ -70,7 +71,7 @@ pdfsubject={Diplomová práca}
 \odbor{Informatika}
 \specializacia{Informatika}
 
-\abstrakt{Abstrakt je povinnou súčasťou každej práce. Je výstižnou
+\abstrakt{Arrrrrbstrakt je povinnou súčasťou každej práce. Je výstižnou
 charakteristikou obsahu dokumentu. Nevyjadruje hodnotiace stanovisko
 autora. Má byť\/ taký informatívny, ako to povoľuje podstata práce.
 Text abstraktu sa píše ako jeden odstavec. Abstrakt neobsahuje odkazy
@@ -157,8 +158,8 @@ nemožno deliť a~uvádzať na dvoch strabách).}
 \kabstrakt % koniec abstraktov, nova strana
 
 % Na tomto mieste bude vložené zadanie diplomovej práce
-%\includepdf[pages=-]{zadavaci_list_gray.pdf} 
-\zadanieprace
+\includepdf[pages={1}]{zadavaci_list.pdf} 
+%\zadanieprace
 
 \cestnevyhlasenie
 

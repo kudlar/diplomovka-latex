@@ -1,5 +1,5 @@
 \select@language {slovak}
-\contentsline {section}{\hbox to\@tempdima {\hfil }\'Uvod}{1}{section*.8}
+\contentsline {section}{\hbox to\@tempdima {\hfil }\'Uvod}{1}{section*.7}
 \contentsline {section}{\numberline {1}Formul\'acia \'ulohy}{3}{section.1}
 \contentsline {section}{\numberline {2}Anal\'yza}{4}{section.2}
 \contentsline {subsection}{\numberline {2.1}Anal\'yza protokolu IPFIX}{4}{subsection.2.1}
@@ -64,8 +64,8 @@
 \contentsline {subsection}{\numberline {5.4}Test Medi\IeC {\'a}tora s anonymiza\IeC {\v c}n\IeC {\'y}m modulom}{56}{subsection.5.4}
 \contentsline {subsection}{\numberline {5.5}Z\IeC {\'a}\IeC {\v t}a\IeC {\v z}ov\IeC {\'y} test}{58}{subsection.5.5}
 \contentsline {section}{\numberline {6}Z\'aver (zhodnotenie rie\v {s}enia)}{60}{section.6}
-\contentsline {section}{\hbox to\@tempdima {\hfil }Zoznam pou\v {z}itej literat\'ury}{61}{section*.9}
-\contentsline {section}{\hbox to\@tempdima {\hfil }Zoznam pr\'iloh}{65}{section*.10}
-\contentsline {section}{\hbox to\@tempdima {\hfil }Pr\'iloha A}{66}{section*.11}
-\contentsline {section}{\hbox to\@tempdima {\hfil }Pr\'iloha B}{67}{section*.13}
-\contentsline {section}{\hbox to\@tempdima {\hfil }Pr\'iloha C}{70}{section*.15}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Zoznam pou\v {z}itej literat\'ury}{61}{section*.8}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Zoznam pr\'iloh}{65}{section*.9}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Pr\'iloha A}{66}{section*.10}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Pr\'iloha B}{67}{section*.12}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Pr\'iloha C}{70}{section*.14}
