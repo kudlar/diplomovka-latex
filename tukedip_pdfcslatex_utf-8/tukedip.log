@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  21 APR 2013 15:33
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  22 APR 2013 02:07
 entering extended mode
  %&-line parsing enabled.
 **tukedip.tex
@@ -579,7 +579,9 @@ File: hpdftex.def 2009/10/09 v6.79a Hyperref driver for pdfTeX
 (./uvod.aux) (./formulacia.aux) (./analyza.aux) (./mediator.aux)
 (./analyza_framework.aux) (./basic_sla_meter.aux) (./navrh.aux)
 (./experimenty.aux) (./zaver.aux) (./literatura.aux) (./prilohy.aux)
-(./prilohaa.aux) (./prilohab.aux) (./prilohac.aux) (./prirucka.aux))
+(./prilohaa.aux) (./prilohab.aux) (./prilohac.aux)
+No file prirucka.aux.
+)
 \openout1 = `tukedip.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 144.
@@ -597,8 +599,7 @@ LaTeX Font Info:    ... okay on input line 144.
 LaTeX Font Info:    Checking defaults for IL2/cmr/m/n on input line 144.
 LaTeX Font Info:    Try loading font information for IL2+cmr on input line 144.
 
-
-(/usr/share/texmf-texlive/tex/latex/cslatex/il2cmr.fd
+ (/usr/share/texmf-texlive/tex/latex/cslatex/il2cmr.fd
 File: il2cmr.fd 1997/02/06 CSLaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 144.
@@ -1085,112 +1086,51 @@ e 36.
 
 
 ]
-\openout2 = `prirucka.aux'.
-
- (./prirucka.tex
-
-! LaTeX Error: File `collecting1_class' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.5 ...ics[width=1.0\textwidth]{collecting1_class}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: File `collecting2_class' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.15 ...cs[width=1.0\textwidth]{collecting2_class}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Overfull \hbox (22.37305pt too wide) in paragraph at lines 21--23
-[]\IL2/lmr/m/n/12 Diagram tried ro-z-hra-nia pre spro-stred-ko-va-te-µské pro-c
-esy, vrá-tane triedy []\IL2/lmtt/m/n/12 ExampleProcess
- []
-
-
-! LaTeX Error: File `intermediate_class' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.26 ...s[width=1.0\textwidth]{intermediate_class}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: File `exporting_class' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.37 ...hics[width=1.0\textwidth]{exporting_class}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-) [71
-
-
-]
 
 Package natbib Warning: There were undefined citations.
 
 (./tukedip.aux (./uvod.aux) (./formulacia.aux) (./analyza.aux) (./mediator.aux)
 (./analyza_framework.aux) (./basic_sla_meter.aux) (./navrh.aux)
 (./experimenty.aux) (./zaver.aux) (./literatura.aux) (./prilohy.aux)
-(./prilohaa.aux) (./prilohab.aux) (./prilohac.aux) (./prirucka.aux))
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- )
+(./prilohaa.aux) (./prilohab.aux) (./prilohac.aux)) )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 161 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 8153 strings out of 495027
- 110150 string characters out of 1181419
- 188963 words of memory out of 3000000
- 10773 multiletter control sequences out of 15000+50000
+ 8135 strings out of 495027
+ 109896 string characters out of 1181419
+ 188233 words of memory out of 3000000
+ 10768 multiletter control sequences out of 15000+50000
  68720 words of font info for 64 fonts, out of 3000000 for 9000
  38 hyphenation exceptions out of 8191
  38i,8n,41p,473b,567s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/
-texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-cs.e
-nc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-cstt.enc}{/usr/share/texmf/fonts/enc
-/dvips/lm/lm-mathsy.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></us
-r/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/pu
-blic/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/shar
-e/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm
-/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fo
-nts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.p
-fb></usr/share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf/fonts/t
-ype1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb>
-Output written on tukedip.pdf (89 pages, 1487897 bytes).
+pdfTeX warning (dest): name{figure.6.4} has been referenced but
+ does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.6.3} has been referenced but does not exist,
+ replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.6.2} has been referenced but does not exist,
+ replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.6.1} has been referenced but does not exist,
+ replaced by a fixed one
+
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/
+dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-cs.enc}{/usr/share/t
+exmf/fonts/enc/dvips/lm/lm-cstt.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mat
+hsy.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fo
+nts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.p
+fb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/ty
+pe1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/
+share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/t
+exmf/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf/fonts/type1/public/lm/l
+msy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb>
+Output written on tukedip.pdf (88 pages, 1485997 bytes).
 PDF statistics:
- 1250 PDF objects out of 1440 (max. 8388607)
- 241 named destinations out of 1000 (max. 500000)
+ 1242 PDF objects out of 1440 (max. 8388607)
+ 240 named destinations out of 1000 (max. 500000)
  686 words of extra memory for PDF output out of 10000 (max. 10000000)
 
