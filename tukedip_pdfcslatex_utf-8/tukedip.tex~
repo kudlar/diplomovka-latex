@@ -71,22 +71,26 @@ pdfsubject={Diplomová práca}
 \odbor{Informatika}
 \specializacia{Informatika}
 
-\abstrakt{Abstrakt je povinnou súčasťou každej práce. Je výstižnou
-charakteristikou obsahu dokumentu. Nevyjadruje hodnotiace stanovisko
-autora. Má byť\/ taký informatívny, ako to povoľuje podstata práce.
-Text abstraktu sa píše ako jeden odstavec. Abstrakt neobsahuje odkazy
-na samotný text práce. Mal by mať\/ rozsah 250 až 500 slov. Pri
-štylizácii sa používajú celé vety, slovesá v činnom rode a tretej
-osobe. Používa sa odborná terminológia, menej zvyčajné termíny,
-skratky a~symboly sa pri prvom výskyte v texte definujú.}
+\abstrakt{ !!!  TODO  !!!
+% Abstrakt je povinnou súčasťou každej práce. Je výstižnou
+% charakteristikou obsahu dokumentu. Nevyjadruje hodnotiace stanovisko
+% autora. Má byť\/ taký informatívny, ako to povoľuje podstata práce.
+% Text abstraktu sa píše ako jeden odstavec. Abstrakt neobsahuje odkazy
+% na samotný text práce. Mal by mať\/ rozsah 250 až 500 slov. Pri
+% štylizácii sa používajú celé vety, slovesá v činnom rode a tretej
+% osobe. Používa sa odborná terminológia, menej zvyčajné termíny,
+% skratky a~symboly sa pri prvom výskyte v texte definujú.
+}
 
 \klucoveslova{IPFIX, Sprostredkovanie, Mediátor, Kolektor, Exportér, SLAmeter, BasicMeter, MONICA}
 
-\abstrakte{Text abstraktu v~svetovom jazyku je potrebný pre integráciu
-do medzinárodných informačných systémov. Ak nie je možné cudzojazyčnú
-verziu abstraktu umiestniť na jednej strane so slovenským abstraktom,
-je potrebné umiestniť ju na samostatnú stranu (cudzojazyčný abstrakt
-nemožno deliť a~uvádzať na dvoch strabách).}
+\abstrakte{ !!! TODO !!!
+% Text abstraktu v~svetovom jazyku je potrebný pre integráciu
+% do medzinárodných informačných systémov. Ak nie je možné cudzojazyčnú
+% verziu abstraktu umiestniť na jednej strane so slovenským abstraktom,
+% je potrebné umiestniť ju na samostatnú stranu (cudzojazyčný abstrakt
+% nemožno deliť a~uvádzať na dvoch strabách).
+}
 
 \keywords{IPFIX, Mediation, Mediator, Collector, Exporter, SLAmeter, BasicMeter, MONICA}
 
@@ -274,7 +278,6 @@ výskumnej skupiny MONICA som už niekoľko rokov.
 \include{mediator}
 %
 %\include{analyza_framework}
-\input{analyza_framework}
 %
 \include{basic_sla_meter}
 %

@@ -68,4 +68,3 @@
 \contentsline {section}{\hbox to\@tempdima {\hfil }Zoznam pr\'iloh}{65}{section*.9}
 \contentsline {section}{\hbox to\@tempdima {\hfil }Pr\'iloha A}{66}{section*.10}
 \contentsline {section}{\hbox to\@tempdima {\hfil }Pr\'iloha B}{67}{section*.12}
-\contentsline {section}{\hbox to\@tempdima {\hfil }Pr\'iloha C}{70}{section*.14}
