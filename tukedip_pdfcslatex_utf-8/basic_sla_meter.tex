@@ -6,7 +6,7 @@ BasicMeter \citep{monica} je jedným z projektov výskumnej
 skupiny MONICA, sídliacej v Laboratóriu počítačových sietí (CNL) na Technickej Univerzite v Košiciach. 
 Je to merací nástroj založený na protokole IPFIX. Slúži na pasívne meranie parametrov prevádzky 
 počítačových sietí a ich následné vyhodnocovanie. Začiatky vývoja siahajú až do roku 2003. Jeho 
-architektúra je znázornená na obrázku \ref{o:bm_architecture}.
+architektúra je znázornená na Obrázku \ref{o:bm_architecture}.
 
 \begin{figure}[ht!]
 \centering
@@ -27,7 +27,8 @@ Najnižšou vrstvou architektúry je \emph{BEEM}. Zabezpečuje všetky funkcie
 meracieho a exportovacieho procesu definovaného v špecifikácii IPFIX. Namerané záznamy o tokoch
 posiela komponentu \emph{JXColl} vo formáte IPFIX správ. Kolektor dekóduje prijaté správy od jedného
 alebo viacerých exportérov a ukladá ich do databázy kvôli neskoršej analýze. Za účelom analyzovania dát
-a ich grafickeho zobrazenia vo forme grafov v reálnom čase ich posiela \emph{BMAnalyzeru} prostredníctvom 
+a ich grafického zobrazenia vo forme grafov v reálnom čase ich posiela komponentu \emph{BMAnalyzer} 
+prostredníctvom 
 protokolu ACP \citep{ado}. \emph{bmIDS} tak isto prijíma dáta v reálnom čase, no jeho úlohou je analyzovať
 prebiehajúcu komunikáciu v uzli siete a odhaľovať pripadné útoky, resp. anomálie. \emph{ECAM} umožňuje 
 centrálne riadiť beh jednotlivých častí architektúry. Medzi jeho funkcie patrí vytvorenie a zmazanie 
@@ -47,12 +48,12 @@ Triedy umožňujú jednoduchý spôsob porovnávania jednotlivých pripojení po
 
 Ako bolo spomenuté, SLAmeter je akousi nadstavbou na BasicMeter. Jeho architektúra pozostáva z exportérov,
 ktoré posielajú namerané záznamy o tokoch zhromažďovaču. Ten spracováva záznamy a ukladá ich do 
-centrálnej databázy. Úlohou \emph{vyhodnocovača} je na základe požiadaviek od webového rozhrania 
+centrálnej databázy. Úlohou \emph{Vyhodnocovača} je na základe požiadaviek od webového rozhrania 
 spracovávať IPFIX záznamy a vytvárať tak štatistické a analytické údaje o charaktere 
 meranej sieťovej prevádzky \citep{evaluator}. \emph{Webové rozhranie} je modulárna webová aplikácia 
 s pohľadmi pre zákazníka a poskytovateľa Internetových služieb.
 
-Príklad architektúry nástroja SLAmeter so zapojením Mediátora je na obrázku \ref{o:sla_architecture}.
+Príklad architektúry nástroja SLAmeter so zapojením Mediátora je na Obrázku \ref{o:sla_architecture}.
 BEEM môže exportovať IPFIX správy priamo kolektoru JXColl. No v prípade, že chce využiť sprostredkovateľské 
 procesy na modifikáciu údajov, posiela správy Mediátoru a ten ich ďalej preposiela kolektoru.
 

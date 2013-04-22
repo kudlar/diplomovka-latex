@@ -87,7 +87,7 @@ Prídavné funkcie môžu byť nasledujúce:
 
 \paragraph{Sprostredkovateľské procesy} \label{sec:framework_intermediate}
 
-Sprostredkovateľské procesy sú kľúčovými funkčnými blokmi sprostredkovania správ v IPFIX. Musia pokryť 
+Sprostredkovateľské procesy sú kľúčovými funkčnými blokmi sprostredkovania správ v IPFIX. Pokrývajú 
 každý príklad použitia sprostredkovania správ z kapitoly \ref{sec:mediator_examples} na strane 
 \pageref{sec:mediator_examples}. 
 Mediátor musí byť schopný súčasne podporovať viac ako jeden sprostredkovateľský proces. Spolupráca viacerých 

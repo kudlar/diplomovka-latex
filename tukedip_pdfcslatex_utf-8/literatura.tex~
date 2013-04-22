@@ -7,7 +7,11 @@ literat\'ury}
 Tom Sheldon's Linktionary: \emph{Socket} [online], 2001. Dostupné 
 z: $<$\url{http://www.linktionary.com/s/socket.html}$>$.
 
-%----------- RFC ------------------------http://www.linktionary.com/s/socket.html
+%----------- RFC ------------------------
+
+\harvarditem{Sadasivan, et al.}{2009}{rfc5470}
+SADASIVAN, G. et al.: \emph{Architecture for IP Flow Information Export} 
+RFC 5470. 2009
 
 \harvarditem{Information Sciences Institute}{1981}{rfc791}
 Information Sciences Institute, University of Southern California: \emph{Internet protocol} 
@@ -50,9 +54,7 @@ RFC 1305. 1992
 ZSEBY, T. et al.: \emph{Sampling and Filtering Techniques for IP Packet Selection} 
 RFC 5475. 2009
 
-\harvarditem{Sadasivan, et al.}{2009}{rfc5470}
-SADASIVAN, G. et al.: \emph{Architecture for IP Flow Information Export} 
-RFC 5470. 2009
+
 
 %-----------------------------------
 

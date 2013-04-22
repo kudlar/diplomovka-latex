@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  22 APR 2013 21:17
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  23 APR 2013 01:15
 entering extended mode
  %&-line parsing enabled.
 **tukedip.tex
@@ -984,19 +984,19 @@ t_model.pdf>])) [25]
 \openout2 = `basic_sla_meter.aux'.
 
  (./basic_sla_meter.tex
-<figures/bm_architecture.png, id=772, 761.84625pt x 470.75874pt>
+<figures/bm_architecture.png, id=773, 761.84625pt x 470.75874pt>
 File: figures/bm_architecture.png Graphic file (type png)
 
 <use figures/bm_architecture.png> [26
 
 
  <./figures/bm_architecture.png>]
-Overfull \hbox (10.46553pt too wide) in paragraph at lines 38--42
+Overfull \hbox (10.46553pt too wide) in paragraph at lines 39--43
 \IL2/lmr/m/n/12 SLAmeter je me-raè pa-ra-met-rov sie-»o-vej pre-vádzky vy-hod-n
 o-cu-júci do-dr¾ia-va-nie zmluvy
  []
 
-[27] <figures/sla_architecture.pdf, id=799, 391.4625pt x 583.17876pt>
+[27] <figures/sla_architecture.pdf, id=800, 391.4625pt x 583.17876pt>
 File: figures/sla_architecture.pdf Graphic file (type pdf)
 
 <use figures/sla_architecture.pdf>) [28 <./figures/sla_architecture.pdf>]
@@ -1007,63 +1007,62 @@ File: figures/sla_architecture.pdf Graphic file (type pdf)
 
 
 ] [30] [31]
-<figures/collecting1_schema.pdf, id=828, 462.72874pt x 133.49875pt>
+<figures/collecting1_schema.pdf, id=829, 462.72874pt x 133.49875pt>
 File: figures/collecting1_schema.pdf Graphic file (type pdf)
 
 <use figures/collecting1_schema.pdf> [32 <./figures/collecting1_schema.pdf>]
-<figures/collecting2_schema.pdf, id=837, 551.05875pt x 268.00125pt>
+<figures/collecting2_schema.pdf, id=838, 551.05875pt x 268.00125pt>
 File: figures/collecting2_schema.pdf Graphic file (type pdf)
 
-<use figures/collecting2_schema.pdf> [33] [34 <./figures/collecting2_schema.pdf
->] [35] [36] [37] [38] [39]
-Overfull \hbox (18.6857pt too wide) in paragraph at lines 332--337
-\IL2/lmr/m/n/12 po-u-¾íva ma-po-va-nie z ID in-for-ma-èného ele-mentu na ob-jek
-t typu []\IL2/lmtt/m/n/12 IpfixFieldAttributes\IL2/lmr/m/n/12 .
- []
-
-[40] [41] [42] [43] [44]
-<figures/flowRecordDispatcher_schema.pdf, id=938, 645.41125pt x 286.06876pt>
+<use figures/collecting2_schema.pdf> [33 <./figures/collecting2_schema.pdf>]
+[34] [35] [36] [37] [38] [39] [40] [41] [42] [43] [44]
+<figures/flowRecordDispatcher_schema.pdf, id=939, 645.41125pt x 286.06876pt>
 File: figures/flowRecordDispatcher_schema.pdf Graphic file (type pdf)
 
 <use figures/flowRecordDispatcher_schema.pdf> [45] [46 <./figures/flowRecordDis
 patcher_schema.pdf>] [47]
-<figures/exporting_schema.pdf, id=960, 600.2425pt x 153.57375pt>
+<figures/exporting_schema.pdf, id=961, 600.2425pt x 153.57375pt>
 File: figures/exporting_schema.pdf Graphic file (type pdf)
 
 <use figures/exporting_schema.pdf> [48] [49 <./figures/exporting_schema.pdf>]
+Overfull \hbox (2.79482pt too wide) in paragraph at lines 647--655
+[]\IL2/lmr/m/n/12 V ana-lýze boli uve-dené implementaèno-¹pecifické prob-lémy M
+e-diá-tora, ka-pi-tola []2.2.4[],
+ []
+
 [50]) [51]
 \openout2 = `experimenty.aux'.
 
  (./experimenty.tex
-<figures/test_topologia.pdf, id=994, 416.55624pt x 490.83376pt>
+<figures/test_topologia.pdf, id=995, 416.55624pt x 490.83376pt>
 File: figures/test_topologia.pdf Graphic file (type pdf)
 
 <use figures/test_topologia.pdf> [52
 
 
 ] [53 <./figures/test_topologia.pdf>]
-<figures/konektivita_beem.png, id=1015, 621.32124pt x 164.615pt>
+<figures/konektivita_beem.png, id=1016, 621.32124pt x 164.615pt>
 File: figures/konektivita_beem.png Graphic file (type png)
 
 <use figures/konektivita_beem.png>
-<figures/konektivita_mediator.png, id=1016, 645.41125pt x 398.48875pt>
+<figures/konektivita_mediator.png, id=1017, 645.41125pt x 398.48875pt>
 File: figures/konektivita_mediator.png Graphic file (type png)
 
 <use figures/konektivita_mediator.png> [54 <./figures/konektivita_beem.png> <./
 figures/konektivita_mediator.png>]
-<figures/porovnanie_wireshark.png, id=1023, 695.59875pt x 667.49374pt>
+<figures/porovnanie_wireshark.png, id=1024, 695.59875pt x 667.49374pt>
 File: figures/porovnanie_wireshark.png Graphic file (type png)
 
 <use figures/porovnanie_wireshark.png>
-<figures/porovnanie_db.png, id=1024, 1116.17pt x 185.69376pt>
+<figures/porovnanie_db.png, id=1025, 1116.17pt x 185.69376pt>
 File: figures/porovnanie_db.png Graphic file (type png)
 
 <use figures/porovnanie_db.png> [55 <./figures/porovnanie_wireshark.png>]
-<figures/anonym_wireshark.png, id=1032, 694.595pt x 677.53125pt>
+<figures/anonym_wireshark.png, id=1033, 694.595pt x 677.53125pt>
 File: figures/anonym_wireshark.png Graphic file (type png)
 
 <use figures/anonym_wireshark.png> [56 <./figures/porovnanie_db.png>]
-<figures/anonym_db.png, id=1039, 1118.1775pt x 183.68625pt>
+<figures/anonym_db.png, id=1040, 1118.1775pt x 183.68625pt>
 File: figures/anonym_db.png Graphic file (type png)
 
 <use figures/anonym_db.png> [57 <./figures/anonym_wireshark.png> <./figures/ano
@@ -1080,19 +1079,19 @@ nym_db.png>] [58]) [59]
 
 
 ] [62]
-Underfull \hbox (badness 10000) in paragraph at lines 135--137
+Underfull \hbox (badness 10000) in paragraph at lines 133--135
 \IL2/lmr/m/n/12 Do-stupné z: $\OML/lmm/m/it/12 <$[]$\IL2/lmtt/m/n/12 http : / /
  docs . oracle . com / javase / 6 / docs / api / java / lang /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 139--141
+Underfull \hbox (badness 10000) in paragraph at lines 137--139
 []\IL2/lmr/m/n/12 GALLAGHER, N: \IL2/lmr/m/it/12 In-he-ri-ted Java Sin-gle-ton 
 Prob-lem \IL2/lmr/m/n/12 [prís-pe-vok na
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 139--141
+Underfull \hbox (badness 10000) in paragraph at lines 137--139
 \IL2/lmr/m/n/12 dis-kus-nom fóre], 2010. Do-stupné z: $\OML/lmm/m/it/12 <$[]$\I
 L2/lmtt/m/n/12 http : / / c2 . com / cgi / wiki ?
  []
@@ -1161,9 +1160,9 @@ hare/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public
 2.pfb></usr/share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf/font
 s/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb
 >
-Output written on tukedip.pdf (87 pages, 1520089 bytes).
+Output written on tukedip.pdf (87 pages, 1520742 bytes).
 PDF statistics:
- 1241 PDF objects out of 1440 (max. 8388607)
+ 1242 PDF objects out of 1440 (max. 8388607)
  235 named destinations out of 1000 (max. 500000)
  701 words of extra memory for PDF output out of 10000 (max. 10000000)
 
