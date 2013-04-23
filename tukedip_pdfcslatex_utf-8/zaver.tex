@@ -1,5 +1,40 @@
 \section{Z\'aver (zhodnotenie rie\v{s}enia)}
 
+Najdôležitejším cieľom tejto diplomovej práce bolo navrhnúť a implementovať aplikačný rámec pre 
+sprostredkovateľskú entitu (IPFIX Mediátor), ktorá by bola medzičlánkom v komunikácii medzi exportérom
+BEEM a kolektorom JXColl nástroja SLAmeter. Mediátor má poskytovať rozhranie pre manipuláciu so 
+sprostredkovateľskými modulmi, ktoré budú poskytovať rôzne funkcie na modifikáciu IPFIX správ ešte pred ich 
+spracovaním v kolektore. Práca túto úlohu aj splnila, čo bolo potvrdené v poslednej časti 
+práce venovanej experimentálnemu overeniu.
+
+Úvodom sa čitateľ oboznámil s analýzou formátu IPFIX správ rovnako ako s výhodami použitia 
+IPFIX Mediátora v meracej architektúre. Samostatné časti boli venované príkladom použitia, ale aj 
+úskaliam spojeným s implementáciou tohto nástroja. Nechýbalo ani stručné predstavenie projektov výskumnej 
+skupiny MONICA.
+
+Najvýznamnejším výsledkom práce je funkčná implementácia aplikačného rámca v jazyku Java. Jeho návrh je 
+odpoveďou na definované požiadavky a analyzované implementačno-špecifické problémy. Zhromažďovací proces 
+bol prispôsobený, no vychádzal z existujúcej implementácie kolektoru JXColl. Dôležitou častou práce je 
+podpora pre sprostredkovateľské procesy. Tok dát medzi modulmi, či už sériový, alebo paralelný sa  
+jednoducho nastavuje v konfiguračnom XML súbore podľa navrhnutého formátu. Na základe tejto konfigurácie 
+riadi dispečer distribúciu záznamov o tokoch medzi procesmi. Definované moduly sa však najprv musia 
+pospúšťať. Toto zabezpečila pokročilá technológia dynamického načítavania tried pomocou 
+systémového \emph{class loadera} a reflexie. Ďalším pokročilým riešením bolo zabezpečenie toho, že 
+všetky sprostredkovateľské moduly musia mať len jednu unikátnu inštanciu. Keďže design jazyka Java 
+nepovoľuje \emph{abstract static} metódy, bolo potrebné využiť návrhový vzor \emph{Factory method} a 
+hash mapu uchovávajúcu existujúce inštancie modulov. 
+
+Úlohou aplikačného rámca je aj poskytnúť metódy na dekódovanie a zakódovanie hodnôt informačných elementov.
+Pri zakódovaní bol kladený veľký doraz na efektivitu a výpočtový výkon. Preto navrhnuté metódy namiesto 
+využívania tried jazyka pracujú na úrovni bitových operácii.
+
+TODO dokoncit
+
+
+
+%plany do buducna
+
+
 
 
 

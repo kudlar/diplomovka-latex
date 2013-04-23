@@ -64,5 +64,5 @@
 \contentsline {subsection}{\numberline {5.4}Test Medi\IeC {\'a}tora s anonymiza\IeC {\v c}n\IeC {\'y}m modulom}{56}{subsection.5.4}
 \contentsline {subsection}{\numberline {5.5}Z\IeC {\'a}\IeC {\v t}a\IeC {\v z}ov\IeC {\'y} test}{58}{subsection.5.5}
 \contentsline {section}{\numberline {6}Z\'aver (zhodnotenie rie\v {s}enia)}{60}{section.6}
-\contentsline {section}{\hbox to\@tempdima {\hfil }Zoznam pou\v {z}itej literat\'ury}{61}{section*.8}
-\contentsline {section}{\hbox to\@tempdima {\hfil }Zoznam pr\'iloh}{65}{section*.9}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Zoznam pou\v {z}itej literat\'ury}{62}{section*.8}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Zoznam pr\'iloh}{66}{section*.9}

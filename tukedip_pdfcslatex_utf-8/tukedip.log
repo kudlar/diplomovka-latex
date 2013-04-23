@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  23 APR 2013 03:19
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  24 APR 2013 00:17
 entering extended mode
  %&-line parsing enabled.
 **tukedip.tex
@@ -1060,17 +1060,17 @@ File: figures/anonym_db.png Graphic file (type png)
 nonym_wireshark.png> <./figures/anonym_db.png>] [58]) [59]
 \openout2 = `zaver.aux'.
 
- (./zaver.tex)
+ (./zaver.tex
 [60
 
 
-]
+]) [61]
 \openout2 = `literatura.aux'.
 
- (./literatura.tex [61
+ (./literatura.tex [62
 
 
-] [62]
+] [63]
 Underfull \hbox (badness 10000) in paragraph at lines 133--135
 \IL2/lmr/m/n/12 Do-stupné z: $\OML/lmm/m/it/12 <$[]$\IL2/lmtt/m/n/12 http : / /
  docs . oracle . com / javase / 6 / docs / api / java / lang /
@@ -1088,18 +1088,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 137--139
 L2/lmtt/m/n/12 http : / / c2 . com / cgi / wiki ?
  []
 
-[63]) [64]
+[64]) [65]
 \openout2 = `prilohy.aux'.
 
- (./prilohy.tex) [65
+ (./prilohy.tex) [66
 
 
 ] (./tukedip.aux (./uvod.aux) (./formulacia.aux)
 (./analyza.aux) (./basic_sla_meter.aux) (./navrh.aux) (./experimenty.aux)
 (./zaver.aux) (./literatura.aux) (./prilohy.aux)) ) 
 Here is how much of TeX's memory you used:
- 8748 strings out of 495027
- 119944 string characters out of 1181419
+ 8749 strings out of 495027
+ 119951 string characters out of 1181419
  199567 words of memory out of 3000000
  11407 multiletter control sequences out of 15000+50000
  66433 words of font info for 63 fonts, out of 3000000 for 9000
@@ -1117,9 +1117,9 @@ ic/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/t
 exmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/l
 mss10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/
 fonts/type1/public/lm/lmtt12.pfb>
-Output written on tukedip.pdf (82 pages, 1498060 bytes).
+Output written on tukedip.pdf (83 pages, 1500928 bytes).
 PDF statistics:
- 1195 PDF objects out of 1200 (max. 8388607)
- 219 named destinations out of 1000 (max. 500000)
+ 1199 PDF objects out of 1200 (max. 8388607)
+ 220 named destinations out of 1000 (max. 500000)
  677 words of extra memory for PDF output out of 10000 (max. 10000000)
 

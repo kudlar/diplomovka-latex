@@ -1,0 +1,44 @@
+\section{Z\'aver (zhodnotenie rie\v{s}enia)}
+
+Najdolezitejsim cielom tejto diplomovej prace bolo navrhnut a implementovat aplikacny ramec pre 
+sprostredkovatelsku entitu (IPFIX Mediator), ktora by bola medziclankom v komunikacii medzi exporterom
+BEEM a kolektorom JXColl nastroja SLAmeter. Mediator ma pokytovat rozhranie pre manipulaciu so 
+sprostredkovatelskymi modulmi, ktore budu poskytovat rozne funkcie na modifikaciu IPFIX sprav este pred ich 
+spracovanim v kolektore. Praca tuto ulohu aj splnila, co bolo potvrdene v poslednej casti 
+prace venovanej experimentalnemu overeniu.
+
+Uvodom sa citatel oboznamil s analyzou formatu IPFIX sprav rovnako ako s vyhodami pouzitia 
+IPFIX Mediatora v meracej architekture. Samostatne casti boli venovane prikladom pouzitia, ale aj 
+uskaliam spojenym s implementaciou tohto nastroja. Nechybalo ani strucne predstavenie projektov vyskumnej 
+skupiny MONICA.
+
+Najvyznamnejsim vysledkom prace je funkcna implementacia aplikacneho ramca v jazyku Java. Jeho navrh je 
+odpovedou na definovane poziadavky a analyzovane implementacno-specificke problemy. Zhromazdovaci proces 
+bol prisposobeny, no vychadzal z existujucej implementacie kolektoru JXColl. Dolezitou castou prace je 
+podpora pre sprostredkovatelske procesy. Tok dat medzi modulmi, ci uz seriovy, alebo paralelny sa  
+jednoducho nastavuje v konfiguracnom XML subore podla navrhnuteho formatu. Na zaklade tejto konfiguracie 
+riadi dispecer distribuciu zaznamov o tokoch medzi procesmi. Definovane moduly sa vsak najprv musia 
+pospustat. Toto zabezpecila pokrocila technologia dynamickeho nacitavania tried pomocou 
+systemoveho \emph{class loadera} a reflexie. Dalsim pokrocilym riesenim bolo zabezpecenie toho, ze 
+vsetky sprostredkovatelske moduly musia mat len jednu unikatnu instanciu. Kedze design jazyka Java 
+nepovoluje \emph{abstract static} metody, bolo potrebne vyuzit navrhovy vzor \emph{Factory method} a 
+hash mapu uchovavajucu existujuce instancie modulov. 
+
+Ulohou aplikacneho ramca je aj poskytnut metody na dekodovanie a zakodovanie hodnot informacnych elementov.
+Pri zakodovani bol kladeny velky doraz na efektivitu a vypoctovy vykon. Preto navrhnute metody namiesto 
+vyuzivania tried jazyka pracuju na urovni bitovych operacii.
+
+TODO
+
+
+
+%plany do buducna
+
+
+
+
+
+%Táto časť\/ záverečnej práce je povinná. Autor uvedie zhodnotenie
+%riešenia. Uvedie výhody, nevýhody riešenia,  použitie výsledkov, ďalšie
+%možnosti a~pod., prípadne načrtne iný spôsob riešenia úloh, resp.
+%uvedie, prečo postupoval uvedeným spôsobom.
