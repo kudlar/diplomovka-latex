@@ -66,5 +66,3 @@
 \contentsline {section}{\numberline {6}Z\'aver (zhodnotenie rie\v {s}enia)}{60}{section.6}
 \contentsline {section}{\hbox to\@tempdima {\hfil }Zoznam pou\v {z}itej literat\'ury}{61}{section*.8}
 \contentsline {section}{\hbox to\@tempdima {\hfil }Zoznam pr\'iloh}{65}{section*.9}
-\contentsline {section}{\hbox to\@tempdima {\hfil }Pr\'iloha A}{66}{section*.10}
-\contentsline {section}{\hbox to\@tempdima {\hfil }Pr\'iloha B}{67}{section*.12}

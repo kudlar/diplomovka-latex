@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  23 APR 2013 01:55
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  23 APR 2013 02:00
 entering extended mode
  %&-line parsing enabled.
 **tukedip.tex
@@ -608,7 +608,7 @@ File: hpdftex.def 2009/10/09 v6.79a Hyperref driver for pdfTeX
 ) (./tukedip.aux
 (./uvod.aux) (./formulacia.aux) (./analyza.aux) (./mediator.aux)
 (./basic_sla_meter.aux) (./navrh.aux) (./experimenty.aux) (./zaver.aux)
-(./literatura.aux) (./prilohy.aux) (./prilohaa.aux) (./prilohab.aux))
+(./literatura.aux) (./prilohy.aux))
 \openout1 = `tukedip.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 149.
@@ -731,7 +731,7 @@ File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 
 LaTeX Warning: No \konzultantb given.
 
-[2] [3] <figures/zadavaci_list.pdf, id=296, page=1, 597.432pt x 844.83629pt>
+[2] [3] <figures/zadavaci_list.pdf, id=288, page=1, 597.432pt x 844.83629pt>
 File: figures/zadavaci_list.pdf Graphic file (type pdf)
 
 <use figures/zadavaci_list.pdf, page 1>
@@ -815,7 +815,7 @@ l.274 \include{formulacia}
 \openout2 = `analyza.aux'.
 
  (./analyza.tex
-<figures/ipfix_architekture_basic.png, id=542, 602.25pt x 322.20375pt>
+<figures/ipfix_architekture_basic.png, id=532, 602.25pt x 322.20375pt>
 File: figures/ipfix_architekture_basic.png Graphic file (type png)
 
 <use figures/ipfix_architekture_basic.png>pdfTeX warning (ext4): destination wi
@@ -846,7 +846,7 @@ been already used, duplicate ignored
                    \relax 
 l.106 \end{description}
                         [6]
-<figures/ipfix_message_format.png, id=577, 575.14874pt x 165.61874pt>
+<figures/ipfix_message_format.png, id=567, 575.14874pt x 165.61874pt>
 File: figures/ipfix_message_format.png Graphic file (type png)
 
 <use figures/ipfix_message_format.png>
@@ -868,11 +868,11 @@ File: il2lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 l.133  \item \textbf
                     {ÄŒas exportu} vo formÃ¡te UNIX timestamp. [7 <./figures/ip
 fix_message_format.png>]
-<figures/ipfix_message_header.pdf, id=588, 405.515pt x 127.47626pt>
+<figures/ipfix_message_header.pdf, id=578, 405.515pt x 127.47626pt>
 File: figures/ipfix_message_header.pdf Graphic file (type pdf)
 
 <use figures/ipfix_message_header.pdf>
-<figures/set_format.pdf, id=590, 404.51125pt x 182.6825pt>
+<figures/set_format.pdf, id=580, 404.51125pt x 182.6825pt>
 File: figures/set_format.pdf Graphic file (type pdf)
 
 <use figures/set_format.pdf>pdfTeX warning (ext4): destination with the same id
@@ -881,7 +881,7 @@ entifier (name{page.8}) has been already used, duplicate ignored
                    \relax 
 l.174 
        [8 <./figures/ipfix_message_header.pdf>]
-<figures/set_header.pdf, id=603, 404.51125pt x 46.1725pt>
+<figures/set_header.pdf, id=593, 404.51125pt x 46.1725pt>
 File: figures/set_header.pdf Graphic file (type pdf)
 
 <use figures/set_header.pdf>pdfTeX warning (ext4): destination with the same id
@@ -890,7 +890,7 @@ entifier (name{page.9}) has been already used, duplicate ignored
                    \relax 
 l.207 
        [9 <./figures/set_format.pdf>]
-<figures/field_specifier_format.pdf, id=614, 403.5075pt x 74.2775pt>
+<figures/field_specifier_format.pdf, id=604, 403.5075pt x 74.2775pt>
 File: figures/field_specifier_format.pdf Graphic file (type pdf)
 
 <use figures/field_specifier_format.pdf>pdfTeX warning (ext4): destination with
@@ -899,11 +899,11 @@ File: figures/field_specifier_format.pdf Graphic file (type pdf)
                    \relax 
 l.241 
        [10 <./figures/set_header.pdf> <./figures/field_specifier_format.pdf>]
-<figures/template_record_header.pdf, id=628, 404.51125pt x 46.1725pt>
+<figures/template_record_header.pdf, id=618, 404.51125pt x 46.1725pt>
 File: figures/template_record_header.pdf Graphic file (type pdf)
 
 <use figures/template_record_header.pdf>
-<figures/options_record_header.pdf, id=632, 403.5075pt x 75.28125pt>
+<figures/options_record_header.pdf, id=622, 403.5075pt x 75.28125pt>
 File: figures/options_record_header.pdf Graphic file (type pdf)
 
 <use figures/options_record_header.pdf>)pdfTeX warning (ext4): destination with
@@ -929,7 +929,7 @@ l.31  \item[IPFIX MediÃ¡tor]
 [13
 
 
-] <figures/exp_med_coll.pdf, id=658, 380.42125pt x 171.64125pt>
+] <figures/exp_med_coll.pdf, id=648, 380.42125pt x 171.64125pt>
 File: figures/exp_med_coll.pdf Graphic file (type pdf)
 
 <use figures/exp_med_coll.pdf>pdfTeX warning (ext4): destination with the same 
@@ -961,16 +961,16 @@ mr/m/n/12 Naj-zá-klad-ne-j¹ia sada kµú-èov toku
 
 [18] [19] [20
 
-] <figures/loss_of_exporter.pdf, id=712, 400.49625pt x 208.78pt>
+] <figures/loss_of_exporter.pdf, id=702, 400.49625pt x 208.78pt>
 File: figures/loss_of_exporter.pdf Graphic file (type pdf)
 
 <use figures/loss_of_exporter.pdf> [21 <./figures/loss_of_exporter.pdf>]
 (./analyza_framework.tex
-<figures/mediation_reference_model.pdf, id=725, 458.71375pt x 428.60126pt>
+<figures/mediation_reference_model.pdf, id=715, 458.71375pt x 428.60126pt>
 File: figures/mediation_reference_model.pdf Graphic file (type pdf)
 
 <use figures/mediation_reference_model.pdf>
-<figures/mediator_component_model.pdf, id=731, 474.77374pt x 366.36874pt>
+<figures/mediator_component_model.pdf, id=721, 474.77374pt x 366.36874pt>
 File: figures/mediator_component_model.pdf Graphic file (type pdf)
 
 <use figures/mediator_component_model.pdf> [22]
@@ -984,7 +984,7 @@ t_model.pdf>])) [25]
 \openout2 = `basic_sla_meter.aux'.
 
  (./basic_sla_meter.tex
-<figures/bm_architecture.png, id=768, 761.84625pt x 470.75874pt>
+<figures/bm_architecture.png, id=758, 761.84625pt x 470.75874pt>
 File: figures/bm_architecture.png Graphic file (type png)
 
 <use figures/bm_architecture.png> [26
@@ -996,7 +996,7 @@ Overfull \hbox (10.46553pt too wide) in paragraph at lines 39--43
 o-cu-júci do-dr¾ia-va-nie zmluvy
  []
 
-[27] <figures/sla_architecture.pdf, id=795, 391.4625pt x 583.17876pt>
+[27] <figures/sla_architecture.pdf, id=785, 391.4625pt x 583.17876pt>
 File: figures/sla_architecture.pdf Graphic file (type pdf)
 
 <use figures/sla_architecture.pdf>) [28 <./figures/sla_architecture.pdf>]
@@ -1007,21 +1007,21 @@ File: figures/sla_architecture.pdf Graphic file (type pdf)
 
 
 ] [30] [31]
-<figures/collecting1_schema.pdf, id=824, 462.72874pt x 133.49875pt>
+<figures/collecting1_schema.pdf, id=814, 462.72874pt x 133.49875pt>
 File: figures/collecting1_schema.pdf Graphic file (type pdf)
 
 <use figures/collecting1_schema.pdf> [32 <./figures/collecting1_schema.pdf>]
-<figures/collecting2_schema.pdf, id=833, 551.05875pt x 268.00125pt>
+<figures/collecting2_schema.pdf, id=823, 551.05875pt x 268.00125pt>
 File: figures/collecting2_schema.pdf Graphic file (type pdf)
 
 <use figures/collecting2_schema.pdf> [33 <./figures/collecting2_schema.pdf>]
 [34] [35] [36] [37] [38] [39] [40] [41] [42] [43] [44]
-<figures/flowRecordDispatcher_schema.pdf, id=934, 645.41125pt x 286.06876pt>
+<figures/flowRecordDispatcher_schema.pdf, id=924, 645.41125pt x 286.06876pt>
 File: figures/flowRecordDispatcher_schema.pdf Graphic file (type pdf)
 
 <use figures/flowRecordDispatcher_schema.pdf> [45] [46 <./figures/flowRecordDis
 patcher_schema.pdf>] [47]
-<figures/exporting_schema.pdf, id=956, 600.2425pt x 153.57375pt>
+<figures/exporting_schema.pdf, id=946, 600.2425pt x 153.57375pt>
 File: figures/exporting_schema.pdf Graphic file (type pdf)
 
 <use figures/exporting_schema.pdf> [48] [49 <./figures/exporting_schema.pdf>]
@@ -1034,35 +1034,35 @@ e-diá-tora, ka-pi-tola []2.2.4[],
 \openout2 = `experimenty.aux'.
 
  (./experimenty.tex
-<figures/test_topologia.pdf, id=990, 416.55624pt x 490.83376pt>
+<figures/test_topologia.pdf, id=980, 416.55624pt x 490.83376pt>
 File: figures/test_topologia.pdf Graphic file (type pdf)
 
 <use figures/test_topologia.pdf> [52
 
 
 ] [53 <./figures/test_topologia.pdf>]
-<figures/konektivita_beem.png, id=1011, 621.32124pt x 164.615pt>
+<figures/konektivita_beem.png, id=1001, 621.32124pt x 164.615pt>
 File: figures/konektivita_beem.png Graphic file (type png)
 
 <use figures/konektivita_beem.png>
-<figures/konektivita_mediator.png, id=1012, 645.41125pt x 398.48875pt>
+<figures/konektivita_mediator.png, id=1002, 645.41125pt x 398.48875pt>
 File: figures/konektivita_mediator.png Graphic file (type png)
 
 <use figures/konektivita_mediator.png> [54 <./figures/konektivita_beem.png> <./
 figures/konektivita_mediator.png>]
-<figures/porovnanie_wireshark.png, id=1019, 695.59875pt x 667.49374pt>
+<figures/porovnanie_wireshark.png, id=1009, 695.59875pt x 667.49374pt>
 File: figures/porovnanie_wireshark.png Graphic file (type png)
 
 <use figures/porovnanie_wireshark.png> [55 <./figures/porovnanie_wireshark.png>
-] <figures/porovnanie_db.png, id=1027, 1116.17pt x 185.69376pt>
+] <figures/porovnanie_db.png, id=1017, 1116.17pt x 185.69376pt>
 File: figures/porovnanie_db.png Graphic file (type png)
 
 <use figures/porovnanie_db.png>
-<figures/anonym_wireshark.png, id=1028, 694.595pt x 677.53125pt>
+<figures/anonym_wireshark.png, id=1018, 694.595pt x 677.53125pt>
 File: figures/anonym_wireshark.png Graphic file (type png)
 
 <use figures/anonym_wireshark.png>
-<figures/anonym_db.png, id=1029, 1118.1775pt x 183.68625pt>
+<figures/anonym_db.png, id=1019, 1118.1775pt x 183.68625pt>
 File: figures/anonym_db.png Graphic file (type png)
 
 <use figures/anonym_db.png> [56 <./figures/porovnanie_db.png>] [57 <./figures/a
@@ -1103,43 +1103,15 @@ L2/lmtt/m/n/12 http : / / c2 . com / cgi / wiki ?
  (./prilohy.tex) [65
 
 
-]
-\openout2 = `prilohaa.aux'.
-
- (./prilohaa.tex) [66
-
-
-]
-\openout2 = `prilohab.aux'.
-
- (./prilohab.tex
-
-Package natbib Warning: Citation `kat' on page 67 undefined on input line 29.
-
-
-Package natbib Warning: Citation `gonda' on page 67 undefined on input line 29.
-
-
-
-Package natbib Warning: Citation `steinerova' on page 67 undefined on input lin
-e 36.
-
-[67
-
-
-] [68]) [69]
-
-Package natbib Warning: There were undefined citations.
-
-(./tukedip.aux (./uvod.aux) (./formulacia.aux) (./analyza.aux) (./mediator.aux)
-(./basic_sla_meter.aux) (./navrh.aux) (./experimenty.aux) (./zaver.aux)
-(./literatura.aux) (./prilohy.aux) (./prilohaa.aux) (./prilohab.aux)) ) 
+] (./tukedip.aux (./uvod.aux) (./formulacia.aux)
+(./analyza.aux) (./mediator.aux) (./basic_sla_meter.aux) (./navrh.aux)
+(./experimenty.aux) (./zaver.aux) (./literatura.aux) (./prilohy.aux)) ) 
 Here is how much of TeX's memory you used:
- 8784 strings out of 495027
- 120356 string characters out of 1181419
- 200573 words of memory out of 3000000
- 11417 multiletter control sequences out of 15000+50000
- 68720 words of font info for 64 fonts, out of 3000000 for 9000
+ 8753 strings out of 495027
+ 120007 string characters out of 1181419
+ 199901 words of memory out of 3000000
+ 11408 multiletter control sequences out of 15000+50000
+ 66433 words of font info for 63 fonts, out of 3000000 for 9000
  38 hyphenation exceptions out of 8191
  38i,16n,41p,473b,517s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/sh
@@ -1154,9 +1126,9 @@ xmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri
 10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fon
 ts/type1/public/lm/lmss10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pf
 b></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb>
-Output written on tukedip.pdf (86 pages, 1514849 bytes).
+Output written on tukedip.pdf (82 pages, 1498113 bytes).
 PDF statistics:
- 1225 PDF objects out of 1440 (max. 8388607)
- 227 named destinations out of 1000 (max. 500000)
- 693 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1195 PDF objects out of 1200 (max. 8388607)
+ 219 named destinations out of 1000 (max. 500000)
+ 677 words of extra memory for PDF output out of 10000 (max. 10000000)
 
