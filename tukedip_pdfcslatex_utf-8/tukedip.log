@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  23 APR 2013 02:00
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  23 APR 2013 03:19
 entering extended mode
  %&-line parsing enabled.
 **tukedip.tex
@@ -606,9 +606,9 @@ Package: atbegshi 2008/07/31 v1.9 At begin shipout hook (HO)
 File: hpdftex.def 2009/10/09 v6.79a Hyperref driver for pdfTeX
 \Fld@listcount=\count113
 ) (./tukedip.aux
-(./uvod.aux) (./formulacia.aux) (./analyza.aux) (./mediator.aux)
-(./basic_sla_meter.aux) (./navrh.aux) (./experimenty.aux) (./zaver.aux)
-(./literatura.aux) (./prilohy.aux))
+(./uvod.aux) (./formulacia.aux) (./analyza.aux) (./basic_sla_meter.aux)
+(./navrh.aux) (./experimenty.aux) (./zaver.aux) (./literatura.aux)
+(./prilohy.aux))
 \openout1 = `tukedip.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 149.
@@ -626,8 +626,7 @@ LaTeX Font Info:    ... okay on input line 149.
 LaTeX Font Info:    Checking defaults for IL2/cmr/m/n on input line 149.
 LaTeX Font Info:    Try loading font information for IL2+cmr on input line 149.
 
-
-(/usr/share/texmf-texlive/tex/latex/cslatex/il2cmr.fd
+ (/usr/share/texmf-texlive/tex/latex/cslatex/il2cmr.fd
 File: il2cmr.fd 1997/02/06 CSLaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 149.
@@ -906,81 +905,73 @@ File: figures/template_record_header.pdf Graphic file (type pdf)
 <figures/options_record_header.pdf, id=622, 403.5075pt x 75.28125pt>
 File: figures/options_record_header.pdf Graphic file (type pdf)
 
-<use figures/options_record_header.pdf>)pdfTeX warning (ext4): destination with
- the same identifier (name{page.11}) has been already used, duplicate ignored
+<use figures/options_record_header.pdf>pdfTeX warning (ext4): destination with 
+the same identifier (name{page.11}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.276 \include{analyza}
-                        [11 <./figures/template_record_header.pdf> <./figures/o
-ptions_record_header.pdf>]pdfTeX warning (ext4): destination with the same iden
-tifier (name{page.12}) has been already used, duplicate ignored
+l.282 
+       [11 <./figures/template_record_header.pdf> <./figures/options_record_hea
+der.pdf>] (./mediator.texpdfTeX warning (ext4): destination with the same ident
+ifier (name{page.12}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.276 \include{analyza}
-                        [12]
-\openout2 = `mediator.aux'.
-
- (./mediator.texpdfTeX warning (ext4): destination with the same identifier (na
-me{page.13}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.31  \item[IPFIX Medi√°tor]
-                             je n√°stroj vykon√°vaj√∫ci sprostredkovanie spr...
-[13
-
-
-] <figures/exp_med_coll.pdf, id=648, 380.42125pt x 171.64125pt>
+l.30 
+      [12] <figures/exp_med_coll.pdf, id=645, 380.42125pt x 171.64125pt>
 File: figures/exp_med_coll.pdf Graphic file (type pdf)
 
 <use figures/exp_med_coll.pdf>pdfTeX warning (ext4): destination with the same 
-identifier (name{page.14}) has been already used, duplicate ignored
+identifier (name{page.13}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.59 \begin{enumerate}
-                       [14 <./figures/exp_med_coll.pdf>]pdfTeX warning (ext4): 
-destination with the same identifier (name{page.15}) has been already used, dup
+                       [13 <./figures/exp_med_coll.pdf>]pdfTeX warning (ext4): 
+destination with the same identifier (name{page.14}) has been already used, dup
 licate ignored
 <to be read again> 
                    \relax 
-l.94 
-      [15]pdfTeX warning (ext4): destination with the same identifier (name{pag
-e.16}) has been already used, duplicate ignored
+l.90 
+      [14]pdfTeX warning (ext4): destination with the same identifier (name{pag
+e.15}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.133 
+l.128 \paragraph
+                {Distribuovan√° zhroma≈æƒèovacia infra≈°trukt√∫ra} [15]pdfTeX w
+arning (ext4): destination with the same identifier (name{page.16}) has been al
+ready used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.157 
        [16]pdfTeX warning (ext4): destination with the same identifier (name{pa
 ge.17}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.166 
+l.189 
        [17]
 Overfull \hbox (2.65904pt too wide) in paragraph at lines 192--197
  \IL2/lmr/bx/n/12 2.2.3.5 Pris-pÙ-so-bo-va-nie gra-nu-la-rity to-kov[][] \IL2/l
 mr/m/n/12 Naj-z·-klad-ne-jπia sada kµ˙-Ëov toku
  []
 
-[18] [19] [20
-
-] <figures/loss_of_exporter.pdf, id=702, 400.49625pt x 208.78pt>
+[18] [19] <figures/loss_of_exporter.pdf, id=697, 400.49625pt x 208.78pt>
 File: figures/loss_of_exporter.pdf Graphic file (type pdf)
 
-<use figures/loss_of_exporter.pdf> [21 <./figures/loss_of_exporter.pdf>]
-(./analyza_framework.tex
-<figures/mediation_reference_model.pdf, id=715, 458.71375pt x 428.60126pt>
+<use figures/loss_of_exporter.pdf> [20 <./figures/loss_of_exporter.pdf>]
+(./analyza_framework.tex [21]
+<figures/mediation_reference_model.pdf, id=722, 458.71375pt x 428.60126pt>
 File: figures/mediation_reference_model.pdf Graphic file (type pdf)
 
 <use figures/mediation_reference_model.pdf>
-<figures/mediator_component_model.pdf, id=721, 474.77374pt x 366.36874pt>
+<figures/mediator_component_model.pdf, id=724, 474.77374pt x 366.36874pt>
 File: figures/mediator_component_model.pdf Graphic file (type pdf)
 
-<use figures/mediator_component_model.pdf> [22]
-Overfull \hbox (3.37172pt too wide) in paragraph at lines 42--49
+<use figures/mediator_component_model.pdf>
+Overfull \hbox (3.37172pt too wide) in paragraph at lines 46--53
 \IL2/lmr/m/n/12 ne-lÌπi od zhro-ma-æÔo-va-cieho pro-cesu po-pÌ-sa-nÈho v πpe-ci
 -fi-k·-cii IP-FIX pro-to-kolu ([]Claise
  []
 
-[23 <./figures/mediation_reference_model.pdf>] [24 <./figures/mediator_componen
-t_model.pdf>])) [25]
+[22 <./figures/mediation_reference_model.pdf>] [23 <./figures/mediator_componen
+t_model.pdf>] [24]))) [25]
 \openout2 = `basic_sla_meter.aux'.
 
  (./basic_sla_meter.tex
@@ -1104,29 +1095,29 @@ L2/lmtt/m/n/12 http : / / c2 . com / cgi / wiki ?
 
 
 ] (./tukedip.aux (./uvod.aux) (./formulacia.aux)
-(./analyza.aux) (./mediator.aux) (./basic_sla_meter.aux) (./navrh.aux)
-(./experimenty.aux) (./zaver.aux) (./literatura.aux) (./prilohy.aux)) ) 
+(./analyza.aux) (./basic_sla_meter.aux) (./navrh.aux) (./experimenty.aux)
+(./zaver.aux) (./literatura.aux) (./prilohy.aux)) ) 
 Here is how much of TeX's memory you used:
- 8753 strings out of 495027
- 120007 string characters out of 1181419
- 199901 words of memory out of 3000000
- 11408 multiletter control sequences out of 15000+50000
+ 8748 strings out of 495027
+ 119944 string characters out of 1181419
+ 199567 words of memory out of 3000000
+ 11407 multiletter control sequences out of 15000+50000
  66433 words of font info for 63 fonts, out of 3000000 for 9000
  38 hyphenation exceptions out of 8191
  38i,16n,41p,473b,517s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/sh
-are/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm
-/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-cs.enc}{/usr/share/texmf/fon
-ts/enc/dvips/lm/lm-cstt.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}
-</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type
-1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr
-/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/publ
-ic/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/te
-xmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri
-10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fon
-ts/type1/public/lm/lmss10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pf
-b></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb>
-Output written on tukedip.pdf (82 pages, 1498113 bytes).
+{/usr/share/texmf/fonts/enc/
+dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/sha
+re/texmf/fonts/enc/dvips/lm/lm-cs.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-c
+stt.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/share/texmf/fo
+nts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.p
+fb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/t
+ype1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></us
+r/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/publ
+ic/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/t
+exmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/l
+mss10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/
+fonts/type1/public/lm/lmtt12.pfb>
+Output written on tukedip.pdf (82 pages, 1498060 bytes).
 PDF statistics:
  1195 PDF objects out of 1200 (max. 8388607)
  219 named destinations out of 1000 (max. 500000)

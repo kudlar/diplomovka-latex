@@ -26,7 +26,7 @@ Spracovane dáta vo forme záznamov o toku potom exportuje jednému alebo viacer
 \caption{Zjednodušený model komponentov IPFIX Mediátora}\label{o:mediator_component_model}
 \end{figure}
 
-Zjednodušený model komponentov IPFIX mediátora je zobrazený na obrázku \ref{o:mediator_component_model}. 
+Zjednodušený model komponentov IPFIX mediátora je zobrazený na Obrázku \ref{o:mediator_component_model}. 
 Mediátor obsahuje jeden alebo viac sprostredkovateľských procesov, hierarchicky uložených 
 medzi jedným alebo viacerými exportovacími a zhromažďovacími procesmi. Tento model sa týka 
 najbežnejšieho prípadu, kedy mediátor prijíma dátové záznamy od exportéra, alebo iného mediátora.
@@ -35,7 +35,7 @@ najbežnejšieho prípadu, kedy mediátor prijíma dátové záznamy od exporté
 \subsubsection{Komponenty sprostredkovania správ v IPFIX}
 
 V nasledujúcich častiach si bližšie priblížime jednotlivé komponenty IPFIX mediátora, ktoré sú
-znázornene na obrázku \ref{o:mediator_component_model}.
+znázornene na Obrázku \ref{o:mediator_component_model}.
 
 \paragraph{Zhromažďovací proces}
 

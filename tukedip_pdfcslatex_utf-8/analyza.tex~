@@ -260,7 +260,7 @@ Hlavička naviac obsahuje \emph{počet polí pôsobnosti}. Pôsobnosť charakter
 informácií. Šablóna povoľuje 
 definovať viac polí pôsobnosti ako jedno. V tomto prípade je celková pôsobnosť daná kombináciou týchto polí.
 Počet polí pôsobnosti nemôže byť nulový, pričom \emph{počet polí} je 
-súčtom polí pôsobnosti a špecifikátorov poľa.
+súčtom polí pôsobnosti a špecifikátorov poľa.\citep{rfc5102}
 
 \begin{figure}[ht!]
 \centering
