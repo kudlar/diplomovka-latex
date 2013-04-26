@@ -737,7 +737,7 @@ s~pou\v{z}it\'{\i}m uvedenej odbornej literat\'ury.
   \par
   \vskip 1.5em}
 \fi
-\setcounter{secnumdepth}{3}
+\setcounter{secnumdepth}{4}
 \newcounter {part}
 \newcounter {section}
 \newcounter {subsection}[section]
@@ -985,7 +985,7 @@ s~pou\v{z}it\'{\i}m uvedenej odbornej literat\'ury.
 \newcommand\@pnumwidth{1.55em}
 \newcommand\@tocrmarg{2.55em}
 \newcommand\@dotsep{4.5}
-\setcounter{tocdepth}{3}
+\setcounter{tocdepth}{4}
 \newcommand\tableofcontents{%
     \section*{\contentsname
         \@mkboth{%

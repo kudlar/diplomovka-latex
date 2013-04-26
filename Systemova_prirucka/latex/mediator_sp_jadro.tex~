@@ -14,6 +14,7 @@ Vzhµadom k trvalému rastu IP prevádzky v heterogénnych sie»ových prostrediach,
 tieto exportér-kolektor systémy mô¾u vies» k problémom ¹kálovateµnosti. Naviac,
 neposkytujú flexibilitu potrebnú pre ¹iroký rad meracích aplikácii.
 
+Mediator v1.0 je aplikaèný rámec, ktorý poskytuje rozhranie pre rozmanité sprostredkovateµské procesy.
 Sprostredkovateµské moduly Mediátora mô¾u z pohµadu manipulácie s dátami poskytova» agregáciu, koreláciu,
 filtrovanie, anonymizáciu 
 a iné úpravy záznamov o tokoch za úèelom ¹etrenia výpoètových zdrojov meracieho systému a vykonávania 
@@ -25,10 +26,23 @@ Program bol v roku 2013 vytvorený Rastislavom Kudlom v rámci jeho diplomovej prá
 
 
 
-\section{Analýza problému}
+\section{Anal\'yza probl\'emu}
+
+Výhodou monitorovania sie»ovej prevádzky na báze tokov je to, ¾e je mo¾né mera»
+veµké mno¾stvo sie»ovej prevádzky v distribuovaných pozorovacích bodoch. Zatiaµ èo
+tento typ monitorovania mô¾e by» pou¾itý na rôzne úèely a pre rozmanité aplikácie,
+je veµmi obtia¾ne aplikova» ho paralelne na viac aplikácii s veµmi rozdielnymi po¾iadavkami. Sie»oví 
+administrátori musia nastavi» parametre meracích nástrojov tak,
+aby vyhoveli po¾iadavkám ka¾dej jednej monitorovacej aplikácii. Takéto konfigurácie
+èasto nie sú podporované meracími nástrojmi. Èi u¾ kvôli funkèným obmedzeniam,
+alebo kvôli pamä»ovým a výpoètovým limitom, ktoré zamedzujú meraniu veµkých
+dátových tokov. Sprostredkovanie správ v IPFIX - \emph{IP Flow Information Export (IPFIX) Mediation} 
+vypåòa túto medzeru medzi obmedzenými mo¾nos»ami merania a po¾iadavkami na monitorovacie aplikácie 
+zavedením sprostredkovateµského zariadenia nazývaného IPFIX Mediátor \citep{rfc5982}.
+
 
 Problematika sprostredkovania IPFIX správ je podrobne spracovaná v \citep{rfc5982}. 
-Hovori o tom, ¾e sie»oví administrátori èasto celia problémom týkajúcim sa ¹kálovateµnosti meracieho 
+Hovorí o tom, ¾e sie»oví administrátori èasto èelia problémom týkajúcim sa ¹kálovateµnosti meracieho 
 systému, flexibility monitorovania na základe tokov, alebo aj spoµahlivosti exportovania.
 Napriek tomu, ¾e sa vyvinuli známe techniky ako \emph{vzorkovanie a filtrovanie  paketov}, \emph{zoskupovanie 
 dátových záznamov}, alebo \emph{replikácia exportu}, tieto problémy nevymizli.
@@ -43,7 +57,7 @@ toku}, èi \emph{spoµahlivos» exportu}. Tieto okolnosti závisia na dvoch faktoroc
 \end{enumerate}
 
 
-\subsection{Vybrané príklady pou¾itia sprostredkovania správ} \label{sec:mediator_examples}
+\subsection{Vybrané pr\'iklady pou\v{z}itia sprostredkovania spr\'av} \label{sec:mediator_examples}
 
 RFC 5982 \citep{rfc5982} uvádza viacero príkladov zaradenia IPFIX Mediátora do klasickej
 exportér - kolektor architektúry. Uveïme aspoò niektoré:
@@ -65,51 +79,8 @@ exportér - kolektor architektúry. Uveïme aspoò niektoré:
 
 
 
-\subsection{Analýza aplikaèného rámca pre IPFIX Mediátor} 
-
-\begin{figure}[ht!]
-\centering
-\includegraphics[width=0.9\textwidth]{mediation_reference_model}
-\caption{Referenèný model sprostredkovania správ v IPFIX}\label{o:mediation_reference_model}
-\end{figure}
-
-Analýze aplikaèného rámca pre sprostredkovanie správ v IPFIX sa venuje RFC 6183 \citep{rfc6183}. 
-Na Obrázku \ref{o:mediation_reference_model} je zobrazený referenèný model sprostredkovania správ v IPFIX 
-ako roz¹írenie referenèného modelu IPFIX, popísaného v \emph{Architecture for IP Flow Information Export} 
-\citep{rfc5470}. Táto schéma zobrazuje mo¾né scenáre, ktoré mô¾u existova» v meracej architektúre.
-
-
-
-Funkèné komponenty v rámci ka¾dej entity sú ohranièené zátvorkami []. Mediátor mô¾e prijíma» 
-záznamy o toku od iných mediátorov a exportérov a prúd záznamov z iných zdrojov.
-Za iné zdroje sa pova¾ujú nástroje iných protokolov, ako napríklad NetFlow exportéry \citep{rfc3954}. 
-Spracovane dáta vo forme záznamov o toku potom exportuje jednému alebo viacerým kolektorom a mediátorom.
-
-\begin{figure}[ht!]
-\centering
-\includegraphics[width=0.7\textwidth]{mediator_component_model}
-\caption{Zjednodu¹ený model komponentov IPFIX Mediátora}\label{o:mediator_component_model}
-\end{figure}
-
-Zjednodu¹ený model komponentov IPFIX mediátora je predstavuje Obrázok \ref{o:mediator_component_model}. 
-Mediátor obsahuje jeden alebo viac sprostredkovateµských procesov, hierarchicky ulo¾ených 
-medzi jedným alebo viacerými exportovacími a zhroma¾ïovacími procesmi. Tento model sa týka 
-najbe¾nej¹ieho prípadu, kedy mediátor prijíma dátové záznamy od exportéra, alebo iného mediátora.
-
-Sprostredkovateµské procesy sú kµúèovými funkènými blokmi sprostredkovania správ v IPFIX. Musia pokry» 
-ka¾dý príklad pou¾itia sprostredkovania správ z kapitoly \ref{sec:mediator_examples}. 
-Mediátor je schopný súèasne podporova» viac ako jeden sprostredkovateµský proces. 
-\begin{itemize}
- \item \textbf{Paralelné spracovanie} - Prúd záznamov je spracovaný viacerými sprostredkovateµskými procesmi 
- paralelne. V tomto scenári, ka¾dý sprostredkovateµský proces dostáva kópiu celého prúdu záznamov ako vstup.
- \item \textbf{Sériové spracovanie} - Sprostredkovateµské procesy sú zapojene sériovo. Výstupný prúd 
- záznamov jedného procesu je vstupným prúdom nasledujúceho.
-\end{itemize}
-
-%--------------------------------------------
 
 \clearpage
-
 \section{Popis programu}
 
 Jednotlivé èasti programu sú umiestnené v~nasledujúcich balíkoch:
@@ -118,7 +89,7 @@ Jednotlivé èasti programu sú umiestnené v~nasledujúcich balíkoch:
 \item \verb|sk.tuke.cnl.bm.Mediator.collecting| - implementácia zhroma¾ïovacieho procesu
 \item \verb|sk.tuke.cnl.bm.Mediator.exporting| - implementácia exportovacieho procesu
 \item \verb|sk.tuke.cnl.bm.Mediator.IntermediateProcesses| - triedy tvoriace podporu pre sprostredkovateµské 
-procesy. Hlavne triedy nových modulov musia by» umiestnené v tomto balíku!
+procesy. Hlavné triedy nových modulov musia by» umiestnené v tomto balíku!
 \item \verb|sk.tuke.cnl.bm.Mediator.IPFIX| - triedy s~manuálnou implementáciou protokolu IPFIX
 \item \verb|sk.tuke.cnl.bm.Mediator.exceptions| - vlastné výnimky aplikácie
 \item \verb|sk.tuke.cnl.bm.Mediator| - hlavné triedy samotného programu
@@ -126,43 +97,257 @@ procesy. Hlavne triedy nových modulov musia by» umiestnené v tomto balíku!
 
 
 
-\subsection{Popis rie¹enia}
+
+\subsection{Architekt\'ura rie\v{s}enia} 
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.8\textwidth]{mediator_reference_model}
+\caption{Referenèný model Mediátora}\label{o:mediator_reference_model}
+\end{figure}
+
+Analýze aplikaèného rámca pre sprostredkovanie správ v IPFIX a jej architektúre sa venuje RFC 
+6183 \citep{rfc6183}. 
+Na základe referenèného modelu sprostredkovania správ v IPFIX ako roz¹írenia referenèného modelu 
+IPFIX, popísaného v Architecture for IP Flow Information Export \emph{Architecture for IP Flow Information Export}
+bol navrhnutý referenèný model architektúry rie¹enia programu Mediator v1.0. Táto schéma zobrazuje mo¾né 
+scenáre, ktoré mô¾u existova» v meracej architektúre. Funkèné komponenty v rámci ka¾dej entity sú 
+ohranièené zátvorkami []. Mediátor mô¾e prijíma» záznamy o toku od iných mediátorov a exportérov 
+transportným protokolom UDP. Spracované dáta vo forme záznamov o toku potom exportuje protokolom UDP 
+jednému kolektoru alebo inému mediátoru, pozri Obrázok \ref{o:mediator_reference_model} 
 
 
-%V~prvom rade bolo potrebné umo¾ni» podporu viacerých záznamov v~sade. Trieda NetXMLParser bola rozdelená na dve samostatné jednotky. Jednou je vlákno UDPProcessor, ktorého úlohou je vybera» údaje z~PacketCache a èas» spracovania bole prepísaná do novej triedy IpfixParser. Parsovanie IPFIX správ bolo  zoptimalizované a upravené do prehµadnej podoby. Celkový problém bol rozdelený na men¹ie úlohy, ktoré sú realizované metódami na parsovanie správy, sady, a v¹etkých druhov záznamov. V~metóde slú¾iacej na spracovanie sady bol pre ka¾dý druh sady pridaný cyklus, ktorý vyberá záznamy zo sady, a¾ kým sa pozícia v~buffri nedostane na koniec sady.
-%
-%Dekódovanie dát jednotlivých informaèných elementov bolo presunuté do samostatnej  triedy. Podobne ako v~triede IpfixParser je volaná jedna metóda, ktorá na základe dátového typu presunie spracovanie na metódy zaoberajúce sa danou skupinou dátových typov. Údaje z~buffra pre dátový typ octetArray sú prevedené do podoby re»azce v~kódovaní Base64 aby ich bolo mo¾né ulo¾i» v~databáze. Bajt v~buffri pre dátový typ boolean je interpretovaný ako true pri hodnote 1 a ako false pri hodnote 0. V¹etky ostatné hodnoty znamenajú chybu a je to oznámené volajúcej metóde výnimkou DataException. Okrem implementácie dekódovania dátového typu macAddres bola e¹te opravená interpretácia dátových typov dateTimeMicroseconds a dateTimeNanoseconds. Keï¾e sa tieto hodnoty musia zmesti» do ôsmich bajtov vo formáte NTP Timestamp a analyzujúce aplikácie sú postavené na technológii Java, ktorá nepozná bezznamienkové typy, je vhodné ulo¾i» tieto hodnoty v~nezmenenej podobe ako znamienkové 64-bitové èíslo (long). Po získaní èísla 
-%z~databázy je mo¾né jednoducho pou¾i» triedu Timestamp z~kni¾nice Apache Commons Net na jednoduch¹iu prácu s~touto èasovou známkou.
-%
-%Na podporu redukovaného kódovania bola vytvorená metóda handleReducedSizeEncoding(), ktorá zo skráteného informaèného elementu vytvorí buffer plnej veµkosti, ktorý je mo¾né be¾ným spôsobom interpretova». Pre bezznamienkové èísla sa do plnej veµkosti zµava doplnia nulové bajty. Pre záporné znamienkové èísla sa doplnia bajty o~hodnote 255, aby sa zachovala hodnota èísla. Redukovaný mô¾e by» aj dátový typ float64, a to pou¾itím polovièného poètu bajtov. Vtedy sa dáta interpretujú ako float32.
-%
-%Organizáciou definované informaèné elementy sú definované v~súbore ipfixFields.xml. Aby sa uva¾ovalo èíslo organizácie pre informaèné elementy, musela by» doplnená trieda IpfixElements o~mo¾nos» evidencie informaèných elementov nielen na základe ich identifikátora, ale súèasne s~èíslom organizácie (¹tandardné informaèné elementy sú uva¾ované s~èíslom organizácie 0). Spoloène s~tým v¹etky metódy slú¾iace na prístup k~informáciám o~informaèných elementoch museli by» roz¹írené o~parameter èísla organizácie.
-%
-%Variabilné informaèné elementy boli implementované v~triede IpfixParser. Pri výbere informaèného elementu, ktorého veµkos» je v~zázname ¹ablóny definovaná ako 65535 je vybratý prvý bajt z~dátovej èasti na aktuálnej pozícii. Ak je tento bajt men¹í ako 255, je vybraných toµko bajtov z~buffra, koµko tento bajt uvádza. Ak má bajt hodnotu 255, då¾ka je získaná z~ïal¹ích dvoch bajtov.
-%
-%Súèas»ou zmien v~parseri je detekcia po¹kodených správ. Ak je skutoèná veµkos» správy iná ako sa uvádza v~hlavièke, ide o~chybu. Pri ka¾dej chybe je vyhodená výnimka DataFormatException. Chyba je indikovaná aj keï je poèet zostávajúcich bajtov v~buffri men¹í ako veµkos» sady. Pri výbere údajov z~dátového záznamu alebo záznamu ¹ablóny sa testuje náraz na pravú hranicu sady. V~prípade jej dosiahnutia sa tie¾ ohlási chyba.
-%
-%Na pridanie podpory expirácie ¹ablón musela sa do záznamu ¹ablóny prida» polo¾ka èasu príchod ¹ablóny. Cache bola sprehµadnená a pred parsovaním
-%dátového záznamu je overovaná platos» ¹ablóny. V~prípade ak je neplatná, dátová sada sa preskoèí. Ka¾dých 10 minút sa spú¹»a èistiace vlákno, aby vymazalo expirované ¹ablóny a zabránilo tak zaplòovaniu pamäte JXColl.
-%Transportné protokoly TCP a SCTP pou¾ívajú vlastnú cache na uschovanie ¹ablón s~platnos»ou len pre konkrétne pripojenie, resp. asociáciu.
-%Umo¾òená bola podpora pre zru¹enie ¹ablón pomocou Template Withdrawal správ. V~prípade, ak exportér po¹le u¾ kolektorom evidovanú ¹ablónu, alebo ak ru¹í neexistujúcu ¹ablónu, spojenie, resp. asociácia sa preru¹í. 
-%
-%Protokoly TCP a SCTP vyu¾ívajú na ka¾dé pripojenie samostatné vlákno. Obidva protokoly poèúvajú na nakonfigurovanom porte a poèet pripojení, resp. asociácií je ohranièený nastavením v~konfiguraènom súbore. Na podporu protokolu SCTP bolo potrebné prejs» na nov¹iu verziu Javy 1.7.
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.8\textwidth]{mediator_component_model}
+\caption{Zjednodu¹ený model komponentov IPFIX Mediátora}\label{o:mediator_component_model}
+\end{figure}
+
+Zjednodu¹ený model komponentov programu Mediator v1.0 predstavuje Obrázok \ref{o:mediator_component_model}. 
+Mediátor mô¾e obsahova» jeden alebo viac sprostredkovateµských procesov, hierarchicky ulo¾ených 
+medzi jedným exportovacím a zhroma¾ïovacím procesom.
+
+Sprostredkovateµské procesy sú kµúèovými funkènými blokmi sprostredkovania správ v IPFIX. Rôzne procesy
+pokrývajú ka¾dý príklad pou¾itia sprostredkovania správ z kapitoly \ref{sec:mediator_examples}. 
+Mediator v1.0 je schopný súèasne podporova» viac ako jeden sprostredkovateµský proces a tok dát medzi 
+nimi je riadený nasledujúcimi spôsobmi:
+\begin{itemize}
+ \item \textbf{Paralelné spracovanie} - Prúd záznamov je spracovaný viacerými sprostredkovateµskými procesmi 
+ paralelne tak, aby boli splnené po¾iadavky koncových aplikácií. V tomto scenári, ka¾dý 
+ sprostredkovateµský proces dostáva kópiu celého prúdu záznamov ako vstup.
+ \item \textbf{Sériové spracovanie} - Aby bolo zabezpeèené flexibilné spracovanie prúdu záznamov, sprostredkovateµské
+ procesy sú zapojene sériovo. V tomto prípade výstupný prúd záznamov jedného procesu je vstupným prúdom 
+ nasledujúceho.
+\end{itemize}
+
+
+
+\subsection{Popis rie\v{s}enia}
+
+\subsubsection{Hlavn\'a trieda Medi\'atora}
+
+Úlohou hlavnej triedy Mediátora je postupne spusti» v¹etky svoje vlákna a procesy potrebné pre beh 
+programu. Najprv sa preèítajú a spracujú argumenty príkazového riadku, ktoré mô¾u by»: cesta ku 
+konfiguraènému súboru a zadaná mo¾nos» \verb|--logtofile|. Vtedy sú v¹etky 
+logovacie výstupy presmerované zo ¹tandardného výstupu do súboru.
+
+Potom ako program naèíta v¹etky nastavenia z konfiguraèného súboru, spustí svoje moduly - 
+sprostredkovateµské procesy pomocou triedy \verb|IPLoader|. Nasleduje spustenie vlákna, ktoré prijíma 
+IPFIX pakety prostredníctvom protokolu UDP a vlákna, ktoré ich spracováva. Hovoríme o \verb|UDPServer| 
+a \verb|UDPProcessor|. Nakoniec je spustené exportovacie vlákno - \verb|UDPExporter|. Kedykoµvek keï 
+nastane chyba je Mediátor korektne ukonèený a to tak, ¾e uvoµní v¹etku pamä» a zastaví be¾iace vlákna. 
+Rovnako je Mediátor zastavený po stlaèení kombinácie kláves \verb|Ctrl+c|.
+Struène o ka¾dom spomenutom vlákne a procese bude povedané v nasledujúcich kapitolách. K podrobnej¹ím
+informáciám sa èitateµ dostane v hlavnej èasti diplomovej práce.
+
+
+\subsubsection{Zhroma\v{z}\v{d}ovac\'i proces} \label{sec:collectingprocess}
+
+Logická ¹truktúra procesu sa skladá z dvoch fáz, prièom ka¾dú fázu predstavuje jedno vlákno. 
+Venujme sa teda jednotlivým fázam procesu.
+
+
+
+\paragraph{1. f\'aza zhroma\v{z}\v{d}ovacieho procesu}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.8\textwidth]{collecting1_schema}
+\caption{Schéma prvej fázy zhroma¾ïovacieho procesu Mediátora}\label{o:collecting1_schema}
+\end{figure}
+
+Prvá fáza je znázornená na Obr. \ref{o:collecting1_schema} a predstavuje najni¾¹iu vrstvu celého 
+nástroja. Jej jadrom je UDP server, be¾iaci v samostatnom vlákne. V jeho hlavnej metóde \emph{run()}
+cyklicky vykonáva kód, dokiaµ nie je preru¹ený výnimkou \emph{InterruptedException}.
+Tento kód odchytáva údaje posielané protokolom UDP na úrovni bytov a ukladá ich do 
+buffera. Tieto údaje, spolu s IP adresou exportéra a èasom prijatia dát zabalí do objektu triedy
+\verb|PacketObject|. Prijatá IPFIX správa sa v tejto forme ulo¾í do vyrovnávacej 
+pamäte typu \emph{FIFO} front, ktorá oddeµuje prvú a druhú fázu zhroma¾ïovacieho procesu. 
+
+Návrh do budúcnosti umo¾òuje jednoduché roz¹írenie o serveri iných protokolov, napr. TCP a SCTP. 
+Tieto serveri budú rovnako ako \verb|UDPServer| be¾iace v samostatných vláknach.
+
+
+
+\paragraph{2. f\'aza zhroma\v{z}\v{d}ovacieho procesu}
+
+Schému druhej fázy mô¾eme vidie» na Obr. \ref{o:collecting2_schema}. Hlavná metóda \emph{run()} vlákna 
+\verb|UDPProcessor| cyklicky vyberá dáta z \verb|PacketCache| a predáva ich \emph{parseru} - \verb|IPFIXParser|. 
+Pakety, ktoré nie sú IPFIX správami, ale aj po¹kodené dáta program zahadzuje a pokraèuje spracovávaním 
+ïal¹ej správy.
+Trieda \verb|IPFIXParser| spracuje prijaté binárne dáta do hotového objektu IPFIX správy, 
+Metódy tejto triedy najprv vykladajú kompletnú hlavièku správy a potom sa pustia do parsovania IPFIX 
+sád a ich záznamov. Program podporuje v¹etky 3 typy IPFIX sád, konkrétne sadu ¹ablón, sadu ¹ablón 
+mo¾ností a dátovú sadu. 
+
+Prichádzajúce záznamy ¹ablón a záznamy ¹ablón mo¾nosti sú spravované triedou \verb|IPFIXUdpTemplateCache|.
+Objekty nových ¹ablón ukladá, ¹ablóny ktoré pozná aktualizuje. Zároveò ma¾e staré ¹ablóny, ku ktorým 
+nedostala aktualizáciu po dobu definovanú v konfiguraènom súbore.
+
+Napokon sa ka¾dý dátový záznam v dátovej sade, s prislúchajúcou ¹ablónou a hlavièkou IPFIX správy 
+zabalí do objektu triedy \verb|IPFIXFlowRecord|, ktorá je reprezentáciou záznamu o toku. 
+Tento záznam spolu s re»azcom, ktorý urèuje odkiaµ záznam vystupuje \emph{(inputProcess)} sú posielané
+ako parametre triede \verb|FlowRecordDispatcher|. Dispeèer záznamov o tokoch rozdistribuuje prijaté 
+záznamy príslu¹ným sprostredkovateµským procesom, alebo ich po¹le na export. 
+
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.8\textwidth]{collecting2_schema}
+\caption{Schéma druhej fázy zhroma¾ïovacieho procesu Mediátora}\label{o:collecting2_schema}
+\end{figure}
+
+
+
+
+
+\subsection{Rozhranie a podpora pre sprostredkovate\v{l}sk\'e moduly} \label{sec:intermediate_process}
+
+
+\subsubsection{Abstraktn\'a trieda AIntermediateProcess} 
+
+Tato trieda je akýmsi rozhraním pre sprostredkovateµské procesy, ktoré oddeµuje ich logiku od logiky 
+aplikaèného rámca. Navy¹e definuje základné vlastnosti, ktoré sú rovnaké pre v¹etky procesy a 
+implementuje metódy, ktoré majú by» procesom dostupné.
+
+Trieda zabezpeèuje nasledujúce vlastnosti a metódy:
+\begin{itemize}
+ \item \textbf{Viacvláknovos»} - Ka¾dý modul musí by» vykonávaný v samostatnom vlákne. Preto dedí
+od triedy \verb|Thread| a obsahuje abstraktnú metódu \emph{run()}, èo je vlastne deklaráciou 
+hlavnej metódy vlákien.
+
+ \item \textbf{Jediná in¹tancia modulov} - Zabezpeèuje, ¾e moduly sú implementované podµa návrhového 
+ vzoru Singleton. Rie¹enie je hybridom viacerých prístupov, ktoré sa diskutujú na Internete, no vychádza 
+ z návrhového vzoru \emph{Factory method}. Výsledkom je abstraktná trieda, slú¾iaca ako továreò na 
+podtriedy tým, ¾e volá jej statická metóda \emph{getInstance(Class clazz)}. Získané in¹tancie sprostredkovateµských
+modulov uchováva v hashmape. 
+
+ \item \textbf{Dekódovanie dátových záznamov} - Na základe dátového typu je urèená metóda, ktorá dekóduje 
+hodnoty informaèných elementov. Dekódovanie je implementované v súlade s RFC 5101 \citep{rfc5101} a 
+RFC 5102 \citep{rfc5102} pre v¹etky dátové typy podporované protokolom IPFIX. Dekódované hodnoty sa 
+ukladajú do hash mapy, ktorá kvôli jednoduchému vyhµadávaniu prvkov asociuje názov informaèného elementu 
+na jeho hodnotu. 
+ 
+ \item \textbf{Zakódovanie dátových záznamov} - Návrh a implementácia bola analogická k dekóderu. 
+Aj tu sú pokryté v¹etky dátové typy, ktoré podporuje IPFIX protokol. Podla ¹pecifikácie
+\citep{rfc5101} musia by» zakódované informaèné elementy posielané v sie»ovom poradí bytov, známom 
+tie¾ ako \emph{Big-Endian}. Pri kódovaní je veµmi dôle¾itá rýchlos» a pamä»ová 
+nenároènos» kódovacích funkcií. Preto bol kladený veµký dôraz na to, aby boli 
+kódovacie funkcie èo najoptimálnej¹ie. Preto boli pre v¹etky konverzie implementované metódy pomocou bitových
+posunov a bitových operátorov.
+\end{itemize}
+
+
+\subsubsection{Pr\'iklad implement\'acie modulu - ExampleProcess}
+
+Pre budúcich rie¹iteµov bol pripravený jednoduchý príklad implementácie sprostredkovateµského procesu.
+Predstavuje ho trieda \verb|ExampleProcess|, ktorej úlohou je veµmi jednoduchá anonymizácia zdrojovej a 
+cieµovej IP adresy zmenením èísla posledného oktetu na nulu. 
+
+Trieda demon¹truje v¹etky pravidlá programovania sprostredkovateµských procesov a zároveò predvádza 
+pou¾itie metód, ktoré programátorom poskytuje jej rodièovská trieda \verb|AIntermediateProcess|.
+Prechádza v¹etky dátové záznamy vstupného záznamu o tokoch, dekóduje ich, anonymizuje zdrojovú a cieµovú 
+IP adresu a naspa» zakóduje. Ak v¹etko prebehlo bez problémov, tak výstupný záznam o toku 
+posunie distribútorovi záznamov, ktorý ho bude prepo¹le 
+nasledujúcemu sprostredkovateµskému procesu, alebo pripraví na export.
+
+
+\subsubsection{Dynamick\'e na\v{c}\'itavanie sprostredkovate\v{l}sk\'ych procesov} \label{sec:intermediate_load}
+
+
+Naèítavanie modulov má na starosti trieda \verb|IPLoader|. Jej hlavná metóda
+\emph{loadProcesses()} na základe \emph{class} objektu ka¾dého z modulov získa jeho jedineènú in¹tanciu 
+Keï¾e ka¾dý proces je samostatným vláknom, teda dedí od triedy \verb|Thread|, u¾ ho len ostáva spusti» 
+pomocou metódy \emph{start()}. Toto zabezpeèí reflexia, ktorá získa metódu a následne ju vyvolá 
+\emph{(invoke)}.
+
+
+\subsubsection{Trieda FlowRecordDispatcher} \label{sec:FlowRecordDispatcher}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.9\textwidth]{flowRecordDispatcher_schema}
+\caption{Schéma toku dát cez triedu FlowRecordDispatcher}\label{o:flowRecordDispatcher_schema}
+\end{figure}
+
+Úlohou tejto triedy je riadi» tok dát medzi komponentami IPFIX Mediátora na základe nastavenia v 
+konfiguraènom súbore.
+
+Práca triedy \verb|FlowRecordDispatcher| zaèína keï prijme prvé dáta od zhroma¾ïovacieho procesu. Dáta 
+prijíma cez dva parametre: záznam o toku - \verb|IPFIXFlowRecord| a re»azec urèujúci odkiaµ tento záznam 
+vystupuje - \emph{inputProcess}. Na jeho základe získa zoznam prijímateµov tohto záznamu o toku z konfiguraèného
+súboru. Metódou \emph{getInstance(String processName)} zavolanou nad
+abstraktnou triedou \emph{AIntermediateProcess} získa jedinú in¹tanciu sprostredkovateµského procesu. 
+Ka¾dej takto získanej in¹tancii sprostredkovateµského procesu zapí¹e do vstupného buffera 
+\emph{inputBuffer} záznam o toku.
+
+Ak metóda na získanie zoznamu prijímateµov vráti prázdny zoznam, vyplýva, ¾e záznam o toku 
+sa nemá presmerova» ïal¹iemu sprostredkovateµskému procesu, ale je u¾ urèený na export. Preto záznam o 
+toku je zapísaný do vyrovnávacej pamäte pre export. Výsledkom je, ¾e dáta boli presmerované správnym 
+prijímateµom a boli splnené príslu¹né po¾iadavky na rámec pre IPFIX Mediátor.
+
+\subsection{Exportovac\'i proces}
+
+Poslednou fázou Mediátora je exportovací proces. Jeho schéma je zobrazená na Obrázku 
+\ref{o:exporting_schema}. 
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.8\textwidth]{exporting_schema}
+\caption{Schéma exportovacieho procesu}\label{o:exporting_schema}
+\end{figure}
+
+Jadrom exportovacieho procesu je trieda \verb|UDPExporter|, predstavujúca samostatné vlákno. V 
+kon¹truktori vytvára UDP socket na prijímanie a posielanie paketov a navia¾e ho na akýkoµvek voµný port.
+K tomu slú¾i volanie bezparametrického kon¹truktora triedy \verb|DatagramSocket|. V jeho hlavnej metóde 
+\emph{run()} vykonáva cyklus dokiaµ nie je preru¹ený. V cykle èíta a vyberá záznamy o tokoch z 
+vyrovnávacej pamäte pre export. Záznamy posiela triede \verb|MessageEncoder|, ktorá z neho poskladá 
+IPFIX paket. 
+
+\verb|MessageEncoder| vo svojich metódach postupne tvori obsah IPFIX správy podµa formátu definovaného 
+pracovnou skupinou IPFIX zo záznamu o tokoch. Na prvom mieste je prúd bytov hlavièky správy. Ak sa 
+exportuje aj ¹ablóna, tak nasleduje prúd sady ¹ablóny 
+a posledným je prúd dátovej sady. 
+
+Trieda \verb|UDPExporter| teraz z prúdu IPFIX správy vytvori 
+UDP paket. Na to slú¾i trieda \verb|DatagramPacket|, prièom jej parametrami sú dáta, då¾ka správy, 
+IP adresa a UDP port. Posledné dve menované sú zadané administrátorom v konfiguraènom súbore. Metódou 
+\emph{send()} zavolanou nad socketom je správa odoslaná.
 
 
 
 
 \clearpage
-\section{Popis tried, èlenských premenných a~metód}
+\section{Popis tried, \v{c}lensk\'ych premenn\'ych a~met\'od}
 
 Keï¾e niektoré triedy Mediátora sú kvôli jednotnosti rie¹ení v rámci výskumnej skupiny MONICA toto¾né 
-s triedami nastroja JXColl, v~nasledujúcich èastiach budú uvedené len tie, ktoré sa tykajú výhradne 
+s triedami nastroja JXColl, v~nasledujúcich èastiach budú uvedené len tie, ktoré sa týkajú výhradne 
 Mediátora. Popis ostatných tried a~metód je uvedený v~systémovej príruèke programu 
 JXColl \citep{jxcoll_sp}.  
 
 % ----------HLAVNÝ BALÍK --------------------------------------
 
-\subsection{Balík sk.tuke.cnl.bm.Mediator}
+\subsection{Bal\'ik sk.tuke.cnl.bm.Mediator}
 
 \subsubsection{Trieda Default}
 Trieda predstavuje rozhranie obsahujúce východiskové hodnoty konfiguraèného súboru. Neobsahuje kon¹truktor
@@ -409,7 +594,7 @@ Validuje formát MAC adresy. \\
 
 % ----------BALÍK IPFIX --------------------------------------
 
-\subsection{Balík sk.tuke.cnl.bm.Mediator.IPFIX}
+\subsection{Bal\'ik sk.tuke.cnl.bm.Mediator.IPFIX}
 
 \subsubsection{Trieda IPFIXEncoder}
 Trieda so statickými metódami slú¾iacimi na zakódovanie re»azcovej reprezentácie hodnôt informaèných
@@ -619,7 +804,7 @@ Vracia jedineènú in¹tanciu objektu.
 
 % ----------BALÍK INTERMEDIATE PROCESS ----------------------------------
 
-\subsection{Balík sk.tuke.cnl.bm.Mediator.IntermediateProcesses}
+\subsection{Bal\'ik sk.tuke.cnl.bm.Mediator.IntermediateProcesses}
 
 
 Diagram tried rozhrania pre sprostredkovateµské procesy, vrátane triedy \verb|ExampleProcess| je znázornený
@@ -661,7 +846,7 @@ triedy \verb|IPFIXElements|.\\
 
 Toto rie¹enie je hybridom viacerých prístupov, ktoré sa diskutujú na Internete, no vychádza z 
 návrhového vzoru \emph{Factory method}. Výsledkom je abstraktná trieda, slú¾iaca ako továreò na 
-podtriedy tým, ¾e volá jej statickú metódu \emph{getInstance(Class clazz)}. 
+podtriedy tým, ¾e volá jej statická metóda \emph{getInstance(Class clazz)}. 
 Ak sú splnené podmienky, ¾e konkrétna trieda, napr. \verb|SelectionProcess| je definovaná v rovnakom 
 balíèku ako \verb|AIntermediateProcess| a ich kon¹truktory nemajú explicitne nastavený prístup 
 (predvoleným prístupom je \uv{privátny v rámci balíèka}), tak 
@@ -808,7 +993,7 @@ poèas èakania.
 
 %----------COLLECTING --------------------------------------
 
-\subsection{Balík sk.tuke.cnl.bm.Mediator.collecting}
+\subsection{Bal\'ik sk.tuke.cnl.bm.Mediator.collecting}
 
 Zjednodu¹ený diagram tried tohto balíka mô¾eme vidie» na Obr. \ref{o:collecting1_class} a na 
 Obr. \ref{o:collecting2_class}.
@@ -869,7 +1054,7 @@ posunutý triede \verb|FlowRecordDispatcher|.
 
 % --------------------- EXPORTING ---------------------------
 
-\subsection{Balík sk.tuke.cnl.bm.Mediator.exporting}
+\subsection{Bal\'ik sk.tuke.cnl.bm.Mediator.exporting}
 
 Diagram tried exportovacieho procesu je na Obr. \ref{o:exporting_class}.
 
@@ -1047,7 +1232,7 @@ Vzniknutý paket odo¹le.
 
 % --------------------- EXCEPTIONS ---------------------------
 
-\subsection{Balík sk.tuke.cnl.bm.exceptions}
+\subsection{Bal\'ik sk.tuke.cnl.bm.exceptions}
 
 Balík obsahuje triedy výnimiek ¹pecifických pre Mediátor. V¹etky výnimky dedia od hlavnej triedy 
 výnimiek - \verb|MediatorException|.
@@ -1058,7 +1243,7 @@ výnimiek - \verb|MediatorException|.
 \clearpage
 \section{Preklad programu}
 
-\subsection{Zoznam zdrojových textov}
+\subsection{Zoznam zdrojov\'ych textov}
 Zdrojové texty sú k~dispozícii v~prílohe diplomovej práce.
 
 \noindent Sú k~dispozícii tieto zdrojové texty:
@@ -1112,7 +1297,7 @@ Zdrojové texty sú k~dispozícii v~prílohe diplomovej práce.
 
 
 
-\subsection{Po¾iadavky na technické prostriedky pri preklade}
+\subsection{Po\v{z}iadavky na technick\'e prostriedky pri preklade}
 
 Preklad programu si vy¾aduje nasledovnú hardvérovú konfiguráciu:
 \begin{itemize}
@@ -1126,7 +1311,7 @@ Preklad programu si vy¾aduje nasledovnú hardvérovú konfiguráciu:
 
 
 
-\subsection{Po¾iadavky na programové prostriedky pri preklade}
+\subsection{Po\v{z}iadavky na programov\'e prostriedky pri preklade}
 \begin{itemize}
 \item operaèný systém GNU/Linux s~verziou jadra 2.6 a vy¹¹ou 
 \item Java Runtime Environment (JRE) verzie 1.7.0\_03 a~vy¹¹ej
@@ -1136,7 +1321,7 @@ Preklad programu si vy¾aduje nasledovnú hardvérovú konfiguráciu:
 
 
 
-\subsection{Náväznos» na iné programové produkty}
+\subsection{N\'aväznos\v{t} na in\'e programov\'e produkty}
 
 Program umo¾òuje sprostredkovanie správ medzi meracím/exportovacím procesom a zhroma¾ïovacím procesom 
 IPFIX architektúry, ktoré budú následne vyhodnotené príslu¹nými aplikáciami. Je implementáciou 
@@ -1147,7 +1332,7 @@ Z~toho vyplýva jeho náväznos» na merací/exportovací proces - BEEM a zhroma¾ïovac
 
 
 
-\subsection{Vlastný preklad}
+\subsection{Vlastn\'y preklad}
 
 Preklad programu spoèíva v~nakopírovaní zdrojových súborov a~spustení kompilátora jazyka
 Java s~potrebnými parametrami a~parametrom classpath nastaveným na prídavné kni¾nice.
@@ -1158,7 +1343,7 @@ NetBeans IDE potom staèí kliknú» na tlaèidlo \textit{Clean and Build}.
 
 
 
-\subsection{Vytvorenie in¹talaèného DEB súboru}
+\subsection{Vytvorenie in\v{s}tala\v{c}n\'eho DEB s\'uboru}
 Staèí spusti» skript \texttt{buildDeb.sh}, ktorý sa nachádza v~prieèinku /deb.
 
 \begin{center}
@@ -1195,12 +1380,12 @@ v~Netbeans IDE je potrebné vymaza» prieèinok debian (vykoná sa SVN DELETE, namie
 odstránenia zo súborového systému) a projekt ''commitnú»''. \citep{jxcoll_sp, ado_dp}
 
 
-\subsection{Opis známych chýb}
+\subsection{Opis zn\'amych ch\'yb}
 V~súèasnosti nie sú známe ¾iadne vá¾ne chyby.
 
 
 \newpage
-\section{Zhodnotenie rie¹enia}
+\section{Zhodnotenie rie\v{s}enia}
 %Hlavným cieµom práce bolo zvý¹i» interoperabilitu s~inými IPFIX rie¹eniami pomocou zvý¹enia konformity so ¹tandardom IPFIX. 
 %V~práci boli vyrie¹ené problémy, ktoré doteraz znemo¾òovali dekódovanie viacerých záznamov sade, informaèncých elementov s~variabilnou då¾kou, informaèných elementov s~redukovaným kódovaním alebo niektorých predtým neimplementovaných dátových typov. 
 %
@@ -1227,6 +1412,15 @@ RFC 5982. 2010
 \harvarditem{Kobayashi et al.}{2011}{rfc6183}
 KOBAYASHI, A. et al.: \emph{IP Flow Information Export (IPFIX) Mediation: Framework.} 
 RFC 6183. 2011
+
+\harvarditem{Claise et al.}{2008}{rfc5101}
+CLAISE, B. et al.: \emph{Specification of the IP Flow Information Export 
+(IPFIX) Protocol for the Exchange of IP Traffic Flow Information.} 
+RFC 5101. 2008
+
+\harvarditem{Quittek, et al.}{2008}{rfc5102}
+QUITTEK, J. et al.: \emph{Information Model for IP Flow Information Export} 
+RFC 5102. 2008
 
 \harvarditem{Claise}{2004}{rfc3954}
 CLAISE, B.: \emph{Cisco Systems NetFlow Services Export Version 9.} 

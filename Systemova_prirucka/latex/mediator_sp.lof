@@ -1,7 +1,11 @@
 \select@language {slovak}
-\contentsline {figure}{\numberline {2\tmspace +\thinmuskip {.1667em}--\tmspace +\thinmuskip {.1667em}1}{\ignorespaces Referenèný model sprostredkovania správ v IPFIX}}{8}{figure.2.1}
-\contentsline {figure}{\numberline {2\tmspace +\thinmuskip {.1667em}--\tmspace +\thinmuskip {.1667em}2}{\ignorespaces Zjednodu¹ený model komponentov IPFIX Mediátora}}{9}{figure.2.2}
-\contentsline {figure}{\numberline {4\tmspace +\thinmuskip {.1667em}--\tmspace +\thinmuskip {.1667em}1}{\ignorespaces Diagram tried rozhrania pre sprostredkovateµské procesy}}{26}{figure.4.1}
-\contentsline {figure}{\numberline {4\tmspace +\thinmuskip {.1667em}--\tmspace +\thinmuskip {.1667em}2}{\ignorespaces Diagram tried prvej fázy zhroma¾ïovacieho procesu}}{32}{figure.4.2}
-\contentsline {figure}{\numberline {4\tmspace +\thinmuskip {.1667em}--\tmspace +\thinmuskip {.1667em}3}{\ignorespaces Diagram tried druhej fázy zhroma¾ïovacieho procesu}}{33}{figure.4.3}
-\contentsline {figure}{\numberline {4\tmspace +\thinmuskip {.1667em}--\tmspace +\thinmuskip {.1667em}4}{\ignorespaces Diagram tried exportovacieho procesu}}{34}{figure.4.4}
+\contentsline {figure}{\numberline {3\tmspace +\thinmuskip {.1667em}--\tmspace +\thinmuskip {.1667em}1}{\ignorespaces Referenèný model Mediátora}}{10}{figure.3.1}
+\contentsline {figure}{\numberline {3\tmspace +\thinmuskip {.1667em}--\tmspace +\thinmuskip {.1667em}2}{\ignorespaces Zjednodu¹ený model komponentov IPFIX Mediátora}}{11}{figure.3.2}
+\contentsline {figure}{\numberline {3\tmspace +\thinmuskip {.1667em}--\tmspace +\thinmuskip {.1667em}3}{\ignorespaces Schéma prvej fázy zhroma¾ïovacieho procesu Mediátora}}{13}{figure.3.3}
+\contentsline {figure}{\numberline {3\tmspace +\thinmuskip {.1667em}--\tmspace +\thinmuskip {.1667em}4}{\ignorespaces Schéma druhej fázy zhroma¾ïovacieho procesu Mediátora}}{14}{figure.3.4}
+\contentsline {figure}{\numberline {3\tmspace +\thinmuskip {.1667em}--\tmspace +\thinmuskip {.1667em}5}{\ignorespaces Schéma toku dát cez triedu FlowRecordDispatcher}}{16}{figure.3.5}
+\contentsline {figure}{\numberline {3\tmspace +\thinmuskip {.1667em}--\tmspace +\thinmuskip {.1667em}6}{\ignorespaces Schéma exportovacieho procesu}}{17}{figure.3.6}
+\contentsline {figure}{\numberline {4\tmspace +\thinmuskip {.1667em}--\tmspace +\thinmuskip {.1667em}1}{\ignorespaces Diagram tried rozhrania pre sprostredkovateµské procesy}}{33}{figure.4.1}
+\contentsline {figure}{\numberline {4\tmspace +\thinmuskip {.1667em}--\tmspace +\thinmuskip {.1667em}2}{\ignorespaces Diagram tried prvej fázy zhroma¾ïovacieho procesu}}{39}{figure.4.2}
+\contentsline {figure}{\numberline {4\tmspace +\thinmuskip {.1667em}--\tmspace +\thinmuskip {.1667em}3}{\ignorespaces Diagram tried druhej fázy zhroma¾ïovacieho procesu}}{40}{figure.4.3}
+\contentsline {figure}{\numberline {4\tmspace +\thinmuskip {.1667em}--\tmspace +\thinmuskip {.1667em}4}{\ignorespaces Diagram tried exportovacieho procesu}}{41}{figure.4.4}

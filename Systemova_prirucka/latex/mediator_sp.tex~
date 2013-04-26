@@ -9,7 +9,7 @@
 %% -----------------------------------------------------------------
 \usepackage{lmodern,textcase}
 \usepackage{slovak}\renewcommand{\figurename}{Obrázok}
-\def\refname{Zoznam pou¾itej literatúry}
+\def\refname{Zoznam pou¾tej literatúry}
 \usepackage{latexsym}
 \usepackage{dcolumn} % zarovnanie cisiel v tabulke podla des. ciarky
 \usepackage{hhline}
@@ -101,7 +101,7 @@ pdfsubject={Diplomov\'a pr\'aca}
 %nazov prilohy
 %\dekan{SYSTÉMOVÁ PRÍRUÈKA MEDIATOR v1.0}
 %rok prilohy
-%\osnova{ 2010}
+%\osnova{ 2013}
 
 \autor{Bc.~Rastislav~Kudla}
 
