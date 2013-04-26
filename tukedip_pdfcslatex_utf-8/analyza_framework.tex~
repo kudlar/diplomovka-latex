@@ -6,11 +6,6 @@ aplikačného rámca.
 
 \subsubsection{Referenčný model sprostredkovania správ v IPFIX}
 
-\begin{figure}[ht!]
-\centering
-\includegraphics[width=0.9\textwidth]{mediation_reference_model}
-\caption{Referenčný model sprostredkovania správ v IPFIX}\label{o:mediation_reference_model}
-\end{figure}
 
 Obrázok \ref{o:mediation_reference_model} predstavuje referenčný model sprostredkovania správ v IPFIX 
 ako rozšírenie referenčného modelu IPFIX, popísaného v \emph{Architecture for IP Flow Information Export} 
@@ -20,22 +15,31 @@ záznamy o toku od iných mediátorov a exportérov a prúd záznamov z iných z
 Za iné zdroje sa považujú nástroje iných protokolov, ako napríklad NetFlow exportéry \citep{rfc3954}. 
 Spracovane dáta vo forme záznamov o toku potom exportuje jednému alebo viacerým kolektorom a mediátorom.
 
-\begin{figure}[ht!]
-\centering
-\includegraphics[width=0.7\textwidth]{mediator_component_model}
-\caption{Zjednodušený model komponentov IPFIX Mediátora}\label{o:mediator_component_model}
-\end{figure}
 
 Zjednodušený model komponentov IPFIX mediátora je zobrazený na Obrázku \ref{o:mediator_component_model}. 
 Mediátor obsahuje jeden alebo viac sprostredkovateľských procesov, hierarchicky uložených 
 medzi jedným alebo viacerými exportovacími a zhromažďovacími procesmi. Tento model sa týka 
 najbežnejšieho prípadu, kedy mediátor prijíma dátové záznamy od exportéra, alebo iného mediátora.
 
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.9\textwidth]{mediation_reference_model}
+\caption{Referenčný model sprostredkovania správ v IPFIX}\label{o:mediation_reference_model}
+\end{figure}
+
+
 
 \subsubsection{Komponenty sprostredkovania správ v IPFIX}
 
 V nasledujúcich častiach si bližšie priblížime jednotlivé komponenty IPFIX mediátora, ktoré sú
 znázornene na Obrázku \ref{o:mediator_component_model}.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.7\textwidth]{mediator_component_model}
+\caption{Zjednodušený model komponentov IPFIX Mediátora}\label{o:mediator_component_model}
+\end{figure}
+
 
 \paragraph{Zhromažďovací proces}
 

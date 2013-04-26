@@ -28,7 +28,7 @@ hash mapu uchovávajúcu existujúce inštancie modulov.
 Pri zakódovaní bol kladený veľký doraz na efektivitu a výpočtový výkon. Preto navrhnuté metódy namiesto 
 využívania tried jazyka pracujú na úrovni bitových operácii.
 
-TODO
+TODO dokoncit
 
 
 

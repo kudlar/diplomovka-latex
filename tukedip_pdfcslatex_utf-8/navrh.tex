@@ -73,7 +73,7 @@ a požiadavkám sú venované nasledujúce kapitoly. Upozorňujem, že termíny 
 
 %% -------------------- MEDIATOR -----------------
 
-\subsection{Hlavná trieda Mediátora}
+\subsection{Hlavn\'a trieda Medi\'atora}
 
 
 Úlohou hlavnej triedy Mediátora je postupne spustiť všetky svoje vlákna a procesy potrebné pre beh 
@@ -149,7 +149,7 @@ Trieda \verb|IPFIXParser| sa používa na spracovanie prijatých paketových bin
 výsledkom je hotový objekt IPFIX správy, obsahujúci všetky jej komponenty, pozri kapitolu 
 \ref{sec:message_format}, strana \pageref{sec:message_format}. Metódy tejto triedy najprv vyskladajú 
 kompletnú hlavičku správy a potom sa pustia do parsovania IPFIX sád. Na základe identifikátora sady 
-spracujú a vytvoria objekty pre sadu šablón, sadu šablón možnosti a dátovú sadu. Sady následne naplnia 
+spracujú a vytvoria objekty pre sadu šablón, sadu šablón možností a dátovú sadu. Sady následne naplnia 
 príslušnými záznamami. 
 
 Prichádzajúce záznamy šablón a záznamy šablón možnosti sú posielané špecializovanej triede 
@@ -273,7 +273,7 @@ moduly z abstraktnej rodičovskej triedy. Riešenie navrhol britský Java progra
 na jednom z diskusných fór o probléme dedenia a návrhového vzoru Singleton \citep{gallagher}.
 Jeho riešenie je hybridom viacerých prístupov, ktoré sa diskutujú na Internete, no vychádza z 
 návrhového vzoru \emph{Factory method}. Výsledkom je abstraktná trieda, slúžiaca ako továreň na 
-podtriedy tým, že volá jej statickú metódu \emph{getInstance(Class clazz)}. 
+podtriedy tým, že volá jej statická metóda \emph{getInstance(Class clazz)}. 
 \begin{verbatim}
 private static final Map singletonRegistry = new HashMap();
 
@@ -371,7 +371,7 @@ z inštancie triedy \verb|IPFIXElements| na základe mena prvku. Vďaka tomu sa 
 organizácie, dátový typ a pozícia špecifikátora poľa v šablóne. 
 
 Keď sú určené všetky potrebné hodnoty, tak dátový typ a hodnota informačného elementu sú poslané triede 
-\verb|IPFIXEncoder| na zakódovanie. Táto trieda bola navrhnutá a implementovaná analogicky k dekodéru. 
+\verb|IPFIXEncoder| na zakódovanie. Táto trieda bola navrhnutá a implementovaná analogicky k dekóderu. 
 Aj tu sú pokryté všetky dátové typy, ktoré podporuje IPFIX protokol vrátane jedného naviac - bezznamienkového
 celého čísla na 128 bitoch - \emph{unsigned128}. Tento dátový typ využívajú niektoré informačné elementy 
 definované Laboratóriom Počítačových Sietí na Technickej Univerzite v Košiciach. Podla špecifikácie
@@ -441,7 +441,7 @@ O tom podrobne v samostatnej kapitole \ref{sec:FlowRecordDispatcher} na strane
 
 \subsubsection{Príklad implementácie modulu - ExampleProcess}
 
-Pre budúcich riešiteľov sme pripravili jednoduchý príklad implementácie sprostredkovateľského procesu.
+Pre budúcich riešiteľov bol propravený jednoduchý príklad implementácie sprostredkovateľského procesu.
 Predstavuje ho trieda \verb|ExampleProcess|, ktorej úlohou je veľmi jednoduchá anonymizácia zdrojovej a 
 cieľovej IP adresy zmenením čísla posledného oktetu na nulu. 
 
@@ -669,7 +669,7 @@ hodnotu. V prípade reťazca \verb|RENEW| sa zakóduje aktuálna hodnota času.
 
 Poslednou úlohou triedy \verb|MessageEncoder| je pospájať jednotlivé prúdy bytov do výsledného prúdu IPFIX 
 správy. Prvým je prúd bytov hlavičky správy. Ak sa exportuje aj šablóna, tak nasleduje prúd sady šablóny 
-a posledným je prúd dátovej sady. Trieda \verb|UDPExporter| teraz z prúdu IPFIX správy vytvori 
+a posledným je prúd dátovej sady. Trieda \verb|UDPExporter| teraz z prúdu IPFIX správy vytvorí 
 UDP paket. Na to slúži trieda \verb|DatagramPacket|, pričom jej parametrami sú dáta, dĺžka správy, 
 IP adresa a UDP port. Posledné dve menované sú zadané administrátorom v konfiguračnom súbore. Metódou 
 \emph{send()} zavolanou nad socketom je správa odoslaná.
