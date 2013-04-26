@@ -1,40 +1,43 @@
 \section{Z\'aver (zhodnotenie rie\v{s}enia)}
 
-Najdolezitejsim cielom tejto diplomovej prace bolo navrhnut a implementovat aplikacny ramec pre 
-sprostredkovatelsku entitu (IPFIX Mediator), ktora by bola medziclankom v komunikacii medzi exporterom
-BEEM a kolektorom JXColl nastroja SLAmeter. Mediator ma pokytovat rozhranie pre manipulaciu so 
-sprostredkovatelskymi modulmi, ktore budu poskytovat rozne funkcie na modifikaciu IPFIX sprav este pred ich 
-spracovanim v kolektore. Praca tuto ulohu aj splnila, co bolo potvrdene v poslednej casti 
-prace venovanej experimentalnemu overeniu.
+Najdôležitejším cieľom tejto diplomovej práce bolo navrhnúť a implementovať aplikačný rámec pre 
+sprostredkovateľskú entitu (IPFIX Mediátor), ktorá by bola medzičlánkom v komunikácii medzi exportérom
+BEEM a kolektorom JXColl nástroja SLAmeter. Mediátor má poskytovať rozhranie pre manipuláciu so 
+sprostredkovateľskými modulmi, ktoré budú poskytovať rôzne funkcie na modifikáciu IPFIX správ ešte pred ich 
+spracovaním v kolektore. Práca túto úlohu aj splnila, čo bolo potvrdené v poslednej časti 
+práce venovanej experimentálnemu overeniu.
 
-Uvodom sa citatel oboznamil s analyzou formatu IPFIX sprav rovnako ako s vyhodami pouzitia 
-IPFIX Mediatora v meracej architekture. Samostatne casti boli venovane prikladom pouzitia, ale aj 
-uskaliam spojenym s implementaciou tohto nastroja. Nechybalo ani strucne predstavenie projektov vyskumnej 
+Úvodom sa čitateľ oboznámil s analýzou formátu IPFIX správ rovnako ako s výhodami použitia 
+IPFIX Mediátora v meracej architektúre. Samostatné časti boli venované príkladom použitia, ale aj 
+úskaliam spojeným s implementáciou tohto nástroja. Nechýbalo ani stručné predstavenie projektov výskumnej 
 skupiny MONICA.
 
-Najvyznamnejsim vysledkom prace je funkcna implementacia aplikacneho ramca v jazyku Java. Jeho navrh je 
-odpovedou na definovane poziadavky a analyzovane implementacno-specificke problemy. Zhromazdovaci proces 
-bol prisposobeny, no vychadzal z existujucej implementacie kolektoru JXColl. Dolezitou castou prace je 
-podpora pre sprostredkovatelske procesy. Tok dat medzi modulmi, ci uz seriovy, alebo paralelny sa  
-jednoducho nastavuje v konfiguracnom XML subore podla navrhnuteho formatu. Na zaklade tejto konfiguracie 
-riadi dispecer distribuciu zaznamov o tokoch medzi procesmi. Definovane moduly sa vsak najprv musia 
-pospustat. Toto zabezpecila pokrocila technologia dynamickeho nacitavania tried pomocou 
-systemoveho \emph{class loadera} a reflexie. Dalsim pokrocilym riesenim bolo zabezpecenie toho, ze 
-vsetky sprostredkovatelske moduly musia mat len jednu unikatnu instanciu. Kedze design jazyka Java 
-nepovoluje \emph{abstract static} metody, bolo potrebne vyuzit navrhovy vzor \emph{Factory method} a 
-hash mapu uchovavajucu existujuce instancie modulov. 
+Najvýznamnejším výsledkom práce je funkčná implementácia aplikačného rámca v jazyku Java. Jeho návrh je 
+odpoveďou na definované požiadavky a analyzované implementačno-špecifické problémy. Zhromažďovací proces 
+bol prispôsobený, no vychádzal z existujúcej implementácie kolektoru JXColl. Dôležitou častou práce je 
+podpora pre sprostredkovateľské procesy. Tok dát medzi modulmi, či už sériový, alebo paralelný sa  
+jednoducho nastavuje v konfiguračnom XML súbore podľa navrhnutého formátu. Na základe tejto konfigurácie 
+riadi dispečer distribúciu záznamov o tokoch medzi procesmi. Definované moduly sa však najprv musia 
+pospúšťať. Toto zabezpečila pokročilá technológia dynamického načítavania tried pomocou 
+systémového \emph{class loadera} a reflexie. Ďalším pokročilým riešením bolo zabezpečenie toho, že 
+všetky sprostredkovateľské moduly musia mať len jednu unikátnu inštanciu. Keďže design jazyka Java 
+nepovoľuje \emph{abstract static} metódy, bolo potrebné využiť návrhový vzor \emph{Factory method} a 
+hash mapu uchovávajúcu existujúce inštancie modulov. 
 
-Ulohou aplikacneho ramca je aj poskytnut metody na dekodovanie a zakodovanie hodnot informacnych elementov.
-Pri zakodovani bol kladeny velky doraz na efektivitu a vypoctovy vykon. Preto navrhnute metody namiesto 
-vyuzivania tried jazyka pracuju na urovni bitovych operacii.
+Úlohou aplikačného rámca je aj poskytnúť metódy na dekódovanie a zakódovanie hodnôt informačných elementov.
+Pri zakódovaní bol kladený veľký doraz na efektivitu a výpočtový výkon. Preto navrhnuté metódy namiesto 
+využívania tried jazyka pracujú na úrovni bitových operácii. Budúci riešitelia určite ocenia prítomnosť
+vzorového sprostredkovateľského modulu, ktorý demonštruje navrhnuté zásady programovania modulov a 
+využíva všetky dostupné metódy, ktoré mu poskytuje abstraktná rodičovská trieda. 
 
-TODO
-
-
-
-%plany do buducna
-
-
+Implementacia bola nakoniec overena niekolkymi experimentmi, ktore dokazali funkcnost riesenia. Dalsie 
+smerovanie nastroja predpoklada implementovanie sprostredkovateľských modulov, ktore zlepsia monitorovacie 
+moznosti aplikacie SLAmeter. Najvacsi prinos vidim v anonymizacnom module, konverznom module z protokolu 
+NetFlow na IPFIX, pripadne v module, ktory
+bude na zaklade istych pravidiel robit selekciu IPFIX sprav a tie nasledne exportovat distribuovanym 
+kolektorom. Z pohladu aplikacneho ramca by bolo vhodne rozsirit jeho zhromazdovaci proces o podporu 
+dalsich transportnych protokolov ako TCP a SCTP. Rovnake rozsirenie je mozne aj na strane exportovacieho 
+procesu. 
 
 
 

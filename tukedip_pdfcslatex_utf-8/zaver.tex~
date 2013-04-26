@@ -26,15 +26,18 @@ hash mapu uchovávajúcu existujúce inštancie modulov.
 
 Úlohou aplikačného rámca je aj poskytnúť metódy na dekódovanie a zakódovanie hodnôt informačných elementov.
 Pri zakódovaní bol kladený veľký doraz na efektivitu a výpočtový výkon. Preto navrhnuté metódy namiesto 
-využívania tried jazyka pracujú na úrovni bitových operácii.
+využívania tried jazyka pracujú na úrovni bitových operácii. Budúci riešitelia určite ocenia prítomnosť
+vzorového sprostredkovateľského modulu, ktorý demonštruje navrhnuté zásady programovania modulov a 
+využíva všetky dostupné metódy, ktoré mu poskytuje abstraktná rodičovská trieda. 
 
-TODO dokoncit
-
-
-
-%plany do buducna
-
-
+Implementácia bola nakoniec overená niekoľkými experimentmi, ktoré dokázali funkčnosť riešenia. Ďalšie 
+smerovanie nástroja predpokladá implementovanie sprostredkovateľských modulov, ktoré zlepšia monitorovacie 
+možnosti aplikácie SLAmeter. Najväčší prínos vidím v anonymizačnom module, konverznom module z protokolu 
+NetFlow na IPFIX, prípadne v module, ktorý
+bude na základe istých pravidiel robiť selekciu IPFIX správ a tie následne exportovať distribuovaným 
+kolektorom. Z pohľadu aplikačného rámca by bolo vhodné rozšíriť jeho zhromažďovací proces o podporu 
+ďalších transportných protokolov ako TCP a SCTP. Rovnaké rozšírenie je možné aj na strane exportovacieho 
+procesu. 
 
 
 
