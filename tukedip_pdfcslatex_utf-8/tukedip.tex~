@@ -141,17 +141,18 @@ pdfsubject={Diplomová práca}
 \nomenclature{QOS}{Quality of service}
 \nomenclature{MB/s}{Megabyte za sekundu, jednotka rýchlosti dátového presnosu}
 \nomenclature{Gb/s}{Gigabit za sekundu, jednotka rýchlosti dátového presnosu}
-%----------------DELENIE SLOV-------------
-\hyphenation{kon-štruk-tor}
 
-%-----------------------------------------
 
 \begin{document}
 \renewcommand\theHfigure{\theHsection.\arabic{figure}}
 \renewcommand\theHtable{\theHsection.\arabic{table}}
 \bibliographystyle{dcu}
 
+%----------------DELENIE SLOV-------------
 \hyphenation{kon-štruk-tor}
+%-----------------------------------------
+
+
 
 \prvastrana
 
@@ -209,7 +210,7 @@ výskumnej skupiny MONICA som už niekoľko rokov.
 %o~hlavných metódach, ktoré pri spracovaní záverečnej práce použil.
 \kpredhovoru
 
-\thispagestyle{empty}
+\pagestyle{empty}
 \tableofcontents
 \newpage
 
@@ -271,6 +272,7 @@ výskumnej skupiny MONICA som už niekoľko rokov.
 
 \kslovnikterminov
 %
+\pagestyle{headings}
 \include{uvod}
 %
 \include{formulacia}

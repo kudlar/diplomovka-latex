@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  27 APR 2013 21:03
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  27 APR 2013 21:27
 entering extended mode
  %&-line parsing enabled.
 **tukedip.tex
@@ -750,13 +750,7 @@ File: figures/zadavaci_list.pdf Graphic file (type pdf)
 pdfTeX warning: /usr/bin/pdflatex (file ./figures/zadavaci_list.pdf): PDF inclu
 sion: invalid other resource which is no dict (key 'Subtype', type <stream>); c
 opying it anyway.
->] [5] [6] [7] (./tukedip.toc [8]
-LaTeX Font Info:    Try loading font information for IL2+lmss on input line 56.
-
- (/usr/share/texmf/tex/latex/lm/il2lmss.fd
-File: il2lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-[9])
+>] [5] [6] [7] (./tukedip.toc [8] [9])
 \tf@toc=\write5
 \openout5 = `tukedip.toc'.
 
@@ -787,8 +781,13 @@ Overfull \hbox (0.39272pt too wide) detected at line 13
 \openout2 = `uvod.aux'.
 
 
-(./uvod.texpdfTeX warning (ext4): destination with the same identifier (name{pa
-ge.1}) has been already used, duplicate ignored
+(./uvod.tex
+LaTeX Font Info:    Try loading font information for IL2+lmss on input line 37.
+
+ (/usr/share/texmf/tex/latex/lm/il2lmss.fd
+File: il2lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
+ been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.37 
@@ -798,7 +797,7 @@ l.37
 s been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.275 \include{uvod}
+l.276 \include{uvod}
                      [2]
 \openout2 = `formulacia.aux'.
 
@@ -806,7 +805,7 @@ l.275 \include{uvod}
 (name{page.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.277 \include{formulacia}
+l.278 \include{formulacia}
                            [3
 
 
@@ -1100,7 +1099,7 @@ L2/lmtt/m/n/12 http : / / c2 . com / cgi / wiki ?
 Here is how much of TeX's memory you used:
  8750 strings out of 495027
  119963 string characters out of 1181419
- 199567 words of memory out of 3000000
+ 198567 words of memory out of 3000000
  11407 multiletter control sequences out of 15000+50000
  66433 words of font info for 63 fonts, out of 3000000 for 9000
  39 hyphenation exceptions out of 8191
@@ -1117,7 +1116,7 @@ ic/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/t
 exmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/l
 mss10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/
 fonts/type1/public/lm/lmtt12.pfb>
-Output written on tukedip.pdf (83 pages, 1502042 bytes).
+Output written on tukedip.pdf (83 pages, 1501446 bytes).
 PDF statistics:
  1199 PDF objects out of 1200 (max. 8388607)
  220 named destinations out of 1000 (max. 500000)
