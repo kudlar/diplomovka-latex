@@ -371,7 +371,7 @@ z inštancie triedy \verb|IPFIXElements| na základe mena prvku. Vďaka tomu sa 
 organizácie, dátový typ a pozícia špecifikátora poľa v šablóne. 
 
 Keď sú určené všetky potrebné hodnoty, tak dátový typ a hodnota informačného elementu sú poslané triede 
-\verb|IPFIXEncoder| na zakódovanie. Táto trieda bola navrhnutá a implementovaná analogicky k dekodéru. 
+\verb|IPFIXEncoder| na zakódovanie. Táto trieda bola navrhnutá a implementovaná analogicky k dekóderu. 
 Aj tu sú pokryté všetky dátové typy, ktoré podporuje IPFIX protokol vrátane jedného naviac - bezznamienkového
 celého čísla na 128 bitoch - \emph{unsigned128}. Tento dátový typ využívajú niektoré informačné elementy 
 definované Laboratóriom Počítačových Sietí na Technickej Univerzite v Košiciach. Podla špecifikácie

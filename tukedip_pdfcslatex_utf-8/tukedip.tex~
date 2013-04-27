@@ -142,7 +142,7 @@ pdfsubject={Diplomová práca}
 \nomenclature{MB/s}{Megabyte za sekundu, jednotka rýchlosti dátového presnosu}
 \nomenclature{Gb/s}{Gigabit za sekundu, jednotka rýchlosti dátového presnosu}
 %----------------DELENIE SLOV-------------
-%\hyphenation{IPFIXFlowRecord FlowRecordDispatcher}
+\hyphenation{kon-štruk-tor}
 
 %-----------------------------------------
 
@@ -150,6 +150,8 @@ pdfsubject={Diplomová práca}
 \renewcommand\theHfigure{\theHsection.\arabic{figure}}
 \renewcommand\theHtable{\theHsection.\arabic{table}}
 \bibliographystyle{dcu}
+
+\hyphenation{kon-štruk-tor}
 
 \prvastrana
 
@@ -295,6 +297,7 @@ výskumnej skupiny MONICA som už niekoľko rokov.
 %
 %\include{prilohab}
 
+%\includepdf[pages=-]{mediator_sp.pdf}
 
 %
 % zivotopis autora

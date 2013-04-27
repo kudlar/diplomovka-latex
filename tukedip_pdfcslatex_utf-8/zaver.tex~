@@ -37,8 +37,8 @@ NetFlow na IPFIX, prípadne v module, ktorý
 bude na základe istých pravidiel robiť selekciu IPFIX správ a tie následne exportovať distribuovaným 
 kolektorom. Z pohľadu aplikačného rámca by bolo vhodné rozšíriť jeho zhromažďovací proces o podporu 
 ďalších transportných protokolov ako TCP a SCTP. Rovnaké rozšírenie je možné aj na strane exportovacieho 
-procesu. 
-
+procesu.
+ ---
 
 
 %Táto časť\/ záverečnej práce je povinná. Autor uvedie zhodnotenie

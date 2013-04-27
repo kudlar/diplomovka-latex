@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  26 APR 2013 17:02
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  27 APR 2013 21:03
 entering extended mode
  %&-line parsing enabled.
 **tukedip.tex
@@ -611,30 +611,30 @@ File: hpdftex.def 2009/10/09 v6.79a Hyperref driver for pdfTeX
 (./prilohy.aux))
 \openout1 = `tukedip.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for IL2/cmr/m/n on input line 149.
-LaTeX Font Info:    Try loading font information for IL2+cmr on input line 149.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 146.
+LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 146.
+LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 146.
+LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 146.
+LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 146.
+LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 146.
+LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Checking defaults for IL2/cmr/m/n on input line 146.
+LaTeX Font Info:    Try loading font information for IL2+cmr on input line 146.
 
  (/usr/share/texmf-texlive/tex/latex/cslatex/il2cmr.fd
 File: il2cmr.fd 1997/02/06 CSLaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Try loading font information for IL2+lmr on input line 149.
+LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 146.
+LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 146.
+LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Try loading font information for IL2+lmr on input line 146.
 
 
 (/usr/share/texmf/tex/latex/lm/il2lmr.fd
@@ -661,7 +661,7 @@ File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 130.
 )
-Package hyperref Info: Link coloring OFF on input line 149.
+Package hyperref Info: Link coloring OFF on input line 146.
 
 (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
 Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
@@ -671,8 +671,8 @@ Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
 \c@section@level=\count119
 )
-LaTeX Info: Redefining \ref on input line 149.
-LaTeX Info: Redefining \pageref on input line 149.
+LaTeX Info: Redefining \ref on input line 146.
+LaTeX Info: Redefining \pageref on input line 146.
  (./tukedip.out)
 (./tukedip.out)
 \@outlinefile=\write4
@@ -686,43 +686,43 @@ LaTeX Warning: No \bakpraca given.
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 156--156
+Underfull \hbox (badness 10000) in paragraph at lines 159--159
 
  []
 
 
 LaTeX Warning: No \bakpraca given.
 
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 156.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 159.
 
 (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 156.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 159.
 
 
 (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 156
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 159
 .
 
 (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 156
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 159
 .
 
 (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 156.
+(Font)              <12> on input line 159.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 156.
+(Font)              <8> on input line 159.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 156.
-LaTeX Font Info:    Try loading font information for U+lasy on input line 156.
+(Font)              <6> on input line 159.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 159.
 
 (/usr/share/texmf-texlive/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
@@ -798,7 +798,7 @@ l.37
 s been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.272 \include{uvod}
+l.275 \include{uvod}
                      [2]
 \openout2 = `formulacia.aux'.
 
@@ -806,7 +806,7 @@ l.272 \include{uvod}
 (name{page.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.274 \include{formulacia}
+l.277 \include{formulacia}
                            [3
 
 
@@ -1098,12 +1098,12 @@ L2/lmtt/m/n/12 http : / / c2 . com / cgi / wiki ?
 (./analyza.aux) (./basic_sla_meter.aux) (./navrh.aux) (./experimenty.aux)
 (./zaver.aux) (./literatura.aux) (./prilohy.aux)) ) 
 Here is how much of TeX's memory you used:
- 8749 strings out of 495027
- 119951 string characters out of 1181419
+ 8750 strings out of 495027
+ 119963 string characters out of 1181419
  199567 words of memory out of 3000000
  11407 multiletter control sequences out of 15000+50000
  66433 words of font info for 63 fonts, out of 3000000 for 9000
- 38 hyphenation exceptions out of 8191
+ 39 hyphenation exceptions out of 8191
  38i,16n,41p,473b,517s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf/fonts/enc/
 dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/sha
@@ -1117,7 +1117,7 @@ ic/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/t
 exmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/l
 mss10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/
 fonts/type1/public/lm/lmtt12.pfb>
-Output written on tukedip.pdf (83 pages, 1501805 bytes).
+Output written on tukedip.pdf (83 pages, 1502042 bytes).
 PDF statistics:
  1199 PDF objects out of 1200 (max. 8388607)
  220 named destinations out of 1000 (max. 500000)
