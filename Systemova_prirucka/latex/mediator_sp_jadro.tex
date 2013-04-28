@@ -1389,15 +1389,30 @@ V~súèasnosti nie sú známe ¾iadne vá¾ne chyby.
 
 \newpage
 \section{Zhodnotenie rie\v{s}enia}
-%Hlavným cieµom práce bolo zvý¹i» interoperabilitu s~inými IPFIX rie¹eniami pomocou zvý¹enia konformity so ¹tandardom IPFIX. 
-%V~práci boli vyrie¹ené problémy, ktoré doteraz znemo¾òovali dekódovanie viacerých záznamov sade, informaèncých elementov s~variabilnou då¾kou, informaèných elementov s~redukovaným kódovaním alebo niektorých predtým neimplementovaných dátových typov. 
-%
-%Súèas»ou práce bolo roz¹írenie podpory prenosu údajov o~tokoch prostredníctvom transportných protokolov TCP a SCTP, èo zvy¹uje mo¾nosti
-%nasadenia nástroja BasicMeter aj v~podmienkach s~vy¹¹ou náchylnos»ou na pre»a¾enie v~sietí. 
-%
-%Mo¾nosti budúceho vývoja zhroma¾ïovacieho procesu nástroja BasicMeter predstavuje implementácia podpory pre dátové typy umo¾òujúce
-%prenos ¹truktúrovaných dát a podpora pre zabezpeèené pripojenia od exportérov.
-%
+
+Najdôle¾itej¹ím cieµom tejto diplomovej práce bolo navrhnú» a implementova» aplikaèný rámec pre 
+sprostredkovateµskú entitu (IPFIX Mediátor), ktorá by bola medzièlánkom v~komunikácii medzi nástrojmi
+BEEM a JXColl architektúry SLAmeter. Mediátor má poskytova» rozhranie pre manipuláciu so 
+sprostredkovateµskými modulmi, ktoré budú poskytova» rôzne funkcie na modifikáciu IPFIX správ e¹te pred ich 
+spracovaním v~kolektore. Práca túto úlohu aj splnila, èo bolo potvrdené experimentálnym overením.
+
+Najvýznamnej¹ím výsledkom práce je funkèná implementácia aplikaèného rámca v~jazyku Java. Jeho návrh je 
+odpoveïou na definované po¾iadavky a analyzované implementaèno-¹pecifické problémy. Zhroma¾ïovací proces 
+bol prispôsobený, no vychádzal z~existujúcej implementácie kolektoru JXColl. Dôle¾itou èastou práce je 
+podpora pre sprostredkovateµské procesy. Tok dát medzi modulmi, èi u¾ sériový, alebo paralelný sa  
+jednoducho nastavuje v~konfiguraènom XML súbore podµa navrhnutého formátu. Na základe tejto konfigurácie 
+riadi dispeèer distribúciu záznamov o~tokoch medzi procesmi. Definované moduly sa v¹ak najprv musia 
+pospú¹»a». Toto zabezpeèila pokroèilá technológia dynamického naèítavania tried pomocou 
+systémového \emph{class loadera} a reflexie. Ïal¹ím pokroèilým rie¹ením bolo zabezpeèenie toho, 
+¾e~v¹etky sprostredkovateµské moduly musia ma» len jednu unikátnu in¹tanciu. Keï¾e dizajn jazyka Java 
+nepovoµuje \emph{abstract static} metódy, bolo potrebné vyu¾i» návrhový vzor \emph{Factory method} a 
+hash mapu uchovávajúcu existujúce in¹tancie modulov. 
+
+Úlohou aplikaèného rámca je aj poskytnú» metódy na dekódovanie a zakódovanie hodnôt informaèných elementov.
+Pri zakódovaní bol kladený veµký doraz na efektivitu a výpoètový výkon. Preto navrhnuté metódy 
+pracujú na úrovni bitových operácii. Budúci rie¹itelia urèite ocenia prítomnos»
+vzorového sprostredkovateµského modulu, ktorý demon¹truje navrhnuté zásady programovania modulov a 
+vyu¾íva v¹etky dostupné metódy, ktoré mu poskytuje abstraktná rodièovská trieda. 
 
 
 \clearpage

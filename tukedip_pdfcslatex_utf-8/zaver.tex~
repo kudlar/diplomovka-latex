@@ -19,8 +19,8 @@ podpora pre sprostredkovateľské procesy. Tok dát medzi modulmi, či už séri
 jednoducho nastavuje v~konfiguračnom XML súbore podľa navrhnutého formátu. Na základe tejto konfigurácie 
 riadi dispečer distribúciu záznamov o~tokoch medzi procesmi. Definované moduly sa však najprv musia 
 pospúšťať. Toto zabezpečila pokročilá technológia dynamického načítavania tried pomocou 
-systémového \emph{class loadera} a reflexie. Ďalším pokročilým riešením bolo zabezpečenie toho, že 
-všetky sprostredkovateľské moduly musia mať len jednu unikátnu inštanciu. Keďže dizajn jazyka Java 
+systémového \emph{class loadera} a reflexie. Ďalším pokročilým riešením bolo zabezpečenie toho, 
+že~všetky sprostredkovateľské moduly musia mať len jednu unikátnu inštanciu. Keďže dizajn jazyka Java 
 nepovoľuje \emph{abstract static} metódy, bolo potrebné využiť návrhový vzor \emph{Factory method} a 
 hash mapu uchovávajúcu existujúce inštancie modulov. 
 
