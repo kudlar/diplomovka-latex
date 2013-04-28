@@ -3,19 +3,20 @@
 
 Program Mediátor je implementáciou aplikaèného rámca pre problém sprostredkovania správ v protokole IPFIX 
 \emph{(IP Flow Information Export (IPFIX) Mediation Problem)} vyvíjaný výskumnou skupinou MONICA sídliacou
-v Laboratóriu poèítaèových sietí \emph{(CNL)} na Technickej Univerzite v Ko¹iciach. Je súèas»ou meracej
+v Laboratóriu poèítaèových sietí \emph{(CNL)} na Technickej univerzite v Ko¹iciach. Je súèas»ou meracej
 architektúry SLAmeter, ktorej úlohou je pasívne meranie parametrov sie»ovej prevádzky na báze tokov. 
 Na základe nameraných hodnôt urèuje triedu kvality slu¾ieb a Internetového pripojenia poskytovateµov 
 Internetu. Trieda kvality vypovedá o dodr¾iavaní zmluvy o úrovni poskytovanej slu¾by - \emph{SLA}.
 
-Komponentmi architektúry IPFIX (IP Flow Information Export) podµa RFC 5470 \citep{rfc5470}
+Komponentmi architektúry IPFIX (IP Flow Information Export) podµa RFC 5470~\citep{rfc5470}
 sú exportéry a kolektory komunikujúce protokolom IPFIX.
 Vzhµadom k trvalému rastu IP prevádzky v heterogénnych sie»ových prostrediach,
 tieto exportér-kolektor systémy mô¾u vies» k problémom ¹kálovateµnosti. Naviac,
 neposkytujú flexibilitu potrebnú pre ¹iroký rad meracích aplikácii.
 
+Mediator v1.0 je aplikaèný rámec, ktorý poskytuje rozhranie pre rozmanité sprostredkovateµské procesy.
 Sprostredkovateµské moduly Mediátora mô¾u z pohµadu manipulácie s dátami poskytova» agregáciu, koreláciu,
-filtrovanie, selekciu, anonymizáciu 
+filtrovanie, anonymizáciu 
 a iné úpravy záznamov o tokoch za úèelom ¹etrenia výpoètových zdrojov meracieho systému a vykonávania 
 predspracovania úloh pre kolektor. Z hµadiska interoperability nástrojov rôznych vývojárov, mô¾u 
 poskytova» konverziu z iných protokolov na IPFIX, respektíve zvy¹ova» spoµahlivos» exportov
@@ -82,7 +83,7 @@ Vlastná in¹talácia sa skladá z~in¹talácie DEB balíka v~prostredí operaèného syst
 V~prostredí iného operaèného systému in¹talácia pozostáva z~nakopírovania spustiteµného Java archívu 
 (\verb|mediator.jar|) do~prieèinka podµa vlastnej voµby spoloène s~adresárom kni¾níc. Následne treba do 
 tohto prieèinka nakopírova» súbor popisujúci podporované informaèné elementy protokolu IPFIX programom 
-Mediator (\verb|ipfixFields.xml|) a uká¾kový konfiguraèný súbor (\verb|config.xml|), ktorý je 
+Mediator v1.0 (\verb|ipfixFields.xml|) a uká¾kový konfiguraèný súbor (\verb|config.xml|), ktorý je 
 potrebné upravi» pre vlastné prostredie meraní. 
 
 
@@ -95,7 +96,7 @@ potrebné upravi» pre vlastné prostredie meraní.
 
 
 
-\subsubsection{In\v{s}tal\'acia samotnej aplik\'acie Mediator pod OS Ubuntu/Debian}
+\subsubsection{In\v{s}tal\'acia samotnej aplik\'acie Mediator v1.0 pod OS Ubuntu/Debian}
 
 In¹talácia je veµmi jednoduchá. Staèí stiahnu» in¹talaèný DEB balík zo SVN repozitára:\\
 \verb|wget https://svn.cnl.tuke.sk/monica/BasicMeter/Mediator/deb/mediator| \\
@@ -107,7 +108,7 @@ Spusti» stiahnutý DEB balík pomocou príkazu
 \end{center}
 
 Nakoniec je potrebné nastavi» konfiguraèný súbor \verb|/etc/mediator/config.xml|. Najdôle¾itej¹ie 
-je nastavi» správny port, na ktorom bude Mediator oèakáva» IPFIX správy a parametre exportovacieho procesu.
+je nastavi» správny port, na ktorom bude Mediátor oèakáva» IPFIX správy a parametre exportovacieho procesu.
 Nemenej dôle¾itá je konfigurácia sprostredkovateµských procesov.
 
 
@@ -116,7 +117,7 @@ Nemenej dôle¾itá je konfigurácia sprostredkovateµských procesov.
 \newpage
 \section{Pou\v{z}itie programu}
 
-Mediator je konzolová aplikácia. Spustenie programu na operaèných systémoch Ubuntu/Debian pri in¹talácii 
+Mediátor je konzolová aplikácia. Spustenie programu na operaèných systémoch Ubuntu/Debian pri in¹talácii 
 pomocou DEB balíka je nasledovné:
 \begin{center}
 \texttt{mediator [/cesta/ku/konf./súboru/config.xml] [--logtofile]}\\
@@ -131,11 +132,11 @@ Ak zadáme nepovinný argument \verb|--logtofile|, výstup programu bude presmerova
 \begin{center}
 \texttt{/var/log/mediator/YYYYMMDD-HHmmss/mediator.log } ,
 \end{center}
-kde Y-rok, M-mesiac, D-deò, H-hodina, m-minúta, s-sekunda spustenej in¹tancie programu Mediator.
+kde Y-rok, M-mesiac, D-deò, H-hodina, m-minúta, s-sekunda spustenej in¹tancie programu Mediator v1.0.
 
 
 \bigskip
-Ak pou¾ívateµ nie je \emph{root}, je potrebné ma» v~systéme pridelené \emph{sudo} právo a Mediator 
+Ak pou¾ívateµ nie je \emph{root}, je potrebné ma» v~systéme pridelené \emph{sudo} právo a Mediátor 
 spusti» príkazom:
 
 \begin{center}
@@ -143,7 +144,7 @@ spusti» príkazom:
 \end{center}
 
 \bigskip
-Tak ako väè¹ina aplikácií v~prostredí operaèného systému Linux, aj Mediator má k~dispozícii manuálové 
+Tak ako väè¹ina aplikácií v~prostredí operaèného systému Linux, aj Mediátor má k~dispozícii manuálové 
 stránky (man), ktoré je mo¾né zobrazi» pomocou príkazov:
 
 \begin{center}
@@ -163,12 +164,12 @@ absolútnej) ku konfiguraènému súboru a s voliteµným prepínaèom \verb|--logtofile
 \end{center}
 
 
-Ïal¹ou podmienkou spustenia programu Mediator je súbor \emph{ipfixFields.xml}. Cesta k~tomuto súboru sa 
+Ïal¹ou podmienkou spustenia programu Mediator v1.0 je súbor \emph{ipfixFields.xml}. Cesta k~tomuto súboru sa 
 nastavuje v~konfiguraènom súbore \emph{config.xml}. Ak pri spustení sa súbor ipfixFields nenachádza 
 v~adresári definovanom v~konfiguraènom súbore, aplikácia skonèí s~chybovým hlásením.
-V~prípade absencie riadku s~cestou k~\emph{ipfixFields.xml} v~konfiguraènom súbore, Mediator automaticky 
+V~prípade absencie riadku s~cestou k~\emph{ipfixFields.xml} v~konfiguraènom súbore, Mediátor automaticky 
 predpokladá túto cestu: \texttt{/etc/mediator/ipfixFields.xml}. 
-Ak sa ani tu XML súbor nenachádza, Mediator ukonèí svoju èinnos». Bez tohto súboru nie je mo¾né rozpozna» 
+Ak sa ani tu XML súbor nenachádza, Mediátor ukonèí svoju èinnos». Bez tohto súboru nie je mo¾né rozpozna» 
 údaje z~prijatých IPFIX paketov.
 
 
@@ -180,7 +181,7 @@ Keï¾e program je konzolová aplikácia, neposkytuje ¾iadne grafické zobrazenie dia
 Chybové a informaèné hlásenia sú zobrazované v~rovnakej konzole v~ktorej bol program spustený, prípadne 
 v~log súbore ak bol program spustený s~voliteµným argumentom \verb|--logtofile|.
 
-Ukonèenie programu sa vykoná stlaèením kombinácie kláves \emph{CTRL + C} alebo poslaním signálu 
+Ukonèenie programu sa vykoná stlaèením kombinácie kláves \verb|CTRL-c| alebo poslaním signálu 
 \emph{SIGTERM} alebo \emph{SIGINT} konkrétnemu procesu:
 \begin{center}
 \texttt{kill -SIGTERM pid\_procesu\_mediator}\\
@@ -193,7 +194,7 @@ Ukonèenie programu sa vykoná stlaèením kombinácie kláves \emph{CTRL + C} alebo p
 
 Východiskový adresár, kde sa nachádza konfiguraèný súbor je \verb|/etc/mediator/|. Jednotlivé konfiguraèné 
 parametre sa triedia podµa typu modulov, ktorých sa nastavenia týkajú. Tieto typy ako aj zoznam v¹etkých 
-mo¾ných parametrov, ich popis, ¹tandardné hodnoty a mo¾né voµby sa nachádzajú v~tabuµkách 
+mo¾ných parametrov, ich popis, ¹tandardné hodnoty a mo¾né voµby sa nachádzajú v~Tabuµkách 
 \ref{tbl:conf1} a \ref{tbl:conf2}. V~prípade, ¾e daná hodnota pre 
 akýkoµvek parameter nie je uvedená v~konfiguraènom súbore, parameter sa nastaví na ¹tandardnú hodnotu. 
 Uká¾kový konfiguraèný súbor na in¹talaènom médiu obsahuje pribli¾né popisy parametrov a ich ¹tandardné 
@@ -289,11 +290,11 @@ Konfiguraèný súbor mô¾e obsahova» komentár, ktorý musí by» ohranièený znakmi:
     \hline
     protocol & UDP & UDP & názov transportného protokolu\\
     \hline
-    refreshTemplateTime & 5 & prirodzené celé èíslo väè¹ie ako 0 & èas (s) po ktorom Mediator exportuje 
+    refreshTemplateTime & 5 & prirodzené celé èíslo väè¹ie ako 0 & èas (s) po ktorom Mediátor exportuje 
     príslu¹nú ¹ablónu (ak sa nastaví vy¹¹ia hodnota ako je v exportéri, tak reálne platí hodnota daná 
     exportérom)\\
     \hline
-    exportTime & RENEW & KEEP, RENEW & spôsob, akým Mediator narába s èasom v poli hlavièky správy - \uv{exportTime}\\
+    exportTime & RENEW & KEEP, RENEW & spôsob, akým Mediátor narába s èasom v poli hlavièky správy - \uv{exportTime}\\
     \hline 
     \hline 
     
@@ -322,8 +323,8 @@ Konfiguraèný súbor mô¾e obsahova» komentár, ktorý musí by» ohranièený znakmi:
 \subsection{Popis spr\'av pre syst\'emov\'eho program\'atora}
 Poèas behu programu sa vypisujú rôzne hlásenia od chybových a¾ po informaèné. Logovací
 subsystém programu je mo¾né inicializova» rôznymi úrovòami. Ich popis je uvedený
-v~tabuµke~\ref{tbl:log}. Ka¾dá úroveò zahàòa v~sebe aj úrovne na ni¾¹om stupni, tak¾e napr. pre úroveò
-ERROR sa budú zobrazova» aj hlásenia typu FATAL. Na reálnu prevádzku je vhodné nastavi» úroveò ERROR.
+v~Tabuµke~\ref{tbl:log}. Ka¾dá úroveò zahàòa v~sebe aj úrovne na ni¾¹om stupni, tak¾e napr. pre úroveò
+ERROR sa budú zobrazova» aj hlásenia typu FATAL. Na~reálnu prevádzku je vhodné nastavi» úroveò ERROR.
 
 \begin{table}[ht]
 \tabcolsep=4pt  
@@ -407,7 +408,7 @@ ERROR [main] IPLoader - IllegalAccessException occured: (MESSAGE)
 \end{verbatim} 
 \textbf{Popis a~rie¹enie:}
 ©pecifické chyby, ktoré nastali pri dynamickom naèítavaní sprostredkovateµských procesov. Ich rie¹enie je 
-individuálne.\\
+individuálne podµa chybovej hlá¹ky.\\
 
 \clearpage
 \noindent \textbf{Chyba:} 
@@ -433,7 +434,7 @@ ERROR [main] IPLoader - Error while invoking method 'start' in process ().
 \end{verbatim} 
 \textbf{Popis a~rie¹enie:}
 Nastala ¹pecifická chyba pri inicializovaní vlákna - sprostredkovateµského procesu. Rie¹enie je 
-individuálne.\\
+individuálne podµa chybovej hlá¹ky.\\
 
 \noindent \textbf{Chyba:} 
 \begin{verbatim}
@@ -472,7 +473,7 @@ FATAL [main] Mediator - Listen port (PORT) is already used, another instance of 
 be running!
 \end{verbatim}
 \textbf{Popis a~rie¹enie:}
-Port, na ktorom Mediator prijíma pakety je obsadený iným programom, alebo iným Mediátorom. Treba skontrolova»
+Port, na ktorom Mediátor prijíma pakety je obsadený iným programom, alebo iným Mediátorom. Treba skontrolova»
 be¾iace procesy a keï ide o inú in¹tanciu Mediátora, tak je treba zastavi». V opaènom prípade je 
 potrebne nastavi» iný \emph{listenPort}.\\
 
@@ -508,7 +509,7 @@ ERROR [] AIntermediateProcess - SecurityException occured: (MESSAGE)
 \end{verbatim}
 \textbf{Popis a~rie¹enie:}
 ©pecifické chyby, ktoré boli vyvolané pri pokuse o získanie jedineènej in¹tancii sprostredkovateµského
-procesu. Chyby majú individuálne rie¹enie.\\
+procesu. Chyby majú individuálne rie¹enie podµa chybovej hlá¹ky.\\
 
 
 \noindent \textbf{Chyba:}
@@ -552,14 +553,14 @@ ERROR [UDP Server] UDPServer - Interrupted via InterruptedIOException
 ERROR [UDP Server] UDPServer - Interrupted while putting data into PacketCache!
 \end{verbatim}
 \textbf{Popis a~rie¹enie:}
-Do¹lo k preru¹eniu UDP Servera. Chyba má individuálne rie¹enie.\\
+Do¹lo k preru¹eniu UDP Servera. Chyba má individuálne rie¹enie podµa chybovej hlá¹ky.\\
 
 \noindent \textbf{Chyba:}
 \begin{verbatim}
 ERROR [UDP Exporter] UDPExporter - Error while creating socket: (MESSAGE)
 \end{verbatim}
 \textbf{Popis a~rie¹enie:}
-Nastala chyba pri vytváraní UDP socketu. Chyba ma individuálne rie¹enie.\\
+Nastala chyba pri vytváraní UDP socketu. Chyba má individuálne rie¹enie podµa chybovej hlá¹ky.\\
 
 
 \noindent \textbf{Chyba:}
@@ -568,7 +569,7 @@ ERROR [UDP Exporter] UDPExporter - (MESSAGE) --> INTERRUPTING UDPEXPORTER
 
 \end{verbatim}
 \textbf{Popis a~rie¹enie:}
-Do¹lo k preru¹eniu UDP Exportéra. Chyba ma individuálne rie¹enie.\\
+Do¹lo k preru¹eniu UDP Exportéra. Chyba má individuálne rie¹enie podµa chybovej hlá¹ky.\\
 
 
 \noindent \textbf{Chybové hlásenia súvisiace s~Java Virtual Machine (JVM)}\\
@@ -580,8 +581,8 @@ zásobníka. Be¾ne sú to tri riadky v~hierarchii volania danej metódy, ktorá takto
 Takéto chyby znamenajú po¹kodenie funkcie programu a~je nutné ho re¹tartova». Chybu je
 mo¾né opravi» len v~zdrojovom kóde, teda sa berie ako programátorská chyba.\\
 
-\noindent \textbf{Opis známych chýb}\\
-\noindent V~súèasnosti neboli v~programe Mediator 1.0 nájdené vá¾ne chyby.
+\subsection{Opis známych chýb}
+V~súèasnosti neboli v~programe Mediator v1.0 nájdené vá¾ne chyby.
 
 
 
@@ -595,8 +596,8 @@ Takéto zariadenie mô¾e by» napr. Cisco smerovaè schopný exportu IPFIX dát, alebo
 zariadenie s názvom exportér - z~modulov SLAmetra ide o BEEM. Druhým nástrojom je podla IPFIX architektúry
 zariadenie predstavujúce zhroma¾ïovací proces, teda kolektor. V prípade SLAmetra máme na mysli JXColl.
 
-Po naimplementovaní vhodných sprostredkovateµských modulov mô¾e Mediator vykonáva» rôzne predvýpoètové 
-funkcie pre kolektor. Spomeòme napríklad agregáciu, koreláciu, filtrovanie, selekciu CI anonymizáciu.
+Po naimplementovaní vhodných sprostredkovateµských modulov mô¾e Mediátor vykonáva» rôzne predvýpoètové 
+funkcie pre kolektor. Spomeòme napríklad agregáciu, koreláciu, filtrovanie, selekciu èi anonymizáciu.
 
 
 

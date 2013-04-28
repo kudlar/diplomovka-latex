@@ -66,7 +66,7 @@ pdfstartpage=1]{hyperref}
 \hypersetup{%
 baseurl={http://www.tuke.sk/sevcovic},
 pdfcreator={pdfcsLaTeX},
-pdfkeywords={Sprostredkovanie, Medi\'ator, IPFIX, SLAMeter, BasicMeter},
+pdfkeywords={IPFIX, Sprostredkovanie, Medi\'ator, Kolektor, Export\'er, SLAmeter, BasicMeter, MONICA},
 pdftitle={Pou\v{z}\'ivate\v{l}sk\'a pr\'iru\v{c}ka Mediator v1.0},
 pdfauthor={Bc. Rastislav Kudla},
 pdfsubject={Diplomov\'a pr\'aca}
@@ -77,11 +77,11 @@ pdfsubject={Diplomov\'a pr\'aca}
 \dippraca{Diplomová práca}
 %\bakpraca{Bakalárska práca}
 %%
-\nazov{Aplikaèný rámec pre sprostredkovanie IPFIX správ v nástroji SLAmeter}
+\nazov{Aplikaèný rámec pre sprostredkovanie IPFIX správ v~nástroji SLAmeter}
 %% ked praca nema 'podnazov' zakomentujte nasledujuci riadok
 %% alebo polozku nechajte prazdnu
 \podnazov{}
-\klucoveslova{IPFIX, Sprostredkovanie, Mediátor, Kolektor, Exportér, SLAmeter, BasicMeter, MONICA}
+\klucoveslova{IPFIX, Sprostredkovanie, Medi\'ator, Kolektor, Export\'er, SLAmeter, BasicMeter, MONICA}
 \jazyk{slovenský}
 \titul{In¾inier}
 \univerzita{Technická univerzita v~Ko¹iciach}
@@ -105,7 +105,7 @@ pdfsubject={Diplomov\'a pr\'aca}
 
 \autor{Bc.~Rastislav~Kudla}
 
-\veducikatedry{doc.~Ing.~Jaroslav~Porubän, PhD.}
+\veducikatedry{doc.~Ing.~Jaroslav~Porubän,~PhD.}
 \veduciprace{Ing.~Peter~Feciµak,~PhD.}
 \konzultanta{Ing.~Adrián~Pekár}
 \konzultantb{}
@@ -130,6 +130,13 @@ pdfsubject={Diplomov\'a pr\'aca}
 \renewcommand\theHtable{\theHsection.\arabic{table}}
 \bibliographystyle{dcu}
 
+%----------------DELENIE SLOV-------------
+\hyphenation{kon-¹truk-tor sek-ven-èné spro-stred-ko-va-teµ-ský spro-stred-ko-va-teµ-ské-mu IPFIX}
+\hyphenation{kon-¹truk-to-ra ná-roè-né spro-stred-ko-va-teµ-ský-mi na-vrh-nu-té-ho Feciµakovi}
+\hyphenation{spro-stred-ko-va-teµ-skú spro-stred-ko-va-teµ-ské-ho spro-stred-ko-va-teµ-ských}
+\hyphenation{spro-stred-ko-va-nia NetFlow timeout kon-¹tan-ty}
+%-----------------------------------------
+
 \titulnastrana
 
 \thispagestyle{empty}
@@ -145,7 +152,7 @@ pdfsubject={Diplomov\'a pr\'aca}
 \bigskip
 \newpage
 
-\thispagestyle{empty}
+\pagestyle{empty}
 \tableofcontents
 \newpage
 
@@ -154,13 +161,12 @@ pdfsubject={Diplomov\'a pr\'aca}
 %\listoffigures
 %\newpage
 
-\thispagestyle{empty}
+\pagestyle{empty}
 %\addcontentsline{toc}{section}{\numberline{}Zoznam tabuliek}
 \listoftables
 \newpage
 
-\thispagestyle{empty}
-
+\pagestyle{headings}
 %
 \include{mediator_pp_jadro}
 %
