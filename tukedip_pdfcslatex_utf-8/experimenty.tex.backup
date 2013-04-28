@@ -1,11 +1,11 @@
-\section{Experimentálne overenie funkčnosti riešenia}
+\section{Experimentálne overenie funkčnosti riešenia} \label{sec:experimenty}
 
-Tato kapitola je venovaná overeniu správnosti implementácie. Boli vykonané nasledujúce štyri experimenty, 
+Táto kapitola je venovaná overeniu správnosti implementácie. Boli vykonané nasledujúce štyri experimenty, 
 ktoré mali potvrdiť, alebo vyvrátiť správnu funkčnosť riešenia. 
 \begin{enumerate}
  \item \textbf{Prvý test} overil konektivitu a prenos údajov medzi exportérom a mediátorom a následne medzi 
  mediátorom a kolektorom.
- \item \textbf{Druhy test} porovnal hodnoty údajov exportovaných mybeem-om s hodnotami uloženými v databáze po prechode
+ \item \textbf{Druhý test} porovnal hodnoty údajov exportovaných BEEM-om s hodnotami uloženými v databáze po prechode
  cez Mediátor bez sprostredkovateľského procesu.
  \item \textbf{Tretí test} demonštroval správnosť anonymizácie údajov v podaní sprostredkovateľského procesu 
  \verb|ExampleProcess|, spomínaného vyššie v návrhu a implementácii.
@@ -13,18 +13,18 @@ ktoré mali potvrdiť, alebo vyvrátiť správnu funkčnosť riešenia.
  pri spracovávaní prevádzky s vysokým počtom tokov.
 \end{enumerate}
 
-%%%%%
+%%----------------------
 
 \subsection{Testovacia topológia}
 
-Pri všetkých testoch bol použitý virtualizačný nástroj VirtualBox, v ktorom boli vytvorené tri virtuálne 
-počítače, zapojené do topológie, ktorú možno vidieť na Obrázku \ref{o:test_topologia}.
-Na všetkých troch počítačoch sa používal operačný systém Ubuntu 12.04 LTS v desktopovej verzii. Na prvom 
-počítači bol nainštalovaný exportér mybeem (verzia 1.1-6 s podporou pre IPFIX Mediátor), ktorý exportoval 
-správy druhému počítaču na UDP port vyhradený pre IPFIX komunikáciu - \emph{4739}. Tam bežal Mediátor
-verzie 1.0. Ten zase preposielal správy na tretí počítač (taktiež port \emph{4739}), kde bol spustený 
-kolektor JXColl (verzia 3.9) s funkčnou PostgreSQL databázou. Počítače boli zapojené v jednej lokálnej 
-sieti a všetky mali prístup na Internet.
+Pri prvých troch testoch bol použitý virtualizačný nástroj VirtualBox, v ktorom boli vytvorené tri virtuálne 
+počítače, zapojené do topológie, ktorú možno vidieť na Obrázku~\ref{o:test_topologia}.
+Na všetkých troch počítačoch sa používal operačný systém \emph{Ubuntu 12.04 LTS} v desktopovej verzii. Na 
+prvom počítači bol nainštalovaný exportér BEEM (verzia 1.1-6 s podporou pre IPFIX Mediátor), ktorý 
+exportoval správy druhému počítaču na UDP port vyhradený pre IPFIX komunikáciu - \emph{4739}. Tam bežal 
+Mediátor verzie 1.0. Ten zase preposielal správy na tretí počítač (taktiež port \emph{4739}), kde bol 
+spustený JXColl (verzia 3.9) s funkčnou PostgreSQL databázou. Počítače boli zapojené v jednej 
+lokálnej sieti a všetky mali prístup na Internet.
 
 \begin{figure}[ht!]
 \centering
@@ -37,29 +37,29 @@ sieti a všetky mali prístup na Internet.
 \subsection{Test konektivity}
 
 Prvý experiment overoval základnú konektivitu medzi exportérom a kolektorom v prípade, že je medzi ne 
-zaradený mediátor. Vo svojej východiskovej konfigurácii vypisuje mybeem logovacie správy na štandardný 
+zaradený mediátor. Vo svojej východiskovej konfigurácii vypisuje BEEM logovacie správy na štandardný 
 výstup. Tie obsahujú základné informácie o každom exportovanom zázname o toku ako to môžeme vidieť na 
-Obrázku \ref{o:konektivita_beem}. Mediátor mal nastavenú úroveň logovacích výstupov na \emph{DEBUG}, 
+Obrázku~\ref{o:konektivita_beem}. Mediátor mal nastavenú úroveň logovacích výstupov na \emph{DEBUG}, 
 čo zahŕňa nielen chybové hlášky, ale aj všetky informačné a ladiace oznamy. 
 
 Konektivita medzi exportérom
-a mediátorom bola potvrdená, na Obrázku \ref{o:konektivita_mediator} je zachytený výstup Mediátora po 
+a mediátorom bola potvrdená, na Obrázku~\ref{o:konektivita_mediator} je zachytený výstup Mediátora po 
 prijatí správy od exportéra. Výpis obsahuje IP adresu a port z ktorého prišla správa, jej veľkosť a 
 oznam, že ide o IPFIX správu. Za tým nasledujú hodnoty z hlavičky správy a výpis všetkých sád, ktoré
-správa obsahuje. Potom bol spracovaný záznam o toku posunutý dispečerovi - \verb|FlowRecordDispatcher|, 
+správa obsahuje. Potom bol spracovaný záznam o toku posunutý dispečerovi -- \verb|FlowRecordDispatcher|, 
 ktorý ho poslal na export. Tam sa záznam o toku naspať zabalil do nového IPFIX paketu a ten bol odoslaný 
 smerom na kolektor.
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=0.9\textwidth]{konektivita_beem}
-\caption{Test 1: Konektivita medzi exportérom a Mediátorom - strana exportéra}\label{o:konektivita_beem}
+\caption{Test 1: Konektivita medzi exportérom a Mediátorom -- strana exportéra}\label{o:konektivita_beem}
 \end{figure}
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=0.9\textwidth]{konektivita_mediator}
-\caption{Test 1: Konektivita medzi exportérom a Mediátorom - strana Mediátora}\label{o:konektivita_mediator}
+\caption{Test 1: Konektivita medzi exportérom a Mediátorom -- strana Mediátora}\label{o:konektivita_mediator}
 \end{figure}
 
 Konektivita medzi Mediátorom a kolektorom bola tiež potvrdená. Dôkazom boli logovacie výstupy kolektora, 
@@ -74,11 +74,14 @@ Druhý experiment nadväzoval na predchádzajúci test konektivity. Testovacia t
 jednotlivých nástrojov boli rovnaké ako v predchádzajúcom prípade. V Mediátore stále neboli spustené 
 žiadne sprostredkovateľské moduly. 
 
-\begin{figure}[ht!]
-\centering
-\includegraphics[width=1.0\textwidth]{porovnanie_wireshark}
-\caption{Test 2: Správy odosielané exportérom zachytené programom Wireshark}\label{o:porovnanie_wireshark}
-\end{figure}
+Myšlienkou tohto overenia bolo porovnať dáta, ktoré posiela exportér s dátami, ktoré prejdú celou topológiou
+cez Mediátor a JXColl a sú uložené v databáze. Na zachytenie správ z BEEM-u bol použitý program 
+Wireshark, ktorý odchytával sieťovú prevádzku na prvom počítači, na rozhraní \emph{eth0} s IP adresou 
+\emph{192.168.1.35}. Detail jednej zo správ, ktoré zachytil Wireshark je na Obrázku 
+\ref{o:porovnanie_wireshark}. Na Obrázku \ref{o:porovnanie_db} sú zase vyfiltrované posledné záznamy, 
+ktoré boli uložené do databázy. Môžeme porovnať aspoň na niekoľkých znázornených informačných elementoch,
+že záznamy o toku sa po prechode cez topológiu s Mediátorom bez zapnutých sprostredkovateľských procesov 
+nezmenili. Tento experiment považujeme za úspešný.
 
 \begin{figure}[ht!]
 \centering
@@ -86,14 +89,13 @@ jednotlivých nástrojov boli rovnaké ako v predchádzajúcom prípade. V Medi�
 \caption{Test 2: Výpis obsahu databázy}\label{o:porovnanie_db}
 \end{figure}
 
-Myšlienkou tohto overenia bolo porovnať dáta, ktoré posiela exportér s dátami, ktoré prejdú celou topológiou
-cez Mediátor a JXColl a sú uložené v databáze. Na zachytenie správ z mybeem-u bol použitý program 
-Wireshark, ktorý odchytával sieťovú prevádzku na prvom počítači, na rozhraní \emph{eth0} s IP adresou 
-\emph{192.168.1.35}. Detail jednej zo správ, ktoré zachytil Wireshark je na Obrázku 
-\ref{o:porovnanie_wireshark}. Na Obrázku \ref{o:porovnanie_db} sú zase vyfiltrované posledné záznamy, 
-ktoré boli uložené do databázy. Môžeme porovnať aspoň na niekoľkých znázornených informačných elementoch,
-že záznamy o toku sa po prechode cez topológiu s Mediátorom bez zapnutých sprostredkovateľských procesov 
-nezmenili. Tento experiment považujeme za úspešný.
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=1.0\textwidth]{porovnanie_wireshark}
+\caption{Test 2: Správy odosielané exportérom zachytené programom Wireshark}\label{o:porovnanie_wireshark}
+\end{figure}
+
+
 
 %%-------------------------
 
@@ -111,6 +113,12 @@ experimentu bolo dokázať dve tvrdenia:
  posledný oktet je v obidvoch prípadoch nahradený nulou.
 \end{itemize}
 
+Na Obrázku~\ref{o:anonym_wireshark} je zobrazený detail jednej zo správ, ktorú exportoval BEEM. 
+Na nasledujúcom Obrázku~\ref{o:anonym_db} vidieť posledné záznamy z databázy. Môžeme porovnať, že hodnoty 
+zdrojového a cieľového transportného portu a hodnota \emph{flowId} sa nezmenili. Avšak zároveň, všetky 
+zdrojové a cieľové IP adresy boli anonymizované. Tento experiment považujeme za úspešný, dokázal správnosť 
+obidvoch tvrdení.
+
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=1.0\textwidth]{anonym_wireshark}
@@ -124,63 +132,45 @@ experimentu bolo dokázať dve tvrdenia:
 \end{figure}
 
 
-Na Obrázku \ref{o:anonym_wireshark} je zobrazený detail jednej zo správ, ktorú exportoval mybeem. 
-Na nasledujúcom Obrázku \ref{o:anonym_db} vidieť posledne záznamy z databázy. Môžeme porovnať, že hodnoty 
-zdrojového a cieľového transportného portu a hodnota \emph{flowId} sa nezmenili. Avšak zároveň, všetky 
-zdrojové a cieľové IP adresy boli anonymizované. Tento experiment považujeme za úspešný, dokázal správnosť 
-obidvoch tvrdení.
+
 
 
 \subsection{Záťažový test}
 
 Posledný experiment sa nazýva aj \uv{\emph{stress test}}. Jeho úlohou je intenzívne a náročné testovanie 
-za účelom overenia stability systému. Pre tento experiment som nepoužil topológiu ako v ostatných testoch.
+za účelom overenia stability systému. Pre tento experiment nebola použitá topológia ako v ostatných testoch.
 Záťažový test prebiehal na virtuálnom serveri \emph{monica-med.monica.cnl.sk} v infraštruktúre Laboratória
 počítačových sietí na Technickej Univerzite v Košiciach.
 
-Na serveri bol nainštalovaný Mediátor 1.0 z inštalačného .deb balíčka a mybeem poslednej verzie, ktorá 
+Na serveri bol nainštalovaný Mediátor 1.0 z inštalačného \emph{.deb} balíčka a BEEM poslednej verzie, ktorá 
 má podporu pre Mediátor. Myšlienkou experimentu bolo zistiť, ako sa bude správať Mediátor pri dlhodobom 
 behu a pri vysokom zaťažení v podobe veľkého množstva súbežných tokov. Protokol \emph{BitTorrent}
 \citep{bittorrent} je známy práve tým, že nadväzuje veľa spojení. Preto sa o generovanie sieťovej 
 prevádzky postarala konzolová verzia BitTorrent klienta \emph{Transmission}, ktorá sťahovala rôzne 
 distribúcie OS Ubuntu.
 
-%% TODO dopisat cas a pamat / dat screenshot profilingu?
-Experiment odhalil úzke hrdlo nielen Mediátora, ale aj exportéra mybeem. Keď sa spojili dva faktory: 
-enormný počet dátových tokov a rýchlosť prenosu medzi 20 MB/s a 40 MB/s, tak sa niekedy stávalo, že vstupný 
-buffer sprostredkovateľského procesu \verb|ExampleProcess| sa preplnil a začal zahadzovať pakety. 
-Analyza vytazenosti vlakien vo vyvojarskom prostredi \emph{NetBeans 7.3} ukazala, ze pricina zahadzovania 
-paketov nie je sposobena tym, ze \verb|ExampleProcess| nestiha v dostatocnej rychlosti spracovavat pakety.
-Proces bol az 95\% casu v stave \emph{wait}, teda cakal na zaznamy o toku. Avsak mybeem exportoval spravy
-v takych zhlukoch, ktore narazovo zaplnali cely vstupny buffer procesu. Stavalo sa, ze do vstupneho
-buffera procesu bol zapisany zhluk 30 zaznamov behom $0,003$ sekundy!
-%Podľa
-%môjho názoru bola príčinou 
-%synchronizovaná metóda \verb|dispatchFlowRecord(...)| triedy \verb|FlowRecordDispatcher|.
-%Tato trieda je asi najvyťaženejšou častou architektúry, pretože deleguje distribúciu záznamov o tokoch 
-%medzi zhromažďovacím procesom, sprostredkovateľskými modulmi a exportovacím procesom. O spomínanú metódu
-%sa teda bijú viaceré vlákna. V prípade, že zhromažďovací proces prijíma extrémne množstvo správ, môže sa stat,
-%že delegovaciu metódu zadržiava pre seba na dlhú dobu. Vtedy ju \verb|ExampleProcess| nemôže zavolať, a teda 
-%sa nemôže \uv{zbaviť} svojich záznamov, ktoré spracoval. Zároveň však delegovacia metóda napĺňa jeho
-%vstupný buffer. Toto spôsobuje hromadenie záznamov, ktoré mu preplnia vstupný buffer, až ich musí zahadzovať.
-%
-%Zvýšenie veľkosti vstupného buffera z 25 záznamov na 100 odstránilo tento nedostatok, no považujem to za 
-%povrchné a dočasné riešenie, ktoré pri väčšom počte modulov ani nemusí postačovať. Úplným riešením by mohla 
-%byt vyrovnávacia pamäť typu \verb|ArrayBlockingQueue|, použitá aj na iných miestach architektúry, ktorá 
-%by mohla zmierniť nárazový nápor na \verb|FlowRecordDispatcher|.
-Zvýšenie veľkosti vstupného buffera z 25 na 100 záznamov odstránilo tento nedostatok. Stalo by za uvahu,
-ci by nebolo vhodne triedu zodpovednu za delegovanie toku zaznamov - \verb|FlowRecordDispatcher| 
-implementovat ako samostatne vlakno.
+Experiment odhalil úzke hrdlo nielen Mediátora, ale aj exportéra BEEM. Keď sa spojili dva faktory: 
+enormný počet dátových tokov a rýchlosť prenosu medzi 20 MB/s až 40 MB/s, tak sa niekedy stávalo, že 
+vstupná pamäť sprostredkovateľského procesu \verb|ExampleProcess| sa preplnila a začala zahadzovať pakety. 
+Analýza vyťaženosti vlákien vo vývojárskom prostredí \emph{NetBeans 7.3} ukázala, že príčina zahadzovania 
+paketov nie je spôsobená tým, že \verb|ExampleProcess| nestíha v dostatočnej rýchlosti spracovávať pakety.
+Proces bol až 95\% času v stave \emph{wait}, teda čakal na záznamy o toku. Avšak BEEM exportoval správy
+v takých zhlukoch, ktoré nárazovo zaplnili celú vstupnú pamäť procesu. Stávalo sa, že do vstupnej
+pamäte bol zapísaný zhluk 30 záznamov behom $0,003$ sekundy!
+Zvýšenie veľkosti vstupného buffera z 25 na 100 záznamov odstránilo tento nedostatok. Stálo by za úvahu,
+či by nebolo vhodné triedu zodpovednú za delegovanie toku zaznamov - \verb|FlowRecordDispatcher| 
+implementovať ako samostatné vlákno. Dispečerovi by bola predradená dostatočne veľká vyrovnávacia pamäť 
+typu \verb|ArrayBlockingQueue|, použitá aj na iných miestach architektúry, ktorá by mohla zmierniť 
+nárazový nápor záznamov. Zhromažďovací proces a moduly by tak nevolali priamo synchronizovanú metódu
+dispečera ako je tomu teraz, ale svoje záznamy by zapisovali do tejto pamäte.
 
-Úplným riešením by mohla 
-byt vyrovnávacia pamäť typu \verb|ArrayBlockingQueue|, použitá aj na iných miestach architektúry, ktorá 
-by mohla zmierniť nárazový nápor na \verb|FlowRecordDispatcher|.
-
-Druhý nedostatok bol odhalený v exportéri. Nástroj mybeem rovnako hlásil preplnenie paketovej cache a 
+Druhý nedostatok bol odhalený v exportéri. Nástroj BEEM rovnako hlásil preplnenie pamäte pre pakety a 
 preto zahadzoval správy. Tento fakt bol oznámený riešiteľskému tímu zodpovednému za exportér.
 
 Pozitívnym výsledkom experimentu bolo to, že dlhodobé spustenie Mediátora neprinieslo žiadnu nestabilitu 
-systému. Spotreba pamäte nemala stúpajúcu tendenciu a využitie procesora nepresiahlo 3\%.
+systému. Spotreba pamäte nemala stúpajúcu tendenciu, bola ustálená na hodnote $32$ MB počas celých 
+10 dňoch trvania experimentu. Využitie procesora nepresiahlo $6\%$. Na základe týchto zistení môžeme záťažový 
+experiment považovať za čiastočne úspešný.
 
 
 

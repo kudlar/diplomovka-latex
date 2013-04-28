@@ -13,10 +13,10 @@ ako rozšírenie referenčného modelu IPFIX, popísaného v \emph{Architecture 
 Funkčné komponenty v rámci každej entity sú ohraničené zátvorkami []. Mediátor môže prijímať 
 záznamy o toku od iných mediátorov a exportérov a prúd záznamov z iných zdrojov.
 Za iné zdroje sa považujú nástroje iných protokolov, ako napríklad NetFlow exportéry \citep{rfc3954}. 
-Spracovane dáta vo forme záznamov o toku potom exportuje jednému alebo viacerým kolektorom a mediátorom.
+Spracované dáta vo forme záznamov o toku potom exportuje jednému alebo viacerým kolektorom a mediátorom.
 
 
-Zjednodušený model komponentov IPFIX mediátora je zobrazený na Obrázku \ref{o:mediator_component_model}. 
+Zjednodušený model komponentov IPFIX mediátora je zobrazený na Obrázku~\ref{o:mediator_component_model}. 
 Mediátor obsahuje jeden alebo viac sprostredkovateľských procesov, hierarchicky uložených 
 medzi jedným alebo viacerými exportovacími a zhromažďovacími procesmi. Tento model sa týka 
 najbežnejšieho prípadu, kedy mediátor prijíma dátové záznamy od exportéra, alebo iného mediátora.
@@ -59,11 +59,11 @@ Prídavné funkcie môžu byť nasledujúce:
 \begin{itemize}
  \item Prijímať spúšťač \emph{trigger} od sprostredkovateľských procesov, ktorý vyvolá odoslanie správy
  kolektoru na odstránenie neplatnej šablóny \emph{(Template Withdrawal Message)}.
- \item Z dôvodu uvedeného v kapitole \ref{sec:loss_info} na strane \pageref{sec:loss_info}, je potrebné 
+ \item Z dôvodu uvedeného v Kapitole~\ref{sec:analyza} (Sekcia~\ref{sec:loss_info}), je potrebné 
  preposielať informácie o pôvodcovi dát (exportérovi), napríklad ID pozorovacieho bodu a pozorovacej 
  domény, IP adresa exportéra atď. Exportovací proces tieto dáta zakóduje do prídavných dátových záznamov, 
  buď s využitím 
- informačných elementov skupiny 2 (tabuľka \ref{t:ie-group2}), alebo organizáciou špecifikovaných 
+ informačných elementov skupiny 2 (Tabuľka \ref{t:ie-group2}), alebo organizáciou špecifikovaných 
  elementov.
 \end{itemize}
 
@@ -92,8 +92,8 @@ Prídavné funkcie môžu byť nasledujúce:
 \paragraph{Sprostredkovateľské procesy} \label{sec:framework_intermediate}
 
 Sprostredkovateľské procesy sú kľúčovými funkčnými blokmi sprostredkovania správ v IPFIX. Rôzne procesy 
-pokrývajú každý príklad použitia sprostredkovania správ z kapitoly \ref{sec:mediator_examples} na strane 
-\pageref{sec:mediator_examples}. 
+pokrývajú každý príklad použitia sprostredkovania správ z Kapitoly~\ref{sec:analyza} 
+(Sekcia~\ref{sec:mediator_examples}). 
 Mediátor musí byť schopný súčasne podporovať viac ako jeden sprostredkovateľský proces. Spolupráca viacerých 
 procesov je konfigurovaná nasledujúcimi spôsobmi.
 

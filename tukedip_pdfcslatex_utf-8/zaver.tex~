@@ -1,4 +1,4 @@
-\section{Z\'aver (zhodnotenie rie\v{s}enia)}
+\section{Zhodnotenie rie\v{s}enia}
 
 Najdôležitejším cieľom tejto diplomovej práce bolo navrhnúť a implementovať aplikačný rámec pre 
 sprostredkovateľskú entitu (IPFIX Mediátor), ktorá by bola medzičlánkom v komunikácii medzi exportérom
@@ -20,7 +20,7 @@ jednoducho nastavuje v konfiguračnom XML súbore podľa navrhnutého formátu. 
 riadi dispečer distribúciu záznamov o tokoch medzi procesmi. Definované moduly sa však najprv musia 
 pospúšťať. Toto zabezpečila pokročilá technológia dynamického načítavania tried pomocou 
 systémového \emph{class loadera} a reflexie. Ďalším pokročilým riešením bolo zabezpečenie toho, že 
-všetky sprostredkovateľské moduly musia mať len jednu unikátnu inštanciu. Keďže design jazyka Java 
+všetky sprostredkovateľské moduly musia mať len jednu unikátnu inštanciu. Keďže dizajn jazyka Java 
 nepovoľuje \emph{abstract static} metódy, bolo potrebné využiť návrhový vzor \emph{Factory method} a 
 hash mapu uchovávajúcu existujúce inštancie modulov. 
 
@@ -32,13 +32,12 @@ využíva všetky dostupné metódy, ktoré mu poskytuje abstraktná rodičovsk�
 
 Implementácia bola nakoniec overená niekoľkými experimentmi, ktoré dokázali funkčnosť riešenia. Ďalšie 
 smerovanie nástroja predpokladá implementovanie sprostredkovateľských modulov, ktoré zlepšia monitorovacie 
-možnosti aplikácie SLAmeter. Najväčší prínos vidím v anonymizačnom module, konverznom module z protokolu 
+možnosti aplikácie SLAmeter. Najväčší prínos sa vidí v anonymizačnom module, konverznom module z protokolu 
 NetFlow na IPFIX, prípadne v module, ktorý
 bude na základe istých pravidiel robiť selekciu IPFIX správ a tie následne exportovať distribuovaným 
 kolektorom. Z pohľadu aplikačného rámca by bolo vhodné rozšíriť jeho zhromažďovací proces o podporu 
 ďalších transportných protokolov ako TCP a SCTP. Rovnaké rozšírenie je možné aj na strane exportovacieho 
 procesu.
- ---
 
 
 %Táto časť\/ záverečnej práce je povinná. Autor uvedie zhodnotenie

@@ -132,7 +132,7 @@
  \@esphack}
 \def\nomgroup#1{}
 \newdimen\nomlabelwidth
-\nomlabelwidth2.5cm\relax
+\nomlabelwidth2cm\relax
 \newdimen\nom@tempdim
 \def\printglossary{%
   \@ifnextchar[%

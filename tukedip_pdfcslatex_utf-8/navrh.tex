@@ -1,71 +1,71 @@
-\section{Návrh a implementácia aplikačného rámca pre IPFIX Mediátor}
+\section{Návrh a implementácia aplikačného rámca pre IPFIX Mediátor} \label{sec:navrh}
 
-Na základe analýzy aplikačného rámca pre sprostredkovanie správ v IPFIX (pozri kapitolu \ref{sec:framework}, 
-strana \pageref{sec:framework}) a analýzy exportovacieho a zhromažďovacieho procesu v RFC 5101
+Na základe analýzy aplikačného rámca pre sprostredkovanie správ v IPFIX, pozri Kapitolu~\ref{sec:analyza} 
+(Sekcia~\ref{sec:framework}) a analýzy exportovacieho a zhromažďovacieho procesu v RFC 5101
 \citep{rfc5101} boli zhrnuté požiadavky a navrhnutá samotná architektúra IPFIX Mediátora. 
 Jeho jednotlivým komponentom, ktoré sú vyššie znázornené na Obrázku \ref{o:mediator_component_model} 
-a požiadavkám sú venované nasledujúce kapitoly. Upozorňujem, že termíny \uv{sprostredkovateľský proces}, 
-\uv{sprostredkovateľský modul},resp. \uv{modul} sú úplne totožné a zameniteľné.
+a požiadavkám sú venované nasledujúce kapitoly. Upozorňujeme, že termíny \uv{sprostredkovateľský proces}, 
+\uv{sprostredkovateľský modul}, resp. \uv{modul} sú úplne totožné a zameniteľné.
 
 
 \subsection{Požiadavky na rámec pre IPFIX Mediátor}
 
 \begin{itemize}
- \item \textbf{Modulárna implementácia} - už počas analýzy sprostredkovania správ v IPFIX bolo zrejmé, že 
+ \item \textbf{Modulárna implementácia} -- už počas analýzy sprostredkovania správ v IPFIX bolo zrejmé, že 
  aplikačný rámec musí byť modulárny. Musí mať podporu pre jednoduché a flexibilné pridávanie resp. 
- odoberanie modulov. Zdôrazňujem, že predstaviteľom modulu je sprostredkovateľský proces.
+ odoberanie modulov. Opäť zdôrazňujeme, že predstaviteľom modulu je sprostredkovateľský proces.
  
-  \item \textbf{Oddelenie logiky rámca od logiky sprostredkovateľských procesov} - 
+  \item \textbf{Oddelenie logiky rámca od logiky sprostredkovateľských procesov} -- 
   najdôležitejšie je, aby budúci riešitelia sprostredkovateľských procesov nemuseli vôbec zasahovať 
   do zdrojového kódu aplikačného rámca. Všetky potrebné metódy pre prácu so záznamami o tokoch 
   im musí zabezpečiť rámec, ale rovnako im musí zakázať prístup k jeho interným metódam. 
   Iba tak môže byť zachovaná jednotnosť prístupu. Nie je možné, aby každý sprostredkovateľský proces 
   riešil napr. zakódovanie, alebo dekódovanie dátových záznamov po svojom. Preto je potrebné navrhnúť 
-  a implementovať rozhranie, prostredníctvom ktorého budú musí  procesy komunikovať s aplikačným rámcom.
+  a implementovať rozhranie, prostredníctvom ktorého budú procesy komunikovať s aplikačným rámcom.
   
- \item \textbf{Dynamické načítavanie sprostredkovateľských procesov} - pridávanie a odoberanie 
+ \item \textbf{Dynamické načítavanie sprostredkovateľských procesov} -- pridávanie a odoberanie 
  sprostredkovateľských procesov musí byť riadené výlučne cez konfiguračný súbor. Nesmie byť potrebný 
  žiadny zásah do zdrojového kódu  rámca.
  
- \item \textbf{Jednoduchá konfigurácia} - ako už bolo spomenuté v analýze 
- (kapitola \ref{sec:framework_intermediate}, strana \pageref{sec:framework_intermediate}), 
+ \item \textbf{Jednoduchá konfigurácia} -- ako už bolo spomenuté v analýze -- Kapitola~\ref{sec:analyza} 
+ (Sekcia~\ref{sec:framework_intermediate}), 
  sprostredkovateľské procesy spracúvajú prijaté záznamy o tokoch bud sériovo, alebo paralelne. 
  Celková štruktúra odovzdávania dát v rámci mediátora od zhromažďovacieho procesu, sériovo a paralelne cez 
  všetky procesy a napokon až k exportovaciemu procesu musí byť jednoznačne konfigurovateľná v textovom 
  XML súbore a v čo najviac používateľsky priateľskom formáte. 
  
- \item \textbf{Distribúcia dát medzi komponentmi} - aplikačný rámec musí zabezpečiť spôsoby prenosu dát medzi 
+ \item \textbf{Distribúcia dát medzi komponentmi} -- aplikačný rámec musí zabezpečiť spôsoby prenosu dát medzi 
  jednotlivými sprostredkovateľskými procesmi, zhromažďovacím a exportovacím procesom. Tieto spôsoby 
  musia byť pre procesy jednotné a bez možnosti zmeny z vnútra sprostredkovateľského procesu.
  
- \item \textbf{Jediná inštancia modulov} - bolo navrhnuté, že každý sprostredkovateľský
+ \item \textbf{Jediná inštancia modulov} -- bolo navrhnuté, že každý sprostredkovateľský
  proces musí byť implementovaný podľa návrhového vzoru \emph{Singleton}. Je to z toho dôvodu, že 
  každý proces musí byť unikátny a jednoznačne rozpoznateľný v rámci celého programu na 
  základe mena triedy procesu. Konfigurácia toku dát cez procesy spomínaná vyššie bude daná práve 
  prostredníctvom názvov ich tried. Jedinečnosť procesov musí zabezpečiť aplikačný rámec. 
  
- \item \textbf{Jednotné dekódovanie a zakódovanie dátových záznamov} - aplikačný rámec musí obsahovať metódy 
+ \item \textbf{Jednotné dekódovanie a zakódovanie dátových záznamov} -- aplikačný rámec musí obsahovať metódy 
  prístupné všetkým sprostredkovateľským procesom, ktoré budú dekódovať dátové záznamy na dáta a opačne
  na základe šablón.
  
- \item \textbf{Viacvláknovosť} - nielen zo samotnej povahy paralelných procesov, ale aj modularity vyplýva, 
+ \item \textbf{Viacvláknovosť} -- nielen zo samotnej povahy paralelných procesov, ale aj modularity vyplýva, 
  že každý sprostredkovateľský proces bude vykonávaný v samostatnom vlákne, prípadne viacerých vláknach. 
  Podobne zhromažďovací a exportovací proces budú rozdelené na viac vlákien. 
  
- \item \textbf{Konformita s protokolom IPFIX} - výstupom Mediátora musia byť správy zakódované 
+ \item \textbf{Konformita s protokolom IPFIX} -- výstupom Mediátora musia byť správy zakódované 
  v konformite so špecifikáciou IPFIX protokolu. Kolektor spracováva správy prijaté od Mediátora rovnakým
  spôsobom, akoby ich prijal od exportéra. Navyše zhromažďovací a exportovací proces aplikačného rámca sa 
  nesmú líšiť od charakteristík týchto procesov daných špecifikáciou IPFIX protokolu v RFC 
  5101 \citep{rfc5101}.
  
- \item \textbf{Komunikácia pomocou UDP} - v tejto fáze projektu bol zvolený ako komunikačný protokol UDP.
+ \item \textbf{Komunikácia pomocou UDP} -- v tejto fáze projektu bol zvolený ako komunikačný protokol UDP.
  Dôvodom bola rýchlosť, jednoduchosť a dobré skúsenosti s implementáciou UDP v JXColl. Napriek tomu, že 
  UDP nie je  spojovo orientovaný transportný protokol, v prípade nasadenia Mediátora v SLAmetri to vôbec
  nevadí. Mediátor bude nasadený fyzicky na tej istej lokálnej sieti ako exportér a kolektor. 
  
- \item \textbf{Programovací jazyk Java} - pre implementáciu bol navrhnutý programovací jazyk Java.
- Hlavným dôvodom bol fakt, že zhromažďovací proces Mediátora a IPFIX kolektora sú veľmi podobné a kolektor 
- JXColl je naprogramovaný v tomto jazyku. Ďalším faktom je relatívne jednoduchá tvorba modulárnych aplikácii,
+ \item \textbf{Programovací jazyk Java} -- pre implementáciu bol vybratý programovací jazyk Java.
+ Hlavným dôvodom bol fakt, že zhromažďovací proces Mediátora a IPFIX kolektora sú veľmi podobné a JXColl 
+ je naprogramovaný v tomto jazyku. Ďalším faktom je relatívne jednoduchá tvorba modulárnych aplikácii,
  vďaka načítavaniu tried pomocou \emph{Java ClassLoader}. V neposlednom rade zohrala svoju rolu aj vysoká
  podpora jazyka Java, či už sa jedná o kvalitu dokumentácie, veľké množstvo odborných fór, dostupnosť 
  knižníc jazyka, ale aj fakt, že Java aplikácie sú spustiteľné na väčšine operačných systémov.
@@ -82,12 +82,12 @@ argumentov. Jedným z nich je cesta ku konfiguračnému súboru. Ak nie je zadan
 konfiguračný súbor. Druhým argumentom môže byť zadaná možnosť \verb|--logtofile|. Vtedy sú všetky 
 logovacie výstupy presmerované zo štandardného výstupu do súboru.
 
-Potom ako program načíta všetky nastavenia z konfiguračného súboru, spustí svoje moduly - 
+Potom ako program načíta všetky nastavenia z konfiguračného súboru, spustí svoje moduly -- 
 sprostredkovateľské procesy pomocou triedy \verb|IPLoader|. Nasleduje spustenie vlákna, ktoré prijíma 
 IPFIX pakety prostredníctvom protokolu UDP a vlákna, ktoré ich spracováva. Hovoríme o \verb|UDPServer| 
-a \verb|UDPProcessor|. Nakoniec je spustené exportovacie vlákno - \verb|UDPExporter|. Kedykoľvek keď 
+a \verb|UDPProcessor|. Nakoniec je spustené exportovacie vlákno -- \verb|UDPExporter|. Kedykoľvek keď 
 nastane chyba je Mediátor korektne ukončený a to tak, že uvoľní všetku pamäť a zastaví bežiace vlákna. 
-Rovnako je Mediátor zastavený po stlačení kombinácie kláves \verb|Ctrl+c|.
+Rovnako je Mediátor zastavený po stlačení kombinácie kláves \verb|Ctrl-c|.
 Podrobne o každom spomenutom vlákne a procese bude povedané v nasledujúcich kapitolách.
 
 
@@ -105,19 +105,14 @@ Venujme sa teda jednotlivým fázam procesu.
 
 \subsubsection{1. fáza zhromažďovacieho procesu}
 
-\begin{figure}[ht!]
-\centering
-\includegraphics[width=0.8\textwidth]{collecting1_schema}
-\caption{Schéma prvej fázy zhromažďovacieho procesu Mediátora}\label{o:collecting1_schema}
-\end{figure}
-
 Prvá fáza je znázornená na Obr. \ref{o:collecting1_schema} a predstavuje najnižšiu vrstvu celého 
 nástroja. Jej jadrom je UDP server, bežiaci v samostatnom vlákne. V jeho hlavnej metóde \emph{run()}
 cyklicky vykonáva kód, dokiaľ nie je prerušený výnimkou \emph{InterruptedException}.
-Tento kód odchytáva údaje posielané protokolom UDP na úrovni bytov a ukladá ich do 
-buffera. K tomuto je použitý objekt triedy jazyka Java - \verb|ByteBuffer|. Zároveň sa do objektu 
-triedy \verb|InetSocketAddress| uloží IP adresa exportéra a zaznamená sa čas prijatia dát v 
-milisekundách (formát Unix Timestamp). Tieto tri premenné sú argumentom funkcie \emph{write()}, 
+Tento kód odchytáva údaje posielané protokolom UDP na úrovni bajtov a ukladá ich do 
+vyrovnávacej pamäte. K tomuto je použitý objekt triedy jazyka Java -- \verb|ByteBuffer|. Zároveň sa do 
+objektu triedy \verb|InetSocketAddress| uloží IP adresa exportéra a zaznamená sa čas prijatia dát v 
+milisekundách vo formáte časovej známky Unix-u \emph{(Unix Timestamp)}. Tieto tri premenné sú argumentom 
+funkcie \emph{write()}, 
 ktorá z prijatých premenných vytvorí objekt typu \verb|PacketObject|. Tento objekt je akousi
 abstraktnou reprezentáciou paketu, vo svojich členských premenných uchováva údaje z hlavičky
 IPFIX správy (sekvenčné číslo, čas exportu, ID pozorovacej domény) spolu s obsahom správy, časom 
@@ -127,30 +122,37 @@ premenná \emph{cache} je typu \verb|ArrayBlockingQueue|, čo je vlastne Java im
 frontu, ktorý je navyše synchronizovaný a optimalizovaný na vysoký výkon. Táto vyrovnávacia pamäť 
 medzi prvou a druhou fázou zhromažďovacieho procesu je kritická vo vysoko rýchlostných sieťach. 
 
-Návrh do budúcnosti umožňuje jednoduché rozšírenie o serveri iných protokolov, napr. TCP a SCTP. 
-Tieto serveri budú rovnako ako \verb|UDPServer| bežiace v samostatných vláknach.
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.8\textwidth]{collecting1_schema}
+\caption{Schéma prvej fázy zhromažďovacieho procesu Mediátora}\label{o:collecting1_schema}
+\end{figure}
+
+Návrh umožňuje do budúcna jednoduchú rozšíriteľnosť programu o triedy implementujúce serveri iných transportných 
+protokolov, napr. TCP a SCTP. Tieto serveri budú rovnako ako \verb|UDPServer| bežiace v samostatných 
+vláknach.
 
 \subsubsection{2. fáza zhromažďovacieho procesu}
 
-\begin{figure}[ht!]
-\centering
-\includegraphics[width=0.8\textwidth]{collecting2_schema}
-\caption{Schéma druhej fázy zhromažďovacieho procesu Mediátora}\label{o:collecting2_schema}
-\end{figure}
-
 Schému druhej fázy vidíme na Obr. \ref{o:collecting2_schema}. Hlavná metóda \emph{run()} vlákna 
-\verb|UDPProcessor| cyklicky vyberá dáta z \verb|PacketCache| a predáva ich \emph{parseru}. 
+\verb|UDPProcessor| cyklicky vyberá dáta z \verb|PacketCache| a odovzdáva ich \emph{parseru}. 
 Ten je reprezentovaný 
 triedou \verb|IPFIXParser|. Správy číta z vyrovnávacej pamäte dokiaľ nie je prerušený výnimkou 
 \emph{InterruptedException}.
 UDP procesor robí zároveň kontrolu, či prijaté dáta sú IPFIX paketom. V tomto prípade, ale aj v prípadoch
 keď prijaté dáta sú poškodené sa správa zahadzuje a program pokračuje spracovávaním ďalšej správy.
 Trieda \verb|IPFIXParser| sa používa na spracovanie prijatých paketových binárnych dát, ktorého 
-výsledkom je hotový objekt IPFIX správy, obsahujúci všetky jej komponenty, pozri kapitolu 
-\ref{sec:message_format}, strana \pageref{sec:message_format}. Metódy tejto triedy najprv vyskladajú 
+výsledkom je hotový objekt IPFIX správy, obsahujúci všetky jej komponenty, pozri 
+Kapitolu~\ref{sec:analyza} (Sekcia~\ref{sec:message_format}). Metódy tejto triedy najprv vyskladajú 
 kompletnú hlavičku správy a potom sa pustia do parsovania IPFIX sád. Na základe identifikátora sady 
 spracujú a vytvoria objekty pre sadu šablón, sadu šablón možností a dátovú sadu. Sady následne naplnia 
 príslušnými záznamami. 
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.8\textwidth]{collecting2_schema}
+\caption{Schéma druhej fázy zhromažďovacieho procesu Mediátora}\label{o:collecting2_schema}
+\end{figure}
 
 Prichádzajúce záznamy šablón a záznamy šablón možnosti sú posielané špecializovanej triede 
 \verb|IPFIXUdpTemplateCache|, ktorá má na starosti správu prijatých šablón osobitne pre každý exportér. 
@@ -165,19 +167,19 @@ zabalí do objektu triedy \verb|IPFIXFlowRecord|, ktorá je reprezentáciou záz
 Tento záznam spolu s reťazcom, ktorý určuje odkiaľ záznam vystupuje \emph{(inputProcess)} sú posielané
 ako parametre triede \verb|FlowRecordDispatcher|. V tomto prípade reťazec, ktorý určuje pôvodcu záznamu 
 je \emph{\uv{exporter}}. 
-Dispečer záznamov o tokoch - \verb|FlowRecordDispatcher| rozdistribuuje prijaté záznamy o tokoch 
+Dispečer záznamov o tokoch -- \verb|FlowRecordDispatcher| rozdistribuuje prijaté záznamy o tokoch 
 príslušným sprostredkovateľským procesom, alebo ich pošle na export. O tom podrobnejšie v samostatnej 
-kapitole \ref{sec:FlowRecordDispatcher}, na strane \pageref{sec:FlowRecordDispatcher}. 
+Kapitole~\ref{sec:navrh} (Sekcia~\ref{sec:FlowRecordDispatcher}). 
 
 %% -------------------- COLLECTING END -----------------
 %% -------------------- INTERMEDIATE -----------------
 
-\subsection{Rozhranie a podpora pre sprostredkovateľské procesy - moduly} \label{sec:intermediate_process}
+\subsection{Rozhranie a podpora pre sprostredkovateľské procesy -- moduly} \label{sec:intermediate_process}
 
 Vyššie boli definované viaceré požiadavky na sprostredkovateľské procesy, ktoré musí zabezpečiť 
 aplikačný rámec. Hovoríme o modulárnej implementácii, oddelení logiky rámca od logiky procesov, 
 ich dynamické načítavanie, jediná inštancia procesov atď. Riešenie týchto požiadaviek bude vysvetlené v 
-nasledujúcich kapitolách. Začnime ale najprv teoretickým základom dynamického načítavanie tried.
+nasledujúcich kapitolách. Začnime ale najprv teoretickým základom dynamického načítavania tried.
 
 \subsubsection{Java ClassLoader a dynamické načítavanie tried} \label{sec:classLoader}
 
@@ -195,7 +197,7 @@ JVM a je zodpovedný za načítanie interných tried Java Development Kit (JDK) 
 obsiahnutých v JVM. Príkladom je \verb|java.lang.String|. Potomkom samozavádzacieho loadera je 
 \emph{extension class loader},
 ktorého primárnou zodpovednosťou je načítavať triedy z \emph{extension} priečinkov. Toto je pohodlný 
-spôsob rozšírenia JDK bez pridávania položiek do premenných prostredia - \emph{CLASSPATH}. 
+spôsob rozšírenia JDK bez pridávania položiek do premenných prostredia -- \emph{CLASSPATH}. 
 Rozšírením \emph{extension classloader-a} je aplikačný, resp. \emph{systémový class loader}. Jeho úlohou 
 je načítanie tried z cesty danej premennou prostredia. Inštanciu systémového class loadera získavame 
 metódou \verb|ClassLoader.getSystemClassLoader()|. \citep{techjava, antl}
@@ -249,7 +251,7 @@ vzoru singleton je nasledovná:
 \end{verbatim}
 Nedá sa spoľahnúť na to, že budúci vývojári modulov budú implementovať sprostredkovateľské procesy 
 podľa tohoto návrhového vzoru, preto to musí zabezpečiť aplikačný rámec, presnejšie trieda od ktorej 
-dedia - \verb|AIntermediateProcess|.
+dedia -- \verb|AIntermediateProcess|.
 Bohužiaľ v jazyku Java nie je možné aby Singleton implementovala abstraktná trieda, hneď z viacerých
 dôvodov (vymenované len niektoré):
 \begin{enumerate}
@@ -263,7 +265,7 @@ dôvodov (vymenované len niektoré):
  by tak bola zabezpečená triedami sprostredkovateľských procesov, premenná \verb|instance|
  by bola správneho typu. Tento návrh je však nerealizovateľný. 
  Metóda \emph{getInstance()} rodičovskej triedy nemôže byť statická a zároveň abstraktná. V jazyku Java
- to nie je možné \footnote{Niektoré jazyky, napr. Python túto možnosť dovoľujú.}. 
+ to nie je možné. 
  \emph{Static} metóda patrí triede, kde je definovaná. 
  Pričom \emph{abstract} naznačuje, že funkcionalita bude definovaná až v potomkoch. Tu dochádza k 
  logickému rozporu.
@@ -304,10 +306,10 @@ jediným spôsobom ako získať inštanciu podtriedy mimo balíčka je cez konš
  AIntermediateProcess.getInstance(SelectionProcess.class);
 \end{verbatim}
 Dalo by sa vyčítať, že vytváranie inštancií používa reflexiu, ktorá je pomalá. Avšak, keďže vytvárame 
-Singletony, volanie \emph{newInstance()} sa vykoná pre každý modul práve raz.
+Singleton-y, volanie \emph{newInstance()} sa vykoná pre každý modul práve raz.
 
 Aby bolo možné získavať inštancie modulov aj na základe mena triedy a nie len cez \emph{class} objekty, bola 
-vytvorená ďalšiu metóda \emph{getInstance(String processName)}. Parameter \emph{processName} je práve meno 
+vytvorená ďalšia metóda \emph{getInstance(String processName)}. Parameter \emph{processName} je práve meno 
 procesu, napr \verb|SelectionProcess|. Táto premenná sa prevedie na binárne meno procesu, 
 podľa špecifikácie jazyka Java \citep{java_spec},
 napr. \verb|sk.tuke.cnl.Mediator.SelectionProcess|.
@@ -335,7 +337,7 @@ napríklad meno, dátový typ, meno skupiny do ktorej patrí a identifikačné �
 
 Na dekódovanie slúži metóda \emph{decodeDataRecord()}, jej parametrami sú dátový záznam a príslušná
 šablóna. V prvej fáze je potrebné získať zakódovanú hodnotu z dátového záznamu, druha fáza dekóduje 
-byty informačného elementu na hodnotu definovanú dátovým typom.
+bajty informačného elementu na hodnotu definovanú dátovým typom.
 
 V cykle sa prechádzajú všetky špecifikátory poľa v šablóne. Na začiatku procesu sa pre každý 
 špecifikátor určí číslo organizácie (ak je definované) a ID informačného elementu. Ak sa daný informačný
@@ -343,11 +345,11 @@ element nenachádza v hash mape informačných elementov, tak je zaznamenaná ch
 na spracovanie ďalšieho špecifikátora poľa. Potom sa získa meno, dátový typ a skupina informačného elementu. 
 Posledne menované je skôr z informačných dôvodov, kvôli logovacím výpisom. Následne sa určí pozícia 
 špecifikátora poľa v šablóne, pretože na rovnakej pozícii je uložená zakódovaná hodnota informačného
-elementu v dátovom zázname. Metóda teda získa tieto byty, obalí ich do objektu triedy \emph{ByteBuffer}  
+elementu v dátovom zázname. Metóda teda získa tieto bajty, obalí ich do objektu triedy \emph{ByteBuffer}  
 a ten pošle spolu s pomenovaním dátového typu na dekódovanie triede \verb|IPFIXDecoder|.
 
-Autorom tejto triedy je Tomáš Vereščák. Na základe dátového typu je určená metóda, ktorá dekóduje 
-byty obsiahnuté v bufferi. Dekódovanie je implementované v súlade s RFC 5101 \citep{rfc5101} a 
+Na základe dátového typu je určená metóda, ktorá dekóduje 
+bajty obsiahnuté v bufferi. Dekódovanie je implementované v súlade s RFC 5101 \citep{rfc5101} a 
 RFC 5102 \citep{rfc5102} pre všetky dátové typy podporované protokolom IPFIX. Vymenujme aspoň niektoré:
 znamienkové a bezznamienkové celé čísla na 8, 16, 32, 64 a 128 bitoch, čísla v pohyblivej rádovej čiarke na 
 32 a 64 bitoch, dátumy, IPv4 a IPv6 adresy, MAC adresy a pod. 
@@ -361,9 +363,9 @@ procesu, ktorý si ju vyžiadal.
 \paragraph{Zakódovanie dátových záznamov} 
 Presným opakom predchádzajúcej metódy je metóda \emph{encodeDataRecord()}. Jej parametrami sú dátová 
 mapa (výsledok dekódovania), príslušná šablóna a počet polí v dátovom zázname, ktoré je potrebné 
-zakódovať - \emph{recordsCount}.
+zakódovať -- \emph{recordsCount}.
 
-Na začiatku vykonávania metódy sa inicializuje pole objektov \emph{ByteBuffer} o veľkosti recordsCount.
+Na začiatku vykonávania metódy sa inicializuje pole objektov \emph{ByteBuffer} o veľkosti \emph{recordsCount}.
 Toto pole slúži ako pomocná premenná pre uchovávanie zakódovaných hodnôt. Zároveň sa vytvorí objekt 
 nového dátového záznamu.
 Následne sa v cykle prechádzajú všetky hodnoty v dátovej mape. Pri každom prvku sa získa jeho identifikátor
@@ -372,10 +374,10 @@ organizácie, dátový typ a pozícia špecifikátora poľa v šablóne.
 
 Keď sú určené všetky potrebné hodnoty, tak dátový typ a hodnota informačného elementu sú poslané triede 
 \verb|IPFIXEncoder| na zakódovanie. Táto trieda bola navrhnutá a implementovaná analogicky k dekóderu. 
-Aj tu sú pokryté všetky dátové typy, ktoré podporuje IPFIX protokol vrátane jedného naviac - bezznamienkového
-celého čísla na 128 bitoch - \emph{unsigned128}. Tento dátový typ využívajú niektoré informačné elementy 
-definované Laboratóriom Počítačových Sietí na Technickej Univerzite v Košiciach. Podla špecifikácie
-\citep{rfc5101} musia byť zakódované informačné elementy posielané v sieťovom poradí bytov, známom 
+Aj tu sú pokryté všetky dátové typy, ktoré podporuje IPFIX protokol vrátane jedného naviac -- bezznamienkového
+celého čísla na 128 bitoch -- \emph{unsigned128}. Tento dátový typ využívajú niektoré informačné elementy 
+definované Laboratóriom počítačových sietí na Technickej univerzite v Košiciach. Podla špecifikácie
+\citep{rfc5101} musia byť zakódované informačné elementy posielané v sieťovom poradí bajtov, známom 
 tiež ako \emph{Big-Endian}. 
 
 Na základe dátového typu je určená funkcia, ktorá vykoná kódovanie. 
@@ -393,13 +395,13 @@ dátových typov informačných elementov v dátovom zázname. Nemusíme zdôraz
 a dátových záznamov môže Mediátor v čase prijímať. Preto bol kladený veľký dôraz na to, aby boli 
 kódovacie funkcie čo najoptimálnejšie. 
 
-Ukážme si to na príklade. Úlohou je zakódovať znamienkové celé číslo $-42$ na pole štyroch bytov.
+Ukážme si to na príklade. Úlohou je zakódovať znamienkové celé číslo $-42$ na pole štyroch bajtov.
 Najjednoduchším a najpohodlnejším riešením je použiť triedu \emph{ByteBuffer}, alokovať pole veľkosti 
-4, nastaviť poradie bytov na \emph{Big-Endian}, vložiť číslo -42 a konvertovať na pole 
-volaním \verb|array()|. Druhou možnosťou je použiť triedu \verb|BigInteger|, vložiť hodnotu -42, 
-a konvertovať na pole bytov. V tejto metóde sa nedá explicitne nastavovať poradie bytov, pole 
+$4$ bajty, nastaviť poradie bajtov na \emph{Big-Endian}, vložiť číslo $-42$ a konvertovať na pole 
+volaním \verb|array()|. Druhou možnosťou je použiť triedu \verb|BigInteger|, vložiť hodnotu $-42$, 
+a konvertovať na pole bajtov. V tejto metóde sa nedá explicitne nastavovať poradie bajtov, pole 
 je stále zoradené v \emph{Big-Endian}, čo nám vyhovuje. Nepríjemnosťou je dodatočné orezanie na 
-potrebný počet bytov. 
+potrebný počet bajtov. 
 \begin{verbatim}
  ByteBuffer buf = ByteBuffer.allocate(4).order(ByteOrder.BIG_ENDIAN);
  byte[] b1 = buf.putInt(-42).array();
@@ -409,8 +411,8 @@ potrebný počet bytov.
 Obe tieto metódy zbytočne pridávajú réžiu, zložitosť a zvyšujú pamäťovú náročnosť výpočtu tým, že 
 používajú komplexné Java triedy. Preto boli pre všetky konverzie implementované metódy pomocou bitových
 posunov a bitových operátorov. Tieto metódy prevádzajú všetky číselné primitívne typy jazyka Java 
-(byte, short, int, long, float a double) na pole bytov na najnižšej možnej úrovni, čo zabezpečuje vysoký
-výpočtový výkon. Ukážme si túto konverziu na 4-bytovom čísle -42.
+(byte, short, int, long, float a double) na pole bajtov na najnižšej možnej úrovni, čo zabezpečuje vysoký
+výpočtový výkon. Ukážme si túto konverziu na 4-bajtovom čísle $-42$.
 \begin{verbatim}
  public static byte[] intToByteArray(int x) {
         return new byte[]{
@@ -424,7 +426,7 @@ výpočtový výkon. Ukážme si túto konverziu na 4-bytovom čísle -42.
  byte[] b3 = intToByteArray(-42);
 \end{verbatim}
 
-Hodnota zakódovaná na pole bytov sa uloží do pomocného poľa spomínaného vyššie, na rovnakú pozíciu
+Hodnota zakódovaná na pole bajtov sa uloží do pomocného poľa spomínaného vyššie, na rovnakú pozíciu
 ako je pozícia špecifikátor poľa v šablóne. Keď sa prejdú všetky hodnoty pripravené na zakódovanie, 
 pomocné pole je vyskladané v správnom poradí a teda ho môžeme uložiť do objektu dátového záznamu.
 Hotový dátový záznam je vrátený sprostredkovateľského procesu, ktorý si ho vyžiadal.
@@ -434,12 +436,11 @@ Hotový dátový záznam je vrátený sprostredkovateľského procesu, ktorý si
 Trieda \verb|AIntermediateProcess| poskytuje rozhranie pre distribúciu záznamov o tokoch medzi 
 jednotlivými sprostredkovateľskými procesmi vďaka metóde \emph{dispatchFlowRecord()}. 
 Jej jedinou úlohou je zavolanie rovnomennej metódy distribútora záznamov - triedy \verb|FlowRecordDispatcher|.
-O tom podrobne v samostatnej kapitole \ref{sec:FlowRecordDispatcher} na strane 
-\pageref{sec:FlowRecordDispatcher}.
+O tom podrobne v samostatnej Kapitole~\ref{sec:navrh} (Sekcia~\ref{sec:FlowRecordDispatcher}).
 
 
 
-\subsubsection{Príklad implementácie modulu - ExampleProcess}
+\subsubsection{Príklad implementácie modulu -- ExampleProcess}
 
 Pre budúcich riešiteľov bol propravený jednoduchý príklad implementácie sprostredkovateľského procesu.
 Predstavuje ho trieda \verb|ExampleProcess|, ktorej úlohou je veľmi jednoduchá anonymizácia zdrojovej a 
@@ -449,17 +450,18 @@ Trieda demonštruje všetky pravidlá programovania sprostredkovateľských proc
 abstraktnej triedy \verb|AIntermediateProcess|. Taktiež má konštruktor bez explicitne definovaného 
 prístupu, v ktorom volá rodičovský konštruktor so svojím menom ako parametrom. Toto síce nie je povinné,
 ale zaistí to, že vlákno bude pomenované, teda v príslušných logovacích výpisoch bude jeho meno.
-V opačnom prípade dostane vlákno automaticky vygenerované meno \uv{Thread-\emph{n}}, kde n je celé číslo.
-Poslednou podmienkou je implementovať hlavnú, štartovaciu metódu vlákien - \emph{run()}.
+V opačnom prípade dostane vlákno automaticky vygenerované meno \uv{Thread-\emph{n}}, kde \emph{n} je celé 
+číslo. Poslednou podmienkou je implementovať hlavnú, štartovaciu metódu vlákien -- \emph{run()}.
 
 Trieda \verb|ExampleProcess| zároveň predvádza použitie metód, ktoré poskytuje jej rodičovská trieda.
 V cykle čaká na záznamy o tokoch vo svojom vstupnom bufferi \emph{(inputBuffer)} a postupne ich odtiaľ 
 číta a odstraňuje. Nazvime ich 
-\emph{vstupné záznamy}. Vstupný buffer jej napĺňa trieda \verb|FlowRecordDispatcher|. Po prečítaní 
+\emph{vstupné záznamy}. Vstupnú vyrovnávaciu pamäť jej napĺňa trieda \verb|FlowRecordDispatcher|. Po 
+prečítaní 
 vstupného záznamu vytvorí a inicializuje \emph{výstupný záznam}. Následne prechádza všetky dátové záznamy
 vstupného záznamu, dekóduje ich, anonymizuje zdrojovú a cieľovú IP adresu a naspať zakóduje. Ak všetko 
 prebehlo bez problémov, tak dátový záznam priradí výstupnému záznamu. Napokon výstupný záznam o toku 
-posunie distribútorovi záznamov, ktorý ho bude prepošle 
+posunie distribútorovi záznamov, ktorý ho buď prepošle 
 nasledujúcemu sprostredkovateľskému procesu, alebo pripraví na export.
 
 
@@ -473,12 +475,13 @@ zásahu do zdrojového kódu aplikačného rámca.
 Administrátori definujú zoznam procesov v XML konfiguračnom súbore, v elemente \verb|<processes>|. 
 Táto položka sa skladá z ďalších položiek typu \verb|<process>| s atribútom 
 obsahujúcim meno sprostredkovateľského procesu. Každý proces, ktorý má byť načítaný, musí mať 
-samostatnú položku. Príklad takejto konfigurácie uvedieme v~nasledujúcej kapitole 
-\ref{sec:FlowRecordDispatcher}.
+samostatnú položku. Príklad takejto konfigurácie uvedieme v~nasledujúcej 
+Sekcii~\ref{sec:FlowRecordDispatcher}.
 
 Parser konfiguračného súboru spracuje tieto položky a vytvorí zoznam modulov, ktoré sa majú načítať.
-Dynamické načítavanie tried podľa ich mena bolo analyzované v kapitole \ref{sec:classLoader} na strane
-\pageref{sec:classLoader}. Načítavanie modulov má na starosti trieda \verb|IPLoader|. Jej hlavná metóda
+Dynamické načítavanie tried podľa ich mena bolo analyzované v Kapitole~\ref{sec:navrh} 
+(Sekcia~\ref{sec:classLoader}). Načítavanie modulov má na starosti trieda \verb|IPLoader|. Jej hlavná 
+metóda
 \emph{loadProcesses()} cyklicky prechádza zoznam reťazcov obsahujúcich názvy modulov. Meno každého 
 modulu prevedie na binárny názov a vďaka \emph{systémovému class loader}-u, získa jeho 
 \emph{class} objekt. Podmienkou však je, že hlavná trieda modulu musí byť v rovnakom balíčku ako trieda
@@ -527,14 +530,14 @@ Ukážme si príklad takejto konfigurácie:
 
 Majme 3 sprostredkovateľské procesy: 
 \begin{itemize}
-\item SelectionProcess
+\item SelectionProcess,
 \item AggregationProcess a 
-\item AnonymizationProcess 
+\item AnonymizationProcess.
 \end{itemize}
 
 Formát zápisu toku dát medzi procesmi je rovnaký ako v príklade. Vstupnými údajmi pre 
 \emph{SelectionProcess} a \emph{AggregationProcess} sú dáta priamo prijaté od exportéra, teda sú 
-vlastne výstupnom  
+vlastne výstupom  
 zhromažďovacieho procesu. Pričom vstupnými údajmi pre \emph{AnonymizationProcess} je výstup 
 z \emph{AggregationProcess}. Tie procesy, ktorých dáta nevstupujú do žiadneho iného sprostredkovateľského 
 procesu sú logicky \uv{koncovými} procesmi, ich výstup je posunutý exportovaciemu procesu a poslaný 
@@ -543,36 +546,37 @@ kolektoru. Kým pri \emph{SelectionProcess} a \emph{AggregationProcess} hovorím
 
 Úloha triedy \verb|FlowRecordDispatcher| začína keď prijme prvé dáta od zhromažďovacieho procesu. Dáta prijíma 
 cez nasledujúce dva 
-parametre: záznam o toku - \verb|IPFIXFlowRecord| a reťazec určujúci odkiaľ tento záznam vystupuje - 
+parametre: záznam o toku -- \verb|IPFIXFlowRecord| a reťazec určujúci odkiaľ tento záznam vystupuje -- 
 \emph{inputProcess}.
 Následne získa zoznam prijímateľov tohto záznamu o toku, teda tie sprostredkovateľské procesy, 
 ktorých položkou \emph{$<$input$>$} v konfiguračnom súbore je reťazec \emph{inputProcess}, v tomto 
 prípade \uv{exporter}. Pri konfigurácii ako je daná v príklade by zoznam obsahoval dva reťazce: 
-\uv{SelectionProcess} a \uv{AggregationProcess}. Teraz potrebujeme získať inštancie týchto tried a ich vstupným bufferom poslať 
+\uv{SelectionProcess} a \uv{AggregationProcess}. Teraz potrebujeme získať inštancie týchto tried a ich 
+vstupným vyrovnávacím pamätiam poslať 
 prijatý záznam o toku. FlowRecordDispatcher to vykoná v cykle. 
 Metódou \emph{getInstance(String processName)} zavolanou nad
 abstraktnou triedou \emph{AIntermediateProcess} získa jedinú inštanciu sprostredkovateľského procesu. 
-Tato metóda nie je triviálna, podrobne som sa jej venoval v časti 
-\emph{Jediná inštancia modulov} na strane \pageref{sec:singleton}. Každej takto získanej 
-inštancii sprostredkovateľského procesu zapíše do vstupného buffera \emph{inputBuffer} záznam o toku.
+Tato metóda nie je triviálna, podrobne sme sa jej venovali v Sekcii~\ref{sec:singleton} --
+\emph{Jediná inštancia modulov}. Každej takto získanej 
+inštancii sprostredkovateľského procesu zapíše do vstupnej pamäte -- \emph{inputBuffer} záznam o toku.
 
-Vstupný  buffer implementuje trieda \verb|IPInputBuffer|, ktorá je analógiou k triede \verb|PacketCache|.
-Samotnú buffer rovnako predstavuje synchronizovaný a vysoko výkonný \emph{FIFO} front, implementovaný 
-pomocou \verb|ArrayBlockingQueue|. Do cache sú zapisované objekty typu \verb|IPFIXFlowRecord|.
+Vstupnú vyrovnávaciu pamäť implementuje trieda \verb|IPInputBuffer|, ktorá je analógiou k triede \verb|PacketCache|.
+Samotnú pamäť rovnako predstavuje synchronizovaný a vysoko výkonný \emph{FIFO} front, implementovaný 
+pomocou \verb|ArrayBlockingQueue|, do ktorého sú zapisované objekty typu \verb|IPFIXFlowRecord|.
 
 Sú tri základne metódy s rôznymi parametrami, ktoré zapisujú do frontu.
 Metóda \emph{offer()} vloží objekt na koniec frontu, iba v prípade, že je to možné 
 okamžite bez prevýšenia kapacity frontu a vráti \emph{true} ak bol zápis úspešný, \emph{false} v 
 opačnom prípade. Tato metóda sa viac preferuje ako \emph{add()}, ktorá pri neúspešnom zápise 
 vyhodí výnimku. Treťou je metóda \emph{put()}. Jej špecialitou je to, že v prípade, že je front plný,
-čaká na uvoľnenie miesta. Toto však spôsobí zablokovanie celého vlákna. \citep{arrayblockingqueue}
+čaká na uvoľnenie miesta. Toto však spôsobí zablokovanie celého vlákna \citep{arrayblockingqueue}.
 
-V zhromažďovacom procese, v kapitole \ref{sec:collectingprocess} na strane \pageref{sec:collectingprocess},
+V zhromažďovacom procese, v Kapitole~\ref{sec:navrh} (Sekcia~\ref{sec:collectingprocess}),
 sa do frontu zapisuje metódou \emph{put()}. V prípade, že sa \emph{PacketCache} naplní, je na mieste 
 zablokovať \emph{UDPServer} a počkať a uvoľnenie miesta vo vyrovnávacej pamäti. Avšak na tomto mieste by 
 to nebolo vhodné. Stačilo by, že by jeden sprostredkovateľský proces nestíhal spracovávať svoje záznamy
 o tokoch, zablokovalo by to dispečera tokov a tým cele vlákno predstavujúce druhú fázu zhromažďovacieho
-procesu. Kvôli jednému procesu, by žiaden proces nedostával nové záznamy. Preto zápis do vstupného buffera
+procesu. Kvôli jednému procesu by žiaden proces nedostával nové záznamy. Preto zápis do vstupnej pamäte
 sprostredkovateľských procesov zabezpečuje metóda \emph{offer()}.
 
 Ak metóda na získanie zoznamu prijímateľov vráti prázdny zoznam, vyplýva, že záznam o toku 
@@ -584,8 +588,8 @@ prijímateľom a boli splnené príslušné požiadavky na rámec pre IPFIX Medi
 %% -------------------- EXPORTING -----------------
 \subsection{Exportovací proces}
 
-Poslednou fázou Mediátora je exportovací proces. Jeho schéma je zobrazená na Obrázku 
-\ref{o:exporting_schema}. Ako bolo povedané v predchádzajúcej kapitole, záznamy 
+Poslednou fázou Mediátora je exportovací proces. Jeho schéma je zobrazená na 
+Obrázku~\ref{o:exporting_schema}. Ako bolo spomenuté v predchádzajúcej kapitole, záznamy 
 o tokoch, ktoré sú výstupom \uv{koncových} sprostredkovateľských procesov sú prostredníctvom dispečera 
 tokov pripravené na export zapísaním do exportovacej pamäte.
 
@@ -598,7 +602,7 @@ tokov pripravené na export zapísaním do exportovacej pamäte.
 Exportovaciu pamäť predstavuje \verb|ExportCache|. Tá je rovnako ako \verb|PacketCache| a 
 \verb|IPInputBuffer| synchronizovaný \emph{FIFO} front, do ktorého sa zapisujú objekty typu 
 \verb|IPFIXFlowRecord|. Ak sa \verb|ExportCache| naplní, sprostredkovateľské procesy nemajú byť blokované, 
-ale pokračovať vo svojej práci. Preto sa do cache zapisuje metódou \emph{offer()}.
+ale majú pokračovať vo svojej práci. Preto sa do cache zapisuje metódou \emph{offer()}.
 
 Jadrom exportovacieho procesu je trieda \verb|UDPExporter|, predstavujúca samostatné vlákno. V 
 konštruktori vytvára UDP socket na prijímanie a posielanie paketov a naviaže ho na akýkoľvek voľný port.
@@ -608,7 +612,7 @@ vyrovnávacej pamäte pre export. Záznamy posiela triede \verb|MessageEncoder|,
 IPFIX paket.
 
 \verb|MessageEncoder| vo svojich metódach postupne tvori obsah IPFIX správy podľa formátu, ktorý bol 
-analyzovaný v kapitole \ref{sec:message_format} na strane \pageref{sec:message_format}. Najprv vypočíta 
+analyzovaný v Kapitole~\ref{sec:analyza} (Sekcia~\ref{sec:message_format}). Najprv vypočíta 
 sekvenčné číslo, ktoré je obsahom hlavičky každej správy. Toto číslo zodpovedá celkovému počtu doteraz 
 odoslaných dátových záznamov modulo $2^{32}$. Ich celkový počet si priebežne zvyšuje vo svojej členskej 
 premennej. Potom postupne kóduje sady šablón, dátové sady, určí, resp. vypočíta všetky položky 
@@ -621,35 +625,34 @@ je hodnota \verb|<ipfixTemplateTimeout>| definovaná v konfiguračnom súbore, t
 Rovnako je šablóna pripojená okamžite po jej aktualizácii exportérom. 
 
 Metóda na zakódovanie šablóny používa objekt triedy \verb|ByteArrayOutputStream|. Táto trieda 
-implementuje prúd údajov, v ktorom sú dáta zapisované do poľa bytov. Do tohto prúdu postupne kóduje údaje 
+implementuje prúd údajov, v ktorom sú dáta zapisované do poľa bajtov. Do tohto prúdu postupne kóduje údaje 
 v takom poradí ako definuje formát IPFIX správy. Najprv do prúdu zakóduje číslo šablóny, za ním 
 počet špecifikátorov poľa a potom samotné špecifikátory. Formát špecifikátorov je nasledovný. Ako prvé sa 
-kóduje číslo informačného elementu na dvoch bytoch. V prípade, že ide o element definovaný 
+kóduje číslo informačného elementu na dvoch bajtoch. V prípade, že ide o element definovaný 
 organizáciou, tak najvyšší bit sa nastaví na 1. Nasleduje dĺžka informačného elementu a v prípade potreby 
 číslo organizácie definované spoločnosťou IANA. Keď je prúd záznamu šablóny hotový, tak sa pred neho 
 zaradia zakódované údaje sady šablóny. Tie pozostávajú z čísla sady, čo je v prípade sady šablóny číslo 2
 a celkovej dĺžky záznamu šablóny 
-vrátane veľkosti hlavičky sady. Touto operáciou vznikne prúd bytov sady šablóny.
+vrátane veľkosti hlavičky sady. Touto operáciou vznikne prúd bajtov sady šablóny.
 
 Po zakódovaní šablóny sa postupne kódujú všetky dátové záznamy obsiahnuté v zázname toku. Jednotlivé 
 hodnoty polí už sú správne zakódované podľa dátového typu, toto majú na zodpovednosti sprostredkovateľské
 procesy. Takže v tejto fáze stačí cyklicky prejsť všetky dátové záznamy a ich zakódované polia zapísať 
-do prúdu bytov. Napokon je potrebné pred tento prúd zaradiť zakódované údaje dátovej sady. Konkrétne
+do prúdu bajtov. Napokon je potrebné pred tento prúd zaradiť zakódované údaje dátovej sady. Konkrétne
 ide o číslo prislúchajúcej šablóny a súčet dĺžok všetkých dátových záznamov vrátane veľkosti hlavičky sady.
-Takto je vytvorený prúd bytov dátovej sady.
+Takto je vytvorený prúd bajtov dátovej sady.
 
-Ako posledný sa zostaví prúd bytov hlavičky IPFIX správy. Dĺžka správy je určená súčtom veľkosti hlavičky
-správy s veľkosťou sady šablóny a dátovej sady. Ako prvé sa do prúdu bytov hlavičky zakóduje číslo 
+Ako posledný sa zostaví prúd bajtov hlavičky IPFIX správy. Dĺžka správy je určená súčtom veľkosti hlavičky
+správy s veľkosťou sady šablóny a dátovej sady. Ako prvé sa do prúdu bajtov hlavičky zakóduje číslo 
 verzie, teda \verb|0x000a| a dĺžka správy. Nasleduje čas exportu, vypočítané sekvenčné číslo a ID 
 pozorovacej domény, ktoré je nastavené administrátorom v konfiguračnom súbore. Toto číslo však definuje
 pozorovaciu doménu v ktorej sídli Mediátor, nie exportér. O určovaní času exportu podrobnejšie neskôr.
 
-V analýze boli uvedené implementačno-špecifické problémy Mediátora, kapitola \ref{sec:problems}, strana 
-\pageref{sec:problems}. Prvým bola strata informácii o pôvodnom exportéri. Ako bolo povedané neskôr, v 
-analýze
-exportovacieho procesu v kapitole \ref{sec:exporting_process}, na strane \pageref{sec:exporting_process},
+V analýze boli uvedené implementačno-špecifické problémy Mediátora, Kapitola~\ref{sec:analyza} 
+(Sekcia~\ref{sec:problems}). Prvým bola strata informácii o pôvodnom exportéri. Ako bolo spomenuté neskôr, 
+v analýze exportovacieho procesu v Kapitole~\ref{sec:analyza} (Sekcia~\ref{sec:exporting_process}),
 spôsobom ako posielať tieto informácie je zakódovať ich do informačných elementov skupiny 2. Na požiadavku
-Mediátora boli všetky informačné elementy z tabuľky \ref{t:ie-group2} implementované na strane exportéra.
+Mediátora boli všetky informačné elementy z Tabuľky \ref{t:ie-group2} implementované na strane exportéra.
 ID pozorovacieho bodu a pozorovacej domény v ktorej sídli exportér sa kolektor dozvie z príslušných 
 informačných elementov, ktoré taktiež exportér podporuje. 
 
@@ -659,16 +662,16 @@ určenia času exportu:
  \item Zachovávať hodnotu z hlavičky prichádzajúcich IPFIX správ.
  \item Nastaviť aktuálnu hodnotu času keď IPFIX správa opúšťa Mediátor.
 \end{enumerate}
-V prípade, že exportér posiela akýkoľvek \uv{\emph{delta-}} informačný element, napr. \emph{flowStartDeltaMicroseconds},
+V prípade, že exportér posiela akýkoľvek \uv{\emph{delta}} informačný element, napr. \emph{flowStartDeltaMicroseconds},
 tak musí byť použitý prvý spôsob určenia času exportu, teda zachovanie pôvodného času. Keďže 
-\uv{\emph{delta-}} hodnoty sa viažu na tento čas, pri jeho prepísaní by stratili význam. Aby Mediátor 
+\uv{\emph{delta}} hodnoty sa viažu na tento čas, pri jeho prepísaní by stratili význam. Aby Mediátor 
 vyhovoval obom prípadom, navrhli sme, že spôsob určovania času exportu definuje administrátor v 
 konfiguračnom súbore, v elemente \verb|<exportTime>|. 
-Ak zadá reťazec \verb|KEEP|, tak trieda \verb|MessageEncoder| zakóduje do prúdu bytov hlavičky pôvodnú
+Ak zadá reťazec \verb|KEEP|, tak trieda \verb|MessageEncoder| zakóduje do prúdu bajtov hlavičky pôvodnú
 hodnotu. V prípade reťazca \verb|RENEW| sa zakóduje aktuálna hodnota času.
 
-Poslednou úlohou triedy \verb|MessageEncoder| je pospájať jednotlivé prúdy bytov do výsledného prúdu IPFIX 
-správy. Prvým je prúd bytov hlavičky správy. Ak sa exportuje aj šablóna, tak nasleduje prúd sady šablóny 
+Poslednou úlohou triedy \verb|MessageEncoder| je pospájať jednotlivé prúdy bajtov do výsledného prúdu IPFIX 
+správy. Prvým je prúd bajtov hlavičky správy. Ak sa exportuje aj šablóna, tak nasleduje prúd sady šablóny 
 a posledným je prúd dátovej sady. Trieda \verb|UDPExporter| teraz z prúdu IPFIX správy vytvorí 
 UDP paket. Na to slúži trieda \verb|DatagramPacket|, pričom jej parametrami sú dáta, dĺžka správy, 
 IP adresa a UDP port. Posledné dve menované sú zadané administrátorom v konfiguračnom súbore. Metódou 

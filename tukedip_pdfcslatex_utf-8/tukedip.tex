@@ -149,7 +149,9 @@ pdfsubject={Diplomová práca}
 \bibliographystyle{dcu}
 
 %----------------DELENIE SLOV-------------
-\hyphenation{kon-štruk-tor}
+\hyphenation{kon-štruk-tor sek-ven-čné spros-tred-ko-va-teľ-ský spros-tred-ko-va-teľ-ské-mu IPFIX}
+\hyphenation{kon-štruk-to-ra ná-roč-né spros-tred-ko-va-teľ-ský-mi na-vrh-nu-té-ho Feciľakovi}
+\hyphenation{spros-tred-ko-va-teľ-skú spros-tred-ko-va-teľ-ské-ho spros-tred-ko-va-teľ-ských}
 %-----------------------------------------
 
 
@@ -166,6 +168,10 @@ pdfsubject={Diplomová práca}
 
 % Na tomto mieste bude vložené zadanie diplomovej práce
 \includepdf[pages={1}]{zadavaci_list.pdf} 
+% \begin{figure}[ht!]
+% \centering
+% \includegraphics[width=1\textwidth]{zadavaci_list}
+% \end{figure}
 %\zadanieprace
 
 \cestnevyhlasenie
@@ -188,7 +194,7 @@ aj nároky a dôraz na kvalitu. Aby sa kvalita sietí a poskytovaných služieb 
 porovnávať, je potrebné siete merať.
 
 Meracia architektúra SLAmeter vyvíjaná výskumnou skupinou MONICA v Laboratóriu počítačových sietí na 
-Technickej univerzite v Košiciach predstavuje nástroj na pasívne meranie a analýzu parametrov prevadzky
+Technickej univerzite v Košiciach predstavuje nástroj na pasívne meranie a analýzu parametrov prevádzky
 počítačových sietí na báze tokov za účelom určovania ich triedy kvality.
 
 Meranie na báze tokov je populárnou a osvedčenou metódou rôznych monitorovacích infraštruktúr. Avšak 
@@ -199,8 +205,8 @@ exportovania a kapacity meracieho systému. Tieto problémy môže vyriešiť sp
 
 Hlavnou úlohou tejto práce je navrhnúť aplikačný rámec pre sprostredkovanie správ medzi exportérom a kolektorom
 v nástroji SLAmeter. K výberu tejto témy ma viedla možnosť skĺbenia mojich niekoľkých záľub, a to 
-záujmu o počítačové siete spolu so záujmom o programovanie a vyvíjanie nových aplikácii. Navyše, členom 
-výskumnej skupiny MONICA som už niekoľko rokov.
+záujmu o počítačové siete spolu so záujmom o programovanie a vyvíjanie nových aplikácii. Navyše už niekoľko 
+rokov som členom výskumnej skupiny MONICA.
 
 
 %Predhovor je povinnou náležitosťou záverečnej práce, pozri
@@ -245,7 +251,7 @@ výskumnej skupiny MONICA som už niekoľko rokov.
 	\item[Paket] je forma, resp. blok binárnych dat prenášaných v počítačových sieťach.
 	
 	\item[Hash mapa] alebo hash tabuľka je dátová štruktúra používaná na implementáciu asociatívnych 
-	poli. K hashovacím kľúčom priraďuje zodpovedajúce hodnoty. V jazyku Java môže byť hodnotou 
+	polí. K hashovacím kľúčom priraďuje zodpovedajúce hodnoty. V jazyku Java môže byť hodnotou 
 	akýkoľvek objekt a kľúčom každý objekt, ktorý správne implementuje funkcie \emph{equals()} a 
 	\emph{hashCode()}.
 	
@@ -258,16 +264,18 @@ výskumnej skupiny MONICA som už niekoľko rokov.
 	\item[MAC adresa] je 48 bitový, unikátny identifikátor sieťového adaptéra komunikujúceho na 
 	fyzickej vrstve. 
 	
-	\item[Big-Endian] je spôsob usporiadania bytov dátových typov v pamäti počítača. Najvýznamnejší 
-	byte je uložený na najnižšej (prvej) pozícii. Používa sa pri komunikácii v počítačových sieťach,
-	preto sa tiež nazýva \uv{sieťové poradie bytov}. Jeho presným opakom je Little-Endian.
+	\item[Big-Endian] je spôsob usporiadania bajtov dátových typov v pamäti počítača. Najvýznamnejší 
+	bajt je uložený na najnižšej (prvej) pozícii. Používa sa pri komunikácii v počítačových sieťach,
+	preto sa tiež nazýva \uv{sieťové poradie bajtov}. Jeho presným opakom je Little-Endian.
+	
+	\item[Little-Endian] je spôsob usporiadania bajtov dátových typov v pamäti počítača. Najmenej 
+	významný bajt je uložený na najnižšej (prvej) pozícii. Jeho presným opakom je Big-Endian.
 	
 	\item[Buffer] je oblasť pamäte používaná na dočasné uchovanie dát pred ich presunom na iné 
-	miesto - vyrovnávacia pamäť.
+	miesto -- vyrovnávacia pamäť.
 	
 	\item[Socket] je koncovým bodom spojenia v TCP/IP sieťach. Je tvorený kombináciou portu a IP 
 	adresy. \citep{linktionary} 
-	
 \end{description}
 
 \kslovnikterminov

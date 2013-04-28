@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  27 APR 2013 21:27
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  28 APR 2013 03:59
 entering extended mode
  %&-line parsing enabled.
 **tukedip.tex
@@ -686,43 +686,43 @@ LaTeX Warning: No \bakpraca given.
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 159--159
+Underfull \hbox (badness 10000) in paragraph at lines 161--161
 
  []
 
 
 LaTeX Warning: No \bakpraca given.
 
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 159.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 161.
 
 (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 159.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 161.
 
 
 (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 159
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 161
 .
 
 (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 159
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 161
 .
 
 (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 159.
+(Font)              <12> on input line 161.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 159.
+(Font)              <8> on input line 161.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 159.
-LaTeX Font Info:    Try loading font information for U+lasy on input line 159.
+(Font)              <6> on input line 161.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 161.
 
 (/usr/share/texmf-texlive/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
@@ -797,7 +797,7 @@ l.37
 s been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.276 \include{uvod}
+l.284 \include{uvod}
                      [2]
 \openout2 = `formulacia.aux'.
 
@@ -805,7 +805,7 @@ l.276 \include{uvod}
 (name{page.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.278 \include{formulacia}
+l.286 \include{formulacia}
                            [3
 
 
@@ -820,42 +820,40 @@ File: figures/ipfix_architekture_basic.png Graphic file (type png)
 th the same identifier (name{page.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.29   \item[Tok]
-                  je definovan√Ω ako mno≈æina IP paketov prech√°dzaj√∫cich p...
-[4
+l.32 \end{description}
+                       [4
 
 
- <./figures/ipfix_architekture_basic.png>]pdfTeX warning (ext4): destination wi
-th the same identifier (name{page.5}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.60   \item[Zhroma≈æƒèovac√≠ proces]
-                                      prij√≠ma z√°znamy o tokoch od jedn√©ho...
-[5]
+ <./figures/ipfix_architekture_basic.png>]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 105.
+(Font)              <10> on input line 73.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 105.
+(Font)              <7> on input line 73.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 105.
-pdfTeX warning (ext4): destination with the same identifier (name{page.6}) has 
+(Font)              <5> on input line 73.
+pdfTeX warning (ext4): destination with the same identifier (name{page.5}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.106 \end{description}
-                        [6]
-<figures/ipfix_message_format.png, id=567, 575.14874pt x 165.61874pt>
+l.74 
+      [5]pdfTeX warning (ext4): destination with the same identifier (name{page
+.6}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.100 \clearpage
+                 [6]
+<figures/ipfix_message_format.png, id=570, 575.14874pt x 165.61874pt>
 File: figures/ipfix_message_format.png Graphic file (type png)
 
 <use figures/ipfix_message_format.png>
-LaTeX Font Info:    Try loading font information for OMS+lmr on input line 131.
+LaTeX Font Info:    Try loading font information for OMS+lmr on input line 133.
 
  (/usr/share/texmf/tex/latex/lm/omslmr.fd
 File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 131.
-LaTeX Font Info:    Try loading font information for IL2+lmtt on input line 131
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 133.
+LaTeX Font Info:    Try loading font information for IL2+lmtt on input line 133
 .
  (/usr/share/texmf/tex/latex/lm/il2lmtt.fd
 File: il2lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -863,9 +861,11 @@ File: il2lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.133  \item \textbf
-                    {ƒåas exportu} vo form√°te UNIX timestamp. [7 <./figures/ip
-fix_message_format.png>]
+l.139  \item \textbf
+                    {Identifikaƒçn√© ƒç√≠slo pozorovacej dom√©ny}, ktor√Ω je...
+[7
+
+ <./figures/ipfix_message_format.png>]
 <figures/ipfix_message_header.pdf, id=578, 405.515pt x 127.47626pt>
 File: figures/ipfix_message_header.pdf Graphic file (type pdf)
 
@@ -877,7 +877,7 @@ File: figures/set_format.pdf Graphic file (type pdf)
 entifier (name{page.8}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.174 
+l.176 
        [8 <./figures/ipfix_message_header.pdf>]
 <figures/set_header.pdf, id=593, 404.51125pt x 46.1725pt>
 File: figures/set_header.pdf Graphic file (type pdf)
@@ -886,32 +886,34 @@ File: figures/set_header.pdf Graphic file (type pdf)
 entifier (name{page.9}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.207 
-       [9 <./figures/set_format.pdf>]
-<figures/field_specifier_format.pdf, id=604, 403.5075pt x 74.2775pt>
+l.210 P
+       rv√Ω bit sa naz√Ωva \emph{Enterprise bit}. [9 <./figures/set_format.pdf>
+ <./figures/set_header.pdf>]
+<figures/field_specifier_format.pdf, id=606, 403.5075pt x 74.2775pt>
 File: figures/field_specifier_format.pdf Graphic file (type pdf)
 
-<use figures/field_specifier_format.pdf>pdfTeX warning (ext4): destination with
+<use figures/field_specifier_format.pdf>
+<figures/template_record_header.pdf, id=610, 404.51125pt x 46.1725pt>
+File: figures/template_record_header.pdf Graphic file (type pdf)
+
+<use figures/template_record_header.pdf>pdfTeX warning (ext4): destination with
  the same identifier (name{page.10}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.241 
-       [10 <./figures/set_header.pdf> <./figures/field_specifier_format.pdf>]
-<figures/template_record_header.pdf, id=618, 404.51125pt x 46.1725pt>
-File: figures/template_record_header.pdf Graphic file (type pdf)
-
-<use figures/template_record_header.pdf>
+l.258 
+       [10 <./figures/field_specifier_format.pdf>]
 <figures/options_record_header.pdf, id=622, 403.5075pt x 75.28125pt>
 File: figures/options_record_header.pdf Graphic file (type pdf)
 
-<use figures/options_record_header.pdf>pdfTeX warning (ext4): destination with 
-the same identifier (name{page.11}) has been already used, duplicate ignored
+<use figures/options_record_header.pdf> (./mediator.texpdfTeX warning (ext4): d
+estination with the same identifier (name{page.11}) has been already used, dupl
+icate ignored
 <to be read again> 
                    \relax 
-l.282 
-       [11 <./figures/template_record_header.pdf> <./figures/options_record_hea
-der.pdf>] (./mediator.texpdfTeX warning (ext4): destination with the same ident
-ifier (name{page.12}) has been already used, duplicate ignored
+l.13 
+      [11 <./figures/template_record_header.pdf> <./figures/options_record_head
+er.pdf>]pdfTeX warning (ext4): destination with the same identifier (name{page.
+12}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.30 
@@ -928,9 +930,10 @@ destination with the same identifier (name{page.14}) has been already used, dup
 licate ignored
 <to be read again> 
                    \relax 
-l.90 
-      [14]pdfTeX warning (ext4): destination with the same identifier (name{pag
-e.15}) has been already used, duplicate ignored
+l.91 A
+      k by mal export√©r naplni≈• tieto po≈æiadavky, musel by paralelne vyko...
+[14]pdfTeX warning (ext4): destination with the same identifier (name{page.15})
+ has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.128 \paragraph
@@ -966,7 +969,7 @@ File: figures/mediator_component_model.pdf Graphic file (type pdf)
 <use figures/mediator_component_model.pdf>
 Overfull \hbox (3.37172pt too wide) in paragraph at lines 46--53
 \IL2/lmr/m/n/12 ne-lÌπi od zhro-ma-æÔo-va-cieho pro-cesu po-pÌ-sa-nÈho v πpe-ci
--fi-k·-cii IP-FIX pro-to-kolu ([]Claise
+-fi-k·-cii IPFIX pro-to-kolu ([]Claise
  []
 
 [22 <./figures/mediation_reference_model.pdf>] [23 <./figures/mediator_componen
@@ -980,13 +983,8 @@ File: figures/bm_architecture.png Graphic file (type png)
 <use figures/bm_architecture.png> [26
 
 
- <./figures/bm_architecture.png>]
-Overfull \hbox (10.46553pt too wide) in paragraph at lines 39--43
-\IL2/lmr/m/n/12 SLAmeter je me-raË pa-ra-met-rov sie-ªo-vej pre-v·dzky vy-hod-n
-o-cu-j˙ci do-dræia-va-nie zmluvy
- []
-
-[27] <figures/sla_architecture.pdf, id=785, 391.4625pt x 583.17876pt>
+ <./figures/bm_architecture.png>] [27]
+<figures/sla_architecture.pdf, id=785, 391.4625pt x 583.17876pt>
 File: figures/sla_architecture.pdf Graphic file (type pdf)
 
 <use figures/sla_architecture.pdf>) [28 <./figures/sla_architecture.pdf>]
@@ -996,71 +994,66 @@ File: figures/sla_architecture.pdf Graphic file (type pdf)
 (./navrh.tex [29
 
 
-] [30] [31]
-<figures/collecting1_schema.pdf, id=814, 462.72874pt x 133.49875pt>
+] [30] [31] [32]
+<figures/collecting1_schema.pdf, id=820, 462.72874pt x 133.49875pt>
 File: figures/collecting1_schema.pdf Graphic file (type pdf)
 
-<use figures/collecting1_schema.pdf> [32 <./figures/collecting1_schema.pdf>]
-<figures/collecting2_schema.pdf, id=823, 551.05875pt x 268.00125pt>
+<use figures/collecting1_schema.pdf> [33 <./figures/collecting1_schema.pdf>]
+<figures/collecting2_schema.pdf, id=830, 551.05875pt x 268.00125pt>
 File: figures/collecting2_schema.pdf Graphic file (type pdf)
 
-<use figures/collecting2_schema.pdf> [33 <./figures/collecting2_schema.pdf>]
-[34] [35] [36] [37] [38] [39] [40] [41] [42] [43] [44]
-<figures/flowRecordDispatcher_schema.pdf, id=924, 645.41125pt x 286.06876pt>
+<use figures/collecting2_schema.pdf> [34 <./figures/collecting2_schema.pdf>]
+[35] [36] [37] [38] [39] [40] [41] [42] [43] [44]
+<figures/flowRecordDispatcher_schema.pdf, id=922, 645.41125pt x 286.06876pt>
 File: figures/flowRecordDispatcher_schema.pdf Graphic file (type pdf)
 
 <use figures/flowRecordDispatcher_schema.pdf> [45] [46 <./figures/flowRecordDis
 patcher_schema.pdf>] [47]
-<figures/exporting_schema.pdf, id=946, 600.2425pt x 153.57375pt>
+<figures/exporting_schema.pdf, id=944, 600.2425pt x 153.57375pt>
 File: figures/exporting_schema.pdf Graphic file (type pdf)
 
 <use figures/exporting_schema.pdf> [48] [49 <./figures/exporting_schema.pdf>]
-Overfull \hbox (2.79482pt too wide) in paragraph at lines 647--655
-[]\IL2/lmr/m/n/12 V ana-l˝ze boli uve-denÈ implementaËno-πpecifickÈ prob-lÈmy M
-e-di·-tora, ka-pi-tola []2.2.4[],
- []
-
 [50]) [51]
 \openout2 = `experimenty.aux'.
 
  (./experimenty.tex
-<figures/test_topologia.pdf, id=980, 416.55624pt x 490.83376pt>
+<figures/test_topologia.pdf, id=978, 416.55624pt x 490.83376pt>
 File: figures/test_topologia.pdf Graphic file (type pdf)
 
 <use figures/test_topologia.pdf> [52
 
 
 ] [53 <./figures/test_topologia.pdf>]
-<figures/konektivita_beem.png, id=1001, 621.32124pt x 164.615pt>
+<figures/konektivita_beem.png, id=999, 621.32124pt x 164.615pt>
 File: figures/konektivita_beem.png Graphic file (type png)
 
 <use figures/konektivita_beem.png>
-<figures/konektivita_mediator.png, id=1002, 645.41125pt x 398.48875pt>
+<figures/konektivita_mediator.png, id=1000, 645.41125pt x 398.48875pt>
 File: figures/konektivita_mediator.png Graphic file (type png)
 
 <use figures/konektivita_mediator.png> [54 <./figures/konektivita_beem.png> <./
 figures/konektivita_mediator.png>]
-<figures/porovnanie_wireshark.png, id=1009, 695.59875pt x 667.49374pt>
-File: figures/porovnanie_wireshark.png Graphic file (type png)
-
-<use figures/porovnanie_wireshark.png> [55 <./figures/porovnanie_wireshark.png>
-] <figures/porovnanie_db.png, id=1017, 1116.17pt x 185.69376pt>
+<figures/porovnanie_db.png, id=1009, 1116.17pt x 185.69376pt>
 File: figures/porovnanie_db.png Graphic file (type png)
 
 <use figures/porovnanie_db.png>
-<figures/anonym_wireshark.png, id=1018, 694.595pt x 677.53125pt>
+<figures/porovnanie_wireshark.png, id=1010, 695.59875pt x 667.49374pt>
+File: figures/porovnanie_wireshark.png Graphic file (type png)
+
+<use figures/porovnanie_wireshark.png> [55 <./figures/porovnanie_db.png>]
+[56 <./figures/porovnanie_wireshark.png>]
+<figures/anonym_wireshark.png, id=1024, 694.595pt x 677.53125pt>
 File: figures/anonym_wireshark.png Graphic file (type png)
 
 <use figures/anonym_wireshark.png>
-<figures/anonym_db.png, id=1019, 1118.1775pt x 183.68625pt>
+<figures/anonym_db.png, id=1025, 1118.1775pt x 183.68625pt>
 File: figures/anonym_db.png Graphic file (type png)
 
-<use figures/anonym_db.png> [56 <./figures/porovnanie_db.png>] [57 <./figures/a
-nonym_wireshark.png> <./figures/anonym_db.png>] [58]) [59]
+<use figures/anonym_db.png> [57 <./figures/anonym_wireshark.png>] [58 <./figure
+s/anonym_db.png>]) [59]
 \openout2 = `zaver.aux'.
 
- (./zaver.tex
-[60
+ (./zaver.tex [60
 
 
 ]) [61]
@@ -1097,17 +1090,17 @@ L2/lmtt/m/n/12 http : / / c2 . com / cgi / wiki ?
 (./analyza.aux) (./basic_sla_meter.aux) (./navrh.aux) (./experimenty.aux)
 (./zaver.aux) (./literatura.aux) (./prilohy.aux)) ) 
 Here is how much of TeX's memory you used:
- 8750 strings out of 495027
- 119963 string characters out of 1181419
- 198567 words of memory out of 3000000
- 11407 multiletter control sequences out of 15000+50000
+ 8765 strings out of 495027
+ 120190 string characters out of 1181419
+ 198807 words of memory out of 3000000
+ 11411 multiletter control sequences out of 15000+50000
  66433 words of font info for 63 fonts, out of 3000000 for 9000
- 39 hyphenation exceptions out of 8191
+ 51 hyphenation exceptions out of 8191
  38i,16n,41p,473b,517s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf/fonts/enc/
 dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/sha
-re/texmf/fonts/enc/dvips/lm/lm-cs.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-c
-stt.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/share/texmf/fo
+re/texmf/fonts/enc/dvips/lm/lm-cstt.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
+-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-cs.enc}</usr/share/texmf/fo
 nts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.p
 fb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/t
 ype1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></us
@@ -1116,9 +1109,9 @@ ic/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/t
 exmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/l
 mss10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/
 fonts/type1/public/lm/lmtt12.pfb>
-Output written on tukedip.pdf (83 pages, 1501446 bytes).
+Output written on tukedip.pdf (83 pages, 1502080 bytes).
 PDF statistics:
- 1199 PDF objects out of 1200 (max. 8388607)
- 220 named destinations out of 1000 (max. 500000)
+ 1198 PDF objects out of 1200 (max. 8388607)
+ 219 named destinations out of 1000 (max. 500000)
  677 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,4 +1,4 @@
-\section{Anal\'yza}
+\section{Anal\'yza} \label{sec:analyza}
 
 \subsection{Anal\'yza protokolu IPFIX}
 
@@ -35,7 +35,7 @@ môžeme tvrdiť, že každý paket patrí toku, ak spĺňa všetky tieto spolo�
 \begin{description}
   \item[Záznam o toku] obsahuje namerané informácie a charakteristické vlastnosti 
 konkrétneho toku, ktorý bol pozorovaný pozorovacím bodom (napr. celkový počet prenesených 
-bytov, zdrojová IP adresa toku, a pod.).
+bajtov, zdrojová IP adresa toku, a pod.).
 
   \item[Pozorovací bod] je miestom v sieti, kde sú IP pakety pozorované. Medzi príklady patrí 
 sieťová linka, na ktorej je zavedená meracia sonda, zdieľané médium (napr. Ethernet LAN), 
@@ -60,13 +60,17 @@ viacerých zhromažďovacích procesov.
   \item[Zhromažďovací proces] prijíma záznamy o tokoch od jedného, alebo viacerých 
 exportovacích procesov. Prijaté záznamy môže spracovávať, alebo uchovávať. 
 
-  \item[Šablóna] špecifikuje formát odosielaných záznamov o tokoch pomocou zoznamu 
-informačných elementov. Musí byť odoslaná kolektoru 
-z exportovacieho procesu ešte pred odoslaním samotných dát. Neskôr sú šablóny periodicky 
-preposielané, aby kolektor vedel v každom okamihu aký formát dát prijme. 
-Šablóny musia byť dostupné administrátorom, preto sú definované v konfiguračnom súbore 
-exportéra.
-\citep{juvhaugen}
+  \item[Informačné elementy] sú protokolovo nezávislým popisom atribútov záznamov o tokoch. 
+Informačný model IPFIX \citep{rfc5102} obsahuje základnú množinu informačných elementov, vrátane ich
+popisu, významu, dátového typu a pod. Informačné elementy sú rozdelené do 12 skupín, pozri Tabuľku \ref{t:ie-table},
+na základe ich sémantiky a použitia. Každý element je asociovaný s dátovým typom, ktorý určuje jeho 
+formát a spôsob kódovania.
+Na základe tohto modelu sú jednotlivé dátové záznamy kódované na strane exportéra a dekódované 
+v kolektore.
+Informačný model povoľuje aj jeho rozširovanie. Organizácie môžu definovať vlastné informačné
+elementy, ktorým musia prideliť unikátny identifikátor. 
+Tieto elementy navyše obsahujú identifikátor organizácie \emph{(PEN)}, ktorý musí byť registrovaný v 
+IANA\footnote{http://www.iana.org/assignments/enterprise-numbers}.
 
 % ---- tabulka ----
 \tabcolsep=8pt
@@ -90,19 +94,17 @@ exportéra.
 12. & Výplň \emph{(padding)} \\ \hline
 \end{tabular}
 \end{table}
+
 % -----------
 
-  \item[Informačné elementy] sú protokolovo nezávislým popisom atribútov záznamov o tokoch. 
-Informačný model IPFIX \citep{rfc5102} obsahuje základnú množinu informačných elementov, vrátane ich
-popisu, významu, dátového typu a pod. Informačné elementy sú rozdelené do 12 skupín, pozri Tabuľku \ref{t:ie-table},
-na základe ich sémantiky a použitia. Každý element je asociovaný s dátovým typom, ktorý určuje jeho 
-formát a spôsob kódovania.
-Na základe tohto modelu sú jednotlivé dátové záznamy kódované na strane exportéra a dekódované 
-v kolektore.\\
-Informačný model povoľuje aj jeho rozširovanie. Organizácie môžu definovať vlastné informačné
-elementy, ktorým musia prideliť unikátny identifikátor. 
-Tieto elementy navyše obsahujú identifikátor organizácie \emph{(PEN)}, ktorý musí byť registrovaný v IANA
-\footnote{http://www.iana.org/assignments/enterprise-numbers}.
+\clearpage
+  \item[Šablóna] špecifikuje formát odosielaných záznamov o tokoch pomocou zoznamu 
+informačných elementov. Musí byť odoslaná kolektoru 
+z exportovacieho procesu ešte pred odoslaním samotných dát. Neskôr sú šablóny periodicky 
+preposielané, aby kolektor vedel v každom okamihu aký formát dát prijme. 
+Šablóny musia byť dostupné administrátorom, preto sú definované v konfiguračnom súbore 
+exportéra.
+\citep{juvhaugen}
 \end{description}
 
 
@@ -111,7 +113,7 @@ Tieto elementy navyše obsahujú identifikátor organizácie \emph{(PEN)}, ktor�
 
 Formát správ je definovaný v Špecifikácii IPFIX Protokolu \citep{rfc5101}. Správa pozostáva z 
 hlavičky, nasledovaná niekoľkými IPFIX sadami. 
-Exportér musí zakódovať všetky časti správy v sieťovom poradí bytov (Big-Endian).
+Exportér musí zakódovať všetky časti správy v sieťovom poradí bajtov (Big-Endian).
 Na Obrázku \ref{o:ipfix_message_format} je jedna z možností formátu IPFIX správy. Za hlavičkou nasleduje sada šablón, pretože
 šablóny musia byť exportované ihneď po vytvorení. Za šablónami nasledujú dátové sady a sady šablón možností 
 v akomkoľvek poradí.
@@ -126,7 +128,7 @@ v akomkoľvek poradí.
 
 \paragraph{Formát hlavičky správy}
 
-Formát hlavičky správy je znázornený na obrázku \ref{o:ipfix_message_header}. Pozostáva z piatich poli:
+Formát hlavičky správy je znázornený na Obrázku \ref{o:ipfix_message_header}. Pozostáva z piatich poli:
 \begin{itemize}
  \item \textbf{Číslo verzie} záznamu toku v správe. Pre IPFIX je to hodnota \verb|0x000a|.
  \item \textbf{Dĺžka} predstavuje celkovú dĺžku IPFIX správy v oktetoch, vrátane hlavičky a sád. 
@@ -150,9 +152,9 @@ Formát hlavičky správy je znázornený na obrázku \ref{o:ipfix_message_heade
 V IPFIX terminológii je sada všeobecný pojem pre kolekciu záznamov s podobnou štruktúrou. 
 IPFIX správa môže obsahovať tri rôzne druhy sád:
 \begin{itemize}
- \item Sada šablón
- \item Dátová sada
- \item Sada šablón možností
+ \item Sada šablón,
+ \item Dátová sada,
+ \item Sada šablón možností.
 \end{itemize}
 Každá zo sád sa skladá z hlavičky sady a jedného, alebo viacerých záznamov sady, Obrázok \ref{o:set_format}. 
 Na úplnom konci môže byť vložená výplň \emph{(padding)}, no nie je to povinná súčasť sady. Exportovací proces ho pridáva 
@@ -172,6 +174,16 @@ Hodnota 2 je rezervovaná pre sadu šablón. Sada šablón možností nadobúda
 hodnotu 3. Identifikátory 0 a 1 sa nepoužívajú z historických dôvodov \citep{rfc3954} a hodnoty od 4 po 
 255 sú rezervované pre budúce použitie. Dátové sady sú označené hodnotami väčšími ako 255. 
 
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.7\textwidth]{set_header}
+\caption{Formát hlavičky sady}\label{o:set_header}
+\end{figure}
+
+\emph{Dĺžka sady} zahŕňa celkovú dĺžku všetkých sád, vrátane hlavičky sady a prípadne výplne. Na jej základe 
+sa určuje koniec tejto sady a začiatok ďalšej, pretože sada môže obsahovať rôzny počet záznamov.
+
 % ---- tabuľka ----
 \tabcolsep=8pt
 \begin{table}[!ht]\caption{Prehľad identifikátorov, typov a záznamov sady}\label{t:set-record}
@@ -189,16 +201,6 @@ hodnotu 3. Identifikátory 0 a 1 sa nepoužívajú z historických dôvodov \cit
 \end{table}
 % -----------
 
-\emph{Dĺžka sady} zahŕňa celkovú dĺžku všetkých sád, vrátane hlavičky sady a prípadne výplne. Na jej základe 
-sa určuje koniec tejto sady a začiatok ďalšej, pretože sada môže obsahovať rôzny počet záznamov.
-
-\begin{figure}[ht!]
-\centering
-\includegraphics[width=0.7\textwidth]{set_header}
-\caption{Formát hlavičky sady}\label{o:set_header}
-\end{figure}
-
-
 
 \paragraph{Špecifikátory poľa}
 
@@ -210,7 +212,7 @@ Ak je nastavený na 0, tak hovoríme o oficiálnom informačnom elemente charakt
 registrovanom v IANA. 
 V tomto prípade je \emph{číslo organizácie (PEN)} nevyplnené. V opačnom prípade, 
 keď je tento bit nastavený na 1, ide o organizáciou špecifikovaný informačný element a číslo organizácie
-musí byť zadané. Laboratórium Počítačových Sietí na Technickej Univerzite v Košiciach má pridelené číslo 
+musí byť zadané. Laboratórium počítačových sietí na Technickej univerzite v Košiciach má pridelené číslo 
 organizácie 26235 \citep{pen}.
 Dĺžka poľa vyjadruje na koľkých oktetoch je daný informačný element kódovaný. 
 Zoznam informačných elementov aj s ich dĺžkami je dostupný v \citep{rfc5102}.
@@ -254,7 +256,7 @@ ktoré by zo samotných
 záznamov tokov nevedel vyčítať. Príkladom týchto informácií sú kľúče tokov, alebo konfigurácia šablóny,
 vzorkovacie parametre a pod.
 
-Formát záznamov \ref{o:options_record_header} je podobný ako v prípade záznamov šablóny. Pozostáva z hlavičky záznamu 
+Formát záznamov (Obrázok~\ref{o:options_record_header}) je podobný ako v prípade záznamov šablóny. Pozostáva z hlavičky záznamu 
 a jedného, alebo viacerých špecifikátorov poľa. Formát špecifikátorov je rovnaký ako pri záznamoch šablóny.
 Hlavička naviac obsahuje \emph{počet polí pôsobnosti}. Pôsobnosť charakterizuje kontext 
 informácií. Šablóna povoľuje 
@@ -279,3 +281,5 @@ Sú kódované podla popisu v Informačnom modeli \citep{rfc5102}. Identifikáto
 identifikátor sady. Inými slovami \uv{identifikátor sady} = \uv{identifikátor 
 šablóny}. Aby vedel kolektor tieto dáta dekódovať, musí poznať formát šablóny 
 už pred prijatím prvého dátového záznamu.
+
+\input{mediator}

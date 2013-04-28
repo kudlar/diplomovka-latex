@@ -1,4 +1,5 @@
 \documentclass[]{tukediphc}
+\pdfoutput=1
 %% -----------------------------------------------------------------
 %% tento subor ma kodovanie utf-8
 %%
@@ -32,7 +33,7 @@
 %%
 %% Cislovane citovanie
 %\usepackage[numbers]{natbib}
-%\usepackage{pdfpages}%spoji vystupne pdfko s dalsim pdfkom <-pre zadavaci list
+\usepackage{pdfpages}%spoji vystupne pdfko s dalsim pdfkom <-pre zadavaci list
 %%
 %% Citovanie podľa mena autora a roku
 \usepackage{natbib} \citestyle{chicago}
@@ -70,22 +71,26 @@ pdfsubject={Diplomová práca}
 \odbor{Informatika}
 \specializacia{Informatika}
 
-\abstrakt{Abstrakt je povinnou súčasťou každej práce. Je výstižnou
-charakteristikou obsahu dokumentu. Nevyjadruje hodnotiace stanovisko
-autora. Má byť\/ taký informatívny, ako to povoľuje podstata práce.
-Text abstraktu sa píše ako jeden odstavec. Abstrakt neobsahuje odkazy
-na samotný text práce. Mal by mať\/ rozsah 250 až 500 slov. Pri
-štylizácii sa používajú celé vety, slovesá v činnom rode a tretej
-osobe. Používa sa odborná terminológia, menej zvyčajné termíny,
-skratky a~symboly sa pri prvom výskyte v texte definujú.}
+\abstrakt{ !!!  TODO  !!!
+% Abstrakt je povinnou súčasťou každej práce. Je výstižnou
+% charakteristikou obsahu dokumentu. Nevyjadruje hodnotiace stanovisko
+% autora. Má byť\/ taký informatívny, ako to povoľuje podstata práce.
+% Text abstraktu sa píše ako jeden odstavec. Abstrakt neobsahuje odkazy
+% na samotný text práce. Mal by mať\/ rozsah 250 až 500 slov. Pri
+% štylizácii sa používajú celé vety, slovesá v činnom rode a tretej
+% osobe. Používa sa odborná terminológia, menej zvyčajné termíny,
+% skratky a~symboly sa pri prvom výskyte v texte definujú.
+}
 
 \klucoveslova{IPFIX, Sprostredkovanie, Mediátor, Kolektor, Exportér, SLAmeter, BasicMeter, MONICA}
 
-\abstrakte{Text abstraktu v~svetovom jazyku je potrebný pre integráciu
-do medzinárodných informačných systémov. Ak nie je možné cudzojazyčnú
-verziu abstraktu umiestniť na jednej strane so slovenským abstraktom,
-je potrebné umiestniť ju na samostatnú stranu (cudzojazyčný abstrakt
-nemožno deliť a~uvádzať na dvoch strabách).}
+\abstrakte{ !!! TODO !!!
+% Text abstraktu v~svetovom jazyku je potrebný pre integráciu
+% do medzinárodných informačných systémov. Ak nie je možné cudzojazyčnú
+% verziu abstraktu umiestniť na jednej strane so slovenským abstraktom,
+% je potrebné umiestniť ju na samostatnú stranu (cudzojazyčný abstrakt
+% nemožno deliť a~uvádzať na dvoch strabách).
+}
 
 \keywords{IPFIX, Mediation, Mediator, Collector, Exporter, SLAmeter, BasicMeter, MONICA}
 
@@ -123,7 +128,7 @@ nemožno deliť a~uvádzať na dvoch strabách).}
 \nomenclature{UDP}{User Datagram Protocol}
 \nomenclature{TCP}{Transmission Control Protocol}
 \nomenclature{SCTP}{Stream Control Transmission Protocol}
-\nomenclature{SLAmeter}{Service-level agreement metering}
+\nomenclature{SLA}{Service-level agreement}
 \nomenclature{bmIDS}{BasicMeter Intrusion Detection System}
 \nomenclature{FIFO}{First-In-First-Out}
 \nomenclature{JVM}{Java Virtual Machine}
@@ -136,15 +141,19 @@ nemožno deliť a~uvádzať na dvoch strabách).}
 \nomenclature{QOS}{Quality of service}
 \nomenclature{MB/s}{Megabyte za sekundu, jednotka rýchlosti dátového presnosu}
 \nomenclature{Gb/s}{Gigabit za sekundu, jednotka rýchlosti dátového presnosu}
-%----------------DELENIE SLOV-------------
-%\hyphenation{IPFIXFlowRecord FlowRecordDispatcher}
 
-%-----------------------------------------
 
 \begin{document}
 \renewcommand\theHfigure{\theHsection.\arabic{figure}}
 \renewcommand\theHtable{\theHsection.\arabic{table}}
 \bibliographystyle{dcu}
+
+%----------------DELENIE SLOV-------------
+\hyphenation{kon-štruk-tor sek-ven-čné spros-tred-ko-va-teľ-ský spros-tred-ko-va-teľ-ské-mu IPFIX}
+\hyphenation{kon-štruk-to-ra ná-roč-né spros-tred-ko-va-teľ-ský-mi na-vrh-nu-té-ho}
+%-----------------------------------------
+
+
 
 \prvastrana
 
@@ -157,14 +166,14 @@ nemožno deliť a~uvádzať na dvoch strabách).}
 \kabstrakt % koniec abstraktov, nova strana
 
 % Na tomto mieste bude vložené zadanie diplomovej práce
-%\includepdf[pages=-]{zadavaci_list_gray.pdf} 
-\zadanieprace
+\includepdf[pages={1}]{zadavaci_list.pdf} 
+% \begin{figure}[ht!]
+% \centering
+% \includegraphics[width=1\textwidth]{zadavaci_list}
+% \end{figure}
+%\zadanieprace
 
 \cestnevyhlasenie
-% Niektorí autori metodických príručiek o~záverečných prácach sa
-% nazdávajú, že takéto vyhlásenie je zbytočné, nakoľko povinnosť
-% vypracovať záverečnú prácu samostatne, vyplýva študentovi zo zákona a
-% na autora práce sa vzťahuje autorský zákon.
 
 \podakovanie
 Na tomto mieste sa chcem poďakovať vedúcemu diplomovej práce Ing. Petrovi 
@@ -184,7 +193,7 @@ aj nároky a dôraz na kvalitu. Aby sa kvalita sietí a poskytovaných služieb 
 porovnávať, je potrebné siete merať.
 
 Meracia architektúra SLAmeter vyvíjaná výskumnou skupinou MONICA v Laboratóriu počítačových sietí na 
-Technickej univerzite v Košiciach predstavuje nástroj na pasívne meranie a analýzu parametrov 
+Technickej univerzite v Košiciach predstavuje nástroj na pasívne meranie a analýzu parametrov prevádzky
 počítačových sietí na báze tokov za účelom určovania ich triedy kvality.
 
 Meranie na báze tokov je populárnou a osvedčenou metódou rôznych monitorovacích infraštruktúr. Avšak 
@@ -193,10 +202,10 @@ týkajúce sa škálovateľnosti meracieho systému, flexibility monitorovania t
 exportovania a kapacity meracieho systému. Tieto problémy môže vyriešiť sprostredkovanie správ -
 \emph{IP Flow Information Export (IPFIX) Mediation}.
 
-Hlavnou ulohou tejto práce je navrhnúť aplikačný rámec pre sprostredkovanie správ medzi exportérom a kolektorom
+Hlavnou úlohou tejto práce je navrhnúť aplikačný rámec pre sprostredkovanie správ medzi exportérom a kolektorom
 v nástroji SLAmeter. K výberu tejto témy ma viedla možnosť skĺbenia mojich niekoľkých záľub, a to 
-záujmu o počítačové siete spolu so záujmom o programovanie a vyvíjanie nových aplikácii. Navyše členom 
-výskumnej skupiny MONICA som už niekoľko rokov.
+záujmu o počítačové siete spolu so záujmom o programovanie a vyvíjanie nových aplikácii. Navyše už niekoľko 
+rokov som členom výskumnej skupiny MONICA.
 
 
 %Predhovor je povinnou náležitosťou záverečnej práce, pozri
@@ -206,21 +215,21 @@ výskumnej skupiny MONICA som už niekoľko rokov.
 %o~hlavných metódach, ktoré pri spracovaní záverečnej práce použil.
 \kpredhovoru
 
-\thispagestyle{empty}
+\pagestyle{empty}
 \tableofcontents
 \newpage
 
-\thispagestyle{empty}
+\pagestyle{empty}
 %\addcontentsline{toc}{section}{\numberline{}Zoznam obrázkov}
 \listoffigures
 \newpage
 
-\thispagestyle{empty}
+\pagestyle{empty}
 %\addcontentsline{toc}{section}{\numberline{}Zoznam tabuliek}
 \listoftables
 \newpage
 
-\thispagestyle{empty}
+\pagestyle{empty}
 %\addcontentsline{toc}{section}{\numberline{}Zoznam symbolov a
 %skratiek}
 \printglossary % vlozenie zoznamu skratiek a symbolov
@@ -235,13 +244,13 @@ výskumnej skupiny MONICA som už niekoľko rokov.
 	
 	\item[Singleton] je návrhový vzor, ktorý povoľuje vytvorenie iba jednej inštancie triedy. 
 	
-	\item[Parser] je program, ktorý analyzuje vstupne dáta tak, že ich rozdelí na jednotlivé 
+	\item[Parser] je program, ktorý analyzuje vstupné dáta tak, že ich rozdelí na jednotlivé 
 	významové časti, ktoré môžu byť následne spracované. \citep{veri}
 	
 	\item[Paket] je forma, resp. blok binárnych dat prenášaných v počítačových sieťach.
 	
 	\item[Hash mapa] alebo hash tabuľka je dátová štruktúra používaná na implementáciu asociatívnych 
-	poli. K hashovacim kľúčom priraďuje zodpovedajúce hodnoty. V jazyku Java môže byť hodnotou 
+	polí. K hashovacím kľúčom priraďuje zodpovedajúce hodnoty. V jazyku Java môže byť hodnotou 
 	akýkoľvek objekt a kľúčom každý objekt, ktorý správne implementuje funkcie \emph{equals()} a 
 	\emph{hashCode()}.
 	
@@ -254,29 +263,33 @@ výskumnej skupiny MONICA som už niekoľko rokov.
 	\item[MAC adresa] je 48 bitový, unikátny identifikátor sieťového adaptéra komunikujúceho na 
 	fyzickej vrstve. 
 	
-	\item[Big-Endian] je spôsob usporiadania bytov dátových typov v pamäti počítača. Najvýznamnejší 
-	byte je uložený na najnižšej (prvej) pozícii. Používa sa pri komunikácii v počítačových sieťach,
+	\item[Big-Endian] je spôsob usporiadania bajtov dátových typov v pamäti počítača. Najvýznamnejší 
+	bajt je uložený na najnižšej (prvej) pozícii. Používa sa pri komunikácii v počítačových sieťach,
+	preto sa tiež nazýva \uv{sieťové poradie bytov}. Jeho presným opakom je Little-Endian.
+	
+	\item[Little-Endian] je spôsob usporiadania bajtov dátových typov v pamäti počítača. Najmenej 
+	významný bajt je uložený na najnižšej (prvej) pozícii. Používa sa pri komunikácii v počítačových sieťach,
 	preto sa tiež nazýva \uv{sieťové poradie bytov}. Jeho presným opakom je Little-Endian.
 	
 	\item[Buffer] je oblasť pamäte používaná na dočasné uchovanie dát pred ich presunom na iné 
 	miesto - vyrovnávacia pamäť.
 	
-	\item[Socket] je koncovym bodom spojenia v TCP/IP sietach. Je tvoreny kombinaciou portu a IP 
+	\item[Socket] je koncovým bodom spojenia v TCP/IP sieťach. Je tvorený kombináciou portu a IP 
 	adresy. \citep{linktionary} 
-	
 \end{description}
 
 \kslovnikterminov
 %
+\pagestyle{headings}
 \include{uvod}
 %
 \include{formulacia}
 %
 \include{analyza}
 %
-\include{mediator}
+%\include{mediator}
 %
-\include{analyza_framework}
+%\include{analyza_framework}
 %
 \include{basic_sla_meter}
 %
@@ -290,13 +303,11 @@ výskumnej skupiny MONICA som už niekoľko rokov.
 %
 \include{prilohy}
 %
-\include{prilohaa}
+%\include{prilohaa}
 %
-\include{prilohab}
-%
-\include{prilohac}
-%
-\include{prirucka}
+%\include{prilohab}
+
+%\includepdf[pages=-]{mediator_sp.pdf}
 
 %
 % zivotopis autora

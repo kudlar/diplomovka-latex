@@ -12,16 +12,16 @@ vypĺňa túto medzeru medzi obmedzenými možnosťami merania a požiadavkami n
 zavedením sprostredkovateľského zariadenia nazývaného \emph{IPFIX Mediátor} \citep{rfc5982}.
 
 \subsubsection{Terminológia}
-Terminológia použitá v tejto kapitole je čiastočne definovaná v podkapitole \ref{sec:ipfix_terminology} 
-na strane \pageref{sec:ipfix_terminology}. 
+Terminológia použitá v tejto kapitole je čiastočne definovaná v Kapitole~\ref{sec:analyza} 
+(Sekcia~\ref{sec:ipfix_terminology}). 
 Dodatočne zadefinujeme nasledujúce termíny:
 \begin{description}
- \item[Prúd záznamov] - \emph{record stream} je sled dát nesúcich informácie o tokoch.
+ \item[Prúd záznamov] -- \emph{record stream} je sled dát nesúcich informácie o tokoch.
  
- \item[Sprostredkovanie správ v IPFIX] - \emph{IPFIX Mediation} je manipulácia a konverzia prúdu záznamov
+ \item[Sprostredkovanie správ v IPFIX] -- \emph{IPFIX Mediation} je manipulácia a konverzia prúdu záznamov
  pomocou IPFIX protokolu.
  
- \item[Sprostredkovateľský proces] - \emph{Intermediate Process} prijíma prúd záznamov ako vstupnú 
+ \item[Sprostredkovateľský proces] -- \emph{Intermediate Process} prijíma prúd záznamov ako vstupnú 
  veličinu od zhromažďovacieho procesu, meracieho procesu, čítačky IPFIX súborov, iného 
  sprostredkovateľského zariadenia, alebo akéhokoľvek zdroja záznamov. Nad prijatými záznamami
  vykoná rôzne transformácie, na základe ich obsahu. Napokon zmenené záznamy posúva na svoj výstup buď
@@ -34,7 +34,7 @@ Dodatočne zadefinujeme nasledujúce termíny:
  procesu. V typickom prípade prijíma Mediátor prúd záznamov od zhromažďovacieho procesu. No rovnako môže
  prijímať údaje od iných zdrojov, ktoré nie sú zakódované pomocou IPFIX, napr. v prípade konverzie 
  protokolu NetFlow verzie 9 \citep{rfc3954} na IPFIX. Príklad jednej z možných architektúr, 
- v ktorej je použitý Mediátor je na obrázku \ref{o:exp_med_coll} \citep{rfc5982}.
+ v ktorej je použitý Mediátor je na Obrázku \ref{o:exp_med_coll} \citep{rfc5982}.
 \end{description}
 
 \begin{figure}[ht!]
@@ -68,9 +68,9 @@ toku}, či \emph{spoľahlivosť exportu}. Tieto okolnosti závisia na dvoch fakt
 \paragraph{Vyrovnanie sa s rastom sieťovej prev\'adzky}
 
 Veľké spoločnosti a poskytovatelia Internetového pripojenia (ISP) majú bežne vo svojej sieťovej 
-infraštruktúre linky so šírkou pásma 10 Gb/s a ich celková sieťová prevádzka presahuje 100 Gb/s. 
-Podla \citep{trafgrw} sieťová prevádzka používateľov širokopásmového pripojenia k
-Internetu v blízkej budúcnosti sa bude každým rokom zvyšovať približne o 40\%. Sieťoví administrátori
+infraštruktúre linky so šírkou pásma $10$ Gb/s a ich celková sieťová prevádzka presahuje $100$ Gb/s. 
+Podľa \citep{trafgrw} sieťová prevádzka používateľov širokopásmového pripojenia k
+Internetu v blízkej budúcnosti sa bude každým rokom zvyšovať približne o $40\%$. Sieťoví administrátori
 monitorujúci IP prevádzku môžu udržiavať krok s týmto nárastom vďaka použitiu viacerých exportérov. 
 Tento prístup však môže viesť k prekročeniu výpočtových a pamäťových možností jediného kolektora.
 
@@ -86,7 +86,7 @@ spomínané redukčné techniky.
 \paragraph{Vyrovnanie sa s viacúčelovým meraním}
 
 Rôzne monitorovacie aplikácie majú rôzne požiadavky na meraciu infraštruktúru. Niektoré vyžadujú 
-monitorovanie na úrovni tokov, iné informácie o individuálnych paketoch a ďalšie agregované toky a pod.
+monitorovanie na úrovni tokov, iné informácie o individuálnych paketoch a ďalšie agregované toky a podobne.
 
 Ak by mal exportér naplniť tieto požiadavky, musel by paralelne vykonávať rôzne meracie operácie, čo je
 kvôli limitovaným výpočtovým zdrojom takmer nemožné. Preto je výhodnejšie použiť exportér s jednoduchším a 
@@ -138,8 +138,8 @@ IPFIX Mediátormi, ktoré budú preposielať dátové záznamy podľa požiadavi
 
 \paragraph{Anonymizácia dátových záznamov}
 
-IPFIX exporty krížom cez administratívne domény, tak ako to bolo popísané v prípade 4 
-v podkapitole \ref{sec:spatial}, na strane \pageref{sec:spatial} môžu 
+IPFIX exporty krížom cez administratívne domény, tak ako to bude popísané v prípade 4 
+v Kapitole~\ref{sec:analyza} (Sekcia~\ref{sec:spatial}), môžu 
 byt použité na monitorovanie sieťovej prevádzky na veľké vzdialenosti, 
 napríklad pre analýzu dátových trendov v Internete. Pri takomto použití sa musia administrátori riadiť
 pravidlami pre ochranu súkromia a predísť monitorovaniu dôvernej sieťovej prevádzky cudzími osobami.
@@ -221,7 +221,6 @@ Spájanie priestoru je vlastne zoskupenie dátových záznamov v rámci množiny
 pozorovacej domény, združovanie záznamov viacerých exportérov, alebo jedného exportéra ale viacerých 
 pozorovacích domén. Delí sa na tieto štyri typy:
 
-\clearpage
 \begin{enumerate}
  \item \textbf{Spájanie priestoru v rámci jednej pozorovacej domény} \\ 
     Príkladom je meranie dátového toku jedného logického rozhrania, ktoré vzniklo agregáciou liniek 
@@ -251,11 +250,11 @@ IP adresa exportéra, ktorá bola získavaná zo zdrojovej IP adresy transportne
 ako identifikačné číslo pozorovacej domény, ktoré je zahrnuté v hlavičke IPFIX správy.
 V niektorých prípadoch môže Mediátor zahodiť tieto informácie úmyselne. 
 Vo všeobecnosti však platí, že kolektor musí rozpoznať pôvod nameraných dát, ako napríklad IP adresu 
-exportéra, ID pozorovacej domény, alebo dokonca ID pozorovacieho bodu. Ak Mediátor tieto informácie 
+exportéra, ID pozorovacej domény (Observation Domain ID -- ODID), alebo dokonca ID pozorovacieho bodu. Ak Mediátor tieto informácie 
 o exportéri neoznámi kolektoru, tak ten nesprávne usúdi, že IP adresa Mediátora je adresa pôvodcu dát 
 (exportéra).
 
-V nasledujúcom obrázku \ref{o:loss_of_exporter} kolektor vie rozoznať dve IP adresy - 192.0.2.3. (Mediátor) 
+V nasledujúcom Obrázku \ref{o:loss_of_exporter} kolektor vie rozoznať dve IP adresy - 192.0.2.3 (Mediátor) 
 a 192.0.2.2 (Exportér 2). To nie je správne. Mediátor musí informovať Kolektor o IP adrese Exportéra 1.
 
 \begin{figure}[ht!]
@@ -282,7 +281,7 @@ nad dátovými záznamami. Kolektor nedokáže rozlíšiť medzi spájaním čas
 Mediátor neexportuje použitú funkciu. Niektoré parametre vzťahujúce sa k funkcii by tiež mali byť 
 exportované. 
 
-V prípade spájania času, kolektor musí poznať aktívny timeout \emph{active timeout} 
+V prípade spájania času, kolektor musí poznať aktívny časovač \emph{active timeout} 
 pôvodných záznamov o tokoch. Pri spájaní priestoru je potrebné poznať nad akou oblasťou bola 
 vykonaná kompozícia dátových záznamov.\citep{rfc5982}
 
