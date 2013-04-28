@@ -135,7 +135,7 @@ pdfsubject={Diplomov\'a pr\'aca}
 \hyphenation{kon-¹truk-tor sek-ven-èné spro-stred-ko-va-teµ-ský spro-stred-ko-va-teµ-ské-mu IPFIX}
 \hyphenation{kon-¹truk-to-ra ná-roè-né spro-stred-ko-va-teµ-ský-mi na-vrh-nu-té-ho Feciµakovi}
 \hyphenation{spro-stred-ko-va-teµ-skú spro-stred-ko-va-teµ-ské-ho spro-stred-ko-va-teµ-ských}
-\hyphenation{spro-stred-ko-va-nia NetFlow timeout}
+\hyphenation{spro-stred-ko-va-nia NetFlow timeout kon-¹tan-ty}
 %-----------------------------------------
 
 
@@ -154,11 +154,11 @@ pdfsubject={Diplomov\'a pr\'aca}
 \bigskip
 \newpage
 
-\thispagestyle{empty}
+\pagestyle{empty}
 \tableofcontents
 \newpage
 
-\thispagestyle{empty}
+\pagestyle{empty}
 %\addcontentsline{toc}{section}{\numberline{}Zoznam obrázkov}
 \listoffigures
 \newpage
@@ -169,7 +169,7 @@ pdfsubject={Diplomov\'a pr\'aca}
 %\newpage
 
 \thispagestyle{empty}
-
+\pagestyle{headings}
 %
 \include{mediator_sp_jadro}
 %

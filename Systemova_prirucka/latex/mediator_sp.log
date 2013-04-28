@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  28 APR 2013 23:26
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  28 APR 2013 23:30
 entering extended mode
  %&-line parsing enabled.
 **mediator_sp.tex
@@ -679,30 +679,31 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 \tf@toc=\write7
 \openout7 = `mediator_sp.toc'.
 
-LaTeX Font Info:    Try loading font information for IL2+lmss on input line 159
-.
- (/usr/share/texmf/tex/latex/lm/il2lmss.fd
-File: il2lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [4]
-(./mediator_sp.lof)
+ [4] (./mediator_sp.lof)
 \tf@lof=\write8
 \openout8 = `mediator_sp.lof'.
 
  [5]
 \openout2 = `mediator_sp_jadro.aux'.
 
- (./mediator_sp_jadro.tex
+
+(./mediator_sp_jadro.tex
 Overfull \hbox (0.2464pt too wide) in paragraph at lines 11--16
 []\IL2/lmr/m/n/12 Komponentmi ar-chi-tek-túry IPFIX (IP Flow In-for-ma-tion Exp
 ort) po-dµa RFC 5470 [[]]
  []
 
-[6
+LaTeX Font Info:    Try loading font information for IL2+lmss on input line 42.
+
+(/usr/share/texmf/tex/latex/lm/il2lmss.fd
+File: il2lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) [6
 
 ] [7] [8]
 LaTeX Font Info:    Try loading font information for IL2+lmtt on input line 89.
 
- (/usr/share/texmf/tex/latex/lm/il2lmtt.fd
+
+(/usr/share/texmf/tex/latex/lm/il2lmtt.fd
 File: il2lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 <figures/mediator_reference_model.pdf, id=321, 323.2075pt x 428.60126pt>
@@ -1094,7 +1095,7 @@ r/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/pub
 lic/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/shar
 e/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/l
 m/lmtt8.pfb>
-Output written on mediator_sp.pdf (52 pages, 987119 bytes).
+Output written on mediator_sp.pdf (52 pages, 987120 bytes).
 PDF statistics:
  652 PDF objects out of 1000 (max. 8388607)
  137 named destinations out of 1000 (max. 500000)
