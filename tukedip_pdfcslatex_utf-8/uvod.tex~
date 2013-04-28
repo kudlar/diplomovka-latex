@@ -14,7 +14,7 @@ obzvlášť vysoké nároky na kvalitu sietí a poskytovaných služieb. Aby pos
 zabezpečovať a zlepšovať kvalitu služieb (QoS), musia ju vedieť merať.
 
 V~Laboratóriu počítačových sietí \emph{(CNL)} na Technickej univerzite v~Košiciach vyvíja výskumná 
-skupina MONICA pasívny merač parametrov sieťovej prevádzky na~báze tokov, ktorý vyhodnocuje 
+skupina MONICA pasívny merač parametrov sieťovej prevádzky na báze tokov, ktorý vyhodnocuje 
 dodržiavanie zmluvy o~úrovni poskytovanej služby \emph{(SLA)}. Jeho cieľom je spracovať určité parametre 
 sieťovej prevádzky a na ich základe vypočítať triedu kvality. Táto aplikácia má slúžiť nielen poskytovateľom 
 pripojenia k~Internetu ako monitorovací nástroj. Triedy umožňujú aj ich klientom jednoducho 

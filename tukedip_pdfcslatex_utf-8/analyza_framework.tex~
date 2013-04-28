@@ -60,7 +60,7 @@ Prídavné funkcie môžu byť nasledujúce:
  \item Prijímať spúšťač \emph{trigger} od sprostredkovateľských procesov, ktorý vyvolá odoslanie správy
  kolektoru na odstránenie neplatnej šablóny \emph{(Template Withdrawal Message)}.
  \item Z~dôvodu uvedeného v~Kapitole~\ref{sec:analyza} (Sekcia~\ref{sec:loss_info}), je potrebné 
- preposielať informácie o~pôvodcovi dát (exportérovi), napríklad ID pozorovacieho bodu a~pozorovacej 
+ preposielať informácie o~pôvodcovi dát (exportérovi), napríklad ID pozorovacieho bodu a pozorovacej 
  domény, IP adresa exportéra atď. Exportovací proces tieto dáta zakóduje do prídavných dátových záznamov, 
  buď s~využitím 
  informačných elementov skupiny 2 (Tabuľka \ref{t:ie-group2}), alebo organizáciou špecifikovaných 

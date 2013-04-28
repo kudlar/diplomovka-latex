@@ -602,7 +602,7 @@ tokov pripravené na export zapísaním do exportovacej pamäte.
 Exportovaciu pamäť predstavuje \verb|ExportCache|. Tá je rovnako ako \verb|PacketCache| 
 a~\verb|IPInputBuffer| synchronizovaný \emph{FIFO} front, do ktorého sa zapisujú objekty typu 
 \verb|IPFIXFlowRecord|. Ak sa \verb|ExportCache| naplní, sprostredkovateľské procesy nemajú byť blokované, 
-ale majú pokračovať vo svojej práci. Preto sa do frontu zapisuje metódou \emph{offer()}.
+ale majú pokračovať vo svojej práci. Preto sa do pamäte zapisuje metódou \emph{offer()}.
 
 Jadrom exportovacieho procesu je trieda \verb|UDPExporter|, predstavujúca samostatné vlákno.
 V~konštruktori vytvára UDP socket na prijímanie a posielanie paketov a~naviaže ho na akýkoľvek voľný port.

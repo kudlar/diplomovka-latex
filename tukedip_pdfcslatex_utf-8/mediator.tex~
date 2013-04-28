@@ -205,7 +205,7 @@ môže agregovať dátové záznamy na základe definovaných kľúčov vo svoje
 \paragraph{Spájanie času}
 
 Spájanie resp. kompozícia času je definovaná ako agregácia za sebou idúcich dátových záznamov s~rovnakými
-kľúčmi toku. Tento proces vedie k~rovnakému výstupu ako nastavenie dlhšieho aktívneho časovača
+kľúčmi toku. Tento proces vedie k~rovnakému výstupu ako nastavenie dlhšieho aktívneho timeoutu
 \emph{(active timeout)} v~exportéri, no má jednu výhodu. Nové metriky ako napríklad výpočet priemerných, 
 maximálnych, alebo minimálnych hodnôt zo záznamov o~tokoch v~kratších časových intervaloch umožňujú 
 presnejšie výsledky a sledovanie aj menších zmien.

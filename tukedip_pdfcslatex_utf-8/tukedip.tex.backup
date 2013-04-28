@@ -22,6 +22,9 @@
 \usepackage{upgreek} % napr. $\upmu\mathrm{m}$ pre mikrometer ...
 \usepackage[final]{showkeys}%color%notref%notcite%final
 \usepackage[slovak,noprefix]{nomencl}
+%\usepackage[slovak]{babel}
+%\usepackage{nomencl}
+
 \makeglossary % prikaz na vytvorenie suboru .glo
 \usepackage{parskip}% 'zhusti' polozky obsahu
 %%
@@ -31,10 +34,11 @@
 \DeclareGraphicsExtensions{.pdf,.png,.jpg,.mps}
 \graphicspath{{figures/}} % priecinok na obrazky
 %%
-%% Cislovane citovanie
-%\usepackage[numbers]{natbib}
+\usepackage[pdftex]{color}
 \usepackage{pdfpages}%spoji vystupne pdfko s dalsim pdfkom <-pre zadavaci list
 %%
+%% Cislovane citovanie
+%\usepackage[numbers]{natbib}
 %% Citovanie podľa mena autora a roku
 \usepackage{natbib} \citestyle{chicago}
 % -----------------------------------------------------------------
@@ -46,7 +50,7 @@ pdfstartpage=1]{hyperref}
 \hypersetup{%
 baseurl={http://www.tuke.sk/sevcovic},
 pdfcreator={pdfcsLaTeX},
-pdfkeywords={Sprostredkovanie, Medi\'ator, IPFIX, SLAmeter, BasicMeter},
+pdfkeywords={IPFIX, Sprostredkovanie, Medi\'ator, Kolektor, Export\'er, SLAmeter, BasicMeter, MONICA},
 pdftitle={Aplikačný rámec pre sprostredkovanie IPFIX správ v~nástroji SLAmeter},
 pdfauthor={Bc. Rastislav Kudla},
 pdfsubject={Diplomová práca}
@@ -76,33 +80,19 @@ bola rozpracovaná výskumnou skupinou IPFIX v dokumentoch RFC 5982 a RFC 6183. 
 týchto dokumentov navrhnúť a implementovať aplikačný rámec pre sprostredkovanie IPFIX správ v nástroji 
 SLAmeter. Analytická časť sa venuje protokolu IPFIX, samotnému problému sprostredkovania správ a 
 monitorovacím nástrojom SLAmeter a BasicMeter. Nosnými časťami práce sú návrh a popis implementácie 
-aplikačného rámca. Správnosť riešenia je potvrdená experimentálnym overením. Hlavným prínosom práce je 
-rozšírenie monitorovacích možností aplikácie SLAmeter.
-% Abstrakt je povinnou súčasťou každej práce. Je výstižnou
-% charakteristikou obsahu dokumentu. Nevyjadruje hodnotiace stanovisko
-% autora. Má byť\/ taký informatívny, ako to povoľuje podstata práce.
-% Text abstraktu sa píše ako jeden odstavec. Abstrakt neobsahuje odkazy
-% na samotný text práce. Mal by mať\/ rozsah 250 až 500 slov. Pri
-% štylizácii sa používajú celé vety, slovesá v činnom rode a tretej
-% osobe. Používa sa odborná terminológia, menej zvyčajné termíny,
-% skratky a~symboly sa pri prvom výskyte v texte definujú.
-}
+aplikačného rámca. Správnosť riešenia je potvrdená experimentálnym overením v závere práce. Hlavným 
+prínosom je rozšírenie monitorovacích možností aplikácie SLAmeter.}
 
 \klucoveslova{IPFIX, Sprostredkovanie, Mediátor, Kolektor, Exportér, SLAmeter, BasicMeter, MONICA}
 
 \abstrakte{Presented thesis deals with the IP Flow Information Export (IPFIX) Mediation Problem. 
-The problem was elaborated by IPFIX working group in RFC 5982 and RFC 6183. Based on these documents, 
-the aim of this thesis is to design and implement an IPFIX Mediation Framework of the 
-SLAmeter monitoring tool. The analytical part is devoted to the IPFIX protocol and the IPFIX Mediation 
-Problem. Monitoring tools SLAmeter and BasicMeter are analysed as well. The core parts od the thesis 
-are the design and description of implementation workflow of IPFIX Mediation Framework.
-
-% Text abstraktu v~svetovom jazyku je potrebný pre integráciu
-% do medzinárodných informačných systémov. Ak nie je možné cudzojazyčnú
-% verziu abstraktu umiestniť na jednej strane so slovenským abstraktom,
-% je potrebné umiestniť ju na samostatnú stranu (cudzojazyčný abstrakt
-% nemožno deliť a~uvádzať na dvoch strabách).
-}
+The problem was elaborated by IPFIX working group in RFC~5982 and RFC~6183.
+The aim of this thesis is to design and implement an IPFIX Mediation Framework of the 
+SLAmeter monitoring tool based on these documents. The analytical part is devoted to the IPFIX protocol and the IPFIX Mediation 
+Problem. Monitoring applications SLAmeter and BasicMeter are analysed as well. The core part of the thesis 
+is represented by the design and description of~implementation workflow of~IPFIX Mediation Framework. 
+Accuracy of solutions is confirmed by experimental verification at the end of the thesis. The main
+contribution of this thesis is to extend the possibilities of monitoring application SLAmeter.}
 
 \keywords{IPFIX, Mediation, Mediator, Collector, Exporter, SLAmeter, BasicMeter, MONICA}
 
@@ -161,9 +151,10 @@ are the design and description of implementation workflow of IPFIX Mediation Fra
 \bibliographystyle{dcu}
 
 %----------------DELENIE SLOV-------------
-\hyphenation{kon-štruk-tor sek-ven-čné spros-tred-ko-va-teľ-ský spros-tred-ko-va-teľ-ské-mu IPFIX}
-\hyphenation{kon-štruk-to-ra ná-roč-né spros-tred-ko-va-teľ-ský-mi na-vrh-nu-té-ho Feciľakovi}
-\hyphenation{spros-tred-ko-va-teľ-skú spros-tred-ko-va-teľ-ské-ho spros-tred-ko-va-teľ-ských}
+\hyphenation{kon-štruk-tor sek-ven-čné spro-stred-ko-va-teľ-ský spro-stred-ko-va-teľ-ské-mu IPFIX}
+\hyphenation{kon-štruk-to-ra ná-roč-né spro-stred-ko-va-teľ-ský-mi na-vrh-nu-té-ho Feciľakovi}
+\hyphenation{spro-stred-ko-va-teľ-skú spro-stred-ko-va-teľ-ské-ho spro-stred-ko-va-teľ-ských}
+\hyphenation{spro-stred-ko-va-nia NetFlow timeout}
 %-----------------------------------------
 
 
@@ -174,6 +165,7 @@ are the design and description of implementation workflow of IPFIX Mediation Fra
 
 \abstraktsk % abstrakt v SK 
 
+\clearpage
 \abstrakteng % abstrakt v ENG
 
 \kabstrakt % koniec abstraktov, nova strana
@@ -201,8 +193,8 @@ hlasu a video komunikácie do jednej spoločnej infraštruktúry. Avšak so zvy�
 aj nároky a dôraz na kvalitu. Aby sa kvalita sietí a poskytovaných služieb mohla zvyšovať, resp. 
 porovnávať, je potrebné siete merať.
 
-Meracia architektúra SLAmeter vyvíjaná výskumnou skupinou MONICA v~Laboratóriu počítačových sietí na 
-Technickej univerzite v~Košiciach predstavuje nástroj na pasívne meranie a analýzu parametrov prevádzky
+Meracia architektúra SLAmeter vyvíjaná výskumnou skupinou MONICA v~Laboratóriu počítačových sietí 
+na~Technickej univerzite v~Košiciach predstavuje nástroj na~pasívne meranie a analýzu parametrov prevádzky
 počítačových sietí na báze tokov za účelom určovania ich triedy kvality.
 
 Meranie na báze tokov je populárnou a osvedčenou metódou rôznych monitorovacích infraštruktúr. Avšak 
@@ -279,7 +271,7 @@ rokov som členom výskumnej skupiny MONICA.
 	\item[Little-Endian] je spôsob usporiadania bajtov dátových typov v~pamäti počítača. Najmenej 
 	významný bajt je uložený na najnižšej (prvej) pozícii. Jeho presným opakom je Big-Endian.
 	
-	\item[Buffer] je oblasť pamäte používaná na dočasné uchovanie dát pred ich presunom na iné 
+	\item[Buffer] je oblasť pamäte používaná na dočasné uchovanie dát pred ich presunom na~iné 
 	miesto -- vyrovnávacia pamäť.
 	
 	\item[Socket] je koncovým bodom spojenia v~TCP/IP sieťach. Je tvorený kombináciou portu a IP 

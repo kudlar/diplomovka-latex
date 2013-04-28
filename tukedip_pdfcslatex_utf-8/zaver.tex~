@@ -31,7 +31,7 @@ vzorového sprostredkovateľského modulu, ktorý demonštruje navrhnuté zásad
 využíva všetky dostupné metódy, ktoré mu poskytuje abstraktná rodičovská trieda. 
 
 Implementácia bola nakoniec overená niekoľkými experimentmi, ktoré dokázali funkčnosť riešenia. Ďalšie 
-smerovanie nástroja predpokladá implementovanie sprostredkovateľských modulov, ktoré zlepšia monitorovacie 
+smerovanie nástroja predpokladá implementovanie sprostredkovateľských modulov, ktoré rozšíria monitorovacie 
 možnosti aplikácie SLAmeter. Najväčší prínos sa vidí v~anonymizačnom module, konverznom module z~protokolu 
 NetFlow na IPFIX, prípadne v~module, ktorý
 bude na základe istých pravidiel robiť selekciu IPFIX správ a tie následne exportovať distribuovaným 

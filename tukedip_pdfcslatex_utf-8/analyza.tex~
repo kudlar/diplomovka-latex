@@ -204,7 +204,7 @@ sa určuje koniec tejto sady a začiatok ďalšej, pretože sada môže obsahova
 
 \paragraph{Špecifikátory poľa}
 
-Špecifikátor poľa je akousi obálkou nad informačným elementom (Obrázok~\ref{o:field_specifier_format}) -- 
+Špecifikátor poľa je akousi obálkou nad informačným elementom, Obrázok \ref{o:field_specifier_format}, 
 vďaka nemu vie zhromažďovací proces spracovávať prijaté dáta. 
 
 Prvý bit sa nazýva \emph{Enterprise bit}.

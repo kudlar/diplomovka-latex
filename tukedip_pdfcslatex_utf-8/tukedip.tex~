@@ -22,6 +22,9 @@
 \usepackage{upgreek} % napr. $\upmu\mathrm{m}$ pre mikrometer ...
 \usepackage[final]{showkeys}%color%notref%notcite%final
 \usepackage[slovak,noprefix]{nomencl}
+%\usepackage[slovak]{babel}
+%\usepackage{nomencl}
+
 \makeglossary % prikaz na vytvorenie suboru .glo
 \usepackage{parskip}% 'zhusti' polozky obsahu
 %%
@@ -31,10 +34,11 @@
 \DeclareGraphicsExtensions{.pdf,.png,.jpg,.mps}
 \graphicspath{{figures/}} % priecinok na obrazky
 %%
-%% Cislovane citovanie
-%\usepackage[numbers]{natbib}
+\usepackage[pdftex]{color}
 \usepackage{pdfpages}%spoji vystupne pdfko s dalsim pdfkom <-pre zadavaci list
 %%
+%% Cislovane citovanie
+%\usepackage[numbers]{natbib}
 %% Citovanie podľa mena autora a roku
 \usepackage{natbib} \citestyle{chicago}
 % -----------------------------------------------------------------
@@ -46,7 +50,7 @@ pdfstartpage=1]{hyperref}
 \hypersetup{%
 baseurl={http://www.tuke.sk/sevcovic},
 pdfcreator={pdfcsLaTeX},
-pdfkeywords={Sprostredkovanie, Medi\'ator, IPFIX, SLAmeter, BasicMeter},
+pdfkeywords={IPFIX, Sprostredkovanie, Medi\'ator, Kolektor, Export\'er, SLAmeter, BasicMeter, MONICA},
 pdftitle={Aplikačný rámec pre sprostredkovanie IPFIX správ v~nástroji SLAmeter},
 pdfauthor={Bc. Rastislav Kudla},
 pdfsubject={Diplomová práca}
@@ -147,10 +151,10 @@ contribution of this thesis is to extend the possibilities of monitoring applica
 \bibliographystyle{dcu}
 
 %----------------DELENIE SLOV-------------
-\hyphenation{kon-štruk-tor sek-ven-čné spros-tred-ko-va-teľ-ský spros-tred-ko-va-teľ-ské-mu IPFIX}
-\hyphenation{kon-štruk-to-ra ná-roč-né spros-tred-ko-va-teľ-ský-mi na-vrh-nu-té-ho Feciľakovi}
-\hyphenation{spros-tred-ko-va-teľ-skú spros-tred-ko-va-teľ-ské-ho spros-tred-ko-va-teľ-ských}
-\hyphenation{spros-tred-ko-va-nia}
+\hyphenation{kon-štruk-tor sek-ven-čné spro-stred-ko-va-teľ-ský spro-stred-ko-va-teľ-ské-mu IPFIX}
+\hyphenation{kon-štruk-to-ra ná-roč-né spro-stred-ko-va-teľ-ský-mi na-vrh-nu-té-ho Feciľakovi}
+\hyphenation{spro-stred-ko-va-teľ-skú spro-stred-ko-va-teľ-ské-ho spro-stred-ko-va-teľ-ských}
+\hyphenation{spro-stred-ko-va-nia NetFlow timeout}
 %-----------------------------------------
 
 
@@ -161,7 +165,7 @@ contribution of this thesis is to extend the possibilities of monitoring applica
 
 \abstraktsk % abstrakt v SK 
 
-\kabstrakt
+\clearpage
 \abstrakteng % abstrakt v ENG
 
 \kabstrakt % koniec abstraktov, nova strana
@@ -189,8 +193,8 @@ hlasu a video komunikácie do jednej spoločnej infraštruktúry. Avšak so zvy�
 aj nároky a dôraz na kvalitu. Aby sa kvalita sietí a poskytovaných služieb mohla zvyšovať, resp. 
 porovnávať, je potrebné siete merať.
 
-Meracia architektúra SLAmeter vyvíjaná výskumnou skupinou MONICA v~Laboratóriu počítačových sietí na 
-Technickej univerzite v~Košiciach predstavuje nástroj na pasívne meranie a analýzu parametrov prevádzky
+Meracia architektúra SLAmeter vyvíjaná výskumnou skupinou MONICA v~Laboratóriu počítačových sietí 
+na~Technickej univerzite v~Košiciach predstavuje nástroj na~pasívne meranie a analýzu parametrov prevádzky
 počítačových sietí na báze tokov za účelom určovania ich triedy kvality.
 
 Meranie na báze tokov je populárnou a osvedčenou metódou rôznych monitorovacích infraštruktúr. Avšak 
@@ -267,7 +271,7 @@ rokov som členom výskumnej skupiny MONICA.
 	\item[Little-Endian] je spôsob usporiadania bajtov dátových typov v~pamäti počítača. Najmenej 
 	významný bajt je uložený na najnižšej (prvej) pozícii. Jeho presným opakom je Big-Endian.
 	
-	\item[Buffer] je oblasť pamäte používaná na dočasné uchovanie dát pred ich presunom na iné 
+	\item[Buffer] je oblasť pamäte používaná na dočasné uchovanie dát pred ich presunom na~iné 
 	miesto -- vyrovnávacia pamäť.
 	
 	\item[Socket] je koncovým bodom spojenia v~TCP/IP sieťach. Je tvorený kombináciou portu a IP 
@@ -301,13 +305,5 @@ rokov som členom výskumnej skupiny MONICA.
 %
 
 
-%
-%
-% OK
-%\includepdf[pages={1,2,3,4}]{mediator_sp.pdf}
-% NEFUNGUJE
-%\includepdf[pages=-]{mediator_sp.pdf}
-%
-%
 \end{document}
 %%

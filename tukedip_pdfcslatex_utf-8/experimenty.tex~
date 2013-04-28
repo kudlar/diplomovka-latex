@@ -157,7 +157,7 @@ paketov nie je spôsobená tým, že \verb|ExampleProcess| nestíha v~dostatočn
 Proces bol až $95\%$ času v~stave \emph{wait}, teda čakal na záznamy o~toku. Avšak BEEM exportoval správy
 v~takých zhlukoch, ktoré nárazovo zaplnili celú vstupnú pamäť procesu. Stávalo sa, že do vstupnej
 pamäte bol zapísaný zhluk 30 záznamov behom $0,003$ sekundy!
-Zvýšenie veľkosti vstupnej vyrovnávacej pamäte z~$25$ na $100$ záznamov odstránilo tento nedostatok. Stálo by za úvahu,
+Zvýšenie veľkosti vstupného buffera z~$25$ na $100$ záznamov odstránilo tento nedostatok. Stálo by za úvahu,
 či by nebolo vhodné triedu zodpovednú za delegovanie toku zaznamov - \verb|FlowRecordDispatcher| 
 implementovať ako samostatné vlákno. Dispečerovi by bola predradená dostatočne veľká vyrovnávacia pamäť 
 typu \verb|ArrayBlockingQueue|, použitá aj na iných miestach architektúry, ktorá by mohla zmierniť 
