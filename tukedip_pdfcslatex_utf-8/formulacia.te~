@@ -2,15 +2,15 @@
 \section{Formul\'acia \'ulohy}
 
 Cieľom tejto diplomovej práce je analyzovať, navrhnúť, implementovať a otestovať aplikačný rámec 
-pre problém sprostredkovania správ v~protokole IPFIX. Riešenie je zároveň potrebné integrovať s~
+pre problém sprostredkovania správ v protokole IPFIX. Riešenie je zároveň potrebné integrovať s 
 existujúcou architektúrou nástroja SLAmeter. Za týmto účelom je nutné vykonať nasledujúce kroky. 
 
-V~prvom rade je potrebné analyzovať IPFIX z~pohľadu protokolu ale aj architektúry.
+V prvom rade je potrebné analyzovať IPFIX z pohľadu protokolu ale aj architektúry.
 Najväčší dôraz sa kladie na analýzu správ, pretože 
 úlohou Mediátora bude aj ich dekódovanie a následné zakódovanie podľa špecifikovaného formátu.
 
-Druhým krokom je analýza problému sprostredkovania správ v~IPFIX. Konkrétne ide o~definovanie terminológie,
-analýzu výhod a príkladov použitia, ale aj priblíženie niektorých problémov spojených s~implementáciou 
+Druhým krokom je analýza problému sprostredkovania správ v IPFIX. Konkrétne ide o definovanie terminológie,
+analýzu výhod a príkladov použitia, ale aj priblíženie niektorých problémov spojených s implementáciou 
 takéhoto nástroja.
 
 Následne je potrebné čitateľovi aspoň stručne priblížiť projekty skupiny MONICA, medzi ktoré patrí

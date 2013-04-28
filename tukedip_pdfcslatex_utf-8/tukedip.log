@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  28 APR 2013 03:59
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  28 APR 2013 04:20
 entering extended mode
  %&-line parsing enabled.
 **tukedip.tex
@@ -937,9 +937,14 @@ l.91 A
 <to be read again> 
                    \relax 
 l.128 \paragraph
-                {Distribuovan√° zhroma≈æƒèovacia infra≈°trukt√∫ra} [15]pdfTeX w
-arning (ext4): destination with the same identifier (name{page.16}) has been al
-ready used, duplicate ignored
+                {Distribuovan√° zhroma≈æƒèovacia infra≈°trukt√∫ra} [15]
+Overfull \hbox (4.20564pt too wide) in paragraph at lines 154--157
+[]\IL2/lmr/m/n/12 Jedn˝m z mo-æn˝ch pre-ve-denÌ v tomto prÌ-pade po-u-æÌva ano-
+ny-mi-za-Ën˙ fun-kciu v expor-
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.16}) has
+ been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.157 
@@ -991,7 +996,13 @@ File: figures/sla_architecture.pdf Graphic file (type pdf)
 \openout2 = `navrh.aux'.
 
 
-(./navrh.tex [29
+(./navrh.tex
+Overfull \hbox (14.48067pt too wide) in paragraph at lines 14--17
+[]\IL2/lmr/bx/n/12 Modul·rna im-ple-men-t·-cia \IL2/lmr/m/n/12 -- uæ po-Ëas ana
+-l˝zy spro-stred-ko-va-nia spr·v v IPFIX
+ []
+
+[29
 
 
 ] [30] [31] [32]
@@ -1088,7 +1099,11 @@ L2/lmtt/m/n/12 http : / / c2 . com / cgi / wiki ?
 
 ] (./tukedip.aux (./uvod.aux) (./formulacia.aux)
 (./analyza.aux) (./basic_sla_meter.aux) (./navrh.aux) (./experimenty.aux)
-(./zaver.aux) (./literatura.aux) (./prilohy.aux)) ) 
+(./zaver.aux) (./literatura.aux) (./prilohy.aux))
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
  8765 strings out of 495027
  120190 string characters out of 1181419
@@ -1097,19 +1112,18 @@ Here is how much of TeX's memory you used:
  66433 words of font info for 63 fonts, out of 3000000 for 9000
  51 hyphenation exceptions out of 8191
  38i,16n,41p,473b,517s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf/fonts/enc/
-dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/sha
-re/texmf/fonts/enc/dvips/lm/lm-cstt.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
--mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-cs.enc}</usr/share/texmf/fo
-nts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.p
-fb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/t
-ype1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></us
-r/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/publ
-ic/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/t
-exmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/l
-mss10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/
-fonts/type1/public/lm/lmtt12.pfb>
-Output written on tukedip.pdf (83 pages, 1502080 bytes).
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/en
+c/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-cstt.enc}{/usr/sha
+re/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/
+lm-cs.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/
+fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12
+.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/
+type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></us
+r/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/publ
+ic/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share
+/texmf/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf/fonts/type1/public/lm
+/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb>
+Output written on tukedip.pdf (83 pages, 1502163 bytes).
 PDF statistics:
  1198 PDF objects out of 1200 (max. 8388607)
  219 named destinations out of 1000 (max. 500000)

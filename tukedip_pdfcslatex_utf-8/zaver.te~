@@ -1,23 +1,23 @@
 \section{Zhodnotenie rie\v{s}enia}
 
 Najdôležitejším cieľom tejto diplomovej práce bolo navrhnúť a implementovať aplikačný rámec pre 
-sprostredkovateľskú entitu (IPFIX Mediátor), ktorá by bola medzičlánkom v~komunikácii medzi exportérom
+sprostredkovateľskú entitu (IPFIX Mediátor), ktorá by bola medzičlánkom v komunikácii medzi exportérom
 BEEM a kolektorom JXColl nástroja SLAmeter. Mediátor má poskytovať rozhranie pre manipuláciu so 
 sprostredkovateľskými modulmi, ktoré budú poskytovať rôzne funkcie na modifikáciu IPFIX správ ešte pred ich 
-spracovaním v~kolektore. Práca túto úlohu aj splnila, čo bolo potvrdené v~poslednej časti 
+spracovaním v kolektore. Práca túto úlohu aj splnila, čo bolo potvrdené v poslednej časti 
 práce venovanej experimentálnemu overeniu.
 
-Úvodom sa čitateľ oboznámil s~analýzou formátu IPFIX správ rovnako ako s~výhodami použitia 
-IPFIX Mediátora v~meracej architektúre. Samostatné časti boli venované príkladom použitia, ale aj 
-úskaliam spojeným s~implementáciou tohto nástroja. Nechýbalo ani stručné predstavenie projektov výskumnej 
+Úvodom sa čitateľ oboznámil s analýzou formátu IPFIX správ rovnako ako s výhodami použitia 
+IPFIX Mediátora v meracej architektúre. Samostatné časti boli venované príkladom použitia, ale aj 
+úskaliam spojeným s implementáciou tohto nástroja. Nechýbalo ani stručné predstavenie projektov výskumnej 
 skupiny MONICA.
 
-Najvýznamnejším výsledkom práce je funkčná implementácia aplikačného rámca v~jazyku Java. Jeho návrh je 
+Najvýznamnejším výsledkom práce je funkčná implementácia aplikačného rámca v jazyku Java. Jeho návrh je 
 odpoveďou na definované požiadavky a analyzované implementačno-špecifické problémy. Zhromažďovací proces 
-bol prispôsobený, no vychádzal z~existujúcej implementácie kolektoru JXColl. Dôležitou častou práce je 
+bol prispôsobený, no vychádzal z existujúcej implementácie kolektoru JXColl. Dôležitou častou práce je 
 podpora pre sprostredkovateľské procesy. Tok dát medzi modulmi, či už sériový, alebo paralelný sa  
-jednoducho nastavuje v~konfiguračnom XML súbore podľa navrhnutého formátu. Na základe tejto konfigurácie 
-riadi dispečer distribúciu záznamov o~tokoch medzi procesmi. Definované moduly sa však najprv musia 
+jednoducho nastavuje v konfiguračnom XML súbore podľa navrhnutého formátu. Na základe tejto konfigurácie 
+riadi dispečer distribúciu záznamov o tokoch medzi procesmi. Definované moduly sa však najprv musia 
 pospúšťať. Toto zabezpečila pokročilá technológia dynamického načítavania tried pomocou 
 systémového \emph{class loadera} a reflexie. Ďalším pokročilým riešením bolo zabezpečenie toho, že 
 všetky sprostredkovateľské moduly musia mať len jednu unikátnu inštanciu. Keďže dizajn jazyka Java 
@@ -32,10 +32,10 @@ využíva všetky dostupné metódy, ktoré mu poskytuje abstraktná rodičovsk�
 
 Implementácia bola nakoniec overená niekoľkými experimentmi, ktoré dokázali funkčnosť riešenia. Ďalšie 
 smerovanie nástroja predpokladá implementovanie sprostredkovateľských modulov, ktoré zlepšia monitorovacie 
-možnosti aplikácie SLAmeter. Najväčší prínos sa vidí v~anonymizačnom module, konverznom module z~protokolu 
-NetFlow na IPFIX, prípadne v~module, ktorý
+možnosti aplikácie SLAmeter. Najväčší prínos sa vidí v anonymizačnom module, konverznom module z protokolu 
+NetFlow na IPFIX, prípadne v module, ktorý
 bude na základe istých pravidiel robiť selekciu IPFIX správ a tie následne exportovať distribuovaným 
-kolektorom. Z~pohľadu aplikačného rámca by bolo vhodné rozšíriť jeho zhromažďovací proces o~podporu 
+kolektorom. Z pohľadu aplikačného rámca by bolo vhodné rozšíriť jeho zhromažďovací proces o podporu 
 ďalších transportných protokolov ako TCP a SCTP. Rovnaké rozšírenie je možné aj na strane exportovacieho 
 procesu.
 
