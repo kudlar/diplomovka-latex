@@ -71,26 +71,24 @@ pdfsubject={Diplomová práca}
 \odbor{Informatika}
 \specializacia{Informatika}
 
-\abstrakt{ !!!  TODO  !!!
-% Abstrakt je povinnou súčasťou každej práce. Je výstižnou
-% charakteristikou obsahu dokumentu. Nevyjadruje hodnotiace stanovisko
-% autora. Má byť\/ taký informatívny, ako to povoľuje podstata práce.
-% Text abstraktu sa píše ako jeden odstavec. Abstrakt neobsahuje odkazy
-% na samotný text práce. Mal by mať\/ rozsah 250 až 500 slov. Pri
-% štylizácii sa používajú celé vety, slovesá v činnom rode a tretej
-% osobe. Používa sa odborná terminológia, menej zvyčajné termíny,
-% skratky a~symboly sa pri prvom výskyte v texte definujú.
-}
+\abstrakt{Táto diplomová práca sa zaoberá problémom sprostredkovania správ v protokole IPFIX. Problematika
+bola rozpracovaná výskumnou skupinou IPFIX v dokumentoch RFC 5982 a RFC 6183. Cieľom práce je na základe 
+týchto dokumentov navrhnúť a implementovať aplikačný rámec pre sprostredkovanie IPFIX správ v nástroji 
+SLAmeter. Analytická časť sa venuje protokolu IPFIX, samotnému problému sprostredkovania správ a 
+monitorovacím nástrojom SLAmeter a BasicMeter. Nosnými časťami práce sú návrh a popis implementácie 
+aplikačného rámca. Správnosť riešenia je potvrdená experimentálnym overením v závere práce. Hlavným 
+prínosom je rozšírenie monitorovacích možností aplikácie SLAmeter.}
 
 \klucoveslova{IPFIX, Sprostredkovanie, Mediátor, Kolektor, Exportér, SLAmeter, BasicMeter, MONICA}
 
-\abstrakte{ !!! TODO !!!
-% Text abstraktu v~svetovom jazyku je potrebný pre integráciu
-% do medzinárodných informačných systémov. Ak nie je možné cudzojazyčnú
-% verziu abstraktu umiestniť na jednej strane so slovenským abstraktom,
-% je potrebné umiestniť ju na samostatnú stranu (cudzojazyčný abstrakt
-% nemožno deliť a~uvádzať na dvoch strabách).
-}
+\abstrakte{Presented thesis deals with the IP Flow Information Export (IPFIX) Mediation Problem. 
+The problem was elaborated by IPFIX working group in RFC~5982 and RFC~6183.
+The aim of this thesis is to design and implement an IPFIX Mediation Framework of the 
+SLAmeter monitoring tool based on these documents. The analytical part is devoted to the IPFIX protocol and the IPFIX Mediation 
+Problem. Monitoring applications SLAmeter and BasicMeter are analysed as well. The core part of the thesis 
+is represented by the design and description of~implementation workflow of~IPFIX Mediation Framework. 
+Accuracy of solutions is confirmed by experimental verification at the end of the thesis. The main
+contribution of this thesis is to extend the possibilities of monitoring application SLAmeter.}
 
 \keywords{IPFIX, Mediation, Mediator, Collector, Exporter, SLAmeter, BasicMeter, MONICA}
 
@@ -141,7 +139,7 @@ pdfsubject={Diplomová práca}
 \nomenclature{QOS}{Quality of service}
 \nomenclature{MB/s}{Megabyte za sekundu, jednotka rýchlosti dátového presnosu}
 \nomenclature{Gb/s}{Gigabit za sekundu, jednotka rýchlosti dátového presnosu}
-
+%-----------------------------------------
 
 \begin{document}
 \renewcommand\theHfigure{\theHsection.\arabic{figure}}
@@ -152,6 +150,7 @@ pdfsubject={Diplomová práca}
 \hyphenation{kon-štruk-tor sek-ven-čné spros-tred-ko-va-teľ-ský spros-tred-ko-va-teľ-ské-mu IPFIX}
 \hyphenation{kon-štruk-to-ra ná-roč-né spros-tred-ko-va-teľ-ský-mi na-vrh-nu-té-ho Feciľakovi}
 \hyphenation{spros-tred-ko-va-teľ-skú spros-tred-ko-va-teľ-ské-ho spros-tred-ko-va-teľ-ských}
+\hyphenation{spros-tred-ko-va-nia}
 %-----------------------------------------
 
 
@@ -162,16 +161,13 @@ pdfsubject={Diplomová práca}
 
 \abstraktsk % abstrakt v SK 
 
+\clearpage
 \abstrakteng % abstrakt v ENG
 
 \kabstrakt % koniec abstraktov, nova strana
 
 % Na tomto mieste bude vložené zadanie diplomovej práce
 \includepdf[pages={1}]{zadavaci_list.pdf} 
-% \begin{figure}[ht!]
-% \centering
-% \includegraphics[width=1\textwidth]{zadavaci_list}
-% \end{figure}
 %\zadanieprace
 
 \cestnevyhlasenie
@@ -303,20 +299,15 @@ rokov som členom výskumnej skupiny MONICA.
 %
 \include{prilohy}
 %
-%\include{prilohaa}
-%
-%\include{prilohab}
 
+
+%
+%
+% OK
+%\includepdf[pages={1,2,3,4}]{mediator_sp.pdf}
+% NEFUNGUJE
 %\includepdf[pages=-]{mediator_sp.pdf}
-
 %
-% zivotopis autora
-%\curriculumvitae\protect\label{page:posledna}
-%Táto časť\/ je nepovinná. Autor tu môže uviesť\/ svoje biografické
-%údaje, údaje o~záujmoch, účasti na~projektoch, účasti na~súťažiach,
-%získané ocenenia, zahraničné pobyty na~praxi, domácu prax, publikácie
-%a~pod.
-%\kcurriculumvitae
-
+%
 \end{document}
 %%
