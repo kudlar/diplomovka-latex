@@ -209,11 +209,11 @@ Konzultant:& \@konzultanta \\
 {\large\@nazov}\\\@autor\\{\small\@mesto~\rok}\\\vspace{4em}}}
 \def\kerrata{\newpage}
 
-\def\abstraktsk{\thispagestyle{empty}%
+\def\abstraktsk{\thispagestyle{empty}\vglue50pt%
 	\noindent\textbf{Abstrakt v SJ}\par\@abstrakt\\[5mm]
 	\noindent\textbf{K\v{l}\'u\v{c}ov\'e slov\'a}\\
 	\@klucoveslova}
-\def\abstrakteng{\thispagestyle{empty}%
+\def\abstrakteng{\thispagestyle{empty}\vglue50pt%
 	\noindent\textbf{Abstrakt v AJ}\par\@abstrakte\\[5mm]
 	\noindent\textbf{K\v{l}\'u\v{c}ov\'e slov\'a v AJ}\\
 	\@keywords}

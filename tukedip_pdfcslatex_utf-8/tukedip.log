@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  28 APR 2013 20:08
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  28 APR 2013 20:14
 entering extended mode
  %&-line parsing enabled.
 **tukedip.tex
@@ -1112,7 +1112,7 @@ L2/lmtt/m/n/12 http : / / c2 . com / cgi / wiki ?
 Here is how much of TeX's memory you used:
  8766 strings out of 495027
  120207 string characters out of 1181419
- 200279 words of memory out of 3000000
+ 200274 words of memory out of 3000000
  11411 multiletter control sequences out of 15000+50000
  66433 words of font info for 63 fonts, out of 3000000 for 9000
  52 hyphenation exceptions out of 8191
@@ -1129,7 +1129,7 @@ ic/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/t
 exmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/l
 mss10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/
 fonts/type1/public/lm/lmtt12.pfb>
-Output written on tukedip.pdf (84 pages, 1503933 bytes).
+Output written on tukedip.pdf (84 pages, 1503930 bytes).
 PDF statistics:
  1201 PDF objects out of 1440 (max. 8388607)
  219 named destinations out of 1000 (max. 500000)

@@ -150,6 +150,7 @@ contribution of this thesis is to extend the possibilities of monitoring applica
 \hyphenation{kon-štruk-tor sek-ven-čné spros-tred-ko-va-teľ-ský spros-tred-ko-va-teľ-ské-mu IPFIX}
 \hyphenation{kon-štruk-to-ra ná-roč-né spros-tred-ko-va-teľ-ský-mi na-vrh-nu-té-ho Feciľakovi}
 \hyphenation{spros-tred-ko-va-teľ-skú spros-tred-ko-va-teľ-ské-ho spros-tred-ko-va-teľ-ských}
+\hyphenation{spros-tred-ko-va-nia}
 %-----------------------------------------
 
 
@@ -160,7 +161,7 @@ contribution of this thesis is to extend the possibilities of monitoring applica
 
 \abstraktsk % abstrakt v SK 
 
-\clearpage
+\kabstrakt
 \abstrakteng % abstrakt v ENG
 
 \kabstrakt % koniec abstraktov, nova strana
