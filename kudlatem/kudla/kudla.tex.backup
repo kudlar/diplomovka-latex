@@ -81,11 +81,11 @@ flow-based measurement and subsequent network traffic analysis with the purpose 
 the grade of network quality.
 
 Flow-based measurement is a popular method for various network
-monitoring usages. The sharing of flow-based information for
+monitoring usages.  The sharing of flow-based information for
 monitoring applications having different requirements raises some
-open issues in terms of measurement system scalability and capacity, flow-based
-measurement flexibility, and export reliability. \emph{IP Flow
-Information Export (IPFIX) Mediation} may help resolve these issues.
+open issues in terms of measurement system scalability, flow-based
+measurement flexibility, and export reliability. that IP Flow
+Information Export (IPFIX) Mediation may help resolve.
 
 
 

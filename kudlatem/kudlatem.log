@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  26 APR 2013 16:22
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  29 APR 2013 02:03
 entering extended mode
  %&-line parsing enabled.
 **kudlatem.tex
@@ -217,88 +217,47 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 
-LaTeX Warning: File `pestova/opestova1.jpg' not found on input line 121.
+LaTeX Warning: Reference `fig:opestova1' on page 2 undefined on input line 141.
 
 
-! Package pdftex.def Error: File `pestova/opestova1.jpg' not found.
 
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.121 ...hics[height=6.2cm]{pestova/opestova1.jpg}
-                                                  
-Using draft setting for this image.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[2] [3]
-
-LaTeX Warning: File `pestova/opestova2.jpg' not found on input line 219.
+LaTeX Warning: Reference `fig:opestova1' on page 2 undefined on input line 156.
 
 
-! Package pdftex.def Error: File `pestova/opestova2.jpg' not found.
+[2]
 
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.219 ...phics[height=10cm]{pestova/opestova2.jpg}
-                                                  
-Using draft setting for this image.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[4]
-
-LaTeX Warning: File `pestova/opestova3.jpg' not found on input line 228.
+LaTeX Warning: Reference `fig:opestova3' on page 3 undefined on input line 234.
 
 
-! Package pdftex.def Error: File `pestova/opestova3.jpg' not found.
+[3] [4]) [5
 
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.228 ...phics[height=13cm]{pestova/opestova3.jpg}
-                                                  
-Using draft setting for this image.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+] (./kudlatem.aux)
+
+LaTeX Warning: There were undefined references.
 
 
-Overfull \hbox (22.86426pt too wide) in paragraph at lines 228--230
- [][] 
- []
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-
-Underfull \vbox (badness 2073) has occurred while \output is active []
-
- [5
-
-])
-[6] (./kudlatem.aux) ) 
+ ) 
 Here is how much of TeX's memory you used:
- 1715 strings out of 495027
- 20355 string characters out of 1181419
- 78971 words of memory out of 3000000
- 4895 multiletter control sequences out of 15000+50000
- 10779 words of font info for 42 fonts, out of 3000000 for 9000
+ 1708 strings out of 495027
+ 20297 string characters out of 1181419
+ 78945 words of memory out of 3000000
+ 4893 multiletter control sequences out of 15000+50000
+ 10958 words of font info for 42 fonts, out of 3000000 for 9000
  38 hyphenation exceptions out of 8191
- 29i,7n,24p,307b,288s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/
-cmbx10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/
-texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texli
-ve/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texmf-texlive/fonts/typ
-e1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/am
-sfonts/cm/cmr9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cms
-y10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy9.pfb></us
-r/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texm
-f-texlive/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on kudlatem.pdf (6 pages, 151288 bytes).
+ 29i,7n,24p,312b,214s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-te
+xlive/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texmf-texlive/fonts/
+type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/publi
+c/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
+m/cmr9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share
+/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti9.pfb>
+Output written on kudlatem.pdf (5 pages, 139039 bytes).
 PDF statistics:
- 65 PDF objects out of 1000 (max. 8388607)
+ 54 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
