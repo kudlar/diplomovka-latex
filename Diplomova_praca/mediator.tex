@@ -29,7 +29,7 @@ Dodatočne zadefinujeme nasledujúce termíny:
  za účelom vykonania sprostredkovania IPFIX správ.
  
  \item[IPFIX Mediátor] je nástroj vykonávajúci sprostredkovanie správ tak, že prijíma prúd záznamov 
- z~rôznych dátových zdrojov, zastrešuje jeden alebo viac sprostredkovateľských procesov  
+ z~rôznych dátových zdrojov, zastrešuje jeden alebo viac sprostredkovateľských procesov,  
  aby modifikoval obsah prúdu a nakoniec exportuje pozmenené dáta vo forme IPFIX správ pomocou exportovacieho
  procesu. V~typickom prípade prijíma Mediátor prúd záznamov od zhromažďovacieho procesu. No rovnako môže
  prijímať údaje od iných zdrojov, ktoré nie sú zakódované pomocou IPFIX, napr. v~prípade konverzie 
@@ -79,7 +79,7 @@ implementované v~exportéroch. Podobne agregácia meraných dát. Tieto technik
 Môžu viesť k~stratám malých tokov, nemožnosti odhalenia drobných zmien a anomálií v~prenášaných dátach. 
 Filtrovanie spôsobuje, že len podmnožina dátových záznamov je exportovaná.
 
-Vzhľadom k~týmto nedostatkom sa vyžaduje aby sa veľké meracie infraštruktúry nespoliehali na 
+Vzhľadom k~týmto nedostatkom sa vyžaduje, aby sa veľké meracie infraštruktúry nespoliehali na 
 spomínané redukčné techniky.
 
 
@@ -271,7 +271,7 @@ Pole čas exportu \emph{export time}, ktoré je zahrnuté v~hlavičke správy pr
 časové známky delta \emph{delta timestamps}, ktoré udávajú časový rozdiel voči hodnote v~poli 
 čas exportu. Ak dátový záznam zahŕňa nejaké pole s~časovou známkou delta a Mediátor prepíše hodnotu 
 času exportu,  tak časová známka delta týmto stráca význam. Kolektor však túto situáciu nevie 
-rozpoznať a tak pracuje so zlými hodnotami.
+rozpoznať, a tak pracuje so zlými hodnotami.
 
 
 \paragraph{Interpretácia sprostredkovaných správ}

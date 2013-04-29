@@ -128,8 +128,8 @@ medzi prvou a druhou fázou zhromažďovacieho procesu je kritická vo vysoko r�
 \caption{Schéma prvej fázy zhromažďovacieho procesu Mediátora}\label{o:collecting1_schema}
 \end{figure}
 
-Návrh umožňuje do budúcna jednoduchú rozšíriteľnosť programu o~triedy implementujúce serveri iných transportných 
-protokolov, napr. TCP a SCTP. Tieto serveri budú rovnako ako \verb|UDPServer| bežiace v~samostatných 
+Návrh umožňuje do budúcna jednoduchú rozšíriteľnosť programu o~triedy implementujúce servery iných transportných 
+protokolov, napr. TCP a SCTP. Tieto servery budú rovnako ako \verb|UDPServer| bežiace v~samostatných 
 vláknach.
 
 \subsubsection{2. fáza zhromažďovacieho procesu}
@@ -178,7 +178,7 @@ Kapitole~\ref{sec:navrh} (Sekcia~\ref{sec:FlowRecordDispatcher}).
 
 Vyššie boli definované viaceré požiadavky na sprostredkovateľské procesy, ktoré musí zabezpečiť 
 aplikačný rámec. Hovoríme o~modulárnej implementácii, oddelení logiky rámca od logiky procesov, 
-ich dynamické načítavanie, jediná inštancia procesov atď. Riešenie týchto požiadaviek bude vysvetlené
+ich dynamickom načítavaní, jedinej inštancii procesov atď. Riešenie týchto požiadaviek bude vysvetlené
 v~nasledujúcich kapitolách. Začnime ale najprv teoretickým základom dynamického načítavania tried.
 
 \subsubsection{Java ClassLoader a dynamické načítavanie tried} \label{sec:classLoader}
@@ -252,7 +252,7 @@ vzoru singleton je nasledovná:
 Nedá sa spoľahnúť na to, že budúci vývojári modulov budú implementovať sprostredkovateľské procesy 
 podľa tohoto návrhového vzoru, preto to musí zabezpečiť aplikačný rámec, presnejšie trieda od ktorej 
 dedia -- \verb|AIntermediateProcess|.
-Bohužiaľ v~jazyku Java nie je možné aby Singleton implementovala abstraktná trieda, hneď z~viacerých
+Bohužiaľ, v~jazyku Java nie je možné, aby Singleton implementovala abstraktná trieda, hneď z~viacerých
 dôvodov (vymenované len niektoré):
 \begin{enumerate}
  \item Singleton vyžaduje konštruktor s~viditeľnosťou \emph{private}. Toto sa vylučuje s~možnosťou 
@@ -579,7 +579,7 @@ o~tokoch, zablokovalo by to dispečera tokov a tým cele vlákno predstavujúce 
 procesu. Kvôli jednému procesu by žiaden proces nedostával nové záznamy. Preto zápis do vstupnej pamäte
 sprostredkovateľských procesov zabezpečuje metóda \emph{offer()}.
 
-Ak metóda na získanie zoznamu prijímateľov vráti prázdny zoznam, vyplýva, že~záznam o~toku 
+Ak metóda na získanie zoznamu prijímateľov vráti prázdny zoznam, znamená to, že~záznam o~toku 
 sa nemá presmerovať ďalšiemu sprostredkovateľskému procesu, ale je už určený na export. Preto záznam
 o~toku je zapísaný do vyrovnávacej pamäte pre export. Výsledkom je, že dáta boli presmerované správnym 
 prijímateľom a boli splnené príslušné požiadavky na rámec pre IPFIX Mediátor.
