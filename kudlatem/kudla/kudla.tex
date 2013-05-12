@@ -57,12 +57,9 @@ Presented paper deals with the IP Flow Information Export (IPFIX) Mediation Prob
 The problem was elaborated by IPFIX working group in RFC~5982 and RFC~6183.
 The aim of this work is to design and implement an IPFIX Mediation Framework of the 
 SLAmeter monitoring tool based on these documents. 
-The analytical part is devoted to the IPFIX protocol and the IPFIX Mediation 
-Problem. Monitoring applications SLAmeter and BasicMeter are analysed as well. 
-The core part of the paper 
+The analytical part is devoted to the IPFIX Mediation Problem. The core part of the paper 
 is represented by the design and description of~implementation workflow of~IPFIX Mediation Framework. 
-Accuracy of solutions is confirmed by experimental verification at the end of the paper. The main
-contribution of this work is to extend the possibilities of monitoring application SLAmeter.
+The main contribution of this work is to extend the possibilities of monitoring application SLAmeter.
 
 \keywords{IPFIX, Mediation, Mediator, Collector, Exporter, SLAmeter, BasicMeter, MONICA}
 \end{abstract}
@@ -77,7 +74,7 @@ of~networks and service, it is necessary to have the ability to measure network 
 
 SLAmeter is measuring architecture being developed by the MONICA research group in Computer 
 Networks Laboratory at the Technical University of Ko\v{s}ice. It is a tool for passive 
-flow-based measurement and subsequent network traffic analysis with the purpose of determing 
+flow-based measurement and subsequent network traffic analysis with the purpose of determining 
 the grade of network quality \cite{slameter}.
 
 Flow-based measurement is a popular method for various network
@@ -89,7 +86,7 @@ Information Export (IPFIX) Mediation} may help resolve these issues \cite{rfc598
 
 \section{Motivation}
 
-To fulfill application requirements with limited system resources, the IPFIX architecture needs to 
+To fulfil application requirements with limited system resources, the IPFIX architecture needs to 
 introduce an intermediate entity between Exporters and Collectors. From a data manipulation point of 
 view, this intermediate entity may provide the aggregation, correlation, filtering, and modification of 
 Flow Records to save measurement system resources and to perform preprocessing tasks for the Collector. 
@@ -100,9 +97,9 @@ Stream Control Transmission Protocol (SCTP)) to improve the export reliability \
 
 \section{Goals}
 
-The aim of this work is to analyze, design, implement and test an framework for 
+The aim of this work is to analyse, design, implement and test an framework for 
 intermediate entity (Mediator) between exporter and collector in the IPFIX protocol.
-It also integrates the solution with the existing architecture of the SLAmeter monitoring 
+This work also integrates the solution with the existing architecture of the SLAmeter monitoring 
 tool. Framework put a great emphasis on its modularity in order to make it easy and convenient 
 to implement new mediation modules and thereby increase monitoring possibilities of SLAmeter.
 
@@ -130,7 +127,6 @@ the IPFIX Mediation-specific terms here.
  that stream, and exporting the transformed record stream to IPFIX Collector via IPFIX Messages. \cite{rfc5982}
  \end{itemize}
  
- \bigskip
  Fig.~\ref{o:eng_exp-med-coll} depicts one of the possible IPFIX Exporter -- Mediator -- Collector 
  architecture examples.
 \begin{figure}[ht!]
@@ -141,19 +137,19 @@ the IPFIX Mediation-specific terms here.
 
 \subsection{Problem statement}
 
-Network administrators generally face the problems of measurement system scalability, Flow-based 
+Network administrators generally face the problems of measurement system scalability, flow-based 
 measurement flexibility, and export reliability, even if some techniques, such as Packet Sampling,
 Filtering, Data Records aggregation, and export replication, have already been developed.  
 
 The problems consist of adjusting some parameters of metering devices to resources of the measurement 
-system while fulfilling appropriate conditions: data accuracy, Flow granularity, and export reliability. 
+system while fulfilling appropriate conditions: data accuracy, flow granularity, and export reliability. 
 These conditions depend on two factors -- \textbf{measurement system capacity} and 
 \textbf{application requirements}.
 
 Due to resource limitations of the measurement system, it is important to use traffic data reduction 
 techniques as early as possible, e.g., at the Exporter.  However, this implementation is made difficult 
 by the heterogeneous environment of exporting devices. On the other hand, keeping data accuracy and 
-Flow granularity to meet the requirements of different monitoring applications requires a scalable and 
+flow granularity to meet the requirements of different monitoring applications requires a~scalable and 
 flexible collecting infrastructure.
 
 This implies that a new Mediation function is required in typical Exporter-Collector architectures. \cite{rfc5982}
@@ -188,7 +184,7 @@ possible
 scenarios that can exist in the \emph{Mediator v1.0} monitoring system. The functional components 
 within each entity are indicated within brackets []. \emph{Mediator v1.0} receives IPFIX Flow Records 
 from other IPFIX Mediators and Exporters via UDP transport protocol. Processed IPFIX Flow records are 
-exported to Collector or other IPFIX Mediator via UDP.
+exported to Collector or other IPFIX Mediator over UDP.
 
 \begin{figure}[ht!]
 \centering
@@ -207,7 +203,7 @@ in the following ways:
  In this setup, each Intermediate Process receives a copy of the entire record stream as its input.
  \item \textbf{Serial processing} - In order to ensure flexible manipulation of a record stream, 
  the Intermediate Processes are connected serially. In that case, an output record stream from one 
- Intermediate Process forms an input for a succeeding Intermediate Process.
+ Intermediate Process forms an input for a~succeeding Intermediate Process.
 \end{itemize}
 
    
@@ -222,8 +218,9 @@ in the following ways:
 \subsubsection{Main class}
 
 The role of the main class is to process command line arguments and then start all threads needed to run
-the application. These threads are following: UDP Server, UDP Processor, UDP Exporter and each Intermediate 
-Process is single thread as well. In case of error is Mediator shut down correctly so it realeases memory and stops all 
+the application. These threads are following: \emph{UDP Server}, \emph{UDP Processor}, \emph{UDP Exporter}
+and each Intermediate 
+Process is single thread as well. In case of error is Mediator shut down correctly so it releases memory and stops all 
 running threads. Same situation occurs after pressing \verb|Ctrl-c|. 
 
 \subsubsection{Collecting Process}
@@ -232,8 +229,8 @@ Logical structure of this process involves two stages, where each stage is one t
 Let us briefly describe the individual stages of the Collecting Process.
 
 First stage is shown in Fig.~\ref{o:collecting1_schema}. A core class of this stage is \emph{UDPServer} 
-which receives byte stream of IPFIX messages sent from Exporter via UDP protocol. This stream is wrapped 
-into the \emph{PacketObject} and written to fast, blocking FIFO queue called \emph{PacketCache}. Application 
+which receives byte stream of IPFIX messages sent from Exporter over UDP protocol. This stream is wrapped 
+into the \emph{PacketObject} and written to fast, blocking FIFO queue named \emph{PacketCache}. Application 
 design allows for future extension with another transport protocols, such as TCP and SCTP. 
 
 \begin{figure}[ht!]
@@ -246,7 +243,9 @@ Scheme of second stage depicts Fig.~\ref{o:collecting2_schema}. The UDP Processo
 it reads packet objects from cache and sends them to IPFIX Parser. IPFIX Packets are split up there into
 IPFIX message header, IPFIX template sets, data sets and options template sets. These entities are 
 processed and transformed to flow records. IPFIX Parser sents each flow record with additional information 
-to class representing dispatcher of flow records. 
+to the class representing dispatcher of flow records -- \emph{FlowRecordDispatcher}. This class distributes 
+received flow records to Intermediate Processes or send them to~the Exporting Process cache according to 
+a configuration file.
 
 \begin{figure}[ht!]
 \centering
@@ -254,21 +253,32 @@ to class representing dispatcher of flow records.
 \caption{Second stage of Collecting Process of Mediator v1.0}\label{o:collecting2_schema}
 \end{figure}
 
+\subsubsection{Abstract class AIntermediateProcess}
 
+This class is kind of an interface for Intermediate Processes (Modules) that separates their logic from framework
+logic. Moreover, it defines basic characteristics of Modules and implements their methods. In other words 
+-- it is parent class of each Intermediate Process.
+Class provides following properties:
+\begin{itemize}
+ \item every Intermediate Process is single thread,
+ \item every Intermediate Process has only one unique instance,
+ \item decoding of data records,
+ \item encoding of data records.
+\end{itemize}
 
+\subsubsection{Exporting Process}
 
+A highest layer of Mediator v1.0 is the Exporting Process. Its scheme is shown in Fig.~\ref{o:eng_exporting-process}.
+Core class -- UDP Exporter is a single thread and works in a cycle likewise UDP Processor and UDP Server. 
+It reads flow records from FIFO queue named \emph{ExportCache} and sends them to message encoder, 
+which creates IPFIX message byte stream. This stream is wrapped into UDP datagram and sent over computer 
+network to an IPFIX Collector or another Mediator.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
- 
-
-
-
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.9\textwidth]{kudla/eng_exporting-process}
+\caption{Exporting Process scheme of Mediator v1.0}\label{o:eng_exporting-process}
+\end{figure}
 
 %% NEMENTE sekciu acknowledgement, ak vam vas veduci nepovie inak
 \section{Acknowledgment}
@@ -279,26 +289,24 @@ by the Research \& Development Operational Program funded by the ERDF.
 
 \section{Conclusion}
 
-% The goal of this work was to design mechanism established on algebraic relations in 
-% evolution model. Based on semantic of pointcut designators (as they are defined in 
-% AspectJ) to identify the pointcuts in evolution model.
-% 
-% The method provides some advantages. In the implementation phase it is clear, whether 
-% the specified requirements can be reached. Secondary, some partial automation may be 
-% brought into the software development process.
-% 
-% There are also some disadvantages consider. Some of the generated variants are not 
-% the realization of the system. With growing number of functions and pointcuts, the 
-% time needed for generating all variants grows. Therefore the application of this 
-% method is effective for small systems only. This disadvantages might be improved by 
-% the next research.
+The main goal of this work was to design and implement framework for mediation entity (IPFIX Mediator)
+between BEEM and JXColl in SLAmeter monitoring tool. Mediator v1.0 may greatly enhance measuring 
+possibilities and flexibility of SLAmeter tool by hosting several Intermediate Processes. 
+
+Accuracy of solution was confirmed by four experimental verifications. Future development
+requires implementation of various Intermediate Processes. The greatest asset is seen in an anonymization
+module and a selection module which will act as load-balancer among distributed Collectors. Module for 
+conversion from NetFlow protocol to IPFIX might be important as well.
+
+
+
 
 
 %% POZOR: AJ V ZOZNAME LITERATURY TREBA POUZIT MEDZINARODNE KODOVANIE
 \begin{thebibliography}{4}
 %
 \bibitem{slameter}
-V\'{y}skumn\'{a} skupina MONICA: \emph{SLAmeter} [online], 2013. 
+MONICA research group: \emph{SLAmeter} [online], 2013. 
 $<$\url{http://wiki.cnl.sk/Monica/SLAmeter}$>$.
 %
 \bibitem{rfc5982}
