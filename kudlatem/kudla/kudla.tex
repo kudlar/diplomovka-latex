@@ -78,183 +78,197 @@ of~networks and service, it is necessary to have the ability to measure network 
 SLAmeter is measuring architecture being developed by the MONICA research group in Computer 
 Networks Laboratory at the Technical University of Ko\v{s}ice. It is a tool for passive 
 flow-based measurement and subsequent network traffic analysis with the purpose of determing 
-the grade of network quality.
+the grade of network quality \cite{slameter}.
 
 Flow-based measurement is a popular method for various network
 monitoring usages. The sharing of flow-based information for
 monitoring applications having different requirements raises some
 open issues in terms of measurement system scalability and capacity, flow-based
 measurement flexibility, and export reliability. \emph{IP Flow
-Information Export (IPFIX) Mediation} may help resolve these issues.
+Information Export (IPFIX) Mediation} may help resolve these issues \cite{rfc5982}.
 
+\section{Motivation}
 
-
-% In the field of software engineering the traditional programming style is fading in 
-% the recent years.  The traditional approach of software development obeys the life 
-% cycle:  analysis - design - implementation - maintenance. The development in the way 
-% of traditional approach can be seen as a continual cycle, started be the change of 
-% the requirements. 
-% 
-% The relationship between the requirements and their software implementation is more 
-% complex than just a simple dependency in one or more directions. The requirements 
-% react and change with their realization. In this point of view the specification and 
-% realization of the requirements are inseparable \cite{Anl}. Therefore the challenge 
-% lies in finding a method, which would help to understand and support the adaptability 
-% and evolution of the software systems according the input requirements. 
-% 
-% The topic of this work is to give some indication on how the access to the evolution 
-% and adaptability can be provided. Moreover, the work attempts to give some other view 
-% on software development.
+To fulfill application requirements with limited system resources, the IPFIX architecture needs to 
+introduce an intermediate entity between Exporters and Collectors. From a data manipulation point of 
+view, this intermediate entity may provide the aggregation, correlation, filtering, and modification of 
+Flow Records to save measurement system resources and to perform preprocessing tasks for the Collector. 
+From a protocol conversion point of view, this intermediate entity may provide conversion into IPFIX, 
+or conversion of IPFIX transport protocols (e.g., from unreliable, connectionless UDP to the 
+Stream Control Transmission Protocol (SCTP)) to improve the export reliability \cite{rfc6183}. 
 
 
 \section{Goals}
 
-The goal of this work is to design mechanism based on algebraic relations in 
-evolution model. Based on semantic of pointcut designators (as they are defined in 
-AspectJ) to identify the pointcuts in evolution model. The mechanism illustrate on 
-simple example.
+The aim of this work is to analyze, design, implement and test an framework for 
+intermediate entity (Mediator) between exporter and collector in the IPFIX protocol.
+It also integrates the solution with the existing architecture of the SLAmeter monitoring 
+tool. Framework put a great emphasis on its modularity in order to make it easy and convenient 
+to implement new mediation modules and thereby increase monitoring possibilities of SLAmeter.
 
 \section{Analysis}
 
-A new sight on software development brings an aspect oriented programming 
-\cite{Kol3,Kol1}. This sight mentions on the availability of evolution in the 
-designing phase of software development. Based on semantic of pointcut designators 
-(as they are defined in AspectJ \cite{Kic}) can be in the data flow diagram of the 
-designed system identified the pointcuts.  In this pointcuts are inserted functions 
-(events  \cite{Hud}). The selection of the functions into the pointcuts can be 
-adapted according some requirements. In this work it is requirement on run time. It 
-is time, which the system needed to reached the final state, moving from the 
-beginning state.
+\subsection{Terminology and Definitions}
 
-To be able to know, if the designed system meets the run time requirement, the time 
-evaluation for this system must be counted. 
-The method, which is used for calculating starting and end - time of activities in 
-software management, is critical path method. This method can be used for acyclic 
-data flow diagrams. For this characteristic of this method it couldn't be used for 
-counting the run time of the system. The data flow diagram of the system may contain 
-a cycle. Because in the designing phase it is not clear how many times the cycle will 
-be executed, only one execution of the cycle is considered. If the requirement is not 
-accomplish for one execution, it could not be accomplish for more executions.
+The IPFIX-specific terminology used in this paper is defined in \cite{rfc5101}.  Let us define 
+the IPFIX Mediation-specific terms here.
 
-To solve the run time computation, two approaches were considered. The first one is 
-based on the idea of the cycle compensation by one place (memory cell \cite{Kol2}) in 
-data flow diagram (Fig. \ref{fig:opestova1}). The disadvantage of this method is, 
-that it will be difficult to write an algorithm to find and replace the cycles. 
-
-% \begin{figure}[htb]
-% \centering
-% \includegraphics[height=6.2cm]{pestova/opestova1.jpg}
-% \caption{Compensation of cycle by one place.}
-% \label{fig:opestova1}
-% \end{figure}
-
-The second one is to count the run time by table. This is more easier, because it is 
-established on simple computation of the table (see table ~\ref{tab:opestova1}). 
-
-\tabcolsep=8pt
-\begin{table}[!ht]\caption{Table for graf b) form figure 
-\ref{fig:opestova1}.}\label{tab:opestova1}
-\smallskip
+\begin{itemize}
+ \item \textbf{Record stream} -- a stream of records carrying flow-based information. The records are
+ encoded as IPFIX Data Records.
+ 
+ \item \textbf{IPFIX Mediation} -- the manipulation and conversion of a record stream for subsequent 
+ export using the IPFIX protocol.
+ 
+ \item \textbf{Intermediate Process} -- takes a record stream as its input from Collecting Processes, 
+ or other Intermediate Processes performs some transformations on this stream, based 
+ upon the content of each record and passes the transformed record stream as its output to Exporting 
+ Processes, or other Intermediate Processes, in order to perform IPFIX Mediation.
+ 
+ \item \textbf{IPFIX Mediator} is an IPFIX Device that provides IPFIX Mediation by receiving a record 
+ stream from IPFIX Exporter or other Mediator, hosting one or more Intermediate Processes to transform 
+ that stream, and exporting the transformed record stream to IPFIX Collector via IPFIX Messages. \cite{rfc5982}
+ \end{itemize}
+ 
+ \bigskip
+ Fig.~\ref{o:eng_exp-med-coll} depicts one of the possible IPFIX Exporter -- Mediator -- Collector 
+ architecture examples.
+\begin{figure}[ht!]
 \centering
-\begin{tabular}{|l|c|c|} \hline
-Place & Preconditions & Time evaluation \\ \hline
-a & - & 0 s\\ \hline
-b & a & 10 s\\ \hline
-f & b & 20 s\\ \hline
-\end{tabular}
-\end{table}
+\includegraphics[width=0.7\textwidth]{kudla/eng_exp-med-coll}
+\caption{One of the possible IPFIX Exporter -- Mediator -- Collector architecture examples}\label{o:eng_exp-med-coll}
+\end{figure}
 
+\subsection{Problem statement}
+
+Network administrators generally face the problems of measurement system scalability, Flow-based 
+measurement flexibility, and export reliability, even if some techniques, such as Packet Sampling,
+Filtering, Data Records aggregation, and export replication, have already been developed.  
+
+The problems consist of adjusting some parameters of metering devices to resources of the measurement 
+system while fulfilling appropriate conditions: data accuracy, Flow granularity, and export reliability. 
+These conditions depend on two factors -- \textbf{measurement system capacity} and 
+\textbf{application requirements}.
+
+Due to resource limitations of the measurement system, it is important to use traffic data reduction 
+techniques as early as possible, e.g., at the Exporter.  However, this implementation is made difficult 
+by the heterogeneous environment of exporting devices. On the other hand, keeping data accuracy and 
+Flow granularity to meet the requirements of different monitoring applications requires a scalable and 
+flexible collecting infrastructure.
+
+This implies that a new Mediation function is required in typical Exporter-Collector architectures. \cite{rfc5982}
+
+\subsection{Mediation Applicability Examples} \label{sec:application}
+
+RFC 5982 \cite{rfc5982} provides several examples of IPFIX Mediator applications. Let us mention a few 
+of then:
+\begin{itemize}
+ \item Data record anonymization, 
+ \item Interoperability between legacy protocols and IPFIX,
+ \item Adjusting flow granularity,
+ \item Flow-Based sampling and selection,
+ \item Distributed collecting infrastructure, 
+ \item Time composition,
+ \item Spatial composition.
+%   \subitem Spatial composition within one Observation Domain,
+%   \subitem Spatial composition across Observation Domains, but within a single Original Exporter,
+%   \subitem Spatial composition across Exporters,
+%   \subitem Spatial composition across administrative domains.
+\end{itemize}
 
 \section{Solution and Results}
 
-\subsection{The design of deduction mechanism in evolution model}
+\subsection{Application design}
 
-The ambition to achieve some evolution in the designing phase of software development 
-is based on the idea that the selection of the functions (events, which should be 
-used for the implementation of the system) can be adapted according some 
-requirements. A deduction mechanism has been designed to reach this goal. This  
-mechanism works with run time (time, which need the system to reach the final state, 
-moving from the beginning state) requirement. This mechanism is inspired by 
-biological evolution. From the generated variants of solution (designed by this 
-mechanism) are selected only the ones, that accomplish the compliance with the 
-requirement. From them is selected the best one. The mechanism is described in follow 
-steps: 
+IPFIX Mediation Problem Framework and its architecture is analysed in RFC 6183~\cite{rfc6183}. Based on 
+the IPFIX Mediation reference model as an extension of the IPFIX reference model presented 
+in \emph{Architecture for IP Flow Information Export} -- RFC~5470~\cite{rfc5470} was designed 
+application \emph{Mediator v1.0} architecture. Fig.~\ref{o:eng_reference-model} covers the various 
+possible 
+scenarios that can exist in the \emph{Mediator v1.0} monitoring system. The functional components 
+within each entity are indicated within brackets []. \emph{Mediator v1.0} receives IPFIX Flow Records 
+from other IPFIX Mediators and Exporters via UDP transport protocol. Processed IPFIX Flow records are 
+exported to Collector or other IPFIX Mediator via UDP.
 
-\begin{enumerate}
-\item  For the designed system a data flow diagram (desribing the flow of data in 
-this system) is designed.
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.5\textwidth]{kudla/eng_reference-model}
+\caption{Mediator v1.0 reference model overview}\label{o:eng_reference-model}
+\end{figure}
 
-\item  Then the file of functions (representsenting the events in the designed 
-system) is created.
+Basic \emph{Mediator v1.0} component model is shown in the Fig.~\ref{o:eng_mediator-components}. The 
+Mediator may contain one or more Intermediate Processes hierarchically located between one Collecting and one
+Exporting Process. 
+
+Intermediate Processes are key functional blocks for IPFIX Mediation. Data flow between them is managed 
+in the following ways:
+\begin{itemize}
+ \item \textbf{Parallel processing} - record stream is processed by Intermediate Processes simultaneously. 
+ In this setup, each Intermediate Process receives a copy of the entire record stream as its input.
+ \item \textbf{Serial processing} - In order to ensure flexible manipulation of a record stream, 
+ the Intermediate Processes are connected serially. In that case, an output record stream from one 
+ Intermediate Process forms an input for a succeeding Intermediate Process.
+\end{itemize}
+
+   
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.6\textwidth]{kudla/eng_mediator-components}
+\caption{Basic Mediator v1.0 component model}\label{o:eng_mediator-components}
+\end{figure}
+
+\subsection{Implementation of Mediator v1.0}
+
+\subsubsection{Main class}
+
+The role of the main class is to process command line arguments and then start all threads needed to run
+the application. These threads are following: UDP Server, UDP Processor, UDP Exporter and each Intermediate 
+Process is single thread as well. In case of error is Mediator shut down correctly so it realeases memory and stops all 
+running threads. Same situation occurs after pressing \verb|Ctrl-c|. 
+
+\subsubsection{Collecting Process}
+
+Logical structure of this process involves two stages, where each stage is one thread. 
+Let us briefly describe the individual stages of the Collecting Process.
+
+First stage is shown in Fig.~\ref{o:collecting1_schema}. A core class of this stage is \emph{UDPServer} 
+which receives byte stream of IPFIX messages sent from Exporter via UDP protocol. This stream is wrapped 
+into the \emph{PacketObject} and written to fast, blocking FIFO queue called \emph{PacketCache}. Application 
+design allows for future extension with another transport protocols, such as TCP and SCTP. 
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.7\textwidth]{kudla/collecting1_schema}
+\caption{First stage of Collecting Process of Mediator v1.0}\label{o:collecting1_schema}
+\end{figure}
+
+Scheme of second stage depicts Fig.~\ref{o:collecting2_schema}. The UDP Processor thread works in cycle --
+it reads packet objects from cache and sends them to IPFIX Parser. IPFIX Packets are split up there into
+IPFIX message header, IPFIX template sets, data sets and options template sets. These entities are 
+processed and transformed to flow records. IPFIX Parser sents each flow record with additional information 
+to class representing dispatcher of flow records. 
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.8\textwidth]{kudla/collecting2_schema}
+\caption{Second stage of Collecting Process of Mediator v1.0}\label{o:collecting2_schema}
+\end{figure}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
  
-\item  In the data flow diagram the pointcuts are identified.
-
-\item  Then the pointcuts are devided according the number of transfers, oriented 
-into this pointcut.
-
-\item  The functions from input file are devided according the number of arguments, 
-too. 
-
-\item  A check must be run, to determine whether a compatible group of functions 
-exists for each group of pointcuts. For example: for the group of pointcuts, where 
-only one transfer is oriented inside, a group of functions with only one agument is 
-considered compatible. 
- 
-\item  Number of members is counted for each group of pointcuts and group of 
-functions.
-
-\item  All combinations (how can be functions inserted into compatible pointcuts) are 
-generate for each group of pointcuts. 
-
-\item  Accordingly the combinations variants of realization (of the designed system) 
-are generated.
-
-\item The max run time value is choosed. This time is the upper limit.
-
-\item The begining marking is inserted.
-
-\item According to the next algorithm the time evaluation for each variant is 
-calculated.
-
-	\begin{enumerate}
-	\item	The table for each variant is created.
-	\item   The time evaluation calculation is started with table item, which all of 
-its preconditions have been marked. If such item doesn't exist, the calculation is 
-stoped.
-	\item   In the next step, items, whose all preconditions have marking or some 
-value are calculated. If such item doesn't exist, the calculation is stoped.
-	\end{enumerate}
-
-\item The generated variants are divided into the group of usable or unusable 
-according to the results form step 12. The variant with the shortest run time is 
-choosen, assuming this run time does not exceed the limit. 
-
-\end{enumerate}
-
-The figure \ref{fig:opestova3} shows the example of this mechanism on the design of 
-the system, which should realize a simple mathematical expression (\ref{simatexp}). 
-
-\begin{equation} \label{simatexp}
--\ (\ (\ a\ *\ b\ )\ -\ c\ ) 
-\end{equation}
 
 
-% \begin{figure}[htb]
-% \centering
-% \includegraphics[height=10cm]{pestova/opestova2.jpg}
-% \label{fig:opestova2}
-% \end{figure}
 
-
-\clearpage 
-
-% \begin{figure}[htb]
-% \centering
-% \includegraphics[height=13cm]{pestova/opestova3.jpg}
-% \caption{Example shows mechanism on the design of the system, which should realize a 
-% simple mathematical expression $- (( a * b ) - c)$}
-% \label{fig:opestova3}
-% \end{figure}
 
 %% NEMENTE sekciu acknowledgement, ak vam vas veduci nepovie inak
 \section{Acknowledgment}
@@ -265,51 +279,44 @@ by the Research \& Development Operational Program funded by the ERDF.
 
 \section{Conclusion}
 
-The goal of this work was to design mechanism established on algebraic relations in 
-evolution model. Based on semantic of pointcut designators (as they are defined in 
-AspectJ) to identify the pointcuts in evolution model.
-
-The method provides some advantages. In the implementation phase it is clear, whether 
-the specified requirements can be reached. Secondary, some partial automation may be 
-brought into the software development process.
-
-There are also some disadvantages consider. Some of the generated variants are not 
-the realization of the system. With growing number of functions and pointcuts, the 
-time needed for generating all variants grows. Therefore the application of this 
-method is effective for small systems only. This disadvantages might be improved by 
-the next research.
+% The goal of this work was to design mechanism established on algebraic relations in 
+% evolution model. Based on semantic of pointcut designators (as they are defined in 
+% AspectJ) to identify the pointcuts in evolution model.
+% 
+% The method provides some advantages. In the implementation phase it is clear, whether 
+% the specified requirements can be reached. Secondary, some partial automation may be 
+% brought into the software development process.
+% 
+% There are also some disadvantages consider. Some of the generated variants are not 
+% the realization of the system. With growing number of functions and pointcuts, the 
+% time needed for generating all variants grows. Therefore the application of this 
+% method is effective for small systems only. This disadvantages might be improved by 
+% the next research.
 
 
 %% POZOR: AJ V ZOZNAME LITERATURY TREBA POUZIT MEDZINARODNE KODOVANIE
 \begin{thebibliography}{4}
 %
-\bibitem{Anl}
-Anlauff Matthias, Pavlovic Dusko, Smith  R. Douglas: Composition and Refinement of 
-Evolving Specifications. In: Kestrel Institute, Palo Alto, California 94304, USA. , 
-26-29 Nov. 2001, pp.~157--165
+\bibitem{slameter}
+V\'{y}skumn\'{a} skupina MONICA: \emph{SLAmeter} [online], 2013. 
+$<$\url{http://wiki.cnl.sk/Monica/SLAmeter}$>$.
 %
-\bibitem{Hud}
-Hud\'ak \v{S}tefan: \textit{Roz\v{s}\'\i renia Petriho siet\'\i .} Habilitaèn\'a pr\'aca. Vysok\'a \v{s}škola 
-technick\'a v Ko\v{s}iciach. Elektrotechnick\'a fakulta. Ko\v{s}ice, 1980. 107~p.
+\bibitem{rfc5982}
+KOBAYASHI, A. -- CLAISE, B. et al.: \emph{IP Flow Information Export (IPFIX) Mediation: Problem Statement.} 
+RFC 5982. 2010
 %
-\bibitem{Kic}
-Kicyale Gregor, Hilsdale Erik, Hugunin Jim, Kersten Mik, Palm Jeffrey, Griswold G. 
-William: An Overview of AspectJ. Department of Computer Science, University of 
-British Columbia, Vancouver, 2005, 354~p.
+\bibitem{rfc6183}
+KOBAYASHI, A. et al.: \emph{IP Flow Information Export (IPFIX) Mediation: Framework.} 
+RFC 6183. 2011
 %
-\bibitem{Kol1}
-Koll\'ar J\'an: Structural Proposition for Aspect Oriented Software Evolution. 
-Proceedinds of 7-th International Scientific Conference ECI'2006, Ko\v{s}ice - Her\softl any, 
-Sep. 20-22, 2006, 
-pp.~180--185
+\bibitem{rfc5101}
+CLAISE, B. et al.: \emph{Specification of the IP Flow Information Export 
+(IPFIX) Protocol for the Exchange of IP Traffic Flow Information.} 
+RFC 5101. 2008
 %
-\bibitem{Kol2}
-Koll\'ar J\'an, Novitzk\'a Valerie: Semantical Equivalence of Process Functional and 
-Imperative Programs. Acta Polytechnica Hungarica, Vol. 1, No. 2, 2004, pp.~113--124
-%
-\bibitem{Kol3}
-Koll\'ar J\'an, T\'oth Marcel: An Experiment with Aspect Programming Language. Proceedings 
-of 3-rd Slovakian-Hungarian Joint Symposium on Applied Machine Intelligence, Her\softl any, 
-Slovakia, Jan 21-22, 2005, pp.~225--235
+\bibitem{rfc5470}
+SADASIVAN, G. et al.: \emph{Architecture for IP Flow Information Export} 
+RFC 5470. 2009
+
 \end{thebibliography}
 

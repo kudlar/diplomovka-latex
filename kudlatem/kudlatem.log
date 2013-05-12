@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  29 APR 2013 02:03
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.12)  12 MAY 2013 15:42
 entering extended mode
  %&-line parsing enabled.
 **kudlatem.tex
@@ -216,48 +216,48 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+<kudla/eng_exp-med-coll.pdf, id=10, 400.49625pt x 208.78pt>
+File: kudla/eng_exp-med-coll.pdf Graphic file (type pdf)
 
-LaTeX Warning: Reference `fig:opestova1' on page 2 undefined on input line 141.
+<use kudla/eng_exp-med-coll.pdf> [2] [3 <./kudla/eng_exp-med-coll.pdf>]
+<kudla/eng_reference-model.pdf, id=20, 323.2075pt x 428.60126pt>
+File: kudla/eng_reference-model.pdf Graphic file (type pdf)
 
+<use kudla/eng_reference-model.pdf> [4 <./kudla/eng_reference-model.pdf>]
+<kudla/eng_mediator-components.pdf, id=26, 474.77374pt x 361.35pt>
+File: kudla/eng_mediator-components.pdf Graphic file (type pdf)
 
+<use kudla/eng_mediator-components.pdf>
+<kudla/collecting1_schema.pdf, id=27, 462.72874pt x 133.49875pt>
+File: kudla/collecting1_schema.pdf Graphic file (type pdf)
 
-LaTeX Warning: Reference `fig:opestova1' on page 2 undefined on input line 156.
+<use kudla/collecting1_schema.pdf>
+<kudla/collecting2_schema.pdf, id=28, 551.05875pt x 268.00125pt>
+File: kudla/collecting2_schema.pdf Graphic file (type pdf)
 
-
-[2]
-
-LaTeX Warning: Reference `fig:opestova3' on page 3 undefined on input line 234.
-
-
-[3] [4]) [5
-
-] (./kudlatem.aux)
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+<use kudla/collecting2_schema.pdf> [5 <./kudla/eng_mediator-components.pdf>]
+[6 <./kudla/collecting1_schema.pdf> <./kudla/collecting2_schema.pdf>]) [7]
+(./kudlatem.aux) ) 
 Here is how much of TeX's memory you used:
- 1708 strings out of 495027
- 20297 string characters out of 1181419
- 78945 words of memory out of 3000000
- 4893 multiletter control sequences out of 15000+50000
- 10958 words of font info for 42 fonts, out of 3000000 for 9000
+ 1738 strings out of 495027
+ 21206 string characters out of 1181419
+ 77976 words of memory out of 3000000
+ 4915 multiletter control sequences out of 15000+50000
+ 11293 words of font info for 44 fonts, out of 3000000 for 9000
  38 hyphenation exceptions out of 8191
- 29i,7n,24p,312b,214s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-te
-xlive/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texmf-texlive/fonts/
-type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/publi
-c/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
-m/cmr9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share
-/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on kudlatem.pdf (5 pages, 139039 bytes).
+ 29i,6n,24p,265b,294s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx
+10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
+r/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texm
+f-texlive/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texmf-texlive/fo
+nts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/pu
+blic/amsfonts/cm/cmr9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts
+/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti9.p
+fb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/sh
+are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on kudlatem.pdf (7 pages, 477674 bytes).
 PDF statistics:
- 54 PDF objects out of 1000 (max. 8388607)
+ 81 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
